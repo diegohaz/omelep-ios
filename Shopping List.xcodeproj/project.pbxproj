@@ -34,6 +34,7 @@
 		374CBAB61B17D79600255CF1 /* NewItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAAE1B17D79600255CF1 /* NewItemViewCell.xib */; };
 		374CBAB71B17D79600255CF1 /* SuggestionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAAF1B17D79600255CF1 /* SuggestionViewCell.swift */; };
 		374CBAB81B17D79600255CF1 /* SuggestionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAB01B17D79600255CF1 /* SuggestionViewCell.xib */; };
+		374CBABA1B17DA5A00255CF1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAB91B17DA5A00255CF1 /* LaunchScreen.xib */; };
 		8E49FC8A1B0F75F70087FA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FC891B0F75F70087FA08 /* AppDelegate.swift */; };
 		8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E49FC931B0F75F70087FA08 /* Images.xcassets */; };
 		8E49FCA31B0F75F70087FA08 /* Shopping_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FCA21B0F75F70087FA08 /* Shopping_ListTests.swift */; };
@@ -85,6 +86,7 @@
 		374CBAAE1B17D79600255CF1 /* NewItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewItemViewCell.xib; sourceTree = "<group>"; };
 		374CBAAF1B17D79600255CF1 /* SuggestionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewCell.swift; sourceTree = "<group>"; };
 		374CBAB01B17D79600255CF1 /* SuggestionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionViewCell.xib; sourceTree = "<group>"; };
+		374CBAB91B17DA5A00255CF1 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		8E49FC841B0F75F70087FA08 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E49FC881B0F75F70087FA08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E49FC891B0F75F70087FA08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,8 +131,8 @@
 		374CBA6D1B17D76900255CF1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				374CBA6E1B17D76900255CF1 /* ListsController.swift */,
 				374CBA6F1B17D76900255CF1 /* MainController.swift */,
+				374CBA6E1B17D76900255CF1 /* ListsController.swift */,
 				374CBA701B17D76900255CF1 /* SingleListController.swift */,
 				374CBA711B17D76900255CF1 /* SuggestionsController.swift */,
 			);
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				374CBAA81B17D79600255CF1 /* Cells */,
+				374CBAB91B17DA5A00255CF1 /* LaunchScreen.xib */,
 				374CBA821B17D76A00255CF1 /* ListsView.swift */,
 				374CBA871B17D76A00255CF1 /* SingleListScreenView.xib */,
 				374CBA881B17D76A00255CF1 /* SuggestionsScreenView.xib */,
@@ -342,6 +345,7 @@
 				374CBAB41B17D79600255CF1 /* ListViewCell.xib in Resources */,
 				374CBAB21B17D79600255CF1 /* ItemViewCell.xib in Resources */,
 				374CBAA71B17D76A00255CF1 /* UserListScreenView.xib in Resources */,
+				374CBABA1B17DA5A00255CF1 /* LaunchScreen.xib in Resources */,
 				374CBAA21B17D76A00255CF1 /* SingleListScreenView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
