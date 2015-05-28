@@ -146,11 +146,11 @@
 				374CBA761B17D76900255CF1 /* List.swift */,
 				374CBA771B17D76900255CF1 /* NetworkConnect.swift */,
 				374CBA781B17D76900255CF1 /* Product.swift */,
-				374CBA791B17D76900255CF1 /* Shopping List-Bridging-Header.h */,
-				374CBA7A1B17D76900255CF1 /* Shopping_List.xcdatamodeld */,
 				374CBA7C1B17D76A00255CF1 /* Tag.swift */,
 				374CBA7D1B17D76A00255CF1 /* User+CoreData.swift */,
 				374CBA7E1B17D76A00255CF1 /* User.swift */,
+				374CBA7A1B17D76900255CF1 /* Shopping_List.xcdatamodeld */,
+				374CBA791B17D76900255CF1 /* Shopping List-Bridging-Header.h */,
 				8E9030D61B17DAAB0027DE70 /* Reachability.h */,
 				8E9030D71B17DAAB0027DE70 /* Reachability.m */,
 			);
