@@ -10,31 +10,31 @@
 	<string>Shopping List</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>C28632E7791E6EB2052D575AF0CB660F8B1834C9</key>
-		<string>https://github.com/matheusfalcao20/Shopping-List.git</string>
+		<key>BB2432DE3BDBCF05F2A3F297794B275DAF1E2722</key>
+		<string>https://github.com/diegohaz/spesa-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Shopping List/Shopping List.xcodeproj</string>
+	<string>Shopping List.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>C28632E7791E6EB2052D575AF0CB660F8B1834C9</key>
-		<string>../../..</string>
+		<key>BB2432DE3BDBCF05F2A3F297794B275DAF1E2722</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/matheusfalcao20/Shopping-List.git</string>
+	<string>https://github.com/diegohaz/spesa-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C28632E7791E6EB2052D575AF0CB660F8B1834C9</string>
+	<string>BB2432DE3BDBCF05F2A3F297794B275DAF1E2722</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C28632E7791E6EB2052D575AF0CB660F8B1834C9</string>
+			<string>BB2432DE3BDBCF05F2A3F297794B275DAF1E2722</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Shopping-List</string>
+			<string>spesa-ios</string>
 		</dict>
 	</array>
 </dict>

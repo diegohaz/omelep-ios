@@ -42,6 +42,8 @@
 		8E9030C61B17B5020027DE70 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030C51B17B5020027DE70 /* CFNetwork.framework */; };
 		8E9030C81B17B5130027DE70 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030C71B17B5130027DE70 /* libc++.dylib */; };
 		8E9030CA1B17B51D0027DE70 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030C91B17B51D0027DE70 /* libicucore.dylib */; };
+		8E9030D51B17DA960027DE70 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030D41B17DA960027DE70 /* Firebase.framework */; };
+		8E9030D81B17DAAB0027DE70 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9030D71B17DAAB0027DE70 /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,9 @@
 		8E9030C51B17B5020027DE70 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8E9030C71B17B5130027DE70 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		8E9030C91B17B51D0027DE70 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		8E9030D41B17DA960027DE70 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		8E9030D61B17DAAB0027DE70 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		8E9030D71B17DAAB0027DE70 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E9030D51B17DA960027DE70 /* Firebase.framework in Frameworks */,
 				8E9030CA1B17B51D0027DE70 /* libicucore.dylib in Frameworks */,
 				8E9030C81B17B5130027DE70 /* libc++.dylib in Frameworks */,
 				8E9030C61B17B5020027DE70 /* CFNetwork.framework in Frameworks */,
@@ -145,6 +151,8 @@
 				374CBA7C1B17D76A00255CF1 /* Tag.swift */,
 				374CBA7D1B17D76A00255CF1 /* User+CoreData.swift */,
 				374CBA7E1B17D76A00255CF1 /* User.swift */,
+				8E9030D61B17DAAB0027DE70 /* Reachability.h */,
+				8E9030D71B17DAAB0027DE70 /* Reachability.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 		8E9030CB1B17B56A0027DE70 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E9030D41B17DA960027DE70 /* Firebase.framework */,
 				8E9030C51B17B5020027DE70 /* CFNetwork.framework */,
 				8E9030C91B17B51D0027DE70 /* libicucore.dylib */,
 				8E9030C11B17B4F30027DE70 /* SystemConfiguration.framework */,
@@ -365,6 +374,7 @@
 				374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */,
 				374CBAA61B17D76A00255CF1 /* UserListController.swift in Sources */,
 				374CBA921B17D76A00255CF1 /* DAORemoto.swift in Sources */,
+				8E9030D81B17DAAB0027DE70 /* Reachability.m in Sources */,
 				374CBAB71B17D79600255CF1 /* SuggestionViewCell.swift in Sources */,
 				374CBA911B17D76A00255CF1 /* DAOLocal.swift in Sources */,
 				374CBA951B17D76A00255CF1 /* NetworkConnect.swift in Sources */,
@@ -483,6 +493,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matheusfalcao/Documents/Aplicativos/Frameworks,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -501,6 +512,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matheusfalcao/Documents/Aplicativos/Frameworks,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
