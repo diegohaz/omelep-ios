@@ -25,23 +25,26 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         collectionView!.registerNib(UINib(nibName: "ListViewCell", bundle: nil), forCellWithReuseIdentifier: "ListCell")
         collectionView!.registerNib(UINib(nibName: "SuggestionViewCell", bundle: nil), forCellWithReuseIdentifier: "SuggestionCell")
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "searchList:")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addList:")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "search:")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add:")
         
         view.addSubview(self.collectionView!)
-        
-        lists = DAOLocal.sharedInstance.readLists()
+    }
+    
+    func add(sender: UIBarButtonItem) {
+        self.navigationController?.pushViewController(UserListController.sharedInstance, animated: true)
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lists.count
+        return 18
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ListCell", forIndexPath: indexPath) as! ListViewCell
-        let list = self.lists[indexPath.row]
+        //let list = self.lists[indexPath.row]
         
-        cell.label.text = list.name
+        cell.label.text = "Nome da lista"
+        cell.items.text = "Item 1, item 2, item 3..."
         
         return cell
     }
