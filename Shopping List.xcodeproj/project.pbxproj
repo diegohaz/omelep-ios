@@ -13,7 +13,6 @@
 		374CBA901B17D76A00255CF1 /* SuggestionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA711B17D76900255CF1 /* SuggestionsController.swift */; };
 		374CBA911B17D76A00255CF1 /* DAOLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA731B17D76900255CF1 /* DAOLocal.swift */; };
 		374CBA921B17D76A00255CF1 /* DAORemoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA741B17D76900255CF1 /* DAORemoto.swift */; };
-		374CBA931B17D76A00255CF1 /* DAOUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA751B17D76900255CF1 /* DAOUser.swift */; };
 		374CBA941B17D76A00255CF1 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA761B17D76900255CF1 /* List.swift */; };
 		374CBA951B17D76A00255CF1 /* NetworkConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA771B17D76900255CF1 /* NetworkConnect.swift */; };
 		374CBA961B17D76A00255CF1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA781B17D76900255CF1 /* Product.swift */; };
@@ -64,7 +63,6 @@
 		374CBA711B17D76900255CF1 /* SuggestionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsController.swift; sourceTree = "<group>"; };
 		374CBA731B17D76900255CF1 /* DAOLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOLocal.swift; sourceTree = "<group>"; };
 		374CBA741B17D76900255CF1 /* DAORemoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAORemoto.swift; sourceTree = "<group>"; };
-		374CBA751B17D76900255CF1 /* DAOUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOUser.swift; sourceTree = "<group>"; };
 		374CBA761B17D76900255CF1 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		374CBA771B17D76900255CF1 /* NetworkConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnect.swift; sourceTree = "<group>"; };
 		374CBA781B17D76900255CF1 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 			children = (
 				374CBA731B17D76900255CF1 /* DAOLocal.swift */,
 				374CBA741B17D76900255CF1 /* DAORemoto.swift */,
-				374CBA751B17D76900255CF1 /* DAOUser.swift */,
 				374CBA761B17D76900255CF1 /* List.swift */,
 				374CBA771B17D76900255CF1 /* NetworkConnect.swift */,
 				374CBA781B17D76900255CF1 /* Product.swift */,
@@ -367,7 +364,6 @@
 				8E49FC8A1B0F75F70087FA08 /* AppDelegate.swift in Sources */,
 				374CBA901B17D76A00255CF1 /* SuggestionsController.swift in Sources */,
 				374CBA8E1B17D76A00255CF1 /* MainController.swift in Sources */,
-				374CBA931B17D76A00255CF1 /* DAOUser.swift in Sources */,
 				374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */,
 				374CBA971B17D76A00255CF1 /* Shopping_List.xcdatamodeld in Sources */,
 				374CBA961B17D76A00255CF1 /* Product.swift in Sources */,
