@@ -38,6 +38,34 @@
                             </mask>
                         </variation>
                     </view>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n2N-3I-TI4" userLabel="ShareView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share" translatesAutoresizingMaskIntoConstraints="NO" id="Q54-Op-XIS">
+                                <rect key="frame" x="8" y="15.5" width="24" height="24"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Cf2-P7-ntS"/>
+                                    <constraint firstAttribute="width" constant="24" id="sip-Xo-0uq"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12941176469999999" green="0.55294117649999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Q54-Op-XIS" secondAttribute="trailing" constant="8" id="7iU-QD-fLy"/>
+                            <constraint firstAttribute="centerY" secondItem="Q54-Op-XIS" secondAttribute="centerY" id="Dop-rl-LaO"/>
+                            <constraint firstItem="Q54-Op-XIS" firstAttribute="leading" secondItem="n2N-3I-TI4" secondAttribute="leading" constant="8" id="KUp-8j-rjR"/>
+                            <constraint firstAttribute="trailing" secondItem="Q54-Op-XIS" secondAttribute="trailing" constant="8" id="PTj-YY-w2k"/>
+                            <constraint firstItem="Q54-Op-XIS" firstAttribute="leading" secondItem="n2N-3I-TI4" secondAttribute="leading" constant="8" id="vep-Jm-iHo"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7iU-QD-fLy"/>
+                                <exclude reference="KUp-8j-rjR"/>
+                                <exclude reference="PTj-YY-w2k"/>
+                            </mask>
+                        </variation>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkh-qM-bre" userLabel="ItemView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                         <subviews>
@@ -75,25 +103,32 @@
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="tkh-qM-bre" secondAttribute="trailing" id="202-0M-uMi"/>
+                <constraint firstAttribute="bottom" secondItem="n2N-3I-TI4" secondAttribute="bottom" id="2yc-E4-2sa"/>
                 <constraint firstItem="aeA-6c-op6" firstAttribute="leading" secondItem="5IM-wK-NiT" secondAttribute="leading" id="5CL-7A-viQ"/>
                 <constraint firstItem="tkh-qM-bre" firstAttribute="leading" secondItem="5IM-wK-NiT" secondAttribute="leading" id="8Tu-HR-AIl"/>
                 <constraint firstAttribute="bottom" secondItem="aeA-6c-op6" secondAttribute="bottom" id="BSV-vG-8k2"/>
+                <constraint firstItem="n2N-3I-TI4" firstAttribute="top" secondItem="5IM-wK-NiT" secondAttribute="top" id="Fd4-9h-iDA"/>
                 <constraint firstAttribute="trailing" secondItem="aeA-6c-op6" secondAttribute="trailing" id="Nfy-ZA-obT"/>
+                <constraint firstItem="n2N-3I-TI4" firstAttribute="leading" secondItem="5IM-wK-NiT" secondAttribute="leading" id="Oyf-Cq-hx7"/>
                 <constraint firstItem="tkh-qM-bre" firstAttribute="top" secondItem="5IM-wK-NiT" secondAttribute="top" id="a0p-jU-tqa"/>
                 <constraint firstItem="aeA-6c-op6" firstAttribute="top" secondItem="5IM-wK-NiT" secondAttribute="top" id="cEq-S1-kjM"/>
                 <constraint firstAttribute="bottom" secondItem="tkh-qM-bre" secondAttribute="bottom" id="kea-KF-Gjl"/>
+                <constraint firstAttribute="trailing" secondItem="n2N-3I-TI4" secondAttribute="trailing" id="zq2-pN-J6x"/>
             </constraints>
             <size key="customSize" width="50" height="118"/>
             <connections>
+                <outlet property="doneView" destination="n2N-3I-TI4" id="ItO-FV-h8W"/>
                 <outlet property="itemView" destination="tkh-qM-bre" id="wkj-Ce-Ran"/>
                 <outlet property="itemsLabel" destination="dVa-2B-Am9" id="4Ce-9j-AJI"/>
                 <outlet property="label" destination="Utp-98-IRu" id="yGA-sU-njk"/>
                 <outlet property="removeView" destination="aeA-6c-op6" id="b10-Pz-reA"/>
+                <outlet property="shareImage" destination="Q54-Op-XIS" id="Fu5-0z-Flk"/>
             </connections>
             <point key="canvasLocation" x="248" y="212.5"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="Share" width="24" height="24"/>
         <image name="Trash" width="24" height="24"/>
     </resources>
 </document>
