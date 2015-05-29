@@ -19,10 +19,21 @@ class DAORemoto {
     private init() {
     }
     
+    //Função para normalizar o nome de produtos, listas e tags para pesquisa
+    private func normaliza(text : String) -> String {
+        
+        var ntext = text.stringByFoldingWithOptions(NSStringCompareOptions.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale())
+        
+        ntext = ntext.lowercaseString
+        
+        return ntext
+        
+    }
+    
     //Lists:
     
     //Função que salva um nova lista:
-    func saveNewList(list : List) {
+    func saveNewList(list : List) -> List{
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
         
@@ -32,7 +43,7 @@ class DAORemoto {
         //TODO: Função para achar usuário
         var users = ["HKJKUYGKEU": true]
         
-        var info = ["name": "\(list.name)", "products": products, "tags": tags, "users": users]
+        var info = ["searchName": normaliza(list.name),"name": "\(list.name)", "products": products, "tags": tags, "users": users]
 
         var listRef = myRootRef.childByAppendingPath("list")
         
@@ -46,19 +57,21 @@ class DAORemoto {
         //Salvando no FireBase:
         infoAdd.setValue(info)
         
+        return list
+        
     }
     
     //Products:
     
     //Função que salva um novo produto:
-    func saveNewProduct(product : Product) {
+    func saveNewProduct(product : Product) -> Product{
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
         
         //TODO: Função para achar usuário
         var users = ["HKJKUYGKEU": true]
         
-        var info = ["name": "\(product.name)", "brand": "\(product.brand)", "cubage": "\(product.cubage)"]
+        var info = ["searchName": normaliza(product.name),"name": "\(product.name)", "brand": "\(product.brand)", "cubage": "\(product.cubage)"]
         
         var listRef = myRootRef.childByAppendingPath("product")
         
@@ -72,30 +85,52 @@ class DAORemoto {
         //Salvando no FireBase:
         infoAdd.setValue(info)
         
+        return product
+        
     }
     
     //Função que procura produto a partir do nome:
-    func searchProduct(name : String) -> Product{
+    func searchProductFromName(name : String, callback: (Product) -> Void) {
         
         var product : Product = Product()
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
-    myRootRef.queryOrderedByChild("name").queryEqualToValue(name).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
         
-        if( snapshot.value.exists() == false ) {
-            print("vazio")
-        } else {
-            print("Tem resultado")
-        }
-            //var dic = snapshot.value as! NSDictionary
-            //var key = dic.allKeys[0] as! String
-            //print(key)
-            //print(produc)
+        var listRef = myRootRef.childByAppendingPath("product")
+    
+        listRef.queryOrderedByChild("searchName").queryEqualToValue(normaliza(name)).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
         
+            if( snapshot.exists() == true ) {
+                var dic = snapshot.value as! NSDictionary
+                var key = dic.allKeys[0] as! String
+                product.name = dic[key]!.objectForKey("name")! as! String
+                product.cubage = dic[key]!.objectForKey("cubage")! as! String
+                product.brand = dic[key]!.objectForKey("brand")! as! String
+                product.id = key
+            } else {
+                product.name = name
+                product = self.saveNewProduct(product)
+            }
+            callback(product)
+        })
+    }
+    
+    //Função que procura produto a partir do ID:
+    func searchProductFromID(id : String, callback: (Product) -> Void) {
+        var product : Product = Product()
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/product/\(id)")
+        
+        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            if( snapshot.exists() == true ) {
+                
+            } else {
+                
+            }
+            
         })
         
-        
-        return product
         
     }
     
@@ -170,6 +205,13 @@ class DAORemoto {
     //            println(snapshot.value)
     //        
     //        })
+    
+    //MUITO IMPORTANTE:
+    //        var p: Product! = nil
+    //        DAORemoto.sharedInstance.searchProductFromName("Arroz") { product in
+    //            p = product
+    //            println(p)
+    //        }
 
     
     
