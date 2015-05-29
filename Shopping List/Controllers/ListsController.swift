@@ -39,25 +39,11 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
             l = list
             println(l)
             
-//            var p : Product! = nil
-//            DAORemoto.sharedInstance.searchProductFromID("-JqUm54L-SYpbCAV-lWP") { product in
-//                p = product
-//                println(p)
-//                
-//                DAORemoto.sharedInstance.addProductToList(p, list: l)
-//                
-//            }
             
-            var u : User = User()
-            u.id = "-JqUnv4APA4y1InCjwOF"
-            
-            DAORemoto.sharedInstance.addListToUser(l, user: u)
             
         }
         
-    
         
-
         
 
         title = "Lists"

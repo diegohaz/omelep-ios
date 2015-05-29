@@ -15,7 +15,7 @@ import UIKit
 class List: NSManagedObject {
 
     @NSManaged var name: String
-    @NSManaged var product: NSSet
+    @NSManaged var products: NSSet
     @NSManaged var tags: NSSet
     @NSManaged var id: String
     
