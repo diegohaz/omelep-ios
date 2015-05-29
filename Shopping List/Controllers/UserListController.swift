@@ -20,17 +20,21 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         title = "List"
         
+        // Reusable View
         reusableView = NSBundle.mainBundle().loadNibNamed("UserListView", owner: self, options: [:])[0] as? UserListView
+        view = reusableView
+        
+        // Collection View
         collectionView = reusableView?.collectionView
         collectionView!.dataSource = self
         collectionView!.delegate = self
         collectionView!.registerNib(UINib(nibName: "ItemViewCell", bundle: nil), forCellWithReuseIdentifier: "ItemCell")
         
+        // Text Field
         reusableView?.newItemTextField.delegate = self
         
+        // Navigation
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Share"), style: UIBarButtonItemStyle.Plain, target: self, action: "share:")
-        
-        view = reusableView
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
