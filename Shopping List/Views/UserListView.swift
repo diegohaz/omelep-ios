@@ -8,20 +8,11 @@
 
 import UIKit
 
-class UserListView: UICollectionView {
-    
-    init(frame: CGRect) {
-        let layout = UICollectionViewFlowLayout()
-        super.init(frame: frame, collectionViewLayout: layout)
-        
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: self.bounds.width, height: 32)
-        
-        self.backgroundColor = UIColor.whiteColor()
+class UserListView: UIView {
+    @IBOutlet weak var newItemTextField: UITextField!
+    @IBOutlet weak var collectionView: UICollectionView!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
 }

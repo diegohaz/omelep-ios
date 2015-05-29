@@ -8,23 +8,35 @@
 
 import UIKit
 
-class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate {
     
     static let sharedInstance = UserListController()
+    var reusableView: UserListView?
     var collectionView: UICollectionView?
+    var products = [Product]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "List"
-        collectionView = UserListView(frame: self.view.bounds)
+        
+        reusableView = NSBundle.mainBundle().loadNibNamed("UserListView", owner: self, options: [:])[0] as? UserListView
+        collectionView = reusableView?.collectionView
         collectionView!.dataSource = self
         collectionView!.delegate = self
         collectionView!.registerNib(UINib(nibName: "ItemViewCell", bundle: nil), forCellWithReuseIdentifier: "ItemCell")
         
+        reusableView?.newItemTextField.delegate = self
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Share"), style: UIBarButtonItemStyle.Plain, target: self, action: "share:")
         
-        view.addSubview(self.collectionView!)
+        view = reusableView
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let size = CGSize(width: self.view.bounds.width, height: 48)
+        
+        return size
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -33,7 +45,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemViewCell
-        //let list = self.lists[indexPath.row]
+        //let list = self.products[indexPath.row]
         
         cell.label.text = "Item"
         
