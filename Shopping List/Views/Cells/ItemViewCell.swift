@@ -9,8 +9,8 @@
 import UIKit
 
 @objc protocol ItemViewCellDelegate {
-    func remove(cell: ItemViewCell)
-    func done(cell: ItemViewCell)
+    func removeItem(cell: ItemViewCell)
+    func doneItem(cell: ItemViewCell)
 }
 
 class ItemViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
@@ -26,6 +26,7 @@ class ItemViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     override func awakeFromNib() {
         panGesture = UIPanGestureRecognizer(target: self, action: "pan:")
         panGesture!.delegate = self
+        
         self.addGestureRecognizer(panGesture!)
     }
     
@@ -67,13 +68,15 @@ class ItemViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                 UIView.animateWithDuration(0.4, animations: { () -> Void in
                     self.itemView.frame.origin.x = self.itemView.frame.width
                 }, completion: { (finished) -> Void in
-                    self.delegate?.done(self)
+                    self.delegate?.doneItem(self)
+                    self.reset()
                 })
             } else if itemView.frame.maxX < itemView.frame.size.width / 2.5 {
                 UIView.animateWithDuration(0.4, animations: { () -> Void in
                     self.itemView.frame.origin.x = -(self.itemView.frame.width)
                 }, completion: { (finished) -> Void in
-                    self.delegate?.remove(self)
+                    self.delegate?.removeItem(self)
+                    self.reset()
                 })
             } else {
                 UIView.animateWithDuration(0.4) {
@@ -81,5 +84,11 @@ class ItemViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                 }
             }
         }
+    }
+    
+    func reset() {
+        itemView.frame.origin.x = 0
+        self.doneView.hidden = true
+        self.removeView.hidden = true
     }
 }

@@ -35,14 +35,25 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         // Navigation
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Share"), style: UIBarButtonItemStyle.Plain, target: self, action: "share:")
+        
+        // Populate products
+        for i in 0...18 {
+            products.append(Product())
+        }
     }
     
-    func done(cell: ItemViewCell) {
-        
+    func doneItem(cell: ItemViewCell) {
+        let indexPath = collectionView!.indexPathForCell(cell)
+
+        products.removeAtIndex(indexPath!.row)
+        collectionView!.reloadData()
     }
     
-    func remove(cell: ItemViewCell) {
+    func removeItem(cell: ItemViewCell) {
+        let indexPath = collectionView!.indexPathForCell(cell)
         
+        products.removeAtIndex(indexPath!.row)
+        collectionView!.reloadData()
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -52,13 +63,14 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 18
+        return products.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemViewCell
         //let list = self.products[indexPath.row]
         
+        cell.delegate = self
         cell.label.text = "Item"
         
         return cell
