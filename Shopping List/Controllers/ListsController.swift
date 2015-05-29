@@ -18,19 +18,28 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Lists"
-        collectionView = ListsView(frame: self.view.bounds)
-        collectionView!.dataSource = self
-        collectionView!.delegate = self
-        collectionView!.registerNib(UINib(nibName: "ListViewCell", bundle: nil), forCellWithReuseIdentifier: "ListCell")
-        collectionView!.registerNib(UINib(nibName: "SuggestionViewCell", bundle: nil), forCellWithReuseIdentifier: "SuggestionCell")
+//        title = "Lists"
+//        collectionView = ListsView(frame: self.view.bounds)
+//        collectionView!.dataSource = self
+//        collectionView!.delegate = self
+//        collectionView!.registerNib(UINib(nibName: "ListViewCell", bundle: nil), forCellWithReuseIdentifier: "ListCell")
+//        collectionView!.registerNib(UINib(nibName: "SuggestionViewCell", bundle: nil), forCellWithReuseIdentifier: "SuggestionCell")
+//        
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "searchList:")
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addList:")
+//        
+//        view.addSubview(self.collectionView!)
+//        
+//        lists = DAOLocal.sharedInstance.readLists()
+
+        //MUITO IMPORTANTE:
+//        var p: Product! = nil
+//        DAORemoto.sharedInstance.searchProductFromName("Arroz") { product in
+//            p = product
+//            println(p)
+//        }
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "searchList:")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addList:")
         
-        view.addSubview(self.collectionView!)
-        
-        lists = DAOLocal.sharedInstance.readLists()
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
