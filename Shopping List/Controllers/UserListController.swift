@@ -10,10 +10,10 @@ import UIKit
 
 class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, ItemViewCellDelegate {
     
-    static let sharedInstance = UserListController()
     var reusableView: UserListView?
     var collectionView: UICollectionView?
     var products = [Product]()
+    var isNew = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +36,8 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         // Navigation
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Share"), style: UIBarButtonItemStyle.Plain, target: self, action: "share:")
         
-        // Populate products
-        for i in 0...18 {
-            products.append(Product())
+        if isNew {
+            reusableView?.newItemTextField.becomeFirstResponder()
         }
     }
     
@@ -56,6 +55,18 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         collectionView!.reloadData()
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        let product = Product()
+        product.name = textField.text
+        textField.text = ""
+        
+        products.insert(product, atIndex: 0)
+        collectionView!.reloadData()
+        collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
+        
+        return true
+    }
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let size = CGSize(width: self.view.bounds.width, height: 48)
         
@@ -68,10 +79,10 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemViewCell
-        //let list = self.products[indexPath.row]
+        let product = self.products[indexPath.row]
         
         cell.delegate = self
-        cell.label.text = "Item"
+        cell.label.text = product.name
         
         return cell
     }

@@ -33,7 +33,10 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     }
     
     func add(sender: UIBarButtonItem) {
-        self.navigationController?.pushViewController(UserListController.sharedInstance, animated: true)
+        let controller = UserListController()
+        controller.isNew = true
+        
+        self.navigationController?.pushViewController(controller, animated: true)
 
     }
     
