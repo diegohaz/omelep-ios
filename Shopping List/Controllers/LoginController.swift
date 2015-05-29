@@ -11,6 +11,7 @@ import UIKit
 class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     
     static let sharedInstance = LoginController()
+    let loginView : FBSDKLoginButton = FBSDKLoginButton()
 
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.greenColor()
@@ -18,13 +19,13 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+//            let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
-            self.navigationController?.pushViewController(UserListController.sharedInstance, animated: false)
-
+            self.navigationController?.pushViewController(ListsController.sharedInstance, animated: false)
+            
             
             println("user inicializou logado")
             
@@ -32,41 +33,15 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else
         {
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+//            let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
             println("user inicializou DESLOGADO")
-
+            
         }
     }
-    
-    
-//    func searchProductFromName(name : String, callback: (Product) -> Void) {
-//        
-//        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
-//        
-//        var listRef = myRootRef.childByAppendingPath("product")
-//        
-//        listRef.queryOrderedByChild("searchName").queryEqualToValue(normaliza(name)).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-//            
-//            var product : Product = Product()
-//            
-//            if( snapshot.exists() == true ) {
-//                var dic = snapshot.value as! NSDictionary
-//                var key = dic.allKeys[0] as! String
-//                product.name = dic[key]!.objectForKey("name")! as! String
-//                product.cubage = dic[key]!.objectForKey("cubage")! as! String
-//                product.brand = dic[key]!.objectForKey("brand")! as! String
-//                product.id = key
-//            } else {
-//                product.name = name
-//                product = self.saveNewProduct(product)
-//            }
-//            callback(product)
-//        })
-//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -101,45 +76,26 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                         println("User Registrado")
                     } else {
                         println("User não encontrado. Tem q registrar!")
-                                        println("fetched user: \(result)")
-                                        let userName : NSString = result.valueForKey("name") as! NSString
-                                        println("User Name is: \(userName)")
-                                        let userEmail : NSString = result.valueForKey("email") as! NSString
-                                        println("User Email is: \(userEmail)")
+                        println("fetched user: \(result)")
+                        let userName : NSString = result.valueForKey("name") as! NSString
+                        println("User Name is: \(userName)")
+                        let userEmail : NSString = result.valueForKey("email") as! NSString
+                        println("User Email is: \(userEmail)")
                         
-                                        var info = ["idfb": result.valueForKey("id") as! String , "email": result.valueForKey("email") as! String, "gender": result.valueForKey("gender") as! String, "locale": result.valueForKey("locale") as! String, "name": result.valueForKey("name") as! String,  /* "timezone": result.valueForKey("timezone") as! String, */ "updated_time": result.valueForKey("updated_time") as! String, "verified": result.valueForKey("verified") as! Bool, "access_token": FBSDKAccessToken.currentAccessToken().tokenString ]
+                        var info = ["idfb": result.valueForKey("id") as! String , "email": result.valueForKey("email") as! String, "gender": result.valueForKey("gender") as! String, "locale": result.valueForKey("locale") as! String, "name": result.valueForKey("name") as! String,  /* "timezone": result.valueForKey("timezone") as! String, */ "updated_time": result.valueForKey("updated_time") as! String, "verified": result.valueForKey("verified") as! Bool, "access_token": FBSDKAccessToken.currentAccessToken().tokenString ]
                         
                         //                var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
                         
-                                        var userRef = myRootRef.childByAppendingPath("user")
-                                        var infoAdd = userRef.childByAutoId()
-                                        infoAdd.setValue(info)
-                                        
-
+                        var userRef = myRootRef.childByAppendingPath("user")
+                        var infoAdd = userRef.childByAutoId()
+                        infoAdd.setValue(info)
+                        
+                        
                         callback(user)
                     }
                 })
-                
-                
-                //pega info do usuario
-//                println("fetched user: \(result)")
-//                let userName : NSString = result.valueForKey("name") as! NSString
-//                println("User Name is: \(userName)")
-//                let userEmail : NSString = result.valueForKey("email") as! NSString
-//                println("User Email is: \(userEmail)")
-//                
-//                var info = ["idfb": result.valueForKey("id") as! String , "email": result.valueForKey("email") as! String, "gender": result.valueForKey("gender") as! String, "locale": result.valueForKey("locale") as! String, "name": result.valueForKey("name") as! String,  /* "timezone": result.valueForKey("timezone") as! String, */ "updated_time": result.valueForKey("updated_time") as! String, "verified": result.valueForKey("verified") as! Bool, "access_token": FBSDKAccessToken.currentAccessToken().tokenString ]
-//                
-////                var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
-//                
-//                var userRef = myRootRef.childByAppendingPath("user")
-//                var infoAdd = userRef.childByAutoId()
-//                infoAdd.setValue(info)
-//                
-                
             }
         })
-
     }
     
     
@@ -148,12 +104,12 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         
         registerUser(){ user in
             
-            self.navigationController?.pushViewController(UserListController.sharedInstance, animated: false)
-
+            self.navigationController?.pushViewController(ListsController.sharedInstance, animated: false)
+            
         }
         
         
-
+        
         if ((error) != nil)
         {
             // Process error
