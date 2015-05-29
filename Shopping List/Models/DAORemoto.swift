@@ -57,9 +57,100 @@ class DAORemoto {
         //Salvando no FireBase:
         infoAdd.setValue(info)
         
+        //TODO: Adicionar essa lista ao usuário logado
+        
         return list
         
     }
+    
+    //Função que retorna todas as listas de um usuário:
+    func allListOfUser(user : User, callback: ([List]) -> Void) {
+        
+        
+        
+    }
+    
+    //Função que procura lista a partir do ID:
+    func searchListFromID(id : String, callback: (List) -> Void) {
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(id)")
+        
+        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            var list : List = List()
+            
+            if( snapshot.exists() == true ) {
+                var dic = snapshot.value as! NSDictionary
+                list.name = dic.objectForKey("name")! as! String
+                
+                //Pegando os produtos de cada lista
+                var keys = dic.allKeys
+                for x in keys {
+                    if x as! String == "products" {
+                        
+                        var dicProduct = dic["products"]! as! NSDictionary
+                        print("tem produto")
+                        
+                        
+                    } else {
+                        print("Nao tem produto ")
+                    }
+                }
+
+                
+                //list.product = dic.objectForKey("products")! as! [Product]
+                //list.tags = dic.objectForKey("tags")! as! [Tag]
+                list.id = id
+            } else {
+                print("lista não encotrada! \n")
+            }
+            callback(list)
+        })
+        
+        
+    }
+    
+    //Funçao que adiciona produto na lista:
+    func addProductToList(product : Product, list : List) -> List {
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+        
+        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+        
+            if( snapshot.exists() == true ){
+                var refProd = myRootRef.childByAppendingPath("products")
+                var prod = ["\(product.id)": true]
+                refProd.updateChildValues(prod)
+            } else {
+                print("lista não existe \n")
+            }
+            
+        })
+        
+        return DAOLocal.sharedInstance.addProduct(product.name, list: list)
+        
+    }
+    
+    //Funçao que adiciona lista para um usuário
+    func addListToUser(list : List, user : User) {
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)")
+        
+        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            if( snapshot.exists() == true ){
+                var refList = myRootRef.childByAppendingPath("lists")
+                var lis = ["\(list.id)": true]
+                refList.updateChildValues(lis)
+            } else {
+                print("Usuário não existe \n")
+            }
+            
+        })
+        
+    }
+    
+    
     
     //Products:
     
@@ -92,13 +183,13 @@ class DAORemoto {
     //Função que procura produto a partir do nome:
     func searchProductFromName(name : String, callback: (Product) -> Void) {
         
-        var product : Product = Product()
-        
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
         
         var listRef = myRootRef.childByAppendingPath("product")
     
         listRef.queryOrderedByChild("searchName").queryEqualToValue(normaliza(name)).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            var product : Product = Product()
         
             if( snapshot.exists() == true ) {
                 var dic = snapshot.value as! NSDictionary
@@ -117,18 +208,23 @@ class DAORemoto {
     
     //Função que procura produto a partir do ID:
     func searchProductFromID(id : String, callback: (Product) -> Void) {
-        var product : Product = Product()
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/product/\(id)")
         
         myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
-            if( snapshot.exists() == true ) {
-                
-            } else {
-                
-            }
+            var product : Product = Product()
             
+            if( snapshot.exists() == true ) {
+                var dic = snapshot.value as! NSDictionary
+                product.name = dic.objectForKey("name")! as! String
+                product.cubage = dic.objectForKey("cubage")! as! String
+                product.brand = dic.objectForKey("brand")! as! String
+                product.id = id
+            } else {
+                print("produto não encotrado! \n")
+            }
+            callback(product)
         })
         
         
