@@ -21,7 +21,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = MainController.sharedInstance
         self.window?.makeKeyAndVisible()
         
-        return true
+        //return true
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
+    }
+    
+    func application(application: UIApplication,
+        openURL url: NSURL,
+        sourceApplication: String?,
+        annotation: AnyObject?) -> Bool {
+            
+            //            var wasHandled = FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication)
+            // any app-specific handling code here
+            //            return wasHandled
+            
+            return FBSDKApplicationDelegate.sharedInstance().application(
+                application,
+                openURL: url,
+                sourceApplication: sourceApplication,
+                annotation: annotation)
     }
 
     func applicationWillResignActive(application: UIApplication) {
