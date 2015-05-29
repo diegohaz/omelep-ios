@@ -18,6 +18,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+<<<<<<< HEAD
 //        title = "Lists"
 //        collectionView = ListsView(frame: self.view.bounds)
 //        collectionView!.dataSource = self
@@ -40,17 +41,35 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
 //        }
         
         
+=======
+        title = "Lists"
+        collectionView = ListsView(frame: self.view.bounds)
+        collectionView!.dataSource = self
+        collectionView!.delegate = self
+        collectionView!.registerNib(UINib(nibName: "ListViewCell", bundle: nil), forCellWithReuseIdentifier: "ListCell")
+        collectionView!.registerNib(UINib(nibName: "SuggestionViewCell", bundle: nil), forCellWithReuseIdentifier: "SuggestionCell")
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "search:")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add:")
+        
+        view.addSubview(self.collectionView!)
+    }
+    
+    func add(sender: UIBarButtonItem) {
+        self.navigationController?.pushViewController(UserListController.sharedInstance, animated: true)
+>>>>>>> origin/master
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lists.count
+        return 18
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ListCell", forIndexPath: indexPath) as! ListViewCell
-        let list = self.lists[indexPath.row]
+        //let list = self.lists[indexPath.row]
         
-        cell.label.text = list.name
+        cell.label.text = "Nome da lista"
+        cell.items.text = "Item 1, item 2, item 3..."
         
         return cell
     }

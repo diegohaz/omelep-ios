@@ -23,7 +23,6 @@
 		374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA821B17D76A00255CF1 /* ListsView.swift */; };
 		374CBAA21B17D76A00255CF1 /* SingleListScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBA871B17D76A00255CF1 /* SingleListScreenView.xib */; };
 		374CBAA31B17D76A00255CF1 /* SuggestionsScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBA881B17D76A00255CF1 /* SuggestionsScreenView.xib */; };
-		374CBAA61B17D76A00255CF1 /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA8B1B17D76A00255CF1 /* UserListController.swift */; };
 		374CBAA71B17D76A00255CF1 /* UserListScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBA8C1B17D76A00255CF1 /* UserListScreenView.xib */; };
 		374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAA91B17D79600255CF1 /* ItemViewCell.swift */; };
 		374CBAB21B17D79600255CF1 /* ItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAAA1B17D79600255CF1 /* ItemViewCell.xib */; };
@@ -34,6 +33,8 @@
 		374CBAB71B17D79600255CF1 /* SuggestionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAAF1B17D79600255CF1 /* SuggestionViewCell.swift */; };
 		374CBAB81B17D79600255CF1 /* SuggestionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAB01B17D79600255CF1 /* SuggestionViewCell.xib */; };
 		374CBABA1B17DA5A00255CF1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAB91B17DA5A00255CF1 /* LaunchScreen.xib */; };
+		374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBABD1B17DDA000255CF1 /* UserListController.swift */; };
+		374CBAC01B17DEF100255CF1 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBABF1B17DEF100255CF1 /* UserListView.swift */; };
 		8E49FC8A1B0F75F70087FA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FC891B0F75F70087FA08 /* AppDelegate.swift */; };
 		8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E49FC931B0F75F70087FA08 /* Images.xcassets */; };
 		8E49FCA31B0F75F70087FA08 /* Shopping_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FCA21B0F75F70087FA08 /* Shopping_ListTests.swift */; };
@@ -74,7 +75,6 @@
 		374CBA821B17D76A00255CF1 /* ListsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
 		374CBA871B17D76A00255CF1 /* SingleListScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleListScreenView.xib; sourceTree = "<group>"; };
 		374CBA881B17D76A00255CF1 /* SuggestionsScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionsScreenView.xib; sourceTree = "<group>"; };
-		374CBA8B1B17D76A00255CF1 /* UserListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
 		374CBA8C1B17D76A00255CF1 /* UserListScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserListScreenView.xib; sourceTree = "<group>"; };
 		374CBAA91B17D79600255CF1 /* ItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
 		374CBAAA1B17D79600255CF1 /* ItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemViewCell.xib; sourceTree = "<group>"; };
@@ -85,6 +85,8 @@
 		374CBAAF1B17D79600255CF1 /* SuggestionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewCell.swift; sourceTree = "<group>"; };
 		374CBAB01B17D79600255CF1 /* SuggestionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionViewCell.xib; sourceTree = "<group>"; };
 		374CBAB91B17DA5A00255CF1 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		374CBABD1B17DDA000255CF1 /* UserListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
+		374CBABF1B17DEF100255CF1 /* UserListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		8E49FC841B0F75F70087FA08 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E49FC881B0F75F70087FA08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E49FC891B0F75F70087FA08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				374CBA6F1B17D76900255CF1 /* MainController.swift */,
 				374CBA6E1B17D76900255CF1 /* ListsController.swift */,
+				374CBABD1B17DDA000255CF1 /* UserListController.swift */,
 				374CBA701B17D76900255CF1 /* SingleListController.swift */,
 				374CBA711B17D76900255CF1 /* SuggestionsController.swift */,
 			);
@@ -162,9 +165,9 @@
 				374CBAA81B17D79600255CF1 /* Cells */,
 				374CBAB91B17DA5A00255CF1 /* LaunchScreen.xib */,
 				374CBA821B17D76A00255CF1 /* ListsView.swift */,
+				374CBABF1B17DEF100255CF1 /* UserListView.swift */,
 				374CBA871B17D76A00255CF1 /* SingleListScreenView.xib */,
 				374CBA881B17D76A00255CF1 /* SuggestionsScreenView.xib */,
-				374CBA8B1B17D76A00255CF1 /* UserListController.swift */,
 				374CBA8C1B17D76A00255CF1 /* UserListScreenView.xib */,
 			);
 			path = Views;
@@ -366,17 +369,18 @@
 				374CBA8E1B17D76A00255CF1 /* MainController.swift in Sources */,
 				374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */,
 				374CBA971B17D76A00255CF1 /* Shopping_List.xcdatamodeld in Sources */,
+				374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */,
 				374CBA961B17D76A00255CF1 /* Product.swift in Sources */,
 				374CBA991B17D76A00255CF1 /* User+CoreData.swift in Sources */,
 				374CBAB51B17D79600255CF1 /* NewItemViewCell.swift in Sources */,
 				374CBA9A1B17D76A00255CF1 /* User.swift in Sources */,
 				374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */,
 				374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */,
-				374CBAA61B17D76A00255CF1 /* UserListController.swift in Sources */,
 				374CBA921B17D76A00255CF1 /* DAORemoto.swift in Sources */,
 				8E9030D81B17DAAB0027DE70 /* Reachability.m in Sources */,
 				374CBAB71B17D79600255CF1 /* SuggestionViewCell.swift in Sources */,
 				374CBA911B17D76A00255CF1 /* DAOLocal.swift in Sources */,
+				374CBAC01B17DEF100255CF1 /* UserListView.swift in Sources */,
 				374CBA951B17D76A00255CF1 /* NetworkConnect.swift in Sources */,
 				374CBA8F1B17D76A00255CF1 /* SingleListController.swift in Sources */,
 				374CBA941B17D76A00255CF1 /* List.swift in Sources */,
