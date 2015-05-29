@@ -63,6 +63,7 @@ class DAORemoto {
         
     }
     
+    
     //Função que retorna todas as listas de um usuário:
     func allListOfUser(user : User, callback: ([List]) -> Void) {
         
@@ -270,14 +271,31 @@ class DAORemoto {
             callback(product)
         })
         
-        
     }
+
     
+    //Tags:
     
-//    //Função que procura uma lista a partir do ID
-//    func searchListFromID(ID : String) -> [List] {
+//    //Função que procura tag a partir do ID:
+//    func searchProductFromID(id : String, callback: (Product) -> Void) {
 //        
+//        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/product/\(id)")
 //        
+//        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+//            
+//            var product : Product = Product()
+//            
+//            if( snapshot.exists() == true ) {
+//                var dic = snapshot.value as! NSDictionary
+//                product.name = dic.objectForKey("name")! as! String
+//                product.cubage = dic.objectForKey("cubage")! as! String
+//                product.brand = dic.objectForKey("brand")! as! String
+//                product.id = id
+//            } else {
+//                print("produto não encotrado! \n")
+//            }
+//            callback(product)
+//        })
 //        
 //    }
     

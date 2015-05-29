@@ -17,7 +17,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
 
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
+
         
 
 //        title = "Lists"
@@ -34,20 +34,17 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
 //        
 //        lists = DAOLocal.sharedInstance.readLists()
 
-        //MUITO IMPORTANTE:
-        var l: List! = nil
-        DAORemoto.sharedInstance.searchListFromID("-JqRtZDQGc0aodX-lNTy") { list in
-            l = list
-            println(l)
-            
-            
-            
-        }
+//        //MUITO IMPORTANTE:
+//        var l: List! = nil
+//        DAORemoto.sharedInstance.searchListFromID("-JqRtZDQGc0aodX-lNTy") { list in
+//            l = list
+//            println(l)
+//            
+//            
+//            
+//        }
         
         
-        
-=======
->>>>>>> origin/master
 
         title = "Lists"
         collectionView = ListsView(frame: self.view.bounds)
