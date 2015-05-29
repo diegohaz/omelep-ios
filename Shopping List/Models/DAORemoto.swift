@@ -132,8 +132,6 @@ class DAORemoto {
         })
         
         
-        return product
-        
     }
     
     

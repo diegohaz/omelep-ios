@@ -18,7 +18,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-<<<<<<< HEAD
+
 //        title = "Lists"
 //        collectionView = ListsView(frame: self.view.bounds)
 //        collectionView!.dataSource = self
@@ -41,7 +41,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
 //        }
         
         
-=======
+
         title = "Lists"
         collectionView = ListsView(frame: self.view.bounds)
         collectionView!.dataSource = self
@@ -57,7 +57,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     
     func add(sender: UIBarButtonItem) {
         self.navigationController?.pushViewController(UserListController.sharedInstance, animated: true)
->>>>>>> origin/master
+
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
