@@ -170,11 +170,11 @@
 			isa = PBXGroup;
 			children = (
 				374CBA6F1B17D76900255CF1 /* MainController.swift */,
+				2E6639F71B18A8E100DA97D9 /* LoginController.swift */,
 				374CBA6E1B17D76900255CF1 /* ListsController.swift */,
 				374CBABD1B17DDA000255CF1 /* UserListController.swift */,
 				374CBA701B17D76900255CF1 /* SingleListController.swift */,
 				374CBA711B17D76900255CF1 /* SuggestionsController.swift */,
-				2E6639F71B18A8E100DA97D9 /* LoginController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

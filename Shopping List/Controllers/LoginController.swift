@@ -23,7 +23,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
-            self.navigationController?.pushViewController(UserListController.sharedInstance, animated: false)
+            self.navigationController?.pushViewController(ListsController.sharedInstance, animated: false)
 
             
             println("user inicializou logado")
