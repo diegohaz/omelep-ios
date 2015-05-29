@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate {
+class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, ItemViewCellDelegate {
     
     static let sharedInstance = UserListController()
     var reusableView: UserListView?
@@ -35,6 +35,14 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         // Navigation
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Share"), style: UIBarButtonItemStyle.Plain, target: self, action: "share:")
+    }
+    
+    func done(cell: ItemViewCell) {
+        
+    }
+    
+    func remove(cell: ItemViewCell) {
+        
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
