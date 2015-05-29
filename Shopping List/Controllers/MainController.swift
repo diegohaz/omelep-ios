@@ -16,7 +16,8 @@ class MainController: UINavigationController {
         super.viewDidLoad()
         
         
-        self.pushViewController(ListsController.sharedInstance, animated: true)
+//        self.pushViewController(ListsController.sharedInstance, animated: true)
+        self.pushViewController(LoginController.sharedInstance, animated: true)
     }
 
 }

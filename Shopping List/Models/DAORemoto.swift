@@ -63,10 +63,21 @@ class DAORemoto {
         
     }
     
+    
     //Função que retorna todas as listas de um usuário:
     func allListOfUser(user : User, callback: ([List]) -> Void) {
         
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)")
         
+        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            if( snapshot.exists() == true ){
+                
+                
+                
+            }
+            
+        })
         
     }
     
@@ -82,33 +93,66 @@ class DAORemoto {
             if( snapshot.exists() == true ) {
                 var dic = snapshot.value as! NSDictionary
                 list.name = dic.objectForKey("name")! as! String
+                list.id = id
                 
                 //Pegando os produtos de cada lista
                 var keys = dic.allKeys
                 for x in keys {
                     if x as! String == "products" {
+                        var keysProducts = dic["products"]!.allKeys
                         
-                        var dicProduct = dic["products"]! as! NSDictionary
-                        print("tem produto")
+                        for keyP in keysProducts {
+                            
+                            self.searchProductFromID(keyP as! String, callback: { (pro : Product) in
+                               
+                                DAOLocal.sharedInstance.addProduct(pro, list: list)
+                                
+                                if( list.products.count == keysProducts.count ){
+                                    callback(list)
+                                }
+                                
+                            })
+                            
+                        }
                         
-                        
-                    } else {
-                        print("Nao tem produto ")
                     }
                 }
-
                 
-                //list.product = dic.objectForKey("products")! as! [Product]
-                //list.tags = dic.objectForKey("tags")! as! [Tag]
-                list.id = id
+                //Pegando as tags de cada lista
+                keys = dic.allKeys
+                for x in keys {
+                    if x as! String == "tags" {
+                        var keysProducts = dic["tags"]!.allKeys
+                        
+                        for keyP in keysProducts {
+                            
+                            //TODO: função searchTagFromId
+//                            self.searchProductFromID(keyP as! String, callback: { (pro : Product) in
+//                                
+//                                DAOLocal.sharedInstance.addProduct(pro, list: list)
+//                                
+//                                if( list.products.count == keysProducts.count ){
+//                                    callback(list)
+//                                }
+//                                
+//                            })
+                            
+                        }
+                        
+                    }
+                }
+                
+                
             } else {
                 print("lista não encotrada! \n")
             }
-            callback(list)
+            
         })
         
         
     }
+    
+    
     
     //Funçao que adiciona produto na lista:
     func addProductToList(product : Product, list : List) -> List {
@@ -127,7 +171,7 @@ class DAORemoto {
             
         })
         
-        return DAOLocal.sharedInstance.addProduct(product.name, list: list)
+        return DAOLocal.sharedInstance.addProduct(product, list: list)
         
     }
     
@@ -227,14 +271,31 @@ class DAORemoto {
             callback(product)
         })
         
-        
     }
+
     
+    //Tags:
     
-//    //Função que procura uma lista a partir do ID
-//    func searchListFromID(ID : String) -> [List] {
+//    //Função que procura tag a partir do ID:
+//    func searchProductFromID(id : String, callback: (Product) -> Void) {
 //        
+//        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/product/\(id)")
 //        
+//        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+//            
+//            var product : Product = Product()
+//            
+//            if( snapshot.exists() == true ) {
+//                var dic = snapshot.value as! NSDictionary
+//                product.name = dic.objectForKey("name")! as! String
+//                product.cubage = dic.objectForKey("cubage")! as! String
+//                product.brand = dic.objectForKey("brand")! as! String
+//                product.id = id
+//            } else {
+//                print("produto não encotrado! \n")
+//            }
+//            callback(product)
+//        })
 //        
 //    }
     

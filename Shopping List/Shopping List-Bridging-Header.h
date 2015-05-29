@@ -4,3 +4,6 @@
 
 #import <Firebase/Firebase.h>
 #import "Reachability.h"
+
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>

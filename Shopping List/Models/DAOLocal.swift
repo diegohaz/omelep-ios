@@ -75,9 +75,19 @@ class DAOLocal {
         
     }
     
-    func addProduct(productname : String, list : List) -> List{
+    func addProductFromName(productname : String, list : List) -> List{
         
         var product : Product = searchProduct(productname)
+        
+        list.addProduct(product)
+        
+        save()
+        
+        return list
+        
+    }
+    
+    func addProduct(product : Product, list : List) -> List{
         
         list.addProduct(product)
         
