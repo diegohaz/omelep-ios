@@ -44,6 +44,12 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         // open menu
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let controller = UserListController()
+        
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 18
     }

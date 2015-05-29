@@ -32,6 +32,10 @@ class ItemViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     
     override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if delegate == nil {
+            return false
+        }
+        
         if gestureRecognizer.isEqual(panGesture) {
             if gestureRecognizer.numberOfTouches() > 0 {
                 let translation = panGesture!.velocityInView(self)
