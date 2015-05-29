@@ -53,7 +53,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         //let list = self.lists[indexPath.row]
         
         cell.label.text = "Nome da lista"
-        cell.items.text = "Item 1, item 2, item 3..."
+        cell.itemsLabel.text = "Item 1, item 2, item 3..."
         
         return cell
     }

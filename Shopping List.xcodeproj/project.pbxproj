@@ -40,7 +40,8 @@
 		374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBABD1B17DDA000255CF1 /* UserListController.swift */; };
 		374CBAC21B17E2B500255CF1 /* UserListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAC11B17E2B500255CF1 /* UserListView.xib */; };
 		374CBAC41B17E41400255CF1 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAC31B17E41400255CF1 /* UserListView.swift */; };
-		374CBAC61B17EA7900255CF1 /* NewItemTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAC51B17EA7900255CF1 /* NewItemTextField.swift */; };
+		374CBAC91B18FBD600255CF1 /* NewItemTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAC81B18FBD600255CF1 /* NewItemTextField.swift */; };
+		374CBACB1B18FBF800255CF1 /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBACA1B18FBF800255CF1 /* TitleTextField.swift */; };
 		8E49FC8A1B0F75F70087FA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FC891B0F75F70087FA08 /* AppDelegate.swift */; };
 		8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E49FC931B0F75F70087FA08 /* Images.xcassets */; };
 		8E49FCA31B0F75F70087FA08 /* Shopping_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FCA21B0F75F70087FA08 /* Shopping_ListTests.swift */; };
@@ -98,7 +99,8 @@
 		374CBABD1B17DDA000255CF1 /* UserListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
 		374CBAC11B17E2B500255CF1 /* UserListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserListView.xib; sourceTree = "<group>"; };
 		374CBAC31B17E41400255CF1 /* UserListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
-		374CBAC51B17EA7900255CF1 /* NewItemTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemTextField.swift; sourceTree = "<group>"; };
+		374CBAC81B18FBD600255CF1 /* NewItemTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemTextField.swift; sourceTree = "<group>"; };
+		374CBACA1B18FBF800255CF1 /* TitleTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTextField.swift; sourceTree = "<group>"; };
 		8E49FC841B0F75F70087FA08 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E49FC881B0F75F70087FA08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E49FC891B0F75F70087FA08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -202,9 +204,9 @@
 			isa = PBXGroup;
 			children = (
 				374CBAA81B17D79600255CF1 /* Cells */,
+				374CBAC71B18FBD600255CF1 /* Elements */,
 				374CBAB91B17DA5A00255CF1 /* LaunchScreen.xib */,
 				374CBA821B17D76A00255CF1 /* ListsView.swift */,
-				374CBAC51B17EA7900255CF1 /* NewItemTextField.swift */,
 				374CBAC31B17E41400255CF1 /* UserListView.swift */,
 				374CBAC11B17E2B500255CF1 /* UserListView.xib */,
 				374CBA871B17D76A00255CF1 /* SingleListScreenView.xib */,
@@ -227,6 +229,15 @@
 				374CBAB01B17D79600255CF1 /* SuggestionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		374CBAC71B18FBD600255CF1 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				374CBAC81B18FBD600255CF1 /* NewItemTextField.swift */,
+				374CBACA1B18FBF800255CF1 /* TitleTextField.swift */,
+			);
+			path = Elements;
 			sourceTree = "<group>";
 		};
 		8E49FC7B1B0F75F70087FA08 = {
@@ -406,7 +417,6 @@
 				374CBA901B17D76A00255CF1 /* SuggestionsController.swift in Sources */,
 				374CBA8E1B17D76A00255CF1 /* MainController.swift in Sources */,
 				374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */,
-				374CBAC61B17EA7900255CF1 /* NewItemTextField.swift in Sources */,
 				374CBA971B17D76A00255CF1 /* Shopping_List.xcdatamodeld in Sources */,
 				374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */,
 				374CBA961B17D76A00255CF1 /* Product.swift in Sources */,
@@ -422,6 +432,8 @@
 				374CBAB71B17D79600255CF1 /* SuggestionViewCell.swift in Sources */,
 				374CBA911B17D76A00255CF1 /* DAOLocal.swift in Sources */,
 				374CBA951B17D76A00255CF1 /* NetworkConnect.swift in Sources */,
+				374CBAC91B18FBD600255CF1 /* NewItemTextField.swift in Sources */,
+				374CBACB1B18FBF800255CF1 /* TitleTextField.swift in Sources */,
 				374CBA8F1B17D76A00255CF1 /* SingleListController.swift in Sources */,
 				374CBA941B17D76A00255CF1 /* List.swift in Sources */,
 				374CBAB31B17D79600255CF1 /* ListViewCell.swift in Sources */,

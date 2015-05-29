@@ -18,8 +18,6 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "List"
-        
         // Reusable View
         reusableView = NSBundle.mainBundle().loadNibNamed("UserListView", owner: self, options: [:])[0] as? UserListView
         view = reusableView
@@ -35,6 +33,10 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         // Navigation
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Share"), style: UIBarButtonItemStyle.Plain, target: self, action: "share:")
+        
+        let title = TitleTextField(frame: CGRectMake(0, 0, 180, 32))
+        title.text = "List"
+        navigationItem.titleView = title
         
         if isNew {
             reusableView?.newItemTextField.becomeFirstResponder()

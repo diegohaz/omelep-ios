@@ -16,8 +16,8 @@ import UIKit
 class ItemViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var itemView: UIView!
-    @IBOutlet weak var removeView: UIView!
-    @IBOutlet weak var doneView: UIView!
+    @IBOutlet weak var removeView: UIView?
+    @IBOutlet weak var doneView: UIView?
     
     var delegate: ItemViewCellDelegate?
     var panGesture: UIPanGestureRecognizer?
@@ -55,24 +55,24 @@ class ItemViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
             itemView.center = CGPointMake(originalCenter!.x + translation.x, originalCenter!.y)
             
             if itemView.frame.minX > 0 {
-                doneView.hidden = false
-                removeView.hidden = true
+                doneView?.hidden = false
+                removeView?.hidden = true
             } else {
-                doneView.hidden = true
-                removeView.hidden = false
+                doneView?.hidden = true
+                removeView?.hidden = false
             }
         }
         
         if gesture.state == .Ended {
             if itemView.frame.minX > itemView.frame.size.width / 2.5 {
-                UIView.animateWithDuration(0.4, animations: { () -> Void in
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
                     self.itemView.frame.origin.x = self.itemView.frame.width
                 }, completion: { (finished) -> Void in
                     self.delegate?.doneItem(self)
                     self.reset()
                 })
             } else if itemView.frame.maxX < itemView.frame.size.width / 2.5 {
-                UIView.animateWithDuration(0.4, animations: { () -> Void in
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
                     self.itemView.frame.origin.x = -(self.itemView.frame.width)
                 }, completion: { (finished) -> Void in
                     self.delegate?.removeItem(self)
@@ -88,7 +88,7 @@ class ItemViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     func reset() {
         itemView.frame.origin.x = 0
-        self.doneView.hidden = true
-        self.removeView.hidden = true
+        self.doneView?.hidden = true
+        self.removeView?.hidden = true
     }
 }
