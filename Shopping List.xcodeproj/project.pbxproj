@@ -21,7 +21,7 @@
 		374CBA8E1B17D76A00255CF1 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA6F1B17D76900255CF1 /* MainController.swift */; };
 		374CBA8F1B17D76A00255CF1 /* SingleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA701B17D76900255CF1 /* SingleListController.swift */; };
 		374CBA911B17D76A00255CF1 /* DAOLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA731B17D76900255CF1 /* DAOLocal.swift */; };
-		374CBA921B17D76A00255CF1 /* DAORemoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA741B17D76900255CF1 /* DAORemoto.swift */; };
+		374CBA921B17D76A00255CF1 /* DAORemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA741B17D76900255CF1 /* DAORemote.swift */; };
 		374CBA941B17D76A00255CF1 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA761B17D76900255CF1 /* List.swift */; };
 		374CBA951B17D76A00255CF1 /* NetworkConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA771B17D76900255CF1 /* NetworkConnect.swift */; };
 		374CBA961B17D76A00255CF1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA781B17D76900255CF1 /* Product.swift */; };
@@ -81,7 +81,7 @@
 		374CBA6F1B17D76900255CF1 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		374CBA701B17D76900255CF1 /* SingleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleListController.swift; sourceTree = "<group>"; };
 		374CBA731B17D76900255CF1 /* DAOLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOLocal.swift; sourceTree = "<group>"; };
-		374CBA741B17D76900255CF1 /* DAORemoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAORemoto.swift; sourceTree = "<group>"; };
+		374CBA741B17D76900255CF1 /* DAORemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAORemote.swift; sourceTree = "<group>"; };
 		374CBA761B17D76900255CF1 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		374CBA771B17D76900255CF1 /* NetworkConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnect.swift; sourceTree = "<group>"; };
 		374CBA781B17D76900255CF1 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				374CBA731B17D76900255CF1 /* DAOLocal.swift */,
-				374CBA741B17D76900255CF1 /* DAORemoto.swift */,
+				374CBA741B17D76900255CF1 /* DAORemote.swift */,
 				374CBA761B17D76900255CF1 /* List.swift */,
 				374CBA771B17D76900255CF1 /* NetworkConnect.swift */,
 				374CBA781B17D76900255CF1 /* Product.swift */,
@@ -440,7 +440,7 @@
 				374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */,
 				374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */,
 				2E48A4641B1A08830072403C /* CenterViewController.swift in Sources */,
-				374CBA921B17D76A00255CF1 /* DAORemoto.swift in Sources */,
+				374CBA921B17D76A00255CF1 /* DAORemote.swift in Sources */,
 				2E6639F81B18A8E100DA97D9 /* LoginController.swift in Sources */,
 				8E9030D81B17DAAB0027DE70 /* Reachability.m in Sources */,
 				2E48A46B1B1A09800072403C /* SettingsView.swift in Sources */,
