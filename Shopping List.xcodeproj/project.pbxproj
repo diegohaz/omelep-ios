@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E48A4641B1A08830072403C /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A4631B1A08830072403C /* CenterViewController.swift */; };
+		2E48A4671B1A08DD0072403C /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A4661B1A08DD0072403C /* ContainerViewController.swift */; };
+		2E48A4691B1A08FF0072403C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A4681B1A08FF0072403C /* Settings.swift */; };
+		2E48A46B1B1A09800072403C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46A1B1A09800072403C /* SettingsView.swift */; };
+		2E48A46D1B1A098E0072403C /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E48A46C1B1A098E0072403C /* SettingsView.xib */; };
 		2E51DA6C1B18E62C00412F09 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA691B18E62C00412F09 /* Bolts.framework */; };
 		2E51DA6D1B18E62C00412F09 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA6A1B18E62C00412F09 /* FBSDKCoreKit.framework */; };
 		2E51DA6E1B18E62C00412F09 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA6B1B18E62C00412F09 /* FBSDKLoginKit.framework */; };
@@ -62,6 +67,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E48A4631B1A08830072403C /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		2E48A4661B1A08DD0072403C /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		2E48A4681B1A08FF0072403C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		2E48A46A1B1A09800072403C /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2E48A46C1B1A098E0072403C /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		2E51DA691B18E62C00412F09 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		2E51DA6A1B18E62C00412F09 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		2E51DA6B1B18E62C00412F09 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -139,6 +149,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E48A4651B1A08AF0072403C /* projeto do matheu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "projeto do matheu";
+			sourceTree = "<group>";
+		};
 		2E6639F91B18AA6700DA97D9 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,10 +183,13 @@
 			isa = PBXGroup;
 			children = (
 				374CBA6F1B17D76900255CF1 /* MainController.swift */,
+				2E48A4661B1A08DD0072403C /* ContainerViewController.swift */,
 				2E6639F71B18A8E100DA97D9 /* LoginController.swift */,
 				374CBA6E1B17D76900255CF1 /* ListsController.swift */,
 				374CBABD1B17DDA000255CF1 /* UserListController.swift */,
 				374CBA701B17D76900255CF1 /* SingleListController.swift */,
+				2E48A4631B1A08830072403C /* CenterViewController.swift */,
+				2E48A4681B1A08FF0072403C /* Settings.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,6 +223,8 @@
 				374CBAC31B17E41400255CF1 /* UserListView.swift */,
 				374CBAC11B17E2B500255CF1 /* UserListView.xib */,
 				3709153A1B19160200E99B33 /* SingleListView.swift */,
+				2E48A46C1B1A098E0072403C /* SettingsView.xib */,
+				2E48A46A1B1A09800072403C /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +258,7 @@
 			children = (
 				8E9030CB1B17B56A0027DE70 /* Frameworks */,
 				8E49FC861B0F75F70087FA08 /* Shopping List */,
+				2E48A4651B1A08AF0072403C /* projeto do matheu */,
 				8E49FC9F1B0F75F70087FA08 /* Shopping ListTests */,
 				8E49FC851B0F75F70087FA08 /* Products */,
 			);
@@ -383,6 +406,7 @@
 				374CBAB41B17D79600255CF1 /* ListViewCell.xib in Resources */,
 				374CBAB21B17D79600255CF1 /* ItemViewCell.xib in Resources */,
 				374CBABA1B17DA5A00255CF1 /* LaunchScreen.xib in Resources */,
+				2E48A46D1B1A098E0072403C /* SettingsView.xib in Resources */,
 				374CBAC21B17E2B500255CF1 /* UserListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,15 +432,19 @@
 				374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */,
 				374CBA961B17D76A00255CF1 /* Product.swift in Sources */,
 				374CBAC41B17E41400255CF1 /* UserListView.swift in Sources */,
+				2E48A4671B1A08DD0072403C /* ContainerViewController.swift in Sources */,
 				374CBA991B17D76A00255CF1 /* User+CoreData.swift in Sources */,
 				374CBAB51B17D79600255CF1 /* NewItemViewCell.swift in Sources */,
 				374CBA9A1B17D76A00255CF1 /* User.swift in Sources */,
 				3709153B1B19160200E99B33 /* SingleListView.swift in Sources */,
 				374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */,
 				374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */,
+				2E48A4641B1A08830072403C /* CenterViewController.swift in Sources */,
 				374CBA921B17D76A00255CF1 /* DAORemoto.swift in Sources */,
 				2E6639F81B18A8E100DA97D9 /* LoginController.swift in Sources */,
 				8E9030D81B17DAAB0027DE70 /* Reachability.m in Sources */,
+				2E48A46B1B1A09800072403C /* SettingsView.swift in Sources */,
+				2E48A4691B1A08FF0072403C /* Settings.swift in Sources */,
 				374CBAB71B17D79600255CF1 /* SuggestionViewCell.swift in Sources */,
 				374CBA911B17D76A00255CF1 /* DAOLocal.swift in Sources */,
 				374CBA951B17D76A00255CF1 /* NetworkConnect.swift in Sources */,

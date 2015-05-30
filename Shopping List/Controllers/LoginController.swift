@@ -11,28 +11,33 @@ import UIKit
 class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     
     static let sharedInstance = LoginController()
-    let loginView : FBSDKLoginButton = FBSDKLoginButton()
-
+    //    let loginView : FBSDKLoginButton = FBSDKLoginButton()
+    
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.greenColor()
+        
+        
+        println(FBSDKAccessToken.currentAccessToken())
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
-//            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+            println("user inicializou logado")
+            
+            let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
-            self.navigationController?.pushViewController(ListsController.sharedInstance, animated: false)
             
-            println("user inicializou logado")
             
+            let vc = ContainerViewController()
+            self.presentViewController(vc, animated: true, completion: nil)
             
         }
         else
         {
-//            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+            let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
@@ -56,6 +61,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             {
                 // Process error
                 println("Error (NO LOGIN DO FACEBOOK): \(error)")
+                println("Usuario não autorizou o Facebook")
             }
             else
             {
@@ -72,7 +78,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                         var dic = snapshot.value as! NSDictionary
                         var key = dic.allKeys[0] as! String
                         user.id = dic[key]!.objectForKey("idfb")! as! String
-                        println("User Registrado")
+                        println("User ja estava Registrado")
                     } else {
                         println("User não encontrado. Tem q registrar!")
                         println("fetched user: \(result)")
@@ -90,8 +96,9 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                         infoAdd.setValue(info)
                         
                         
-                        callback(user)
                     }
+                    callback(user)
+                    
                 })
             }
         })
@@ -101,10 +108,16 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         println("User Logged In")
         
+        
+        //         self.navigationController?.pushViewController(MainController.sharedInstance, animated: false)
+        
+        
         registerUser(){ user in
             
-            self.navigationController?.pushViewController(ListsController.sharedInstance, animated: false)
+            let vc = ContainerViewController()
+            self.presentViewController(vc, animated: true, completion: nil)
             
+            println("ja chegou a resposta")
         }
         
         

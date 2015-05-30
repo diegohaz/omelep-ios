@@ -8,9 +8,17 @@
 
 import UIKit
 
+@objc
+protocol ListsControllerDelegate {
+    optional func toggleLeftPanel()
+    optional func collapseSidePanels()
+}
+
 class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     static let sharedInstance = ListsController()
+    
+    var delegate: CenterViewControllerDelegate?
     
     var collectionView: UICollectionView?
     var lists = [List]()
@@ -41,7 +49,8 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     }
     
     func openMenu(sender: UIBarButtonItem) {
-        // open menu
+        println("loadar o menu")
+        delegate?.toggleLeftPanel?()
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
