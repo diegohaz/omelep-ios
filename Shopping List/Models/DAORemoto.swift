@@ -71,8 +71,10 @@ class DAORemoto {
         
         myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
+            var arrayList : [List] = []
+            
             if( snapshot.exists() == true ){
-                
+                var dic = snapshot.value as! NSDictionary
                 
                 
             }
@@ -296,77 +298,31 @@ class DAORemoto {
         
     }
     
+    //Users:
+    
+//    //Funçao que adiciona um usuário para uma lista
+//    func addUserToList(user : User, list : List) {
+//        
+//        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(user.id)")
+//        
+//        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+//            
+//            if( snapshot.exists() == true ){
+//                var refList = myRootRef.childByAppendingPath("lists")
+//                var lis = ["\(list.id)": true]
+//                refList.updateChildValues(lis)
+//            } else {
+//                print("Usuário não existe \n")
+//            }
+//            
+//        })
+//        
+//    }
     
     
     
-    //        //Canectando ao FireBase:
-    //        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
-    //
-    //        var tags = []
-    //        var products = []
-    //        var users = ["FRFRFRF": true]
-    //
-    //        var info = ["name": "Compras do mês", "products": products, "tags": tags, "users": users]
-    //
-    //        var usersRef = myRootRef.childByAppendingPath("list")
-    //        //Colocando o ID:
-    //        let post1Ref = usersRef.childByAutoId()
-    //        post1Ref.setValue(info)
     
-    //        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/")
-    //        var chave : String = ""
-    //
-    //        var dic : NSDictionary = NSDictionary()
     
-    //        //Pegando a chave
-    //        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-    //            dic = snapshot.value as! NSDictionary
-    //            chave = dic.allKeys[0] as! String
-    //            print(chave)
-    //        })
-    
-    //Pesquisa pro filtro
-    //        myRootRef.queryOrderedByChild("name").queryEqualToValue("Mesa").observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-    //            var dic = snapshot.value as? NSDictionary
-    //
-    //            println(snapshot.value)
-    //
-    //        })
-    
-    //        //Adicionando um produto:
-    //        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-    //            dic = snapshot.value as! NSDictionary
-    //            chave = dic.allKeys[0] as! String
-    //            var ref = myRootRef.childByAppendingPath("\(chave)/products")
-    //            var products = ["BRIGADEIRO": true]
-    //            ref.updateChildValues(products)
-    //        })
-    
-    //        //Retirando um produto:
-    //        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-    //            dic = snapshot.value as! NSDictionary
-    //            chave = dic.allKeys[0] as! String
-    //            var ref = myRootRef.childByAppendingPath("\(chave)/products/FREHVD")
-    //            //var products = ["BRIGADEIRO": true]
-    //            ref.removeValue()
-    //
-    //        })
-    
-    //        //Pesquisa por filtro palavra começa com C
-    //        myRootRef.queryOrderedByChild("name").queryStartingAtValue("C").observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-    //            var dic = snapshot.value as? NSDictionary
-    //            
-    //            println(snapshot.value)
-    //        
-    //        })
-    
-    //MUITO IMPORTANTE:
-    //        var p: Product! = nil
-    //        DAORemoto.sharedInstance.searchProductFromName("Arroz") { product in
-    //            p = product
-    //            println(p)
-    //        }
-
     
     
 }
