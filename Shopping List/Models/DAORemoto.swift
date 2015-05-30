@@ -319,24 +319,25 @@ class DAORemoto {
     
     //Users:
     
-//    //Funçao que adiciona um usuário para uma lista
-//    func addUserToList(user : User, list : List) {
-//        
-//        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(user.id)")
-//        
-//        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-//            
-//            if( snapshot.exists() == true ){
-//                var refList = myRootRef.childByAppendingPath("lists")
-//                var lis = ["\(list.id)": true]
-//                refList.updateChildValues(lis)
-//            } else {
-//                print("Usuário não existe \n")
-//            }
-//            
-//        })
-//        
-//    }
+    //TODO: Testar essa função:
+    /**Funçao que adiciona um usuário para uma lista*/
+    func addUserToList(user : User, list : List) {
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+        
+        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            if( snapshot.exists() == true ){
+                var refList = myRootRef.childByAppendingPath("users")
+                var use = ["\(user.id)": true]
+                refList.updateChildValues(use)
+            } else {
+                print("Lista não existe \n")
+            }
+            
+        })
+        
+    }
     
     
     

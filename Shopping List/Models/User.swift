@@ -16,7 +16,6 @@ class User: NSManagedObject {
 
     @NSManaged var name: String
     @NSManaged var email: String
-    @NSManaged var password: String
     @NSManaged var family: AnyObject
     @NSManaged var id: String
     @NSManaged var lists: NSSet
@@ -34,6 +33,10 @@ class User: NSManagedObject {
         entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)!
         
         self.init(entity: entity, insertIntoManagedObjectContext:context)
+        
+        self.name = ""
+        self.email = ""
+        self.id = ""
         
     }
     

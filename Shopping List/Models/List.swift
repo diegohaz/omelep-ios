@@ -32,6 +32,9 @@ class List: NSManagedObject {
         
         self.init(entity: entity, insertIntoManagedObjectContext:context)
         
+        self.name = ""
+        self.id = ""
+        
     }
 
 }
