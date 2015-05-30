@@ -14,5 +14,7 @@ class UserListView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.collectionView.alwaysBounceVertical = true
     }
 }

@@ -15,8 +15,7 @@ class MainController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-//        self.pushViewController(ListsController.sharedInstance, animated: true)
+        self.navigationBar.tintColor = UIColor(red: 148/255, green: 30/255, blue: 16/255, alpha: 1)
         self.pushViewController(LoginController.sharedInstance, animated: true)
     }
 

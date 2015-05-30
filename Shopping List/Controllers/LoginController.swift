@@ -26,7 +26,6 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             loginView.delegate = self
             self.navigationController?.pushViewController(ListsController.sharedInstance, animated: false)
             
-            
             println("user inicializou logado")
             
             

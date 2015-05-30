@@ -10,5 +10,4 @@ import UIKit
 
 class NewItemViewCell: UICollectionViewCell {
     @IBOutlet weak var textField: UITextField!
-    
 }

@@ -24,7 +24,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.77369449013157898" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.58039215686274503" green="0.11764705882352941" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QO1-gW-r1F" secondAttribute="trailing" constant="8" id="U0U-rR-cuh"/>
                             <constraint firstAttribute="trailing" secondItem="QO1-gW-r1F" secondAttribute="trailing" constant="8" id="XYX-kH-ggA"/>
@@ -64,14 +64,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqU-pl-sUe" userLabel="ItemView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FC6-y5-b0k">
-                                <rect key="frame" x="24" y="13" width="42" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FC6-y5-b0k">
+                                <rect key="frame" x="24" y="13" width="288" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FC6-y5-b0k" firstAttribute="leading" secondItem="yqU-pl-sUe" secondAttribute="leading" constant="24" id="JXu-Zt-JBc"/>
+                            <constraint firstAttribute="centerY" secondItem="FC6-y5-b0k" secondAttribute="centerY" constant="0.75" id="PY9-4p-yim"/>
+                            <constraint firstAttribute="trailing" secondItem="FC6-y5-b0k" secondAttribute="trailing" constant="8" id="exK-fC-3pQ"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

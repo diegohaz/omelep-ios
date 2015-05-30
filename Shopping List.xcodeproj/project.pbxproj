@@ -11,10 +11,10 @@
 		2E51DA6D1B18E62C00412F09 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA6A1B18E62C00412F09 /* FBSDKCoreKit.framework */; };
 		2E51DA6E1B18E62C00412F09 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA6B1B18E62C00412F09 /* FBSDKLoginKit.framework */; };
 		2E6639F81B18A8E100DA97D9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6639F71B18A8E100DA97D9 /* LoginController.swift */; };
+		3709153B1B19160200E99B33 /* SingleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709153A1B19160200E99B33 /* SingleListView.swift */; };
 		374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA6E1B17D76900255CF1 /* ListsController.swift */; };
 		374CBA8E1B17D76A00255CF1 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA6F1B17D76900255CF1 /* MainController.swift */; };
 		374CBA8F1B17D76A00255CF1 /* SingleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA701B17D76900255CF1 /* SingleListController.swift */; };
-		374CBA901B17D76A00255CF1 /* SuggestionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA711B17D76900255CF1 /* SuggestionsController.swift */; };
 		374CBA911B17D76A00255CF1 /* DAOLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA731B17D76900255CF1 /* DAOLocal.swift */; };
 		374CBA921B17D76A00255CF1 /* DAORemoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA741B17D76900255CF1 /* DAORemoto.swift */; };
 		374CBA941B17D76A00255CF1 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA761B17D76900255CF1 /* List.swift */; };
@@ -25,9 +25,6 @@
 		374CBA991B17D76A00255CF1 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA7D1B17D76A00255CF1 /* User+CoreData.swift */; };
 		374CBA9A1B17D76A00255CF1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA7E1B17D76A00255CF1 /* User.swift */; };
 		374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA821B17D76A00255CF1 /* ListsView.swift */; };
-		374CBAA21B17D76A00255CF1 /* SingleListScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBA871B17D76A00255CF1 /* SingleListScreenView.xib */; };
-		374CBAA31B17D76A00255CF1 /* SuggestionsScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBA881B17D76A00255CF1 /* SuggestionsScreenView.xib */; };
-		374CBAA71B17D76A00255CF1 /* UserListScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBA8C1B17D76A00255CF1 /* UserListScreenView.xib */; };
 		374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAA91B17D79600255CF1 /* ItemViewCell.swift */; };
 		374CBAB21B17D79600255CF1 /* ItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAAA1B17D79600255CF1 /* ItemViewCell.xib */; };
 		374CBAB31B17D79600255CF1 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAAB1B17D79600255CF1 /* ListViewCell.swift */; };
@@ -40,7 +37,8 @@
 		374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBABD1B17DDA000255CF1 /* UserListController.swift */; };
 		374CBAC21B17E2B500255CF1 /* UserListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAC11B17E2B500255CF1 /* UserListView.xib */; };
 		374CBAC41B17E41400255CF1 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAC31B17E41400255CF1 /* UserListView.swift */; };
-		374CBAC61B17EA7900255CF1 /* NewItemTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAC51B17EA7900255CF1 /* NewItemTextField.swift */; };
+		374CBAC91B18FBD600255CF1 /* NewItemTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAC81B18FBD600255CF1 /* NewItemTextField.swift */; };
+		374CBACB1B18FBF800255CF1 /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBACA1B18FBF800255CF1 /* TitleTextField.swift */; };
 		8E49FC8A1B0F75F70087FA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FC891B0F75F70087FA08 /* AppDelegate.swift */; };
 		8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E49FC931B0F75F70087FA08 /* Images.xcassets */; };
 		8E49FCA31B0F75F70087FA08 /* Shopping_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FCA21B0F75F70087FA08 /* Shopping_ListTests.swift */; };
@@ -68,10 +66,10 @@
 		2E51DA6A1B18E62C00412F09 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		2E51DA6B1B18E62C00412F09 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		2E6639F71B18A8E100DA97D9 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		3709153A1B19160200E99B33 /* SingleListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleListView.swift; sourceTree = "<group>"; };
 		374CBA6E1B17D76900255CF1 /* ListsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
 		374CBA6F1B17D76900255CF1 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		374CBA701B17D76900255CF1 /* SingleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleListController.swift; sourceTree = "<group>"; };
-		374CBA711B17D76900255CF1 /* SuggestionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsController.swift; sourceTree = "<group>"; };
 		374CBA731B17D76900255CF1 /* DAOLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOLocal.swift; sourceTree = "<group>"; };
 		374CBA741B17D76900255CF1 /* DAORemoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAORemoto.swift; sourceTree = "<group>"; };
 		374CBA761B17D76900255CF1 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
@@ -83,9 +81,6 @@
 		374CBA7D1B17D76A00255CF1 /* User+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		374CBA7E1B17D76A00255CF1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		374CBA821B17D76A00255CF1 /* ListsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
-		374CBA871B17D76A00255CF1 /* SingleListScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleListScreenView.xib; sourceTree = "<group>"; };
-		374CBA881B17D76A00255CF1 /* SuggestionsScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionsScreenView.xib; sourceTree = "<group>"; };
-		374CBA8C1B17D76A00255CF1 /* UserListScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserListScreenView.xib; sourceTree = "<group>"; };
 		374CBAA91B17D79600255CF1 /* ItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
 		374CBAAA1B17D79600255CF1 /* ItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemViewCell.xib; sourceTree = "<group>"; };
 		374CBAAB1B17D79600255CF1 /* ListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
@@ -98,7 +93,8 @@
 		374CBABD1B17DDA000255CF1 /* UserListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
 		374CBAC11B17E2B500255CF1 /* UserListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserListView.xib; sourceTree = "<group>"; };
 		374CBAC31B17E41400255CF1 /* UserListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
-		374CBAC51B17EA7900255CF1 /* NewItemTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemTextField.swift; sourceTree = "<group>"; };
+		374CBAC81B18FBD600255CF1 /* NewItemTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemTextField.swift; sourceTree = "<group>"; };
+		374CBACA1B18FBF800255CF1 /* TitleTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTextField.swift; sourceTree = "<group>"; };
 		8E49FC841B0F75F70087FA08 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E49FC881B0F75F70087FA08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E49FC891B0F75F70087FA08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,11 +166,10 @@
 			isa = PBXGroup;
 			children = (
 				374CBA6F1B17D76900255CF1 /* MainController.swift */,
+				2E6639F71B18A8E100DA97D9 /* LoginController.swift */,
 				374CBA6E1B17D76900255CF1 /* ListsController.swift */,
 				374CBABD1B17DDA000255CF1 /* UserListController.swift */,
 				374CBA701B17D76900255CF1 /* SingleListController.swift */,
-				374CBA711B17D76900255CF1 /* SuggestionsController.swift */,
-				2E6639F71B18A8E100DA97D9 /* LoginController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,14 +197,12 @@
 			isa = PBXGroup;
 			children = (
 				374CBAA81B17D79600255CF1 /* Cells */,
+				374CBAC71B18FBD600255CF1 /* Elements */,
 				374CBAB91B17DA5A00255CF1 /* LaunchScreen.xib */,
 				374CBA821B17D76A00255CF1 /* ListsView.swift */,
-				374CBAC51B17EA7900255CF1 /* NewItemTextField.swift */,
 				374CBAC31B17E41400255CF1 /* UserListView.swift */,
 				374CBAC11B17E2B500255CF1 /* UserListView.xib */,
-				374CBA871B17D76A00255CF1 /* SingleListScreenView.xib */,
-				374CBA881B17D76A00255CF1 /* SuggestionsScreenView.xib */,
-				374CBA8C1B17D76A00255CF1 /* UserListScreenView.xib */,
+				3709153A1B19160200E99B33 /* SingleListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +220,15 @@
 				374CBAB01B17D79600255CF1 /* SuggestionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		374CBAC71B18FBD600255CF1 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				374CBAC81B18FBD600255CF1 /* NewItemTextField.swift */,
+				374CBACA1B18FBF800255CF1 /* TitleTextField.swift */,
+			);
+			path = Elements;
 			sourceTree = "<group>";
 		};
 		8E49FC7B1B0F75F70087FA08 = {
@@ -378,12 +380,9 @@
 				374CBAB61B17D79600255CF1 /* NewItemViewCell.xib in Resources */,
 				8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */,
 				374CBAB81B17D79600255CF1 /* SuggestionViewCell.xib in Resources */,
-				374CBAA31B17D76A00255CF1 /* SuggestionsScreenView.xib in Resources */,
 				374CBAB41B17D79600255CF1 /* ListViewCell.xib in Resources */,
 				374CBAB21B17D79600255CF1 /* ItemViewCell.xib in Resources */,
-				374CBAA71B17D76A00255CF1 /* UserListScreenView.xib in Resources */,
 				374CBABA1B17DA5A00255CF1 /* LaunchScreen.xib in Resources */,
-				374CBAA21B17D76A00255CF1 /* SingleListScreenView.xib in Resources */,
 				374CBAC21B17E2B500255CF1 /* UserListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,10 +402,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E49FC8A1B0F75F70087FA08 /* AppDelegate.swift in Sources */,
-				374CBA901B17D76A00255CF1 /* SuggestionsController.swift in Sources */,
 				374CBA8E1B17D76A00255CF1 /* MainController.swift in Sources */,
 				374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */,
-				374CBAC61B17EA7900255CF1 /* NewItemTextField.swift in Sources */,
 				374CBA971B17D76A00255CF1 /* Shopping_List.xcdatamodeld in Sources */,
 				374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */,
 				374CBA961B17D76A00255CF1 /* Product.swift in Sources */,
@@ -414,6 +411,7 @@
 				374CBA991B17D76A00255CF1 /* User+CoreData.swift in Sources */,
 				374CBAB51B17D79600255CF1 /* NewItemViewCell.swift in Sources */,
 				374CBA9A1B17D76A00255CF1 /* User.swift in Sources */,
+				3709153B1B19160200E99B33 /* SingleListView.swift in Sources */,
 				374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */,
 				374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */,
 				374CBA921B17D76A00255CF1 /* DAORemoto.swift in Sources */,
@@ -422,6 +420,8 @@
 				374CBAB71B17D79600255CF1 /* SuggestionViewCell.swift in Sources */,
 				374CBA911B17D76A00255CF1 /* DAOLocal.swift in Sources */,
 				374CBA951B17D76A00255CF1 /* NetworkConnect.swift in Sources */,
+				374CBAC91B18FBD600255CF1 /* NewItemTextField.swift in Sources */,
+				374CBACB1B18FBF800255CF1 /* TitleTextField.swift in Sources */,
 				374CBA8F1B17D76A00255CF1 /* SingleListController.swift in Sources */,
 				374CBA941B17D76A00255CF1 /* List.swift in Sources */,
 				374CBAB31B17D79600255CF1 /* ListViewCell.swift in Sources */,
