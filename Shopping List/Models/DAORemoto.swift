@@ -32,7 +32,7 @@ class DAORemoto {
     
     //Lists:
     
-    //Função que salva um nova lista:
+    /**Função que salva um nova lista:*/
     func saveNewList(list : List) -> List{
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
@@ -64,7 +64,7 @@ class DAORemoto {
     }
     
     
-    //Função que retorna todas as listas de um usuário:
+    /**Função que retorna todas as listas de um usuário:*/
     func allListOfUser(user : User, callback: ([List]) -> Void) {
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)")
@@ -76,6 +76,22 @@ class DAORemoto {
             if( snapshot.exists() == true ){
                 var dic = snapshot.value as! NSDictionary
                 
+                var keys = dic.allKeys
+                for x in keys {
+                    if x as! String == "lists" {
+                        var keyLists = dic["lists"]!.allKeys
+                        
+                        for keyL in keyLists {
+                            self.searchListFromID(keyL as! String, callback:  { (lis : List) in
+                                
+                                arrayList.append(lis)
+                                
+                                callback(arrayList)
+                                
+                            })
+                        }
+                    }
+                }
                 
             }
             
@@ -83,7 +99,8 @@ class DAORemoto {
         
     }
     
-    //Função que procura lista a partir do ID:
+    //TODO: com tags essa função vai dar ruim!!!
+    /**Função que procura lista a partir do ID:*/
     func searchListFromID(id : String, callback: (List) -> Void) {
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(id)")
@@ -155,7 +172,7 @@ class DAORemoto {
     
     
     
-    //Funçao que adiciona produto na lista:
+    /**Funçao que adiciona produto em uma lista:*/
     func addProductToList(product : Product, list : List) -> List {
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
@@ -176,7 +193,7 @@ class DAORemoto {
         
     }
     
-    //Funçao que adiciona lista para um usuário
+    /**Funçao que adiciona uma lista para um usuário*/
     func addListToUser(list : List, user : User) {
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)")
@@ -199,7 +216,7 @@ class DAORemoto {
     
     //Products:
     
-    //Função que salva um novo produto:
+    /**Função que salva um novo produto:*/
     func saveNewProduct(product : Product) -> Product{
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
@@ -225,7 +242,7 @@ class DAORemoto {
         
     }
     
-    //Função que procura produto a partir do nome:
+    /**Função que procura produto a partir do nome:*/
     func searchProductFromName(name : String, callback: (Product) -> Void) {
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
@@ -251,7 +268,7 @@ class DAORemoto {
         })
     }
     
-    //Função que procura produto a partir do ID:
+    /**Função que procura produto a partir do ID:*/
     func searchProductFromID(id : String, callback: (Product) -> Void) {
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/product/\(id)")
@@ -277,7 +294,7 @@ class DAORemoto {
     
     //Tags:
     
-    //Função que procura tag a partir do ID:
+    /**Função que procura tag a partir do ID:*/
     func searchTagFromID(id : String, callback: (Tag) -> Void) {
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/product/\(id)")
