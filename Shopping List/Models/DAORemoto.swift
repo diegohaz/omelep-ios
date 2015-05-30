@@ -65,7 +65,7 @@ class DAORemoto {
     
     
     /**Função que retorna todas as listas de um usuário:*/
-    func allListOfUser(user : User, callback: ([List]) -> Void) {
+    func allListOfUser(user : User, callback: [List] -> Void) {
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)")
         
@@ -86,7 +86,9 @@ class DAORemoto {
                                 
                                 arrayList.append(lis)
                                 
-                                callback(arrayList)
+                                if( keyLists.count == arrayList.count ){
+                                    callback(arrayList)
+                                }
                                 
                             })
                         }
