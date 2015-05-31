@@ -54,7 +54,9 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         let list = List()
         list.name = "List"
         
-        controller.list = DAORemoto.sharedInstance.saveNewList(list)
+        DAORemoto.sharedInstance.saveNewList(list)
+        
+        controller.list = list
         
         self.navigationController?.pushViewController(controller, animated: true)
 
@@ -76,6 +78,8 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let controller = UserListController()
         
+        controller.list = self.lists[indexPath.row]
+        
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -86,10 +90,16 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ListCell", forIndexPath: indexPath) as! ListViewCell
         let list = self.lists[indexPath.row]
+        var products = [String]()
         
         cell.delegate = self
         cell.label.text = list.name
-        cell.itemsLabel.text = "Item 1, item 2, item 3..."
+        
+        for product in list.returnProduct() {
+            products.append(product.name)
+        }
+        
+        cell.itemsLabel.text = ", ".join(products)
         
         return cell
     }

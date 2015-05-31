@@ -77,6 +77,10 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         product.name = textField.text
         textField.text = ""
         
+        DAORemoto.sharedInstance.addProductToList(product.name, list: self.list!) { (list) -> Void in
+            
+        }
+        
         products.insert(product, atIndex: 0)
         collectionView!.reloadData()
         collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
