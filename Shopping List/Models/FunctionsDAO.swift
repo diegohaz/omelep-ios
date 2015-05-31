@@ -46,17 +46,19 @@ class FunctionsDAO {
                 var dic = snapshot.value as! NSDictionary
                 list.name = dic.objectForKey("name")! as! String
                 list.id = id
+                var entrou = false
                 
                 //Pegando os produtos de cada lista
                 var keys = dic.allKeys
                 for x in keys {
                     if x as! String == "products" {
+                        entrou = true
                         var keysProducts = dic["products"]!.allKeys
-                        
+
                         for keyP in keysProducts {
                             
                             self.searchProductFromID(keyP as! String, callback: { (pro : Product) in
-                                
+
                                 DAOLocal.sharedInstance.addProduct(pro, list: list)
                                 
                                 if( list.products.count == keysProducts.count ){
@@ -66,7 +68,6 @@ class FunctionsDAO {
                             })
                             
                         }
-                        
                     }
                 }
                 
@@ -74,6 +75,7 @@ class FunctionsDAO {
                 keys = dic.allKeys
                 for x in keys {
                     if x as! String == "tags" {
+                        entrou = true
                         var keysProducts = dic["tags"]!.allKeys
                         
                         for keyP in keysProducts {
@@ -93,6 +95,9 @@ class FunctionsDAO {
                     }
                 }
                 
+                if(!entrou){
+                    callback(list)
+                }
                 
             } else {
                 print("lista não encotrada! \n")
