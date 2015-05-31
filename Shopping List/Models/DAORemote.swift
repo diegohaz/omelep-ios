@@ -122,13 +122,17 @@ class DAORemoto {
     }
     
     //TODO: Testar essa função
-    func deleteProductFromList(name : String, list : List, callback: (List) -> Void) {
+    func deleteProductFromList(name : String, list: List, callback: (List) -> Void) {
         
         FunctionsDAO.sharedInstance.searchProductFromName(name, callback: { (product : Product) in
         
             var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products/\(product.id)")
         
             myRootRef.removeValue()
+            
+            list.removeProduct(product)
+            
+            callback(list)
         
         })
         
