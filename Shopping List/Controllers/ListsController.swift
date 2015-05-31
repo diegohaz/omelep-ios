@@ -26,10 +26,6 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var list : List = List()
-        list.name = "Almoço de Natal"
-        DAORemoto.sharedInstance.saveNewList(list)
-        
         title = "Lists"
         collectionView = ListsView(frame: self.view.bounds)
         collectionView!.dataSource = self
