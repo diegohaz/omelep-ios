@@ -49,6 +49,13 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if list != nil {
+            self.products = list!.returnProduct()
+            self.collectionView?.reloadData()
+        }
+    }
+    
     func share(sender: UIBarButtonItem){
         let mailComposeViewController = mail_sender.configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
