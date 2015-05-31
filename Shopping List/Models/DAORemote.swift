@@ -75,12 +75,8 @@ class DAORemoto {
                     if x as! String == "lists" {
                         var keyLists = dic["lists"]!.allKeys
                         
-                        print("OI - 1")
-                        
                         for keyL in keyLists {
                             FunctionsDAO.sharedInstance.searchListFromID(keyL as! String, callback:  { (lis : List) in
-                                
-                                print("OI - 2")
                                 
                                 arrayList.append(lis)
                                 
@@ -125,6 +121,7 @@ class DAORemoto {
         
     }
     
+    //TODO: Testar essa função
     func deleteProductFromList(name : String, list : List, callback: (List) -> Void) {
         
         FunctionsDAO.sharedInstance.searchProductFromName(name, callback: { (product : Product) in
@@ -134,6 +131,10 @@ class DAORemoto {
             myRootRef.removeValue()
         
         })
+        
+    }
+    
+    func changeNameOfList(name : String, list: List) {
         
     }
     
