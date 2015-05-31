@@ -29,9 +29,7 @@ class DAORemoto {
         
         var tags = []
         var products = []
-        
-        //TODO: Função para achar usuário
-        var users = ["HKJKUYGKEU": true]
+        var users = []
         
         var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(list.name),"name": "\(list.name)", "products": products, "tags": tags, "users": users]
 
@@ -45,9 +43,13 @@ class DAORemoto {
         DAOLocal.sharedInstance.save()
         
         //Salvando no FireBase:
-        infoAdd.setValue(info)
+        infoAdd.setValue(info, withCompletionBlock: { ((NSError!, Firebase!)) in
+            //Adicionando essa lista ao usuário logado
+            var user : User
+            user = DAOLocal.sharedInstance.readUser()
+            self.createRelationUserList(user, list:list)
+        })
         
-        //TODO: Adicionar essa lista ao usuário logado
         
         return list
         
@@ -113,15 +115,18 @@ class DAORemoto {
         
     }
     
+//    func deleteProductFromList(product : Product, list : List) -> List {
+//        
+//        
+//        
+//    }
+    
     //Products:
     
     /**Função que salva um novo produto:*/
     func saveNewProduct(product : Product) -> Product{
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
-        
-        //TODO: Função para achar usuário
-        var users = ["HKJKUYGKEU": true]
         
         var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(product.name),"name": "\(product.name)", "brand": "\(product.brand)", "cubage": "\(product.cubage)"]
         
@@ -130,9 +135,6 @@ class DAORemoto {
         //Gerando o ID e colocando na lista:
         var infoAdd = listRef.childByAutoId()
         product.id = infoAdd.key
-        
-        //Salvando a nova Lista no CoreData:
-        DAOLocal.sharedInstance.save()
         
         //Salvando no FireBase:
         infoAdd.setValue(info)

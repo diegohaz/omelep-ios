@@ -193,6 +193,25 @@ class FunctionsDAO {
         
     }
     
+    /**Função que procura ID do usuário a partir do IDFB*/
+    func searchIDFromIDFB(user : User, callback: (String) -> Void) {
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
+        
+        var listRef = myRootRef.childByAppendingPath("user")
+        
+        listRef.queryOrderedByChild("idfb").queryEqualToValue(user.id).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            if( snapshot.exists() == true ) {
+                var dic = snapshot.value as! NSDictionary
+                var chave = dic.allKeys[0] as! String
+                callback(chave)
+            } else {
+                print("Usuário nao registrado, mas logado?? ")
+            }
+        })
+        
+    }
     
     
 }

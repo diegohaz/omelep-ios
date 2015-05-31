@@ -82,7 +82,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                         var dic = snapshot.value as! NSDictionary
                         var key = dic.allKeys[0] as! String
                         //Salvando dados do usuário logado:
-                        user.id = dic[key]!.objectForKey("idfb")! as! String
+                        user.id = key
                         user.name = dic[key]!.objectForKey("name")! as! String
                         user.email = dic[key]!.objectForKey("email")! as! String
                         DAOLocal.sharedInstance.save()
@@ -104,7 +104,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                         infoAdd.setValue(info)
                         
                         //Salvando dados do usuário logado:
-                        user.id = result.valueForKey("id")! as! String
+                        user.id = infoAdd.key
                         user.name = result.valueForKey("name")! as! String
                         user.email = result.valueForKey("email")! as! String
                         DAOLocal.sharedInstance.save()
