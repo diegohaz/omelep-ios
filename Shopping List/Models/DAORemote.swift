@@ -121,7 +121,7 @@ class DAORemoto {
         
     }
     
-    //TODO: Testar essa função
+    /**Função que deleta um produto de uma lista*/
     func deleteProductFromList(product : Product, list: List) -> List {
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products/\(product.id)")
@@ -134,6 +134,7 @@ class DAORemoto {
         
     }
     
+    /**Função que muda o nome de uma lista*/
     func changeNameOfList(name : String, list: List) {
      
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
@@ -153,11 +154,18 @@ class DAORemoto {
         
     }
     
+    /**Função que deleta uma lista*/
     func deleteList(list : List){
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+        var user : User = DAOLocal.sharedInstance.readUser()
         
-        myRootRef.removeValue()
+        var myUserRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/\(list.id)")
+        
+        myUserRef.removeValue()
+        
+        var myListRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+        
+        myListRef.removeValue()
         
     }
     
