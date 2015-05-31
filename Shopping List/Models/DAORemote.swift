@@ -135,6 +135,21 @@ class DAORemoto {
     }
     
     func changeNameOfList(name : String, list: List) {
+     
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+        
+        myRootRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            if( snapshot.exists() == true ){
+                var dic = snapshot.value as! NSDictionary
+                
+                dic.setValue(name, forKey: "name")
+                
+                myRootRef.setValue(dic)
+                
+            }
+            
+        })
         
     }
     
