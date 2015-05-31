@@ -17,11 +17,11 @@ class Settings: UIViewController,FBSDKLoginButtonDelegate {
         super.viewDidLoad()
         println("passou no settings controller")
         let loginView : FBSDKLoginButton = FBSDKLoginButton()
-        loginView.frame.origin.x = 0
-        loginView.frame.origin.y = self.view.frame.height / 2
+        loginView.frame.origin.x = 40
+        loginView.center.y = self.view.center.y
         
         
-        self.view.backgroundColor = UIColor.greenColor()
+        self.view.backgroundColor = UIColor.whiteColor()
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {

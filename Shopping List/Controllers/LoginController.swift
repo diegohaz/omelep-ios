@@ -14,7 +14,8 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     //    let loginView : FBSDKLoginButton = FBSDKLoginButton()
     
     override func viewDidLoad() {
-        self.view.backgroundColor = UIColor.greenColor()
+        self.view.backgroundColor = UIColor.whiteColor()
+        self.navigationController?.navigationBarHidden = true
         
         
         println(FBSDKAccessToken.currentAccessToken())

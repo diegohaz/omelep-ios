@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>9F6A63F2-5C89-4D01-8E33-0FE5A30CB4A9</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Shopping List</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>BB2432DE3BDBCF05F2A3F297794B275DAF1E2722</key>
 		<string>https://github.com/diegohaz/spesa-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Shopping List.xcodeproj</string>
+	<string>Shopping List.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>BB2432DE3BDBCF05F2A3F297794B275DAF1E2722</key>
