@@ -52,21 +52,33 @@ class DAOLocal {
         
     }
     
-    //Lists:
+    func deleteLastUser() {
+        
+        var appDelegate : AppDelegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        var context : NSManagedObjectContext
+        context = appDelegate.managedObjectContext!
+        
+        var entity : NSEntityDescription
+        entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)!
+        
+        var request : NSFetchRequest = NSFetchRequest()
+        request.entity = entity
+        
+        var user : NSManagedObject
+        var error : NSError?
+        var result : NSArray = context.executeFetchRequest(request, error:&error)!
+        
+        for user in result {
+            context.deleteObject(user as! NSManagedObject)
+        }
+        
+        context.save(&error)
+        
+    }
     
-//    func saveNewList(list: List) {
-//        
-//        var appDelegate : AppDelegate
-//        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        
-//        var context = NSManagedObjectContext()
-//        context = appDelegate.managedObjectContext!
-//        
-//        var erro : NSError?
-//        
-//        context.save(&erro)
-//        
-//    }
+    //Lists:
     
     func readLists() -> [List]{
         //TODO: descobrir usuário

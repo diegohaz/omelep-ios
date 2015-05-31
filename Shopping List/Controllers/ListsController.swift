@@ -26,14 +26,6 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //TESTES:
-        var user : User = User()
-        user.id = "-JqbXWoPoHY0O6lH8BM3"
-        var list : List = List()
-        list.id = "-JqRtZDQGc0aodX-lNTy"
-        //DAORemoto.sharedInstance.addUserToList(user, list: list)
-        //DAORemoto.sharedInstance.addListToUser(list, user: user)
-        
         title = "Lists"
         collectionView = ListsView(frame: self.view.bounds)
         collectionView!.dataSource = self

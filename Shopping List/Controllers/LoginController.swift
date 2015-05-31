@@ -73,12 +73,19 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                 
                 listRef.queryOrderedByChild("idfb").queryEqualToValue(result.valueForKey("id")).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
                     
+                    //Apagando dados do último usuário logado:
+                    DAOLocal.sharedInstance.deleteLastUser()
+                    
                     var user : User = User()
                     
                     if( snapshot.exists() == true ) {
                         var dic = snapshot.value as! NSDictionary
                         var key = dic.allKeys[0] as! String
+                        //Salvando dados do usuário logado:
                         user.id = dic[key]!.objectForKey("idfb")! as! String
+                        user.name = dic[key]!.objectForKey("name")! as! String
+                        user.email = dic[key]!.objectForKey("email")! as! String
+                        DAOLocal.sharedInstance.save()
                         println("User ja estava Registrado")
                     } else {
                         println("User não encontrado. Tem q registrar!")
@@ -87,16 +94,20 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                         println("User Name is: \(userName)")
                         let userEmail : NSString = result.valueForKey("email") as! NSString
                         println("User Email is: \(userEmail)")
-                        //"idfb": result.valueForKey("id") as! String ,
-                        var info = ["email": result.valueForKey("email") as! String, "gender": result.valueForKey("gender") as! String, "locale": result.valueForKey("locale") as! String, "name": result.valueForKey("name") as! String,  /* "timezone": result.valueForKey("timezone") as! String, */ "updated_time": result.valueForKey("updated_time") as! String, "verified": result.valueForKey("verified") as! Bool, "access_token": FBSDKAccessToken.currentAccessToken().tokenString ]
+                        var info = ["idfb": result.valueForKey("id") as! String,"email": result.valueForKey("email") as! String, "gender": result.valueForKey("gender") as! String, "locale": result.valueForKey("locale") as! String, "name": result.valueForKey("name") as! String,  /* "timezone": result.valueForKey("timezone") as! String, */ "updated_time": result.valueForKey("updated_time") as! String, "verified": result.valueForKey("verified") as! Bool, "access_token": FBSDKAccessToken.currentAccessToken().tokenString ]
                         
                         //                var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
                         
                         var userRef = myRootRef.childByAppendingPath("user")
                         ///Colocando o id do Facebook como id no FireBase
-//                        var infoAdd = userRef.childByAutoId()
-//                        var userWithIdRef = result.valueForKey("id") as! String
-                        userRef.setValue([result.valueForKey("id") as! String: info])
+                        var infoAdd = userRef.childByAutoId()
+                        infoAdd.setValue(info)
+                        
+                        //Salvando dados do usuário logado:
+                        user.id = result.valueForKey("id")! as! String
+                        user.name = result.valueForKey("name")! as! String
+                        user.email = result.valueForKey("email")! as! String
+                        DAOLocal.sharedInstance.save()
                         
                         
                     }
