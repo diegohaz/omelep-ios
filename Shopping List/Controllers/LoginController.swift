@@ -86,14 +86,16 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                         println("User Name is: \(userName)")
                         let userEmail : NSString = result.valueForKey("email") as! NSString
                         println("User Email is: \(userEmail)")
-                        
-                        var info = ["idfb": result.valueForKey("id") as! String , "email": result.valueForKey("email") as! String, "gender": result.valueForKey("gender") as! String, "locale": result.valueForKey("locale") as! String, "name": result.valueForKey("name") as! String,  /* "timezone": result.valueForKey("timezone") as! String, */ "updated_time": result.valueForKey("updated_time") as! String, "verified": result.valueForKey("verified") as! Bool, "access_token": FBSDKAccessToken.currentAccessToken().tokenString ]
+                        //"idfb": result.valueForKey("id") as! String ,
+                        var info = ["email": result.valueForKey("email") as! String, "gender": result.valueForKey("gender") as! String, "locale": result.valueForKey("locale") as! String, "name": result.valueForKey("name") as! String,  /* "timezone": result.valueForKey("timezone") as! String, */ "updated_time": result.valueForKey("updated_time") as! String, "verified": result.valueForKey("verified") as! Bool, "access_token": FBSDKAccessToken.currentAccessToken().tokenString ]
                         
                         //                var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
                         
                         var userRef = myRootRef.childByAppendingPath("user")
-                        var infoAdd = userRef.childByAutoId()
-                        infoAdd.setValue(info)
+                        ///Colocando o id do Facebook como id no FireBase
+//                        var infoAdd = userRef.childByAutoId()
+//                        var userWithIdRef = result.valueForKey("id") as! String
+                        userRef.setValue([result.valueForKey("id") as! String: info])
                         
                         
                     }
