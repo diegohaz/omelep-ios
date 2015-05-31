@@ -12,6 +12,7 @@
 		2E48A4691B1A08FF0072403C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A4681B1A08FF0072403C /* Settings.swift */; };
 		2E48A46B1B1A09800072403C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46A1B1A09800072403C /* SettingsView.swift */; };
 		2E48A46D1B1A098E0072403C /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E48A46C1B1A098E0072403C /* SettingsView.xib */; };
+		2E48A46F1B1A10570072403C /* MailSenderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46E1B1A10570072403C /* MailSenderController.swift */; };
 		2E51DA6C1B18E62C00412F09 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA691B18E62C00412F09 /* Bolts.framework */; };
 		2E51DA6D1B18E62C00412F09 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA6A1B18E62C00412F09 /* FBSDKCoreKit.framework */; };
 		2E51DA6E1B18E62C00412F09 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA6B1B18E62C00412F09 /* FBSDKLoginKit.framework */; };
@@ -72,6 +73,7 @@
 		2E48A4681B1A08FF0072403C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		2E48A46A1B1A09800072403C /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2E48A46C1B1A098E0072403C /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		2E48A46E1B1A10570072403C /* MailSenderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailSenderController.swift; sourceTree = "<group>"; };
 		2E51DA691B18E62C00412F09 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		2E51DA6A1B18E62C00412F09 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		2E51DA6B1B18E62C00412F09 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				374CBA701B17D76900255CF1 /* SingleListController.swift */,
 				2E48A4631B1A08830072403C /* CenterViewController.swift */,
 				2E48A4681B1A08FF0072403C /* Settings.swift */,
+				2E48A46E1B1A10570072403C /* MailSenderController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E49FC8A1B0F75F70087FA08 /* AppDelegate.swift in Sources */,
+				2E48A46F1B1A10570072403C /* MailSenderController.swift in Sources */,
 				374CBA8E1B17D76A00255CF1 /* MainController.swift in Sources */,
 				374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */,
 				374CBA971B17D76A00255CF1 /* Shopping_List.xcdatamodeld in Sources */,

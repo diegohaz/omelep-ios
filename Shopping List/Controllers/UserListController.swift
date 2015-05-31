@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MessageUI
+
 
 class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, ItemViewCellDelegate {
     
@@ -14,6 +16,9 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     var collectionView: UICollectionView?
     var products = [Product]()
     var isNew = false
+    
+    var mail_sender: MailSender! = MailSender()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +45,15 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         if isNew {
             reusableView?.newItemTextField.becomeFirstResponder()
+        }
+    }
+    
+    func share(sender: UIBarButtonItem){
+        let mailComposeViewController = mail_sender.configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.mail_sender.showSendMailErrorAlert()
         }
     }
     
