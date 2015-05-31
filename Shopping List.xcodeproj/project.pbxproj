@@ -27,7 +27,6 @@
 		374CBA961B17D76A00255CF1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA781B17D76900255CF1 /* Product.swift */; };
 		374CBA971B17D76A00255CF1 /* Shopping_List.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA7A1B17D76900255CF1 /* Shopping_List.xcdatamodeld */; };
 		374CBA981B17D76A00255CF1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA7C1B17D76A00255CF1 /* Tag.swift */; };
-		374CBA991B17D76A00255CF1 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA7D1B17D76A00255CF1 /* User+CoreData.swift */; };
 		374CBA9A1B17D76A00255CF1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA7E1B17D76A00255CF1 /* User.swift */; };
 		374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA821B17D76A00255CF1 /* ListsView.swift */; };
 		374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAA91B17D79600255CF1 /* ItemViewCell.swift */; };
@@ -54,6 +53,7 @@
 		8E9030CA1B17B51D0027DE70 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030C91B17B51D0027DE70 /* libicucore.dylib */; };
 		8E9030D51B17DA960027DE70 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030D41B17DA960027DE70 /* Firebase.framework */; };
 		8E9030D81B17DAAB0027DE70 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9030D71B17DAAB0027DE70 /* Reachability.m */; };
+		8E9030DA1B1A99D30027DE70 /* FunctionsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9030D91B1A99D30027DE70 /* FunctionsDAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,6 @@
 		374CBA791B17D76900255CF1 /* Shopping List-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Shopping List-Bridging-Header.h"; path = "../Shopping List-Bridging-Header.h"; sourceTree = "<group>"; };
 		374CBA7B1B17D76A00255CF1 /* Shopping_List.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shopping_List.xcdatamodel; sourceTree = "<group>"; };
 		374CBA7C1B17D76A00255CF1 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		374CBA7D1B17D76A00255CF1 /* User+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		374CBA7E1B17D76A00255CF1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		374CBA821B17D76A00255CF1 /* ListsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
 		374CBAA91B17D79600255CF1 /* ItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
@@ -120,6 +119,7 @@
 		8E9030D41B17DA960027DE70 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		8E9030D61B17DAAB0027DE70 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8E9030D71B17DAAB0027DE70 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		8E9030D91B1A99D30027DE70 /* FunctionsDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsDAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,11 +199,11 @@
 			children = (
 				374CBA731B17D76900255CF1 /* DAOLocal.swift */,
 				374CBA741B17D76900255CF1 /* DAORemote.swift */,
+				8E9030D91B1A99D30027DE70 /* FunctionsDAO.swift */,
 				374CBA761B17D76900255CF1 /* List.swift */,
 				374CBA771B17D76900255CF1 /* NetworkConnect.swift */,
 				374CBA781B17D76900255CF1 /* Product.swift */,
 				374CBA7C1B17D76A00255CF1 /* Tag.swift */,
-				374CBA7D1B17D76A00255CF1 /* User+CoreData.swift */,
 				374CBA7E1B17D76A00255CF1 /* User.swift */,
 				374CBA7A1B17D76900255CF1 /* Shopping_List.xcdatamodeld */,
 				374CBA791B17D76900255CF1 /* Shopping List-Bridging-Header.h */,
@@ -433,7 +433,6 @@
 				374CBA961B17D76A00255CF1 /* Product.swift in Sources */,
 				374CBAC41B17E41400255CF1 /* UserListView.swift in Sources */,
 				2E48A4671B1A08DD0072403C /* ContainerViewController.swift in Sources */,
-				374CBA991B17D76A00255CF1 /* User+CoreData.swift in Sources */,
 				374CBAB51B17D79600255CF1 /* NewItemViewCell.swift in Sources */,
 				374CBA9A1B17D76A00255CF1 /* User.swift in Sources */,
 				3709153B1B19160200E99B33 /* SingleListView.swift in Sources */,
@@ -450,6 +449,7 @@
 				374CBA951B17D76A00255CF1 /* NetworkConnect.swift in Sources */,
 				374CBAC91B18FBD600255CF1 /* NewItemTextField.swift in Sources */,
 				374CBACB1B18FBF800255CF1 /* TitleTextField.swift in Sources */,
+				8E9030DA1B1A99D30027DE70 /* FunctionsDAO.swift in Sources */,
 				374CBA8F1B17D76A00255CF1 /* SingleListController.swift in Sources */,
 				374CBA941B17D76A00255CF1 /* List.swift in Sources */,
 				374CBAB31B17D79600255CF1 /* ListViewCell.swift in Sources */,

@@ -19,16 +19,6 @@ class DAORemoto {
     private init() {
     }
     
-    //Função para normalizar o nome de produtos, listas e tags para pesquisa
-    private func normaliza(text : String) -> String {
-        
-        var ntext = text.stringByFoldingWithOptions(NSStringCompareOptions.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale())
-        
-        ntext = ntext.lowercaseString
-        
-        return ntext
-        
-    }
     
     //Lists:
     
@@ -43,7 +33,7 @@ class DAORemoto {
         //TODO: Função para achar usuário
         var users = ["HKJKUYGKEU": true]
         
-        var info = ["searchName": normaliza(list.name),"name": "\(list.name)", "products": products, "tags": tags, "users": users]
+        var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(list.name),"name": "\(list.name)", "products": products, "tags": tags, "users": users]
 
         var listRef = myRootRef.childByAppendingPath("list")
         
@@ -82,7 +72,7 @@ class DAORemoto {
                         var keyLists = dic["lists"]!.allKeys
                         
                         for keyL in keyLists {
-                            self.searchListFromID(keyL as! String, callback:  { (lis : List) in
+                            FunctionsDAO.sharedInstance.searchListFromID(keyL as! String, callback:  { (lis : List) in
                                 
                                 arrayList.append(lis)
                                 
@@ -100,78 +90,6 @@ class DAORemoto {
         })
         
     }
-    
-    //TODO: com tags essa função vai dar ruim!!!
-    /**Função que procura lista a partir do ID:*/
-    func searchListFromID(id : String, callback: (List) -> Void) {
-        
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(id)")
-        
-        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-            
-            var list : List = List()
-            
-            if( snapshot.exists() == true ) {
-                var dic = snapshot.value as! NSDictionary
-                list.name = dic.objectForKey("name")! as! String
-                list.id = id
-                
-                //Pegando os produtos de cada lista
-                var keys = dic.allKeys
-                for x in keys {
-                    if x as! String == "products" {
-                        var keysProducts = dic["products"]!.allKeys
-                        
-                        for keyP in keysProducts {
-                            
-                            self.searchProductFromID(keyP as! String, callback: { (pro : Product) in
-                               
-                                DAOLocal.sharedInstance.addProduct(pro, list: list)
-                                
-                                if( list.products.count == keysProducts.count ){
-                                    callback(list)
-                                }
-                                
-                            })
-                            
-                        }
-                        
-                    }
-                }
-                
-                //Pegando as tags de cada lista
-                keys = dic.allKeys
-                for x in keys {
-                    if x as! String == "tags" {
-                        var keysProducts = dic["tags"]!.allKeys
-                        
-                        for keyP in keysProducts {
-                        
-                            self.searchTagFromID(keyP as! String, callback: { (ta : Tag) in
-                                
-                                DAOLocal.sharedInstance.addTag(ta, list: list)
-                                
-                                if( list.tags.count == keysProducts.count ){
-                                    callback(list)
-                                }
-                                
-                            })
-                            
-                        }
-                        
-                    }
-                }
-                
-                
-            } else {
-                print("lista não encotrada! \n")
-            }
-            
-        })
-        
-        
-    }
-    
     
     
     /**Funçao que adiciona produto em uma lista:*/
@@ -195,27 +113,6 @@ class DAORemoto {
         
     }
     
-    /**Funçao que adiciona uma lista para um usuário*/
-    func addListToUser(list : List, user : User) {
-        
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)")
-        
-        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-            
-            if( snapshot.exists() == true ){
-                var refList = myRootRef.childByAppendingPath("lists")
-                var lis = ["\(list.id)": true]
-                refList.updateChildValues(lis)
-            } else {
-                print("Usuário não existe \n")
-            }
-            
-        })
-        
-    }
-    
-    
-    
     //Products:
     
     /**Função que salva um novo produto:*/
@@ -226,7 +123,7 @@ class DAORemoto {
         //TODO: Função para achar usuário
         var users = ["HKJKUYGKEU": true]
         
-        var info = ["searchName": normaliza(product.name),"name": "\(product.name)", "brand": "\(product.brand)", "cubage": "\(product.cubage)"]
+        var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(product.name),"name": "\(product.name)", "brand": "\(product.brand)", "cubage": "\(product.cubage)"]
         
         var listRef = myRootRef.childByAppendingPath("product")
         
@@ -251,7 +148,7 @@ class DAORemoto {
         
         var listRef = myRootRef.childByAppendingPath("product")
     
-        listRef.queryOrderedByChild("searchName").queryEqualToValue(normaliza(name)).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+        listRef.queryOrderedByChild("searchName").queryEqualToValue(FunctionsDAO.sharedInstance.normaliza(name)).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
             var product : Product = Product()
         
@@ -269,74 +166,15 @@ class DAORemoto {
             callback(product)
         })
     }
-    
-    /**Função que procura produto a partir do ID:*/
-    func searchProductFromID(id : String, callback: (Product) -> Void) {
-        
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/product/\(id)")
-        
-        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-            
-            var product : Product = Product()
-            
-            if( snapshot.exists() == true ) {
-                var dic = snapshot.value as! NSDictionary
-                product.name = dic.objectForKey("name")! as! String
-                product.cubage = dic.objectForKey("cubage")! as! String
-                product.brand = dic.objectForKey("brand")! as! String
-                product.id = id
-            } else {
-                print("produto não encotrado! \n")
-            }
-            callback(product)
-        })
-        
-    }
 
     
-    //Tags:
+    //Relacão User e List
     
-    /**Função que procura tag a partir do ID:*/
-    func searchTagFromID(id : String, callback: (Tag) -> Void) {
+    /**Funcão que relaciona uma lista a um determinado usuário e vice-versa*/
+    func createRelationUserList(user : User, list : List){
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/product/\(id)")
-        
-        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-            
-            var tag : Tag = Tag()
-            
-            if( snapshot.exists() == true ) {
-                var dic = snapshot.value as! NSDictionary
-                tag.name = dic.objectForKey("name")! as! String
-                tag.id = id
-            } else {
-                print("tag não encotrado! \n")
-            }
-            callback(tag)
-        })
-        
-    }
-    
-    //Users:
-    
-    //TODO: Testar essa função:
-    /**Funçao que adiciona um usuário para uma lista*/
-    func addUserToList(user : User, list : List) {
-        
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
-        
-        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-            
-            if( snapshot.exists() == true ){
-                var refList = myRootRef.childByAppendingPath("users")
-                var use = ["\(user.id)": true]
-                refList.updateChildValues(use)
-            } else {
-                print("Lista não existe \n")
-            }
-            
-        })
-        
+        FunctionsDAO.sharedInstance.addListToUser(list, user: user)
+        FunctionsDAO.sharedInstance.addUserToList(user, list: list)
         
     }
     
