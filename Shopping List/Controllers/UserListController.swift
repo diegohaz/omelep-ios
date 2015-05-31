@@ -42,10 +42,18 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         let title = TitleTextField(frame: CGRectMake(0, 0, 180, 32))
         title.text = self.list?.name
+        title.delegate = self
         navigationItem.titleView = title
         
         if isNew {
             reusableView?.newItemTextField.becomeFirstResponder()
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if list != nil {
+            self.products = list!.returnProduct()
+            self.collectionView?.reloadData()
         }
     }
     
@@ -73,19 +81,26 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        let product = Product()
-        product.name = textField.text
-        textField.text = ""
-        
-        DAORemoto.sharedInstance.addProductToList(product.name, list: self.list!) { (list) -> Void in
+        if textField.isEqual(reusableView?.newItemTextField) {
+            let product = Product()
+            product.name = textField.text
+            textField.text = ""
             
+            DAORemoto.sharedInstance.addProductToList(product.name, list: self.list!) { (list) -> Void in
+                
+            }
+            
+            products.insert(product, atIndex: 0)
+            collectionView!.reloadData()
+            collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
+            
+            return true
+        } else {
+            let title = (self.navigationItem.titleView as! TitleTextField).text
+            DAORemoto.sharedInstance.changeNameOfList(title, list: self.list!)
+            
+            return true
         }
-        
-        products.insert(product, atIndex: 0)
-        collectionView!.reloadData()
-        collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
-        
-        return true
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
