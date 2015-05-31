@@ -14,7 +14,7 @@ protocol ListsControllerDelegate {
     optional func collapseSidePanels()
 }
 
-class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, ItemViewCellDelegate {
     
     static let sharedInstance = ListsController()
     
@@ -61,6 +61,14 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         delegate?.toggleLeftPanel?()
     }
     
+    func removeItem(cell: ItemViewCell) {
+        
+    }
+    
+    func doneItem(cell: ItemViewCell) {
+        
+    }
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let controller = UserListController()
         
@@ -75,6 +83,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ListCell", forIndexPath: indexPath) as! ListViewCell
         //let list = self.lists[indexPath.row]
         
+        cell.delegate = self
         cell.label.text = "Nome da lista"
         cell.itemsLabel.text = "Item 1, item 2, item 3..."
         

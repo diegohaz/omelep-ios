@@ -30,7 +30,6 @@ class ItemViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         self.addGestureRecognizer(panGesture!)
     }
     
-    
     override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         if delegate == nil {
             return false
