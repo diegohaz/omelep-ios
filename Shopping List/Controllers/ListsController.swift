@@ -73,15 +73,15 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 18
+        return self.lists.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ListCell", forIndexPath: indexPath) as! ListViewCell
-        //let list = self.lists[indexPath.row]
+        let list = self.lists[indexPath.row]
         
         cell.delegate = self
-        cell.label.text = "Nome da lista"
+        cell.label.text = list.name
         cell.itemsLabel.text = "Item 1, item 2, item 3..."
         
         return cell
