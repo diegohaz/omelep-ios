@@ -42,7 +42,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     
     override func viewDidAppear(animated: Bool) {
         DAORemoto.sharedInstance.allListOfUser { lists in
-            self.lists += lists
+            self.lists = lists
             self.collectionView?.reloadData()
         }
     }
