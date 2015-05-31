@@ -38,7 +38,9 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add:")
         
         view.addSubview(self.collectionView!)
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         DAORemoto.sharedInstance.allListOfUser { lists in
             self.lists += lists
             self.collectionView?.reloadData()
@@ -48,6 +50,11 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     func add(sender: UIBarButtonItem) {
         let controller = UserListController()
         controller.isNew = true
+        
+        let list = List()
+        list.name = "List"
+        
+        controller.list = DAORemoto.sharedInstance.saveNewList(list)
         
         self.navigationController?.pushViewController(controller, animated: true)
 

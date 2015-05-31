@@ -14,6 +14,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     var reusableView: UserListView?
     var collectionView: UICollectionView?
+    var list: List?
     var products = [Product]()
     var isNew = false
     
@@ -40,7 +41,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Share"), style: UIBarButtonItemStyle.Plain, target: self, action: "share:")
         
         let title = TitleTextField(frame: CGRectMake(0, 0, 180, 32))
-        title.text = "List"
+        title.text = self.list?.name
         navigationItem.titleView = title
         
         if isNew {
