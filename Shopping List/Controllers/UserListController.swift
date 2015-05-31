@@ -68,6 +68,8 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     func doneItem(cell: ItemViewCell) {
         let indexPath = collectionView!.indexPathForCell(cell)
+        
+        DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
 
         products.removeAtIndex(indexPath!.row)
         collectionView!.reloadData()
@@ -75,6 +77,8 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     func removeItem(cell: ItemViewCell) {
         let indexPath = collectionView!.indexPathForCell(cell)
+        
+        DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
         
         products.removeAtIndex(indexPath!.row)
         collectionView!.reloadData()
