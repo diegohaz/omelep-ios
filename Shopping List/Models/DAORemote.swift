@@ -122,19 +122,15 @@ class DAORemoto {
     }
     
     //TODO: Testar essa função
-    func deleteProductFromList(name : String, list: List, callback: (List) -> Void) {
+    func deleteProductFromList(product : Product, list: List) -> List {
         
-        FunctionsDAO.sharedInstance.searchProductFromName(name, callback: { (product : Product) in
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products/\(product.id)")
         
-            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products/\(product.id)")
-        
-            myRootRef.removeValue()
+        myRootRef.removeValue()
             
-            list.removeProduct(product)
-            
-            callback(list)
+        list.removeProduct(product)
         
-        })
+        return list
         
     }
     
@@ -156,6 +152,15 @@ class DAORemoto {
         })
         
     }
+    
+    func deleteList(list : List){
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+        
+        myRootRef.removeValue()
+        
+    }
+    
     
     //Products:
     
