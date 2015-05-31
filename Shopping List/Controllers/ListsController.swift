@@ -38,6 +38,11 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add:")
         
         view.addSubview(self.collectionView!)
+        
+        DAORemoto.sharedInstance.allListOfUser { lists in
+            self.lists += lists
+            self.collectionView?.reloadData()
+        }
     }
     
     func add(sender: UIBarButtonItem) {
