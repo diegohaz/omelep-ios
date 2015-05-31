@@ -148,6 +148,31 @@ class FunctionsDAO {
         
     }
     
+    /**Função que procura produto a partir do nome:*/
+    func searchProductFromName(name : String, callback: (Product) -> Void) {
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
+        
+        var listRef = myRootRef.childByAppendingPath("product")
+        
+        listRef.queryOrderedByChild("searchName").queryEqualToValue(FunctionsDAO.sharedInstance.normaliza(name)).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            var product : Product = Product()
+            
+            if( snapshot.exists() == true ) {
+                var dic = snapshot.value as! NSDictionary
+                var key = dic.allKeys[0] as! String
+                product.name = dic[key]!.objectForKey("name")! as! String
+                product.cubage = dic[key]!.objectForKey("cubage")! as! String
+                product.brand = dic[key]!.objectForKey("brand")! as! String
+                product.id = key
+            } else {
+                product.name = name
+                product = DAORemoto.sharedInstance.saveNewProduct(product)
+            }
+            callback(product)
+        })
+    }
     
     
     //Tags:

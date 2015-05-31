@@ -57,7 +57,9 @@ class DAORemoto {
     
     
     /**Função que retorna todas as listas de um usuário:*/
-    func allListOfUser(user : User, callback: [List] -> Void) {
+    func allListOfUser(callback: [List] -> Void) {
+        
+        var user : User = DAOLocal.sharedInstance.readUser()
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)")
         
@@ -95,27 +97,35 @@ class DAORemoto {
     
     
     /**Funçao que adiciona produto em uma lista:*/
-    func addProductToList(product : Product, list : List) -> List {
+    func addProductToList(name : String, list : List, callback: (List) -> Void) {
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
-        
-        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-        
-            if( snapshot.exists() == true ){
-                var refProd = myRootRef.childByAppendingPath("products")
-                var prod = ["\(product.id)": true]
-                refProd.updateChildValues(prod)
-            } else {
-                print("lista não existe \n")
-            }
+        FunctionsDAO.sharedInstance.searchProductFromName(name, callback: { (product : Product) in
+            
+            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+            
+            myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+                
+                if( snapshot.exists() == true ){
+                    var refProd = myRootRef.childByAppendingPath("products")
+                    var prod = ["\(product.id)": true]
+                    refProd.updateChildValues(prod)
+                } else {
+                    print("lista não existe \n")
+                }
+                
+            })
+            
+            callback(DAOLocal.sharedInstance.addProduct(product, list: list))
             
         })
-        
-        return DAOLocal.sharedInstance.addProduct(product, list: list)
         
     }
     
 //    func deleteProductFromList(product : Product, list : List) -> List {
+//        
+//       var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products/\(product.id)")
+//        
+//        myRootRef.removeValue()
 //        
 //        
 //        
@@ -141,32 +151,6 @@ class DAORemoto {
         
         return product
         
-    }
-    
-    /**Função que procura produto a partir do nome:*/
-    func searchProductFromName(name : String, callback: (Product) -> Void) {
-        
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
-        
-        var listRef = myRootRef.childByAppendingPath("product")
-    
-        listRef.queryOrderedByChild("searchName").queryEqualToValue(FunctionsDAO.sharedInstance.normaliza(name)).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-            
-            var product : Product = Product()
-        
-            if( snapshot.exists() == true ) {
-                var dic = snapshot.value as! NSDictionary
-                var key = dic.allKeys[0] as! String
-                product.name = dic[key]!.objectForKey("name")! as! String
-                product.cubage = dic[key]!.objectForKey("cubage")! as! String
-                product.brand = dic[key]!.objectForKey("brand")! as! String
-                product.id = key
-            } else {
-                product.name = name
-                product = self.saveNewProduct(product)
-            }
-            callback(product)
-        })
     }
 
     
