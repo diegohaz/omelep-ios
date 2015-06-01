@@ -18,6 +18,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
 
 //        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
 
+        println(FBSDKAccessToken.currentAccessToken().tokenString)
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -26,7 +27,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             
             self.view.addSubview(loginView)
             loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+            loginView.readPermissions = ["public_profile", "email", "user_friends", "user_photos"]
             loginView.delegate = self
             
         
@@ -38,7 +39,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             
             self.view.addSubview(loginView)
             loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+            loginView.readPermissions = ["public_profile", "email", "user_friends", "user_photos"]
             loginView.delegate = self
             println("user inicializou DESLOGADO")
             

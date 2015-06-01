@@ -182,7 +182,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
             }
             else
             {
-                
+                println(result)
                 let friends: AnyObject? = result.valueForKey("data")
                 let friendNames: [String] = friends?.valueForKey("name") as! [String]
                 let friendIDs: [String] = friends?.valueForKey("id") as! [String]
