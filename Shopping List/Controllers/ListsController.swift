@@ -8,17 +8,9 @@
 
 import UIKit
 
-@objc
-protocol ListsControllerDelegate {
-    optional func toggleLeftPanel()
-    optional func collapseSidePanels()
-}
-
 class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, ItemViewCellDelegate {
     
     static let sharedInstance = ListsController()
-    
-    var delegate: CenterViewControllerDelegate?
     
     var collectionView: UICollectionView?
     var lists = [List]()
@@ -33,7 +25,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         collectionView!.registerNib(UINib(nibName: "ListViewCell", bundle: nil), forCellWithReuseIdentifier: "ListCell")
         collectionView!.registerNib(UINib(nibName: "SuggestionViewCell", bundle: nil), forCellWithReuseIdentifier: "SuggestionCell")
         
-        navigationItem.hidesBackButton = true
+        navigationItem.hidesBackButton = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Menu"), style: .Plain, target: self, action: "openMenu:")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add:")
         
@@ -67,7 +59,6 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     
     
     func openMenu(sender: UIBarButtonItem) {
-        println("loadar o menu")
         
 //        delegate?.toggleLeftPanel?()
         
@@ -101,9 +92,11 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         
         //** CUSTOM LOGOUT
         
+        println("deu logout")
+        
         FBSDKLoginManager().logOut()
-        let vc = LoginController()
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
 
         
     }

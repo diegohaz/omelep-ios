@@ -11,55 +11,31 @@ import UIKit
 class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     
     static let sharedInstance = LoginController()
-    //    let loginView : FBSDKLoginButton = FBSDKLoginButton()
+        let loginView : FBSDKLoginButton = FBSDKLoginButton()
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.whiteColor()
-        self.navigationController?.navigationBarHidden = true
-        
-//        var friendsRequest : FBRequest = FBRequest.requestForMyFriends()
-//        friendsRequest.startWithCompletionHandler
-//            {
-//                (connection:FBRequestConnection!,   result:AnyObject!, error:NSError!) -> Void in
-//                var resultdict = result as NSDictionary
-//                println("Result Dict: \(resultdict)")
-//                var data : NSArray = resultdict.objectForKey("data") as NSArray
-//                
-//                for i in 0 ..< data.count
-//                {
-//                    let valueDict : NSDictionary = data[i] as NSDictionary
-//                    let id = valueDict.objectForKey("id") as String
-//                    println("the id value is \(id)")
-//                }
-//                
-//                var friends = resultdict.objectForKey("data") as NSArray
-//                println("Found \(friends.count) friends")
-//        }
-        
-//        println(FBSDKAccessToken.currentAccessToken().tokenString)
-        
-//        returnUserData()
-        
+
+//        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
             println("user inicializou logado")
             
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
             
-            
-            let vc = ContainerViewController()
-            self.presentViewController(vc, animated: true, completion: nil)
-            
+        
+            let listsController: ListsController = ListsController()
+            self.navigationController?.pushViewController(listsController, animated: true)
         }
         else
         {
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+            
             self.view.addSubview(loginView)
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
@@ -144,17 +120,13 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         println("User Logged In")
         
         
-        //         self.navigationController?.pushViewController(MainController.sharedInstance, animated: false)
-        
-        
         registerUser(){ user in
             
-            let vc = ContainerViewController()
-            self.presentViewController(vc, animated: true, completion: nil)
+            let listsController: ListsController = ListsController()
+            self.navigationController?.pushViewController(listsController, animated: true)
             
             println("ja chegou a resposta")
         }
-        
         
         
         if ((error) != nil)
@@ -176,29 +148,5 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         println("User Logged Out")
-    }
-    
-    func returnUserData()
-    {
-        
-        let jabba: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, HTTPMethod: "GET")
-        jabba.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                // Process error
-                println("Error: \(error)")
-            }
-            else
-            {
-
-                let friends: AnyObject? = result.valueForKey("data")
-                let friendNames: [String] = friends?.valueForKey("name") as! [String]
-                println("User Name is: \(friendNames))")
-
-            }
-        })
-    
-
     }
 }
