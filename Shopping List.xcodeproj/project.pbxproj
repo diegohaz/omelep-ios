@@ -55,6 +55,7 @@
 		8E9030D51B17DA960027DE70 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030D41B17DA960027DE70 /* Firebase.framework */; };
 		8E9030D81B17DAAB0027DE70 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9030D71B17DAAB0027DE70 /* Reachability.m */; };
 		8E9030DA1B1A99D30027DE70 /* FunctionsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9030D91B1A99D30027DE70 /* FunctionsDAO.swift */; };
+		8E9030DC1B1BEDE90027DE70 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030DB1B1BEDE90027DE70 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		8E9030D61B17DAAB0027DE70 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8E9030D71B17DAAB0027DE70 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		8E9030D91B1A99D30027DE70 /* FunctionsDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsDAO.swift; sourceTree = "<group>"; };
+		8E9030DB1B1BEDE90027DE70 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E9030DC1B1BEDE90027DE70 /* MessageUI.framework in Frameworks */,
 				8E9030D51B17DA960027DE70 /* Firebase.framework in Frameworks */,
 				8E9030CA1B17B51D0027DE70 /* libicucore.dylib in Frameworks */,
 				2E51DA6E1B18E62C00412F09 /* FBSDKLoginKit.framework in Frameworks */,
@@ -317,6 +320,7 @@
 		8E9030CB1B17B56A0027DE70 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E9030DB1B1BEDE90027DE70 /* MessageUI.framework */,
 				2E663A001B18AAA100DA97D9 /* Facebook */,
 				2E6639F91B18AA6700DA97D9 /* Firebase */,
 			);

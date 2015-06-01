@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 
-class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, ItemViewCellDelegate {
+class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, ItemViewCellDelegate, MFMessageComposeViewControllerDelegate {
     
     var reusableView: UserListView?
     var collectionView: UICollectionView?
@@ -63,7 +63,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
         let smsAction = UIAlertAction(title: "Enviar lista via sms", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
-            
+            self.showSMS()
         })
         
         let emailAction = UIAlertAction(title: "Enviar lista via e-mail", style: .Default, handler: {
@@ -159,5 +159,32 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         return cell
     }
+    
+    //Função para enviar o sms
+    func showSMS() {
+        
+        if( MFMessageComposeViewController.canSendText() ) {
+            
+            var productNameDisplay = ""
+            for var i = 0 ; i < products.count ; i++ {
+                productNameDisplay += "\(i+1) - \(products[i].name) \(products[i].cubage), \(products[i].brand)"
+            }
+            
+            var messageController : MFMessageComposeViewController = MFMessageComposeViewController()
+            messageController.messageComposeDelegate = self
+            messageController.body = productNameDisplay
+            self.presentViewController(messageController, animated: true, completion: nil)
+            
+        } else {
+            
+        }
+        
+    }
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+            self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+
 
 }
