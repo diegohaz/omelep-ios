@@ -122,15 +122,17 @@ class DAORemoto {
     }
     
     /**Função que deleta um produto de uma lista*/
-    func deleteProductFromList(product : Product, list: List) -> List {
+    func deleteProductFromList(product : Product, list: List) {
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products/\(product.id)")
+        FunctionsDAO.sharedInstance.searchProductFromName(product.name, callback: { products in
         
-        myRootRef.removeValue()
+            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products/\(products.id)")
             
-        list.removeProduct(product)
-        
-        return list
+            myRootRef.removeValue()
+            
+            list.removeProduct(product)
+            
+        })
         
     }
     

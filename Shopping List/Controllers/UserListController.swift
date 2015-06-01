@@ -124,7 +124,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
             textField.text = ""
             
             DAORemoto.sharedInstance.addProductToList(product.name, list: self.list!) { (list) -> Void in
-                
+             
             }
             
             products.insert(product, atIndex: 0)
