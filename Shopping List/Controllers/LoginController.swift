@@ -11,35 +11,9 @@ import UIKit
 class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     
     static let sharedInstance = LoginController()
-    //    let loginView : FBSDKLoginButton = FBSDKLoginButton()
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.whiteColor()
-        self.navigationController?.navigationBarHidden = true
-        
-//        var friendsRequest : FBRequest = FBRequest.requestForMyFriends()
-//        friendsRequest.startWithCompletionHandler
-//            {
-//                (connection:FBRequestConnection!,   result:AnyObject!, error:NSError!) -> Void in
-//                var resultdict = result as NSDictionary
-//                println("Result Dict: \(resultdict)")
-//                var data : NSArray = resultdict.objectForKey("data") as NSArray
-//                
-//                for i in 0 ..< data.count
-//                {
-//                    let valueDict : NSDictionary = data[i] as NSDictionary
-//                    let id = valueDict.objectForKey("id") as String
-//                    println("the id value is \(id)")
-//                }
-//                
-//                var friends = resultdict.objectForKey("data") as NSArray
-//                println("Found \(friends.count) friends")
-//        }
-        
-//        println(FBSDKAccessToken.currentAccessToken().tokenString)
-        
-//        returnUserData()
-        
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -52,9 +26,8 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
             
-            
-            let vc = ContainerViewController()
-            self.presentViewController(, animated: true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
+            self.presentViewController(MainController.sharedInstance, animated: true, completion: nil)
             
         }
         else
@@ -143,19 +116,11 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         println("User Logged In")
         
-        
-        //         self.navigationController?.pushViewController(MainController.sharedInstance, animated: false)
-        
-        
-        registerUser(){ user in
-            
-            let vc = ContainerViewController()
-            self.presentViewController(vc, animated: true, completion: nil)
+        registerUser() { user in
+            self.presentViewController(MainController.sharedInstance, animated: true, completion: nil)
             
             println("ja chegou a resposta")
         }
-        
-        
         
         if ((error) != nil)
         {
