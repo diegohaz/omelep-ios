@@ -58,6 +58,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     func share(sender: UIBarButtonItem){
+        self.mail_sender.productNames = products
         let mailComposeViewController = mail_sender.configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
             self.presentViewController(mailComposeViewController, animated: true, completion: nil)
@@ -68,6 +69,8 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     func doneItem(cell: ItemViewCell) {
         let indexPath = collectionView!.indexPathForCell(cell)
+        
+        DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
 
         products.removeAtIndex(indexPath!.row)
         collectionView!.reloadData()
@@ -76,8 +79,17 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     func removeItem(cell: ItemViewCell) {
         let indexPath = collectionView!.indexPathForCell(cell)
         
+        DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
+        
         products.removeAtIndex(indexPath!.row)
         collectionView!.reloadData()
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if !textField.isEqual(reusableView?.newItemTextField) {
+            let title = (self.navigationItem.titleView as! TitleTextField).text
+            DAORemoto.sharedInstance.changeNameOfList(title, list: self.list!)
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

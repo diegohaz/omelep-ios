@@ -150,7 +150,7 @@ extension ContainerViewController: UIGestureRecognizerDelegate {
                 recognizer.view!.center.x = self.view.center.x
             }
             
-            println(recognizer.view!.center.x)
+//            println(recognizer.view!.center.x)
             
             recognizer.setTranslation(CGPointZero, inView: view)
         case .Ended:
