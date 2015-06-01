@@ -180,7 +180,9 @@ class FunctionsDAO {
     }
     
     
+    
     //Tags:
+    
     /**Função que procura tag a partir do ID:*/
     func searchTagFromID(id : String, callback: (Tag) -> Void) {
         
@@ -202,7 +204,9 @@ class FunctionsDAO {
         
     }
     
+    
     //Users:
+    
     /**Funçao que adiciona um usuário para uma lista*/
     func addUserToList(user : User, list : List) {
         
@@ -244,5 +248,32 @@ class FunctionsDAO {
         
     }
     
+    
+    //Relacão User e List
+    
+    /**Funcão que relaciona uma lista a um determinado usuário e vice-versa*/
+    func createRelationUserList(user : User, list : List){
+        
+        FunctionsDAO.sharedInstance.addListToUser(list, user: user)
+        FunctionsDAO.sharedInstance.addUserToList(user, list: list)
+        
+    }
+    
+    
+    //Suggestions:
+    
+    /** Função que adiciona uma lista para sugestão */
+    func addListToSeggestion(list : List) {
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
+        
+        var seggestRef = myRootRef.childByAppendingPath("suggestion")
+        
+        var info = [list.id: true]
+        
+        //Salvando no FireBase:
+        seggestRef.updateChildValues(info)
+        
+    }
     
 }

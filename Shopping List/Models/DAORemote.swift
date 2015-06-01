@@ -47,7 +47,7 @@ class DAORemoto {
             //Adicionando essa lista ao usuário logado
             var user : User
             user = DAOLocal.sharedInstance.readUser()
-            self.createRelationUserList(user, list:list)
+            FunctionsDAO.sharedInstance.createRelationUserList(user, list:list)
         })
         
         
@@ -236,14 +236,6 @@ class DAORemoto {
     
     //Relacão User e List
     
-    /**Funcão que relaciona uma lista a um determinado usuário e vice-versa*/
-    func createRelationUserList(user : User, list : List){
-        
-        FunctionsDAO.sharedInstance.addListToUser(list, user: user)
-        FunctionsDAO.sharedInstance.addUserToList(user, list: list)
-        
-    }
-    
     /**Funcão que adiciona um amigo a uma lista*/
     func addFriendToList(idFB : String, list : List) {
         
@@ -253,11 +245,50 @@ class DAORemoto {
             
             user.id = id
             
-            self.createRelationUserList(user, list: list)
+            FunctionsDAO.sharedInstance.createRelationUserList(user, list: list)
             
         })
         
     }
+    
+    //Suggestions:
+    
+    /**Função que retorna todas as listas de um usuário:*/
+    func suggestionsLists(callback: [List] -> Void) {
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/suggestion")
+        
+        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            var arrayList : [List] = []
+            
+            if( snapshot.exists() == true ){
+                
+                var dic = snapshot.value as! NSDictionary
+                
+                var keys = dic.allKeys
+                for x in keys {
+                    FunctionsDAO.sharedInstance.searchListFromID(x as! String, callback:  { (lis : List) in
+                                
+                        arrayList.append(lis)
+                                
+                        if( keys.count == arrayList.count ){
+                            callback(arrayList)
+                        }
+                                
+                    })
+                    
+                }
+                
+            }
+            
+        })
+        
+    }
+    
+    
+    
+    
     
     
     
