@@ -203,12 +203,30 @@ class DAORemoto {
 
         myRootRef.observeEventType(FEventType.ChildAdded, withBlock: { (snapshot : FDataSnapshot!) -> Void in
             
-            var dic = snapshot.value as! NSDictionary
-            
-            var key = dic.allKeys[0] as! String
+            var key = snapshot.key 
             
             FunctionsDAO.sharedInstance.searchProductFromID(key, callback: { (product : Product) -> Void in
-                products.append(product)
+                products.insert(product, atIndex: 0)
+                callback(products)
+            })
+            
+        })
+        
+        var myRootRef2 = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products")
+        
+        myRootRef2.observeEventType(FEventType.ChildRemoved, withBlock: { (snapshot : FDataSnapshot!) -> Void in
+            
+            var key = snapshot.key
+            
+            FunctionsDAO.sharedInstance.searchProductFromID(key, callback: { (product : Product) -> Void in
+                var i = 0
+                for x in products {
+                    if( x.name == product.name ){
+                        break;
+                    }
+                    i++;
+                }
+                products.removeAtIndex(i)
                 callback(products)
             })
             
