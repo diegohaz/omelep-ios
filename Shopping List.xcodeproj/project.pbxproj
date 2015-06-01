@@ -85,10 +85,10 @@
 		374CBA6E1B17D76900255CF1 /* ListsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
 		374CBA6F1B17D76900255CF1 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		374CBA701B17D76900255CF1 /* SingleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleListController.swift; sourceTree = "<group>"; };
-		374CBA731B17D76900255CF1 /* DAOLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOLocal.swift; sourceTree = "<group>"; };
-		374CBA741B17D76900255CF1 /* DAORemoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAORemoto.swift; sourceTree = "<group>"; };
+		374CBA731B17D76900255CF1 /* DAOLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DAOLocal.swift; path = ../Models/DAOLocal.swift; sourceTree = "<group>"; };
+		374CBA741B17D76900255CF1 /* DAORemoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DAORemoto.swift; path = ../Models/DAORemoto.swift; sourceTree = "<group>"; };
 		374CBA761B17D76900255CF1 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
-		374CBA771B17D76900255CF1 /* NetworkConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnect.swift; sourceTree = "<group>"; };
+		374CBA771B17D76900255CF1 /* NetworkConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkConnect.swift; path = ../Models/NetworkConnect.swift; sourceTree = "<group>"; };
 		374CBA781B17D76900255CF1 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		374CBA791B17D76900255CF1 /* Shopping List-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Shopping List-Bridging-Header.h"; path = "../Shopping List-Bridging-Header.h"; sourceTree = "<group>"; };
 		374CBA7B1B17D76A00255CF1 /* Shopping_List.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shopping_List.xcdatamodel; sourceTree = "<group>"; };
@@ -122,9 +122,9 @@
 		8E9030C71B17B5130027DE70 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		8E9030C91B17B51D0027DE70 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		8E9030D41B17DA960027DE70 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
-		8E9030D61B17DAAB0027DE70 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		8E9030D71B17DAAB0027DE70 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		8E9030D91B1A99D30027DE70 /* FunctionsDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsDAO.swift; sourceTree = "<group>"; };
+		8E9030D61B17DAAB0027DE70 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../Models/Reachability.h; sourceTree = "<group>"; };
+		8E9030D71B17DAAB0027DE70 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../Models/Reachability.m; sourceTree = "<group>"; };
+		8E9030D91B1A99D30027DE70 /* FunctionsDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FunctionsDAO.swift; path = ../Models/FunctionsDAO.swift; sourceTree = "<group>"; };
 		8E9030DB1B1BEDE90027DE70 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -156,13 +156,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E48A4651B1A08AF0072403C /* projeto do matheu */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "projeto do matheu";
-			sourceTree = "<group>";
-		};
 		2E6639F91B18AA6700DA97D9 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,18 +199,11 @@
 		374CBA721B17D76900255CF1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				374CBA731B17D76900255CF1 /* DAOLocal.swift */,
-				374CBA741B17D76900255CF1 /* DAORemoto.swift */,
-				8E9030D91B1A99D30027DE70 /* FunctionsDAO.swift */,
 				374CBA761B17D76900255CF1 /* List.swift */,
-				374CBA771B17D76900255CF1 /* NetworkConnect.swift */,
 				374CBA781B17D76900255CF1 /* Product.swift */,
 				374CBA7C1B17D76A00255CF1 /* Tag.swift */,
 				374CBA7E1B17D76A00255CF1 /* User.swift */,
 				374CBA7A1B17D76900255CF1 /* Shopping_List.xcdatamodeld */,
-				374CBA791B17D76900255CF1 /* Shopping List-Bridging-Header.h */,
-				8E9030D61B17DAAB0027DE70 /* Reachability.h */,
-				8E9030D71B17DAAB0027DE70 /* Reachability.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,7 +253,6 @@
 			children = (
 				8E9030CB1B17B56A0027DE70 /* Frameworks */,
 				8E49FC861B0F75F70087FA08 /* Shopping List */,
-				2E48A4651B1A08AF0072403C /* projeto do matheu */,
 				8E49FC9F1B0F75F70087FA08 /* Shopping ListTests */,
 				8E49FC851B0F75F70087FA08 /* Products */,
 			);
@@ -288,6 +273,7 @@
 				374CBA6D1B17D76900255CF1 /* Controllers */,
 				374CBA7F1B17D76A00255CF1 /* Views */,
 				374CBA721B17D76900255CF1 /* Models */,
+				8EBA28D91B1CDC6200B8606F /* API */,
 				8E49FC891B0F75F70087FA08 /* AppDelegate.swift */,
 				8E49FC931B0F75F70087FA08 /* Images.xcassets */,
 				8E49FC871B0F75F70087FA08 /* Supporting Files */,
@@ -328,6 +314,20 @@
 				2E6639F91B18AA6700DA97D9 /* Firebase */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8EBA28D91B1CDC6200B8606F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				374CBA731B17D76900255CF1 /* DAOLocal.swift */,
+				374CBA741B17D76900255CF1 /* DAORemoto.swift */,
+				8E9030D91B1A99D30027DE70 /* FunctionsDAO.swift */,
+				374CBA771B17D76900255CF1 /* NetworkConnect.swift */,
+				374CBA791B17D76900255CF1 /* Shopping List-Bridging-Header.h */,
+				8E9030D61B17DAAB0027DE70 /* Reachability.h */,
+				8E9030D71B17DAAB0027DE70 /* Reachability.m */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
