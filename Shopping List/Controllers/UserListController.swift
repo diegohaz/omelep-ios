@@ -78,7 +78,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
             }
 
         })
-        
+
         let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: {
             (alert: UIAlertAction!) -> Void in
 

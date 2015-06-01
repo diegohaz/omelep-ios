@@ -205,8 +205,20 @@ class DAORemoto {
         
     }
     
-    
-    
+    /**Funcão que adiciona um amigo a uma lista*/
+    func addFriendToList(idFB : String, list : List) {
+        
+        FunctionsDAO.sharedInstance.searchIDFromIDFB(idFB, callback: { (id : String) in
+            
+            var user : User = User()
+            
+            user.id = id
+            
+            self.createRelationUserList(user, list: list)
+            
+        })
+        
+    }
     
     
     

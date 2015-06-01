@@ -184,7 +184,7 @@ class FunctionsDAO {
     /**Função que procura tag a partir do ID:*/
     func searchTagFromID(id : String, callback: (Tag) -> Void) {
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/product/\(id)")
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/tag/\(id)")
         
         myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
@@ -224,13 +224,13 @@ class FunctionsDAO {
     }
     
     /**Função que procura ID do usuário a partir do IDFB*/
-    func searchIDFromIDFB(user : User, callback: (String) -> Void) {
+    func searchIDFromIDFB(idfb : String, callback: (String) -> Void) {
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
         
         var listRef = myRootRef.childByAppendingPath("user")
         
-        listRef.queryOrderedByChild("idfb").queryEqualToValue(user.id).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+        listRef.queryOrderedByChild("idfb").queryEqualToValue(idfb).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
             if( snapshot.exists() == true ) {
                 var dic = snapshot.value as! NSDictionary
@@ -239,6 +239,7 @@ class FunctionsDAO {
             } else {
                 print("Usuário nao registrado, mas logado?? ")
             }
+            
         })
         
     }
