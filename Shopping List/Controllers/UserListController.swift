@@ -185,11 +185,15 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
                 
                 let friends: AnyObject? = result.valueForKey("data")
                 let friendNames: [String] = friends?.valueForKey("name") as! [String]
-                println("User Name is: \(friendNames))")
+                let friendIDs: [String] = friends?.valueForKey("id") as! [String]
+//                println("User Name is: \(friendNames))")
                 
-//                let friendsList: friendsLists
-                
-//                self.presentViewController(friendsList, animated: true, completion: nil)
+                let friendsList: FriendsListController
+                friendsList = FriendsListController()
+                friendsList.friendNames = friendNames
+                friendsList.friendIDs = friendIDs
+                friendsList.list = self.list
+                self.navigationController?.pushViewController(friendsList, animated: true)
 
             }
         })
