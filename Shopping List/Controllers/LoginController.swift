@@ -54,7 +54,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             
             
             let vc = ContainerViewController()
-            self.presentViewController(vc, animated: true, completion: nil)
+            self.presentViewController(, animated: true, completion: nil)
             
         }
         else
