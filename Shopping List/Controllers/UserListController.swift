@@ -58,13 +58,37 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     func share(sender: UIBarButtonItem){
-        self.mail_sender.productNames = products
-        let mailComposeViewController = mail_sender.configuredMailComposeViewController()
-        if MFMailComposeViewController.canSendMail() {
-            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
-        } else {
-            self.mail_sender.showSendMailErrorAlert()
-        }
+        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .ActionSheet)
+
+    
+        let emailAction = UIAlertAction(title: "Enviar lista via e-mail", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+        })
+        
+        let smsAction = UIAlertAction(title: "Enviar lista via e-mail", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+
+        })
+        
+        optionMenu.addAction(emailAction)
+        optionMenu.addAction(smsAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.presentViewController(optionMenu, animated: true, completion: nil)
+        
+//        self.mail_sender.productNames = products
+//        let mailComposeViewController = mail_sender.configuredMailComposeViewController()
+//        if MFMailComposeViewController.canSendMail() {
+//            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+//        } else {
+//            self.mail_sender.showSendMailErrorAlert()
+//        }
     }
     
     func doneItem(cell: ItemViewCell) {
