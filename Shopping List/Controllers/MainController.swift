@@ -16,7 +16,7 @@ class MainController: UINavigationController {
         super.viewDidLoad()
         
         self.navigationBar.tintColor = UIColor(red: 148/255, green: 30/255, blue: 16/255, alpha: 1)
-        self.pushViewController(ListsController.sharedInstance, animated: true)
+        self.pushViewController(LoginController.sharedInstance, animated: true)
     }
 
 }

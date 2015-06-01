@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2E1C6ED91B1CA91A0048FFEB /* FriendsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */; };
+		2E48A4641B1A08830072403C /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A4631B1A08830072403C /* CenterViewController.swift */; };
+		2E48A4671B1A08DD0072403C /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A4661B1A08DD0072403C /* ContainerViewController.swift */; };
+		2E48A4691B1A08FF0072403C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A4681B1A08FF0072403C /* Settings.swift */; };
 		2E48A46B1B1A09800072403C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46A1B1A09800072403C /* SettingsView.swift */; };
 		2E48A46D1B1A098E0072403C /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E48A46C1B1A098E0072403C /* SettingsView.xib */; };
 		2E48A46F1B1A10570072403C /* MailSenderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46E1B1A10570072403C /* MailSenderController.swift */; };
@@ -68,6 +71,9 @@
 
 /* Begin PBXFileReference section */
 		2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListController.swift; sourceTree = "<group>"; };
+		2E48A4631B1A08830072403C /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		2E48A4661B1A08DD0072403C /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		2E48A4681B1A08FF0072403C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		2E48A46A1B1A09800072403C /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2E48A46C1B1A098E0072403C /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		2E48A46E1B1A10570072403C /* MailSenderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailSenderController.swift; sourceTree = "<group>"; };
@@ -176,11 +182,14 @@
 		374CBA6D1B17D76900255CF1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2E6639F71B18A8E100DA97D9 /* LoginController.swift */,
 				374CBA6F1B17D76900255CF1 /* MainController.swift */,
+				2E48A4661B1A08DD0072403C /* ContainerViewController.swift */,
+				2E6639F71B18A8E100DA97D9 /* LoginController.swift */,
 				374CBA6E1B17D76900255CF1 /* ListsController.swift */,
 				374CBABD1B17DDA000255CF1 /* UserListController.swift */,
 				374CBA701B17D76900255CF1 /* SingleListController.swift */,
+				2E48A4631B1A08830072403C /* CenterViewController.swift */,
+				2E48A4681B1A08FF0072403C /* Settings.swift */,
 				2E48A46E1B1A10570072403C /* MailSenderController.swift */,
 				2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */,
 			);
@@ -435,16 +444,19 @@
 				374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */,
 				374CBA961B17D76A00255CF1 /* Product.swift in Sources */,
 				374CBAC41B17E41400255CF1 /* UserListView.swift in Sources */,
+				2E48A4671B1A08DD0072403C /* ContainerViewController.swift in Sources */,
 				374CBAB51B17D79600255CF1 /* NewItemViewCell.swift in Sources */,
 				374CBA9A1B17D76A00255CF1 /* User.swift in Sources */,
 				3709153B1B19160200E99B33 /* SingleListView.swift in Sources */,
 				374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */,
 				2E1C6ED91B1CA91A0048FFEB /* FriendsListController.swift in Sources */,
 				374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */,
+				2E48A4641B1A08830072403C /* CenterViewController.swift in Sources */,
 				374CBA921B17D76A00255CF1 /* DAORemoto.swift in Sources */,
 				2E6639F81B18A8E100DA97D9 /* LoginController.swift in Sources */,
 				8E9030D81B17DAAB0027DE70 /* Reachability.m in Sources */,
 				2E48A46B1B1A09800072403C /* SettingsView.swift in Sources */,
+				2E48A4691B1A08FF0072403C /* Settings.swift in Sources */,
 				374CBAB71B17D79600255CF1 /* SuggestionViewCell.swift in Sources */,
 				374CBA911B17D76A00255CF1 /* DAOLocal.swift in Sources */,
 				374CBA951B17D76A00255CF1 /* NetworkConnect.swift in Sources */,

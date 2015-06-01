@@ -18,8 +18,6 @@ class ListsView: UICollectionView {
         layout.itemSize = CGSize(width: self.bounds.width, height: 48)
         
         self.backgroundColor = UIColor.whiteColor()
-        
-        self.alwaysBounceVertical = true
     }
 
     required init(coder aDecoder: NSCoder) {
