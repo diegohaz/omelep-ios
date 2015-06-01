@@ -84,6 +84,13 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         collectionView!.reloadData()
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        if !textField.isEqual(reusableView?.newItemTextField) {
+            let title = (self.navigationItem.titleView as! TitleTextField).text
+            DAORemoto.sharedInstance.changeNameOfList(title, list: self.list!)
+        }
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField.isEqual(reusableView?.newItemTextField) {
             let product = Product()
