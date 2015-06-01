@@ -63,7 +63,7 @@ class DAORemoto {
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)")
         
-        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+        myRootRef.queryOrderedByKey().observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
             var arrayList : [List] = []
             
