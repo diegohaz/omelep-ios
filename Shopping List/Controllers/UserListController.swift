@@ -61,13 +61,21 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .ActionSheet)
 
     
-        let emailAction = UIAlertAction(title: "Enviar lista via e-mail", style: .Default, handler: {
+        let smsAction = UIAlertAction(title: "Enviar lista via sms", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             
         })
         
-        let smsAction = UIAlertAction(title: "Enviar lista via e-mail", style: .Default, handler: {
+        let emailAction = UIAlertAction(title: "Enviar lista via e-mail", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
+            
+            self.mail_sender.productNames = self.products
+            let mailComposeViewController = self.mail_sender.configuredMailComposeViewController()
+            if MFMailComposeViewController.canSendMail() {
+                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                self.mail_sender.showSendMailErrorAlert()
+            }
 
         })
         
@@ -82,13 +90,6 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         self.presentViewController(optionMenu, animated: true, completion: nil)
         
-//        self.mail_sender.productNames = products
-//        let mailComposeViewController = mail_sender.configuredMailComposeViewController()
-//        if MFMailComposeViewController.canSendMail() {
-//            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
-//        } else {
-//            self.mail_sender.showSendMailErrorAlert()
-//        }
     }
     
     func doneItem(cell: ItemViewCell) {

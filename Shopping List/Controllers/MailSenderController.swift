@@ -21,7 +21,7 @@ class MailSender: NSObject, MFMailComposeViewControllerDelegate {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
-        mailComposerVC.setToRecipients(["brunobaring@gmail.com"])
+        mailComposerVC.setToRecipients(["\(DAOLocal.sharedInstance.readUser().email)"])
         mailComposerVC.setSubject("Spesa")
         
         var productNameDisplay = ""
