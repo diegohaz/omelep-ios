@@ -17,8 +17,29 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         self.view.backgroundColor = UIColor.whiteColor()
         self.navigationController?.navigationBarHidden = true
         
+//        var friendsRequest : FBRequest = FBRequest.requestForMyFriends()
+//        friendsRequest.startWithCompletionHandler
+//            {
+//                (connection:FBRequestConnection!,   result:AnyObject!, error:NSError!) -> Void in
+//                var resultdict = result as NSDictionary
+//                println("Result Dict: \(resultdict)")
+//                var data : NSArray = resultdict.objectForKey("data") as NSArray
+//                
+//                for i in 0 ..< data.count
+//                {
+//                    let valueDict : NSDictionary = data[i] as NSDictionary
+//                    let id = valueDict.objectForKey("id") as String
+//                    println("the id value is \(id)")
+//                }
+//                
+//                var friends = resultdict.objectForKey("data") as NSArray
+//                println("Found \(friends.count) friends")
+//        }
         
-        println(FBSDKAccessToken.currentAccessToken())
+//        println(FBSDKAccessToken.currentAccessToken().tokenString)
+        
+//        returnUserData()
+        
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -159,8 +180,9 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     
     func returnUserData()
     {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+        
+        let jabba: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, HTTPMethod: "GET")
+        jabba.startWithCompletionHandler({ (connection, result, error) -> Void in
             
             if ((error) != nil)
             {
@@ -169,12 +191,14 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             }
             else
             {
-                println("fetched user: \(result)")
-                let userName : NSString = result.valueForKey("name") as! NSString
-                println("User Name is: \(userName)")
-                let userEmail : NSString = result.valueForKey("email") as! NSString
-                println("User Email is: \(userEmail)")
+
+                let friends: AnyObject? = result.valueForKey("data")
+                let friendNames: [String] = friends?.valueForKey("name") as! [String]
+                println("User Name is: \(friendNames))")
+
             }
         })
+    
+
     }
 }

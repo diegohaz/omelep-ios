@@ -61,12 +61,17 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .ActionSheet)
 
     
-        let smsAction = UIAlertAction(title: "Enviar lista via sms", style: .Default, handler: {
+        let addMembersAction = UIAlertAction(title: "Add Members to List", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.showAddMembers()
+        })
+        
+        let smsAction = UIAlertAction(title: "Send List by SMS", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             self.showSMS()
         })
         
-        let emailAction = UIAlertAction(title: "Enviar lista via e-mail", style: .Default, handler: {
+        let emailAction = UIAlertAction(title: "Send List by E-mail", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             
             self.mail_sender.productNames = self.products
@@ -84,6 +89,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
 
         })
         
+        optionMenu.addAction(addMembersAction)
         optionMenu.addAction(emailAction)
         optionMenu.addAction(smsAction)
         optionMenu.addAction(cancelAction)
@@ -158,6 +164,32 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
         cell.label.text = product.name
         
         return cell
+    }
+    
+    
+    //Funcao para pegar amigos do facebook q estao conectados no app.
+    func showAddMembers() {
+        let friendRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, HTTPMethod: "GET")
+        friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                println("Error: \(error)")
+            }
+            else
+            {
+                
+                let friends: AnyObject? = result.valueForKey("data")
+                let friendNames: [String] = friends?.valueForKey("name") as! [String]
+                println("User Name is: \(friendNames))")
+                
+//                let friendsList: friendsLists
+                
+//                self.presentViewController(friendsList, animated: true, completion: nil)
+
+            }
+        })
     }
     
     //Função para enviar o sms

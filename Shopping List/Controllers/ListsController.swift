@@ -37,6 +37,8 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Menu"), style: .Plain, target: self, action: "openMenu:")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add:")
         
+
+        
         view.addSubview(self.collectionView!)
     }
     
@@ -62,9 +64,48 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
 
     }
     
+    
+    
     func openMenu(sender: UIBarButtonItem) {
         println("loadar o menu")
-        delegate?.toggleLeftPanel?()
+        
+//        delegate?.toggleLeftPanel?()
+        
+        
+        //** CUSTOM LOGIN
+//        let login = FBSDKLoginManager()
+//        login.logInWithReadPermissions(["email", "public_profile"]){ result, error in
+//            println("RESULT: '\(result)' ")
+//            
+//            if error != nil {
+//                println("error")
+//            }else if(result.isCancelled){
+//                println("result cancelled")
+//            }else{
+//                println("success Get user information.")
+//                
+//                var fbRequest = FBSDKGraphRequest(graphPath:"me", parameters: nil);
+//                fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+//                    
+//                    if error == nil {
+//                        
+//                        println("User Info : \(result)")
+//                    } else {
+//                        
+//                        println("Error Getting Info \(error)");
+//                        
+//                    }
+//                }
+//            }
+//        }
+        
+        //** CUSTOM LOGOUT
+        
+        FBSDKLoginManager().logOut()
+        let vc = LoginController()
+        self.presentViewController(vc, animated: true, completion: nil)
+
+        
     }
     
     func removeItem(cell: ItemViewCell) {
