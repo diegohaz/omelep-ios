@@ -194,6 +194,27 @@ class DAORemoto {
         
     }
 
+    /**Função que retorna todos os produtos de uma lista, e isso inclui uma atualização quando tem mais de um usuário na mesma lista*/
+    func allProductsOfList(list : List, callback: ([Product]) -> Void ) {
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products")
+        
+        var products : [Product] = []
+
+        myRootRef.observeEventType(FEventType.ChildAdded, withBlock: { (snapshot : FDataSnapshot!) -> Void in
+            
+            var dic = snapshot.value as! NSDictionary
+            
+            var key = dic.allKeys[0] as! String
+            
+            FunctionsDAO.sharedInstance.searchProductFromID(key, callback: { (product : Product) -> Void in
+                products.append(product)
+                callback(products)
+            })
+            
+        })
+        
+    }
     
     //Relacão User e List
     
