@@ -177,12 +177,17 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
             
         } else {
             
+            print("O celular não tem opção para enviar mensagem de texto! \n")
+            
         }
         
     }
     
     func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
-            self.dismissViewControllerAnimated(true, completion: nil)
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        //Aqui pode saber se o sms foi enviado com sucesso ou não, mas acho desnecessário no momento!
     }
     
 
