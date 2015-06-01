@@ -58,6 +58,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     func share(sender: UIBarButtonItem){
+        self.mail_sender.productNames = products
         let mailComposeViewController = mail_sender.configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
             self.presentViewController(mailComposeViewController, animated: true, completion: nil)
