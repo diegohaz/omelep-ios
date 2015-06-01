@@ -68,7 +68,12 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     }
     
     func removeItem(cell: ItemViewCell) {
+        let indexPath = collectionView?.indexPathForCell(cell)
         
+        DAORemoto.sharedInstance.deleteList(self.lists[indexPath!.row])
+        
+        self.lists.removeAtIndex(indexPath!.row)
+        self.collectionView?.reloadData()
     }
     
     func doneItem(cell: ItemViewCell) {
