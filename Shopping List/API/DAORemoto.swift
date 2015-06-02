@@ -83,21 +83,17 @@ class DAORemoto {
         myRootRef2.observeEventType(FEventType.ChildRemoved, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
             var key = snapshot.key
-            
-            FunctionsDAO.sharedInstance.searchListFromID(key, callback: { (list) in
-                
-                var i = 0
-                for x in arrayList {
-                    if( x.id == list.id ){
-                        break;
-                    }
-                    i++;
+        
+            var i = 0
+            for x in arrayList {
+                if( x.id == key ){
+                    break;
                 }
+                i++;
+            }
                 
-                arrayList.removeAtIndex(i)
-                callback(arrayList)
-                
-            })
+            arrayList.removeAtIndex(i)
+            callback(arrayList)
             
         })
         
@@ -167,15 +163,23 @@ class DAORemoto {
     /**Função que deleta uma lista*/
     func deleteList(list : List){
         
-        var user : User = DAOLocal.sharedInstance.readUser()
-        
-        var myUserRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/\(list.id)")
-        
-        myUserRef.removeValue()
-        
-        var myListRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
-        
-        myListRef.removeValue()
+        FunctionsDAO.sharedInstance.allIdOfUsersOfList(list, callback: { (idUsers) in
+            
+            var myListRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+            
+            myListRef.removeValue()
+            
+            var user : User = User()
+            
+            for id in idUsers{
+            
+                var myUserRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(id)/lists/\(list.id)")
+            
+                myUserRef.removeValue()
+                
+            }
+            
+        })
         
     }
     

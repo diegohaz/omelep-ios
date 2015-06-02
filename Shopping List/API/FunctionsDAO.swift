@@ -127,19 +127,19 @@ class FunctionsDAO {
     }
     
     /** Função que conta o número de usuários de uma lista */
-    func countUserOfList(list : List, callback: (Int) -> Void ){
+    func allIdOfUsersOfList(list : List, callback: ([String]) -> Void ){
         
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/users")
         
         myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot : FDataSnapshot!) in
-            var numUsers = 0
+            var idUsers : [String] = []
             
             if(snapshot.exists()) {
                 var dic = snapshot.value as! NSDictionary
-                numUsers = dic.allKeys.count
+                idUsers = dic.allKeys as! [String]
             }
             
-            callback(numUsers)
+            callback(idUsers)
             
         })
         
@@ -242,7 +242,6 @@ class FunctionsDAO {
             }
             
         })
-        
         
     }
     
