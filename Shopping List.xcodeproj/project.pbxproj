@@ -19,6 +19,7 @@
 		2E59AED51B1D0C6100F479D0 /* FunctionsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59AECE1B1D0C6100F479D0 /* FunctionsDAO.swift */; };
 		2E59AED61B1D0C6100F479D0 /* NetworkConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59AECF1B1D0C6100F479D0 /* NetworkConnect.swift */; };
 		2E59AED71B1D0C6100F479D0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E59AED11B1D0C6100F479D0 /* Reachability.m */; };
+		2E59AED91B1D385600F479D0 /* Boneco.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E59AED81B1D385600F479D0 /* Boneco.png */; };
 		2E6639F81B18A8E100DA97D9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6639F71B18A8E100DA97D9 /* LoginController.swift */; };
 		3709153B1B19160200E99B33 /* SingleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709153A1B19160200E99B33 /* SingleListView.swift */; };
 		374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA6E1B17D76900255CF1 /* ListsController.swift */; };
@@ -81,6 +82,7 @@
 		2E59AED01B1D0C6100F479D0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		2E59AED11B1D0C6100F479D0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		2E59AED21B1D0C6100F479D0 /* Shopping List-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Shopping List-Bridging-Header.h"; path = "API/Shopping List-Bridging-Header.h"; sourceTree = "<group>"; };
+		2E59AED81B1D385600F479D0 /* Boneco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Boneco.png; sourceTree = "<group>"; };
 		2E6639F71B18A8E100DA97D9 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		3709153A1B19160200E99B33 /* SingleListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleListView.swift; sourceTree = "<group>"; };
 		374CBA6E1B17D76900255CF1 /* ListsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				8E49FC861B0F75F70087FA08 /* Shopping List */,
 				8E49FC9F1B0F75F70087FA08 /* Shopping ListTests */,
 				8E49FC851B0F75F70087FA08 /* Products */,
+				2E59AED81B1D385600F479D0 /* Boneco.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -401,6 +404,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E59AED91B1D385600F479D0 /* Boneco.png in Resources */,
 				374CBAB61B17D79600255CF1 /* NewItemViewCell.xib in Resources */,
 				8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */,
 				374CBAB81B17D79600255CF1 /* SuggestionViewCell.xib in Resources */,

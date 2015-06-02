@@ -186,12 +186,16 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
                 let friends: AnyObject? = result.valueForKey("data")
                 let friendNames: [String] = friends?.valueForKey("name") as! [String]
                 let friendIDs: [String] = friends?.valueForKey("id") as! [String]
+                let friendPics: [String] = friends?.valueForKey("url") as! [String]
 //                println("User Name is: \(friendNames))")
+                
+                
                 
                 let friendsList: FriendsListController
                 friendsList = FriendsListController()
                 friendsList.friendNames = friendNames
                 friendsList.friendIDs = friendIDs
+                friendsList.friendPics = friendPics
                 friendsList.list = self.list
                 self.navigationController?.pushViewController(friendsList, animated: true)
 

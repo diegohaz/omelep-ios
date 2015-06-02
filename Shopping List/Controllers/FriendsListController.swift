@@ -15,6 +15,9 @@ class FriendsListController: UIViewController,UITableViewDelegate, UITableViewDa
     
     var friendNames: [String] = []
     var friendIDs: [String] = []
+    var friendPics: [String] = []
+    
+    
     var list: List!
     
     override func viewDidLoad() {
@@ -39,6 +42,11 @@ class FriendsListController: UIViewController,UITableViewDelegate, UITableViewDa
         var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
         cell.textLabel?.text = self.friendNames[indexPath.row]
+        
+//        let url = NSURL(string: friendPics[indexPath.row])
+//        let data = NSData(contentsOfURL: url!)
+//        var image : UIImage = UIImage(data: data!)!
+//        cell.imageView!.image = image
         
         return cell
         
