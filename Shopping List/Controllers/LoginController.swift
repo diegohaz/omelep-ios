@@ -17,8 +17,6 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         self.view.backgroundColor = UIColor.whiteColor()
 
 //        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
-
-        println(FBSDKAccessToken.currentAccessToken().tokenString)
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
