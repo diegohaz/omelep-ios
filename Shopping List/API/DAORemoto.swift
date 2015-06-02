@@ -60,36 +60,44 @@ class DAORemoto {
     func allListOfUser(callback: [List] -> Void) {
         
         var user : User = DAOLocal.sharedInstance.readUser()
+    
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)")
+        var arrayList : [List] = []
         
-        myRootRef.queryOrderedByKey().observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-            
-            var arrayList : [List] = []
-            
-            if( snapshot.exists() == true ){
-                var dic = snapshot.value as! NSDictionary
+        myRootRef.observeEventType(FEventType.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+        
+            var key = snapshot.key
+
+            FunctionsDAO.sharedInstance.searchListFromID(key, callback: { (list) in
+
+                arrayList.insert(list, atIndex: 0)
+                callback(arrayList)
                 
-                var keys = dic.allKeys
-                for x in keys {
-                    if x as! String == "lists" {
-                        var keyLists = dic["lists"]!.allKeys
-                        
-                        for keyL in keyLists {
-                            FunctionsDAO.sharedInstance.searchListFromID(keyL as! String, callback:  { (lis : List) in
-                                
-                                arrayList.append(lis)
-                                
-                                if( keyLists.count == arrayList.count ){
-                                    callback(arrayList)
-                                }
-                                
-                            })
-                        }
+            })
+        
+        })
+        
+        var myRootRef2 = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
+        
+        myRootRef2.observeEventType(FEventType.ChildRemoved, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            var key = snapshot.key
+            
+            FunctionsDAO.sharedInstance.searchListFromID(key, callback: { (list) in
+                
+                var i = 0
+                for x in arrayList {
+                    if( x.id == list.id ){
+                        break;
                     }
+                    i++;
                 }
                 
-            }
+                arrayList.removeAtIndex(i)
+                callback(arrayList)
+                
+            })
             
         })
         
