@@ -67,18 +67,13 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                 {
                     //verifica se usuario ja existe
                     var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
-                    
-<<<<<<< HEAD
-                    //Apagando dados do último usuário logado:
-                    DAOLocal.sharedInstance.deleteAllUsers()
-=======
+
                     var listRef = myRootRef.childByAppendingPath("user")
->>>>>>> origin/master
                     
                     listRef.queryOrderedByChild("idfb").queryEqualToValue(result.valueForKey("id")).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
                         
                         //Apagando dados do último usuário logado:
-                        DAOLocal.sharedInstance.deleteLastUser()
+                        DAOLocal.sharedInstance.deleteAllUsers()
                         
                         var user : User = User()
                         
