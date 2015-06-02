@@ -37,22 +37,31 @@ class DAOLocal {
         var appDelegate : AppDelegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        var context = NSManagedObjectContext()
+        var context : NSManagedObjectContext
         context = appDelegate.managedObjectContext!
         
-        var request : NSFetchRequest
-        request = NSFetchRequest(entityName: "User")
+        var entity : NSEntityDescription
+        entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)!
         
-        var erro : NSError?
-        var result : [User]
+        var request : NSFetchRequest = NSFetchRequest()
+        request.entity = entity
         
-        result = context.executeFetchRequest(request, error: &erro)! as! [User]
+        var arguments:NSArray = ["\(true)"]
+        var pred : NSPredicate = NSPredicate(format: "(me == %@)", argumentArray: arguments as [AnyObject])
+        request.predicate = pred
         
-        return result[0]
+        var lista : User
+        var error : NSError?
+        var result : NSArray = context.executeFetchRequest(request, error:&error)!
+        
+        lista = result[0] as! User
+        
+        return lista
         
     }
     
-    func deleteLastUser() {
+    
+    func deleteAllUsers() {
         
         var appDelegate : AppDelegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -72,6 +81,34 @@ class DAOLocal {
         
         for user in result {
             context.deleteObject(user as! NSManagedObject)
+        }
+        
+        context.save(&error)
+    }
+    
+    func cleanUsers() {
+        
+        var appDelegate : AppDelegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        var context : NSManagedObjectContext
+        context = appDelegate.managedObjectContext!
+        
+        var entity : NSEntityDescription
+        entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)!
+        
+        var request : NSFetchRequest = NSFetchRequest()
+        request.entity = entity
+        
+        var user : NSManagedObject
+        var error : NSError?
+        var result : [User] = context.executeFetchRequest(request, error:&error)! as! [User]
+        
+        for user in result {
+            if ( user != result[0] ) {
+                context.deleteObject(user)
+                print("Item deletado! \n")
+            }
         }
         
         context.save(&error)

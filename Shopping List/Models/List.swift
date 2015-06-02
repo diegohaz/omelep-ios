@@ -14,10 +14,14 @@ import UIKit
 
 class List: NSManagedObject {
 
+    @NSManaged var id: String
+    @NSManaged var localID: NSNumber
     @NSManaged var name: String
+    @NSManaged var photo: NSData
+    @NSManaged var updatedDate: NSDate
     @NSManaged var products: NSSet
     @NSManaged var tags: NSSet
-    @NSManaged var id: String
+
     
     convenience init() {
         

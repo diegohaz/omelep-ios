@@ -70,7 +70,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                 listRef.queryOrderedByChild("idfb").queryEqualToValue(result.valueForKey("id")).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
                     
                     //Apagando dados do último usuário logado:
-                    DAOLocal.sharedInstance.deleteLastUser()
+                    DAOLocal.sharedInstance.deleteAllUsers()
                     
                     var user : User = User()
                     

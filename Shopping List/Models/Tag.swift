@@ -14,8 +14,9 @@ import UIKit
 
 class Tag: NSManagedObject {
 
-    @NSManaged var name: String
     @NSManaged var id: String
+    @NSManaged var localID: NSNumber
+    @NSManaged var name: String
     
     convenience init() {
         

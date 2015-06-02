@@ -13,11 +13,14 @@ import UIKit
 @objc(Product)
 
 class Product: NSManagedObject {
-
-    @NSManaged var name: String
+    
     @NSManaged var brand: String
     @NSManaged var cubage: String
     @NSManaged var id: String
+    @NSManaged var localID: NSNumber
+    @NSManaged var name: String
+    @NSManaged var photo: NSData
+    @NSManaged var quantity: NSNumber
     
     convenience init() {
         

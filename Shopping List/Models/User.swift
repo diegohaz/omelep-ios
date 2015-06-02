@@ -14,10 +14,11 @@ import CoreData
 
 class User: NSManagedObject {
 
-    @NSManaged var name: String
     @NSManaged var email: String
-    @NSManaged var family: AnyObject
     @NSManaged var id: String
+    @NSManaged var name: String
+    @NSManaged var me: NSNumber
+    @NSManaged var photo: NSData
     @NSManaged var lists: NSSet
     @NSManaged var tags: NSSet
     
