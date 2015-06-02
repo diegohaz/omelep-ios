@@ -172,7 +172,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     //Funcao para pegar amigos do facebook q estao conectados no app.
     func showAddMembers() {
-        let friendRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, HTTPMethod: "GET")
+        let friendRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/picture", parameters: nil, HTTPMethod: "GET")
         friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
             if ((error) != nil)
