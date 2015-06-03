@@ -17,7 +17,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         title = "Lists"
         collectionView = ListsView(frame: self.view.bounds)
         collectionView!.dataSource = self

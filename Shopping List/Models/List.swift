@@ -21,7 +21,7 @@ class List: NSManagedObject {
     @NSManaged var updatedDate: NSDate
     @NSManaged var products: NSSet
     @NSManaged var tags: NSSet
-
+    @NSManaged var users: NSSet
     
     convenience init() {
         
@@ -38,12 +38,15 @@ class List: NSManagedObject {
         
         self.name = ""
         self.id = ""
+        self.updatedDate = NSDate()
         
     }
 
 }
 
 extension List{
+    
+    //Products:
     
     func addProduct(product : Product) {
         var items = self.mutableSetValueForKey("products");
@@ -61,6 +64,8 @@ extension List{
         items.removeObject(product)
     }
     
+    //Tags:
+    
     func addTag(tag : Tag) {
         var items = self.mutableSetValueForKey("tags");
         items.addObject(tag);
@@ -75,6 +80,24 @@ extension List{
     func removeTag(tag : Tag) {
         var items = self.mutableSetValueForKey("tags")
         items.removeObject(tag)
+    }
+    
+    //Users:
+    
+    func addUser(user : User) {
+        var items = self.mutableSetValueForKey("users");
+        items.addObject(user);
+    }
+    
+    func removeUser(user : User) {
+        var items = self.mutableSetValueForKey("users")
+        items.removeObject(user)
+    }
+    
+    func returnUser() -> [User] {
+        var items = self.mutableSetValueForKey("users")
+        var array = items.allObjects
+        return array as! [User]
     }
     
 }

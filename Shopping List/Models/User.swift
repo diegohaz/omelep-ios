@@ -21,6 +21,7 @@ class User: NSManagedObject {
     @NSManaged var photo: NSData
     @NSManaged var lists: NSSet
     @NSManaged var tags: NSSet
+    @NSManaged var family: NSSet
     
     convenience init() {
         
@@ -46,6 +47,8 @@ class User: NSManagedObject {
 
 extension User{
     
+    //List
+    
     func addList(list : List) {
         var items = self.mutableSetValueForKey("lists");
         items.addObject(list);
@@ -57,6 +60,8 @@ extension User{
         return array as! [List]
     }
     
+    //Tag
+    
     func addTag(tag : Tag) {
         var items = self.mutableSetValueForKey("tags");
         items.addObject(tag);
@@ -66,6 +71,19 @@ extension User{
         var items = self.mutableSetValueForKey("tags")
         var array = items.allObjects
         return array as! [Tag]
+    }
+    
+    //Users
+    
+    func addUser(user : User) {
+        var items = self.mutableSetValueForKey("family");
+        items.addObject(user);
+    }
+    
+    func returnUser() -> [User] {
+        var items = self.mutableSetValueForKey("family")
+        var array = items.allObjects
+        return array as! [User]
     }
     
     

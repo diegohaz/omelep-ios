@@ -99,18 +99,31 @@ class DAOLocal {
         
         var request : NSFetchRequest = NSFetchRequest()
         request.entity = entity
-        
-        var user : NSManagedObject
+    
         var error : NSError?
         var result : [User] = context.executeFetchRequest(request, error:&error)! as! [User]
         
         var userCerto : User = self.readUser()
+        var familia : [User] = userCerto.returnUser()
         
-        for user in result {
-            if ( user != userCerto ) {
-                context.deleteObject(user)
-                print("User desnecessário deletado! \n")
+        var user1 : User
+        var user2 : User
+        
+        for user1 in result {
+            var bool = true
+            for user2 in  familia {
+                if( user1 == user2 ){
+                    bool = false
+                }
             }
+            
+            if( bool ){
+                if ( user1 != userCerto ) {
+                    context.deleteObject(user1)
+                    print("User desnecessário deletado! \n")
+                }
+            }
+            
         }
         
         context.save(&error)
@@ -120,8 +133,7 @@ class DAOLocal {
     //Lists:
     
     func readLists() -> [List]{
-        //TODO: descobrir usuário
-        var user : User = User()
+        var user : User = self.readUser()
         return user.returnList()
         
     }
@@ -195,6 +207,7 @@ class DAOLocal {
         return readLists()
         
     }
+    
     
     //Products:
     
