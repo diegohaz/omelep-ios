@@ -13,8 +13,19 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     static let sharedInstance = LoginController()
     let loginView : FBSDKLoginButton = FBSDKLoginButton()
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.whiteColor()
+        
+        
+        activityIndicator.frame = CGRectMake(100, 100, 100, 100)
+        self.view.addSubview(activityIndicator)
+//        activityIndicator.stopAnimating()
+
+//        activityIndicator.startAnimating()
+//        activityIndicator.hidden = false
+//        activityIndicator.stopAnimating()
         
         //        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
         
@@ -39,9 +50,15 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
+            loginView.addTarget(self, action: "startActivityIndicator", forControlEvents: UIControlEvents.TouchUpInside)
+            
             println("user inicializou DESLOGADO")
             
         }
+    }
+    
+    func startActivityIndicator(){
+        activityIndicator.startAnimating()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,6 +67,8 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func registerUser( callback: (User) -> Void) {
+        
+
         
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         let graphRequestForImage : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/picture?redirect=false", parameters: nil)
@@ -94,7 +113,8 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                             println("User ja estava Registrado")
 
                             
-                        } else {
+                        }
+                        else {
                             ///imagem
                             let data: AnyObject? = result2.valueForKey("data")
                             let url = NSURL(string: data!.valueForKey("url") as! String)
@@ -135,9 +155,16 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     
+    
+    
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         println("User Logged In")
         
+//        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+//        activityIndicator.frame = CGRectMake(100, 100, 100, 100)
+//        self.view.addSubview(activityIndicator)
+        
+//        activityIndicator.startAnimating()
         
         registerUser(){ user in
             
@@ -145,7 +172,15 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             self.navigationController?.pushViewController(listsController, animated: true)
             
             println("ja chegou a resposta")
+            
+            self.activityIndicator.stopAnimating()
+
         }
+        
+        
+        
+
+        
         
         
         if ((error) != nil)
