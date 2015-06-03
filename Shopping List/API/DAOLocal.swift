@@ -104,10 +104,12 @@ class DAOLocal {
         var error : NSError?
         var result : [User] = context.executeFetchRequest(request, error:&error)! as! [User]
         
+        var userCerto : User = self.readUser()
+        
         for user in result {
-            if ( user != result[0] ) {
+            if ( user != userCerto ) {
                 context.deleteObject(user)
-                print("Item deletado! \n")
+                print("User desnecessário deletado! \n")
             }
         }
         

@@ -28,7 +28,6 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         navigationItem.hidesBackButton = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Menu"), style: .Plain, target: self, action: "openMenu:")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add:")
-    
         
         view.addSubview(self.collectionView!)
     }
