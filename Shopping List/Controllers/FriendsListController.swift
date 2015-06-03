@@ -8,48 +8,91 @@
 
 import UIKit
 
-class FriendsListController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class FriendsListController: UIViewController,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     
-    var tableView: UITableView  =   UITableView()
+    var tableView: UITableView =   UITableView()
     
-    var friendNames: [String] = []
-    var friendIDs: [String] = []
-    var friendPics: [String] = []
+    var friendNames: [String]  = []
+    var friendIDs: [String]    = []
+    var friendPics: [String]   = []
     
+    var barSearch: UISearchBar = UISearchBar()
+    var is_searching:Bool!
+    var searchingArray:NSMutableArray!
+
     
     var list: List!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+//        barSearch.frame = CGRectMake(0, self.navigationController!.navigationBar.bounds.height, self.view.bounds.width, 200)
+  
+        barSearch.frame         = CGRectMake(0, self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.height, self.view.bounds.width, 50)
+        barSearch.delegate      = self
+
+        tableView.frame         = CGRectMake(0, barSearch.frame.height, self.view.bounds.width, self.view.bounds.height - self.navigationController!.navigationBar.bounds.height);
+        tableView.delegate      = self
+        tableView.dataSource    = self
         
-        tableView.frame         =   CGRectMake(0, self.navigationController!.navigationBar.bounds.height, self.view.bounds.width, self.view.bounds.height - self.navigationController!.navigationBar.bounds.height);
-        tableView.delegate      =   self
-        tableView.dataSource    =   self
+        self.view.addSubview(tableView)
+        self.view.addSubview(barSearch)
+
+        searchingArray          = []
+        is_searching            = false
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        self.view.addSubview(tableView)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.friendNames.count
+        if is_searching == true{
+            return searchingArray.count
+        }else{
+            return friendNames.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
-        cell.textLabel?.text = self.friendNames[indexPath.row]
         
-//        let url = NSURL(string: friendPics[indexPath.row])
-//        let data = NSData(contentsOfURL: url!)
-//        var image : UIImage = UIImage(data: data!)!
-//        cell.imageView!.image = image
+        if is_searching == true{
+            cell.textLabel!.text = searchingArray[indexPath.row] as? String
+        }else{
+            cell.textLabel!.text = friendNames[indexPath.row]
+        }
         
         return cell
         
+        //        let url = NSURL(string: friendPics[indexPath.row])
+        //        let data = NSData(contentsOfURL: url!)
+        //        var image : UIImage = UIImage(data: data!)!
+        //        cell.imageView!.image = image
+        
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+        if barSearch.text.isEmpty{
+            is_searching = false
+            tableView.reloadData()
+        } else {
+            println(" search text %@ ",barSearch.text as NSString)
+            is_searching = true
+            searchingArray.removeAllObjects()
+            for var index = 0; index < friendNames.count; index++
+            {
+                var currentString = friendNames[index]
+                if currentString.lowercaseString.rangeOfString(searchText.lowercaseString)  != nil {
+                    searchingArray.addObject(currentString)
+                    
+                }
+            }
+            tableView.reloadData()
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
