@@ -41,22 +41,22 @@ class DAOLocal {
         context = appDelegate.managedObjectContext!
         
         var entity : NSEntityDescription
-        entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)!
+        entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)!
         
         var request : NSFetchRequest = NSFetchRequest()
         request.entity = entity
         
-        var arguments:NSArray = ["\(true)"]
+        var arguments:NSArray = [true]
         var pred : NSPredicate = NSPredicate(format: "(me == %@)", argumentArray: arguments as [AnyObject])
         request.predicate = pred
         
-        var lista : User
+        var user : User
         var error : NSError?
         var result : NSArray = context.executeFetchRequest(request, error:&error)!
         
-        lista = result[0] as! User
+        user = result[0] as! User
         
-        return lista
+        return user
         
     }
     

@@ -38,6 +38,7 @@ class User: NSManagedObject {
         self.name = ""
         self.email = ""
         self.id = ""
+        self.me = false
         
     }
     

@@ -84,6 +84,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                             user.id = key
                             user.name = dic[key]!.objectForKey("name")! as! String
                             user.email = dic[key]!.objectForKey("email")! as! String
+                            user.me = true
                             DAOLocal.sharedInstance.save()
                             println("User ja estava Registrado")
 
@@ -115,6 +116,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                             user.id = infoAdd.key
                             user.name = result.valueForKey("name")! as! String
                             user.email = result.valueForKey("email")! as! String
+                            user.me = true
                             DAOLocal.sharedInstance.save()
                             
                             

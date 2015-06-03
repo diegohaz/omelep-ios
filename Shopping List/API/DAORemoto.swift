@@ -58,9 +58,9 @@ class DAORemoto {
     
     /**Função que retorna todas as listas de um usuário:*/
     func allListOfUser(callback: [List] -> Void) {
-        
+
         var user : User = DAOLocal.sharedInstance.readUser()
-    
+
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
         
         var arrayList : [List] = []
