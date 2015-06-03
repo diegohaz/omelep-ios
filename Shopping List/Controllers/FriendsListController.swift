@@ -19,7 +19,9 @@ class FriendsListController: UIViewController,UITableViewDelegate, UITableViewDa
     
     var barSearch: UISearchBar = UISearchBar()
     var is_searching:Bool!
-    var searchingArray:NSMutableArray!
+    var searchingNamesArray:NSMutableArray!
+    var searchingIDsArray:NSMutableArray!
+    var searchingPicsArray:NSMutableArray!
 
     
     var list: List!
@@ -40,7 +42,9 @@ class FriendsListController: UIViewController,UITableViewDelegate, UITableViewDa
         self.view.addSubview(tableView)
         self.view.addSubview(barSearch)
 
-        searchingArray          = []
+        searchingNamesArray     = []
+        searchingIDsArray       = []
+        searchingPicsArray      = []
         is_searching            = false
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -49,7 +53,7 @@ class FriendsListController: UIViewController,UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if is_searching == true{
-            return searchingArray.count
+            return searchingNamesArray.count
         }else{
             return friendNames.count
         }
@@ -61,7 +65,7 @@ class FriendsListController: UIViewController,UITableViewDelegate, UITableViewDa
         
         
         if is_searching == true{
-            cell.textLabel!.text = searchingArray[indexPath.row] as? String
+            cell.textLabel!.text = searchingNamesArray[indexPath.row] as? String
         }else{
             cell.textLabel!.text = friendNames[indexPath.row]
         }
@@ -82,12 +86,14 @@ class FriendsListController: UIViewController,UITableViewDelegate, UITableViewDa
         } else {
             println(" search text %@ ",barSearch.text as NSString)
             is_searching = true
-            searchingArray.removeAllObjects()
+            searchingNamesArray.removeAllObjects()
+            searchingPicsArray.removeAllObjects()
+            searchingIDsArray.removeAllObjects()
             for var index = 0; index < friendNames.count; index++
             {
                 var currentString = friendNames[index]
                 if currentString.lowercaseString.rangeOfString(searchText.lowercaseString)  != nil {
-                    searchingArray.addObject(currentString)
+                    searchingNamesArray.addObject(currentString)
                     
                 }
             }
