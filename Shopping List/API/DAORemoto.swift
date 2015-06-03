@@ -25,31 +25,38 @@ class DAORemoto {
     /**Função que salva um nova lista:*/
     func saveNewList(list : List) -> List{
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
+        var user : User
+        user = DAOLocal.sharedInstance.readUser()
         
-        var tags = []
-        var products = []
-        var users = []
+        if( NetworkConnect.sharedInstance.connected() ) {
         
-        var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(list.name),"name": "\(list.name)", "products": products, "tags": tags, "users": users]
+            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
+        
+            var tags = []
+            var products = []
+            var users = []
+        
+            var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(list.name),"name": "\(list.name)", "products": products, "tags": tags, "users": users]
 
-        var listRef = myRootRef.childByAppendingPath("list")
+            var listRef = myRootRef.childByAppendingPath("list")
         
-        //Gerando o ID e colocando na lista:
-        var infoAdd = listRef.childByAutoId()
-        list.id = infoAdd.key
+            //Gerando o ID e colocando na lista:
+            var infoAdd = listRef.childByAutoId()
+            list.id = infoAdd.key
+        
+            //Salvando no FireBase:
+            infoAdd.setValue(info, withCompletionBlock: { ((NSError!, Firebase!)) in
+                //Fazendo relação lista - usuário no FireBase
+                FunctionsDAO.sharedInstance.createRelationUserList(user, list:list)
+            })
+            
+        }
         
         //Salvando a nova Lista no CoreData:
         DAOLocal.sharedInstance.save()
         
-        //Salvando no FireBase:
-        infoAdd.setValue(info, withCompletionBlock: { ((NSError!, Firebase!)) in
-            //Adicionando essa lista ao usuário logado
-            var user : User
-            user = DAOLocal.sharedInstance.readUser()
-            FunctionsDAO.sharedInstance.createRelationUserList(user, list:list)
-        })
-        
+        //Fazendo relação lista - usuário no CoreData
+        DAOLocal.sharedInstance.relationUserList(user, list: list)
         
         return list
         
@@ -60,10 +67,11 @@ class DAORemoto {
     func allListOfUser(callback: [List] -> Void) {
 
         var user : User = DAOLocal.sharedInstance.readUser()
-
+        callback(user.returnList())
+        
         var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
         
-        var arrayList : [List] = []
+        var arrayList : [List] = user.returnList()
         
         myRootRef.observeEventType(FEventType.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) -> Void in
         
@@ -71,8 +79,16 @@ class DAORemoto {
 
             FunctionsDAO.sharedInstance.searchListFromID(key, callback: { (list) in
 
-                arrayList.insert(list, atIndex: 0)
-                callback(arrayList)
+                var bool = true
+                for lis in arrayList {
+                    if( list == arrayList ){
+                        bool = false
+                    }
+                }
+                if( bool ) {
+                    arrayList.insert(list, atIndex: 0)
+                    callback(arrayList)
+                }
                 
             })
         

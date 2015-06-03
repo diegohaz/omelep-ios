@@ -72,8 +72,13 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                     
                     listRef.queryOrderedByChild("idfb").queryEqualToValue(result.valueForKey("id")).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
                         
+                        //TODO: as vezes a pessoa desloga e loga com o msm usuário, não vai ser necessário apagar
+                        
                         //Apagando dados do último usuário logado:
                         DAOLocal.sharedInstance.deleteAllUsers()
+                        
+                        //Deletando todas as listas salvas no celulat
+                        DAOLocal.sharedInstance.deleteAllLists()
                         
                         var user : User = User()
                         

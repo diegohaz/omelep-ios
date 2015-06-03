@@ -39,6 +39,7 @@ class List: NSManagedObject {
         self.name = ""
         self.id = ""
         self.updatedDate = NSDate()
+        self.localID = DAOLocal.sharedInstance.countList()
         
     }
 

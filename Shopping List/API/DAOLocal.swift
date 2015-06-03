@@ -208,6 +208,55 @@ class DAOLocal {
         
     }
     
+    func countList() -> Int {
+        
+        var appDelegate : AppDelegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        var context : NSManagedObjectContext
+        context = appDelegate.managedObjectContext!
+        
+        var entity : NSEntityDescription
+        entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)!
+        
+        var request : NSFetchRequest = NSFetchRequest()
+        request.entity = entity
+        
+        var user : NSManagedObject
+        var error : NSError?
+        var result : NSArray = context.executeFetchRequest(request, error:&error)!
+        
+        return result.count
+        
+    }
+    
+    func deleteAllLists() {
+        
+        var appDelegate : AppDelegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        var context : NSManagedObjectContext
+        context = appDelegate.managedObjectContext!
+        
+        var entity : NSEntityDescription
+        entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)!
+        
+        var request : NSFetchRequest = NSFetchRequest()
+        request.entity = entity
+        
+        var list : NSManagedObject
+        var error : NSError?
+        var result : NSArray = context.executeFetchRequest(request, error:&error)!
+        
+        for list in result {
+            context.deleteObject(list as! NSManagedObject)
+            print("Lista deletada \n")
+        }
+        
+        context.save(&error)
+        
+    }
+    
     
     //Products:
     
@@ -268,6 +317,15 @@ class DAOLocal {
     func readTagFromList(list : List) -> [Tag]{
         
         return list.returnTags()
+        
+    }
+    
+    
+    //Criando relação user - list
+    func relationUserList(user : User, list : List) {
+        
+        user.addList(list)
+        list.addUser(user)
         
     }
     
