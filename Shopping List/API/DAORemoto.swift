@@ -67,51 +67,54 @@ class DAORemoto {
     func allListOfUser(callback: [List] -> Void) {
 
         var user : User = DAOLocal.sharedInstance.readUser()
-        callback(user.returnList())
-        
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
         
         var arrayList : [List] = user.returnList()
+        callback(arrayList)
         
-        myRootRef.observeEventType(FEventType.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+        if( NetworkConnect.sharedInstance.connected() ) {
         
-            var key = snapshot.key
+            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
+        
+            myRootRef.observeEventType(FEventType.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+        
+                var key = snapshot.key
 
-            FunctionsDAO.sharedInstance.searchListFromID(key, callback: { (list) in
+                FunctionsDAO.sharedInstance.searchListFromID(key, callback: { (list) in
 
-                var bool = true
-                for lis in arrayList {
-                    if( list == arrayList ){
-                        bool = false
+                    var bool = true
+                    for lis in arrayList {
+                        if( lis.id == list.id ){
+                            bool = false
+                        }
                     }
-                }
-                if( bool ) {
-                    arrayList.insert(list, atIndex: 0)
-                    callback(arrayList)
-                }
+                    if( bool ) {
+                        arrayList.insert(list, atIndex: 0)
+                        callback(arrayList)
+                    }
                 
+                })
+        
             })
         
-        })
+            var myRootRef2 = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
         
-        var myRootRef2 = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
-        
-        myRootRef2.observeEventType(FEventType.ChildRemoved, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            myRootRef2.observeEventType(FEventType.ChildRemoved, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
-            var key = snapshot.key
+                var key = snapshot.key
         
-            var i = 0
-            for x in arrayList {
-                if( x.id == key ){
-                    break;
+                var i = 0
+                for x in arrayList {
+                    if( x.id == key ){
+                        break;
+                    }
+                    i++;
                 }
-                i++;
-            }
                 
-            arrayList.removeAtIndex(i)
-            callback(arrayList)
+                arrayList.removeAtIndex(i)
+                callback(arrayList)
             
-        })
+            })
+        }
         
     }
     
