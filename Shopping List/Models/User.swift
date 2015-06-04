@@ -60,6 +60,11 @@ extension User{
         return array as! [List]
     }
     
+    func removeList(list : List) {
+        var items = self.mutableSetValueForKey("lists")
+        items.removeObject(list)
+    }
+    
     //Tag
     
     func addTag(tag : Tag) {

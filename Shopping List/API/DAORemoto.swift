@@ -70,17 +70,22 @@ class DAORemoto {
         
         var arrayList : [List] = user.returnList()
         callback(arrayList)
-        
+
         if( NetworkConnect.sharedInstance.connected() ) {
         
             var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
-        
+
+            //Removendo observes antigos
+            myRootRef.removeAllObservers()
+            
             myRootRef.observeEventType(FEventType.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-        
+                
+                arrayList = user.returnList()
+                print("\n\n     OI  OI   \n\n")
                 var key = snapshot.key
 
                 FunctionsDAO.sharedInstance.searchListFromID(key, callback: { (list) in
-
+                    
                     var bool = true
                     for lis in arrayList {
                         if( lis.id == list.id ){
@@ -88,7 +93,13 @@ class DAORemoto {
                         }
                     }
                     if( bool ) {
-                        arrayList.insert(list, atIndex: 0)
+                        if( arrayList.count == 0 ){
+                            arrayList.append(list)
+                        } else {
+                            arrayList.insert(list, atIndex: 0)
+                        }
+                        DAOLocal.sharedInstance.relationUserList(user, list: list)
+                        DAOLocal.sharedInstance.save()
                         callback(arrayList)
                     }
                 
@@ -97,12 +108,13 @@ class DAORemoto {
             })
         
             var myRootRef2 = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
-        
+            
             myRootRef2.observeEventType(FEventType.ChildRemoved, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
                 var key = snapshot.key
-        
+
                 var i = 0
+                print(arrayList)
                 for x in arrayList {
                     if( x.id == key ){
                         break;
@@ -118,7 +130,7 @@ class DAORemoto {
         
     }
     
-    
+    //TODO: Fazer essa função com a parte offline
     /**Funçao que adiciona produto em uma lista:*/
     func addProductToList(name : String, list : List, callback: (List) -> Void) {
         
@@ -144,6 +156,7 @@ class DAORemoto {
         
     }
     
+    //TODO: Fazer essa função com a parte offline
     /**Função que deleta um produto de uma lista*/
     func deleteProductFromList(product : Product, list: List) {
         
@@ -161,47 +174,65 @@ class DAORemoto {
     
     /**Função que muda o nome de uma lista*/
     func changeNameOfList(name : String, list: List) {
-     
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
         
-        myRootRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+        list.name = name
+        list.updatedDate = NSDate()
+        DAOLocal.sharedInstance.save()
+     
+        if( NetworkConnect.sharedInstance.connected() ){
             
-            if( snapshot.exists() == true ){
-                var dic = snapshot.value as! NSDictionary
-                
-                dic.setValue(name, forKey: "name")
-                
-                myRootRef.setValue(dic)
-                
-            }
+            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+        
+            myRootRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
-        })
+                if( snapshot.exists() == true ){
+                    var dic = snapshot.value as! NSDictionary
+                
+                    dic.setValue(name, forKey: "name")
+                
+                    myRootRef.setValue(dic)
+                
+                }
+            
+            })
+            
+        }
         
     }
     
     /**Função que deleta uma lista*/
     func deleteList(list : List){
         
-        FunctionsDAO.sharedInstance.allIdOfUsersOfList(list, callback: { (idUsers) in
+        var user : User = DAOLocal.sharedInstance.readUser()
+        user.removeList(list)
+        list.removeUser(user)
+        print(list.localID)
+        
+        if( NetworkConnect.sharedInstance.connected() ){
+        
+            FunctionsDAO.sharedInstance.allIdOfUsersOfList(list, callback: { (idUsers) in
             
-            var myListRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+                var myListRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
             
-            myListRef.removeValue()
+                myListRef.removeValue()
             
-            var user : User = User()
+                var user : User = User()
             
-            for id in idUsers{
+                for id in idUsers{
             
-                var myUserRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(id)/lists/\(list.id)")
+                    var myUserRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(id)/lists/\(list.id)")
             
-                myUserRef.removeValue()
+                    myUserRef.removeValue()
                 
-            }
+                }
             
-        })
+            })
+            
+        }
         
     }
     
+    //TODO: Fazer função que exclui listas do fireBase que não tem usuário relacionado!!
     
     //Products:
     

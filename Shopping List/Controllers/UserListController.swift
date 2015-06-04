@@ -51,6 +51,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     override func viewDidAppear(animated: Bool) {
+
         if list != nil {
             DAORemoto.sharedInstance.allProductsOfList(list!, callback: { (arrayProducts : [Product]) -> Void in
                 self.products = arrayProducts

@@ -178,6 +178,8 @@ class DAOLocal {
     
     func deleteList(list : List) -> [List]{
         
+        print(self.readUser().returnList())
+        
         var appDelegate : AppDelegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -190,13 +192,16 @@ class DAOLocal {
         var request : NSFetchRequest = NSFetchRequest()
         request.entity = entity
         
-        var arguments:NSArray = ["\(list.id)"]
-        var pred : NSPredicate = NSPredicate(format: "(id == %@)", argumentArray: arguments as [AnyObject])
+        var arguments:NSArray = ["\(list.localID)"]
+        var pred : NSPredicate = NSPredicate(format: "(localID == %@)", argumentArray: arguments as [AnyObject])
         request.predicate = pred
         
         var lista : NSManagedObject
         var error : NSError?
         var result : NSArray = context.executeFetchRequest(request, error:&error)!
+        
+        print(result.count)
+        print("\n\n LocalID: \(list.localID) \n\n")
         
         lista = result[0] as! NSManagedObject
         
@@ -251,6 +256,46 @@ class DAOLocal {
         for list in result {
             context.deleteObject(list as! NSManagedObject)
             print("Lista deletada \n")
+        }
+        
+        context.save(&error)
+        
+    }
+    
+    func clearList() {
+        
+        var user : User = self.readUser()
+        
+        var lists : [List] = user.returnList()
+        
+        var appDelegate : AppDelegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        var context : NSManagedObjectContext
+        context = appDelegate.managedObjectContext!
+        
+        var entity : NSEntityDescription
+        entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)!
+        
+        var request : NSFetchRequest = NSFetchRequest()
+        request.entity = entity
+        
+        var list1 : List
+        var list2 : List
+        var error : NSError?
+        var result : [List] = context.executeFetchRequest(request, error:&error)! as! [List]
+        
+        for list1 in result {
+            var bool = true
+            for list2 in lists {
+                if (list1 == list2) {
+                    bool = false
+                }
+            }
+            if( bool ){
+                context.deleteObject(list1)
+                print("Lista deletada \n")
+            }
         }
         
         context.save(&error)
