@@ -16,6 +16,7 @@ class List: NSManagedObject {
 
     @NSManaged var id: String
     @NSManaged var localID: NSNumber
+    @NSManaged var delete: NSNumber
     @NSManaged var name: String
     @NSManaged var photo: NSData
     @NSManaged var updatedDate: NSDate
@@ -38,6 +39,7 @@ class List: NSManagedObject {
         
         self.name = ""
         self.id = ""
+        self.delete = false
         self.updatedDate = NSDate()
         self.localID = DAOLocal.sharedInstance.countList()
         

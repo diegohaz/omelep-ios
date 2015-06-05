@@ -52,11 +52,11 @@ class DAORemoto {
             
         }
         
-        //Salvando a nova Lista no CoreData:
-        DAOLocal.sharedInstance.save()
-        
         //Fazendo relação lista - usuário no CoreData
         DAOLocal.sharedInstance.relationUserList(user, list: list)
+        
+        //Salvando a nova Lista no CoreData:
+        DAOLocal.sharedInstance.save()
         
         return list
         
@@ -69,6 +69,9 @@ class DAORemoto {
         var user : User = DAOLocal.sharedInstance.readUser()
         
         var arrayList : [List] = user.returnList()
+        print("\n\nComeça Aqui\n\n")
+        print(user.returnList())
+        print("\n\nTermina Aqui\n\n")
         callback(arrayList)
 
         if( NetworkConnect.sharedInstance.connected() ) {
@@ -114,61 +117,72 @@ class DAORemoto {
                 var key = snapshot.key
 
                 var i = 0
-                print(arrayList)
                 for x in arrayList {
                     if( x.id == key ){
                         break;
                     }
                     i++;
                 }
-                
                 arrayList.removeAtIndex(i)
                 callback(arrayList)
-            
+                
             })
         }
         
     }
     
     //TODO: Fazer essa função com a parte offline
+    //TODO: Avisar o diego/bruno que essa função não terá mais callback
     /**Funçao que adiciona produto em uma lista:*/
     func addProductToList(name : String, list : List, callback: (List) -> Void) {
         
-        FunctionsDAO.sharedInstance.searchProductFromName(name, callback: { (product : Product) in
+        list.updatedDate = NSDate()
+        DAOLocal.sharedInstance.save()
+        
+        if( NetworkConnect.sharedInstance.connected() ) {
+        
+            FunctionsDAO.sharedInstance.searchProductFromName(name, callback: { (product : Product) in
             
-            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+                var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
             
-            myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+                myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
                 
-                if( snapshot.exists() == true ){
-                    var refProd = myRootRef.childByAppendingPath("products")
-                    var prod = ["\(product.id)": true]
-                    refProd.updateChildValues(prod)
-                } else {
-                    print("lista não existe \n")
-                }
+                    if( snapshot.exists() == true ){
+                        var refProd = myRootRef.childByAppendingPath("products")
+                        var prod = ["\(product.id)": true]
+                        refProd.updateChildValues(prod)
+                    } else {
+                        print("lista não existe \n")
+                    }
                 
+                })
+            
+                callback(DAOLocal.sharedInstance.addProduct(product, list: list))
+            
             })
             
-            callback(DAOLocal.sharedInstance.addProduct(product, list: list))
-            
-        })
+        }
         
     }
     
-    //TODO: Fazer essa função com a parte offline
     /**Função que deleta um produto de uma lista*/
     func deleteProductFromList(product : Product, list: List) {
         
-        FunctionsDAO.sharedInstance.searchProductFromName(product.name, callback: { products in
+        if( NetworkConnect.sharedInstance.connected() ) {
         
-            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products/\(products.id)")
+            FunctionsDAO.sharedInstance.searchProductFromName(product.name, callback: { products in
+        
+                var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products/\(products.id)")
             
-            myRootRef.removeValue()
+                myRootRef.removeValue()
             
-            list.removeProduct(product)
-            
-        })
+            })
+        
+        }
+        
+        list.removeProduct(product)
+        list.updatedDate = NSDate()
+        DAOLocal.sharedInstance.save()
         
     }
     
@@ -206,27 +220,16 @@ class DAORemoto {
         var user : User = DAOLocal.sharedInstance.readUser()
         user.removeList(list)
         list.removeUser(user)
-        print(list.localID)
+        list.delete = true
+        DAOLocal.sharedInstance.save()
+        print("\n\n INICIO \n\n")
+        print(user.returnList())
         
         if( NetworkConnect.sharedInstance.connected() ){
-        
-            FunctionsDAO.sharedInstance.allIdOfUsersOfList(list, callback: { (idUsers) in
             
-                var myListRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+            var myUserRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/\(list.id)")
             
-                myListRef.removeValue()
-            
-                var user : User = User()
-            
-                for id in idUsers{
-            
-                    var myUserRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(id)/lists/\(list.id)")
-            
-                    myUserRef.removeValue()
-                
-                }
-            
-            })
+            myUserRef.removeValue()
             
         }
         

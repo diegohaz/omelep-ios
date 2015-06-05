@@ -262,46 +262,6 @@ class DAOLocal {
         
     }
     
-    func clearList() {
-        
-        var user : User = self.readUser()
-        
-        var lists : [List] = user.returnList()
-        
-        var appDelegate : AppDelegate
-        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        var context : NSManagedObjectContext
-        context = appDelegate.managedObjectContext!
-        
-        var entity : NSEntityDescription
-        entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)!
-        
-        var request : NSFetchRequest = NSFetchRequest()
-        request.entity = entity
-        
-        var list1 : List
-        var list2 : List
-        var error : NSError?
-        var result : [List] = context.executeFetchRequest(request, error:&error)! as! [List]
-        
-        for list1 in result {
-            var bool = true
-            for list2 in lists {
-                if (list1 == list2) {
-                    bool = false
-                }
-            }
-            if( bool ){
-                context.deleteObject(list1)
-                print("Lista deletada \n")
-            }
-        }
-        
-        context.save(&error)
-        
-    }
-    
     
     //Products:
     

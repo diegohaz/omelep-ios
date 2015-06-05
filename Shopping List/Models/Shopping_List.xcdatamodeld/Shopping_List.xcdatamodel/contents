@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="List" representedClassName="List" syncable="YES">
+        <attribute name="delete" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="localID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -8,7 +9,7 @@
         <attribute name="updatedDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" syncable="YES"/>
-        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="User" inverseName="lists" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Product" representedClassName="Product" syncable="YES">
         <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,12 +31,12 @@
         <attribute name="me" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <relationship name="family" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
-        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="List" syncable="YES"/>
+        <relationship name="family" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="User" syncable="YES"/>
+        <relationship name="lists" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="List" inverseName="users" inverseEntity="List" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" syncable="YES"/>
     </entity>
     <elements>
-        <element name="List" positionX="-54" positionY="-9" width="128" height="165"/>
+        <element name="List" positionX="-54" positionY="-9" width="128" height="180"/>
         <element name="Product" positionX="25" positionY="309" width="128" height="150"/>
         <element name="Tag" positionX="324" positionY="549" width="128" height="90"/>
         <element name="User" positionX="709" positionY="213" width="128" height="165"/>
