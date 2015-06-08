@@ -69,9 +69,7 @@ class DAORemoto {
         var user : User = DAOLocal.sharedInstance.readUser()
         
         var arrayList : [List] = user.returnList()
-        print("\n\nComeça Aqui\n\n")
-        print(user.returnList())
-        print("\n\nTermina Aqui\n\n")
+
         callback(arrayList)
 
         if( NetworkConnect.sharedInstance.connected() ) {
@@ -84,7 +82,7 @@ class DAORemoto {
             myRootRef.observeEventType(FEventType.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) -> Void in
                 
                 arrayList = user.returnList()
-                print("\n\n     OI  OI   \n\n")
+
                 var key = snapshot.key
 
                 FunctionsDAO.sharedInstance.searchListFromID(key, callback: { (list) in
@@ -96,11 +94,7 @@ class DAORemoto {
                         }
                     }
                     if( bool ) {
-                        if( arrayList.count == 0 ){
-                            arrayList.append(list)
-                        } else {
-                            arrayList.insert(list, atIndex: 0)
-                        }
+                        arrayList.insert(list, atIndex: 0)
                         DAOLocal.sharedInstance.relationUserList(user, list: list)
                         DAOLocal.sharedInstance.save()
                         callback(arrayList)
@@ -242,18 +236,25 @@ class DAORemoto {
     /**Função que salva um novo produto:*/
     func saveNewProduct(product : Product) -> Product{
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
+        if( NetworkConnect.sharedInstance.connected() ) {
         
-        var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(product.name),"name": "\(product.name)", "brand": "\(product.brand)", "cubage": "\(product.cubage)"]
+            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
         
-        var listRef = myRootRef.childByAppendingPath("product")
+            var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(product.name),"name": "\(product.name)", "brand": "\(product.brand)", "cubage": "\(product.cubage)"]
         
-        //Gerando o ID e colocando na lista:
-        var infoAdd = listRef.childByAutoId()
-        product.id = infoAdd.key
+            var listRef = myRootRef.childByAppendingPath("product")
         
-        //Salvando no FireBase:
-        infoAdd.setValue(info)
+            //Gerando o ID e colocando na lista:
+            var infoAdd = listRef.childByAutoId()
+            product.id = infoAdd.key
+        
+            //Salvando no FireBase:
+            infoAdd.setValue(info)
+            
+        }
+        
+        //Salvando o produto:
+        DAOLocal.sharedInstance.save()
         
         return product
         
@@ -262,40 +263,62 @@ class DAORemoto {
     /**Função que retorna todos os produtos de uma lista, e isso inclui uma atualização quando tem mais de um usuário na mesma lista*/
     func allProductsOfList(list : List, callback: ([Product]) -> Void ) {
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products")
+        var products : [Product] = list.returnProduct()
         
-        var products : [Product] = []
+        callback(products)
+        
+        if( NetworkConnect.sharedInstance.connected() ) {
+        
+            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products")
+            
+            //Removendo observers antigos:
+            myRootRef.removeAllObservers()
 
-        myRootRef.observeEventType(FEventType.ChildAdded, withBlock: { (snapshot : FDataSnapshot!) -> Void in
+            myRootRef.observeEventType(FEventType.ChildAdded, withBlock: { (snapshot : FDataSnapshot!) -> Void in
             
-            var key = snapshot.key 
+                var key = snapshot.key
             
-            FunctionsDAO.sharedInstance.searchProductFromID(key, callback: { (product : Product) -> Void in
-                products.insert(product, atIndex: 0)
-                callback(products)
-            })
-            
-        })
-        
-        var myRootRef2 = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products")
-        
-        myRootRef2.observeEventType(FEventType.ChildRemoved, withBlock: { (snapshot : FDataSnapshot!) -> Void in
-            
-            var key = snapshot.key
-            
-            FunctionsDAO.sharedInstance.searchProductFromID(key, callback: { (product : Product) -> Void in
-                var i = 0
-                for x in products {
-                    if( x.name == product.name ){
-                        break;
+                FunctionsDAO.sharedInstance.searchProductFromID(key, callback: { (product : Product) -> Void in
+                    var bool = true
+                    for pro in  products {
+                        if( pro.name == product.name ){
+                            bool = false
+                        }
                     }
-                    i++;
-                }
-                products.removeAtIndex(i)
-                callback(products)
+                    if( bool ){
+                        products.insert(product, atIndex: 0)
+                        list.addProduct(product)
+                        DAOLocal.sharedInstance.save()
+                        callback(products)
+                    }
+            
+                })
+            
+            })
+        
+            var myRootRef2 = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products")
+        
+            myRootRef2.observeEventType(FEventType.ChildRemoved, withBlock: { (snapshot : FDataSnapshot!) -> Void in
+            
+                var key = snapshot.key
+            
+                FunctionsDAO.sharedInstance.searchProductFromID(key, callback: { (product : Product) -> Void in
+                    var i = 0
+                    for x in products {
+                        if( x.name == product.name ){
+                            break;
+                        }
+                        i++;
+                    }
+                    products.removeAtIndex(i)
+                    list.removeProduct(product)
+                    DAOLocal.sharedInstance.save()
+                    callback(products)
+                })
+            
             })
             
-        })
+        }
         
     }
     
