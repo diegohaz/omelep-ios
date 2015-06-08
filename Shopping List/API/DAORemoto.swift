@@ -344,33 +344,37 @@ class DAORemoto {
     /**Função que retorna todas as listas de um usuário:*/
     func suggestionsLists(callback: [List] -> Void) {
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/suggestion")
+        var arrayList : [List] = []
         
-        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+        if( NetworkConnect.sharedInstance.connected() ) {
+        
+            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/suggestion")
+        
+            myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
-            var arrayList : [List] = []
-            
-            if( snapshot.exists() == true ){
+                if( snapshot.exists() == true ){
                 
-                var dic = snapshot.value as! NSDictionary
+                    var dic = snapshot.value as! NSDictionary
                 
-                var keys = dic.allKeys
-                for x in keys {
-                    FunctionsDAO.sharedInstance.searchListFromID(x as! String, callback:  { (lis : List) in
+                    var keys = dic.allKeys
+                    for x in keys {
+                        FunctionsDAO.sharedInstance.searchListFromID(x as! String, callback:  { (lis : List) in
                                 
-                        arrayList.append(lis)
+                            arrayList.append(lis)
                                 
-                        if( keys.count == arrayList.count ){
-                            callback(arrayList)
-                        }
+                            if(keys.count == arrayList.count ){
+                                callback(arrayList)
+                            }
                                 
-                    })
+                        })
                     
-                }
+                    }
                 
-            }
+                }
             
-        })
+            })
+            
+        }
         
     }
     
