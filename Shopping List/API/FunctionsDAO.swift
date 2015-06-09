@@ -294,4 +294,80 @@ class FunctionsDAO {
         
     }
     
+    
+    //Sincronização Onlie - Offline
+    
+    func sDeleteListOnFireBase() {
+        
+        var lists : [List] = DAOLocal.sharedInstance.returnDeletedLists()
+        
+        var user : User = DAOLocal.sharedInstance.readUser()
+        
+        for list in lists {
+            
+            if( list.id.isEmpty == false ){
+                
+                var myUserRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/\(list.id)")
+                
+                myUserRef.removeValue()
+                
+            }
+            
+        }
+        
+    }
+    
+    func sPutListsOnline() {
+        
+        var user : User = DAOLocal.sharedInstance.readUser()
+        
+        var lists : [List] = user.returnList()
+        
+        for list in lists {
+            print("\(list.name) - \(list.id)\n")
+            if( list.id.isEmpty == true ){
+                
+                var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
+                
+                var tags = []
+                var products = []
+                var users = []
+                
+                var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(list.name),"name": "\(list.name)", "products": products, "tags": tags, "users": users]
+                
+                var listRef = myRootRef.childByAppendingPath("list")
+                
+                //Gerando o ID e colocando na lista:
+                var infoAdd = listRef.childByAutoId()
+                list.id = infoAdd.key
+                
+                //Salvando no FireBase:
+                infoAdd.setValue(info, withCompletionBlock: { ((NSError!, Firebase!)) in
+                    //Fazendo relação lista - usuário no FireBase
+                    FunctionsDAO.sharedInstance.createRelationUserList(user, list:list)
+                    
+                    var arrayP = list.returnProduct()
+                    
+                    for product in  arrayP {
+                        DAORemoto.sharedInstance.addProductToList(product.name, list: list)
+                    }
+                    
+                })
+                
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

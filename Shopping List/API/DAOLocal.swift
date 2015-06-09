@@ -178,8 +178,6 @@ class DAOLocal {
     
     func deleteList(list : List) -> [List]{
         
-        print(self.readUser().returnList())
-        
         var appDelegate : AppDelegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -200,9 +198,6 @@ class DAOLocal {
         var error : NSError?
         var result : NSArray = context.executeFetchRequest(request, error:&error)!
         
-        print(result.count)
-        print("\n\n LocalID: \(list.localID) \n\n")
-        
         lista = result[0] as! NSManagedObject
         
         context.deleteObject(lista)
@@ -210,6 +205,32 @@ class DAOLocal {
         context.save(&error)
         
         return readLists()
+        
+    }
+    
+    func returnDeletedLists() -> [List] {
+        
+        var appDelegate : AppDelegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        var context : NSManagedObjectContext
+        context = appDelegate.managedObjectContext!
+        
+        var entity : NSEntityDescription
+        entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)!
+        
+        var request : NSFetchRequest = NSFetchRequest()
+        request.entity = entity
+        
+        var arguments:NSArray = [true]
+        var pred : NSPredicate = NSPredicate(format: "(delete == %@)", argumentArray: arguments as [AnyObject])
+        request.predicate = pred
+        
+        var lista : NSManagedObject
+        var error : NSError?
+        var result : [List] = context.executeFetchRequest(request, error:&error)! as! [List]
+        
+        return result
         
     }
     
@@ -265,7 +286,7 @@ class DAOLocal {
     
     //Products:
     
-    private func searchProduct(productName : String) -> Product {
+    func searchProduct(productName : String) -> Product {
         
         var appDelegate : AppDelegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

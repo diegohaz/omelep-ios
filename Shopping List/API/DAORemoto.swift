@@ -69,6 +69,8 @@ class DAORemoto {
         var user : User = DAOLocal.sharedInstance.readUser()
         
         var arrayList : [List] = user.returnList()
+        
+        var listsDeleted : [List] = DAOLocal.sharedInstance.returnDeletedLists()
 
         callback(arrayList)
 
@@ -85,10 +87,15 @@ class DAORemoto {
 
                 var key = snapshot.key
 
-                FunctionsDAO.sharedInstance.searchListFromID(key, callback: { (list) in
+                FunctionsDAO.sharedInstance.searchListFromID(key, callback: { (list : List) in
                     
                     var bool = true
                     for lis in arrayList {
+                        if( lis.id == list.id ){
+                            bool = false
+                        }
+                    }
+                    for lis in listsDeleted {
                         if( lis.id == list.id ){
                             bool = false
                         }
@@ -126,9 +133,8 @@ class DAORemoto {
     }
     
     //TODO: Fazer essa função com a parte offline
-    //TODO: Avisar o diego/bruno que essa função não terá mais callback
     /**Funçao que adiciona produto em uma lista:*/
-    func addProductToList(name : String, list : List, callback: (List) -> Void) {
+    func addProductToList(name : String, list : List) {
         
         list.updatedDate = NSDate()
         DAOLocal.sharedInstance.save()
@@ -136,6 +142,8 @@ class DAORemoto {
         if( NetworkConnect.sharedInstance.connected() ) {
         
             FunctionsDAO.sharedInstance.searchProductFromName(name, callback: { (product : Product) in
+                
+                DAOLocal.sharedInstance.addProduct(product, list: list)
             
                 var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
             
@@ -151,11 +159,16 @@ class DAORemoto {
                 
                 })
             
-                callback(DAOLocal.sharedInstance.addProduct(product, list: list))
-            
             })
             
+        } else {
+            
+            var product : Product = DAOLocal.sharedInstance.searchProduct(name)
+        
+            DAOLocal.sharedInstance.addProduct(product, list: list)
+            
         }
+        
         
     }
     
@@ -379,7 +392,36 @@ class DAORemoto {
     }
     
     
+    //Sincronização Onlie - Offline
     
+    func sincroniza() {
+    
+        if( NetworkConnect.sharedInstance.connected() ) {
+        
+            //Deletando listas que foram deletadas offline no FireBase
+            FunctionsDAO.sharedInstance.sDeleteListOnFireBase()
+            
+            //Colocando online listas que foram criadas offline:
+            FunctionsDAO.sharedInstance.sPutListsOnline()
+            
+            //Agora ajustando os produtos da lista:
+            
+            var user : User = DAOLocal.sharedInstance.readUser()
+            
+            var listsOff : [List] = user.returnList()
+            
+            var refList = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/")
+            
+            refList.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot : FDataSnapshot!) -> Void  in
+                
+                
+                
+            })
+            
+        
+        }
+        
+    }
     
     
     
