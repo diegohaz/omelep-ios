@@ -35,8 +35,9 @@ class DAORemoto {
             var tags = []
             var products = []
             var users = []
+            var date = NSDate().description
         
-            var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(list.name),"name": "\(list.name)", "products": products, "tags": tags, "users": users]
+            var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(list.name),"name": "\(list.name)", "products": products, "tags": tags, "users": users, "date": date]
 
             var listRef = myRootRef.childByAppendingPath("list")
         
@@ -49,6 +50,8 @@ class DAORemoto {
                 //Fazendo relação lista - usuário no FireBase
                 FunctionsDAO.sharedInstance.createRelationUserList(user, list:list)
             })
+            
+
             
         }
         
@@ -151,13 +154,16 @@ class DAORemoto {
                 
                     if( snapshot.exists() == true ){
                         var refProd = myRootRef.childByAppendingPath("products")
+                        var refDate = myRootRef.childByAppendingPath("date")
                         var prod = ["\(product.id)": true]
                         refProd.updateChildValues(prod)
+                        refDate.setValue(NSDate().description)
                     } else {
                         print("lista não existe \n")
                     }
                 
                 })
+                
             
             })
             
@@ -182,6 +188,20 @@ class DAORemoto {
                 var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products/\(products.id)")
             
                 myRootRef.removeValue()
+                
+                //Atualizando a data da última modificação:
+                var myRoot2 = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+                
+                myRoot2.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+                    
+                    if( snapshot.exists() == true ){
+                        var refDate = myRoot2.childByAppendingPath("date")
+                        refDate.setValue(NSDate().description)
+                    } else {
+                        print("lista não existe \n")
+                    }
+                    
+                })
             
             })
         
@@ -212,6 +232,10 @@ class DAORemoto {
                     dic.setValue(name, forKey: "name")
                 
                     myRootRef.setValue(dic)
+                    
+                    //Atualizando a data da última modificação:
+                    var refDate = myRootRef.childByAppendingPath("date")
+                    refDate.setValue(NSDate().description)
                 
                 }
             
@@ -394,9 +418,11 @@ class DAORemoto {
     
     //Sincronização Onlie - Offline
     
-    func sincroniza() {
+    func sincroniza(callback: [List] -> Void) {
     
         if( NetworkConnect.sharedInstance.connected() ) {
+            
+            var user : User = DAOLocal.sharedInstance.readUser()
         
             //Deletando listas que foram deletadas offline no FireBase
             FunctionsDAO.sharedInstance.sDeleteListOnFireBase()
@@ -405,25 +431,58 @@ class DAORemoto {
             FunctionsDAO.sharedInstance.sPutListsOnline()
             
             //Agora ajustando os produtos da lista:
-            
-            var user : User = DAOLocal.sharedInstance.readUser()
-            
-            var listsOff : [List] = user.returnList()
-            
-            var refList = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
-            print("\nOI - \(user.id)\n")
-            refList.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot : FDataSnapshot!) -> Void  in
-                print("\nOI - 2\n")
-                if( snapshot.exists() ){
-                    var dic = snapshot.value as! NSDictionary
-                    
-                    print(dic.allKeys)
-                    
+            FunctionsDAO.sharedInstance.sAllListsOnlineAndOffilne({ (listsON : [List], listsOFF : [List]) -> Void in
+                
+                //Ajustando os produtos
+                for lists1 : List in listsON {
+                    for lists2 : List in listsOFF {
+                        if( lists1.id == lists2.id ) {
+                            
+                            if( lists1.updatedDate == lists1.updatedDate.earlierDate(lists2.updatedDate) ){
+                                print("lista 2 ta mais atualizada")
+                            } else {
+                                
+                                var id : String = lists1.id
+                                
+                                DAOLocal.sharedInstance.deleteList(lists1)
+                                
+                                FunctionsDAO.sharedInstance.searchListFromID(id, callback: { (newList) -> Void in
+                                    
+                                    DAOLocal.sharedInstance.relationUserList(user, list: newList)
+                                    
+                                })
+                                
+                            }
+                            
+                        }
+                    }
+                }
+                print("\nOIII\n")
+                callback(user.returnList())
+                print("\nOII\n")
+                //Deletando listas, que foram deletadas no firebase mas não no CoreData:
+                for lists2 : List in listsOFF {
+                    print("\nOI\n")
+                    if( lists2.id.isEmpty == false ){
+                        var myReef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/\(lists2.id)")
+                        print("\nOI-2\n")
+                        myReef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot : FDataSnapshot!) -> Void in
+                            print("\nOI-3\n")
+                            if( snapshot.exists() == false ){
+                                user.removeList(lists2)
+                                DAOLocal.sharedInstance.deleteList(lists2)
+                            }
+                            
+                        })
+                    }
                     
                 }
                 
+                callback(user.returnList())
+                
             })
             
+            callback(user.returnList())
         
         }
         

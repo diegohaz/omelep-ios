@@ -17,9 +17,13 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DAORemoto.sharedInstance.sincroniza()
-        //        self.screenName = "ListsScreen"
         
+        DAORemoto.sharedInstance.sincroniza { lists in
+            self.lists = lists
+            self.collectionView?.reloadData()
+        }
+        
+        //        self.screenName = "ListsScreen"
         
         title = "Lists"
         collectionView = ListsView(frame: self.view.bounds)

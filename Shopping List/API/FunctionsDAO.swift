@@ -46,6 +46,11 @@ class FunctionsDAO {
                 var dic = snapshot.value as! NSDictionary
                 list.name = dic.objectForKey("name")! as! String
                 list.id = id
+                
+                var dateFormat = NSDateFormatter()
+                dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
+                list.updatedDate = dateFormat.dateFromString(dic.objectForKey("date") as! String)!
+                
                 var entrou = false
                 
                 //Pegando os produtos de cada lista
@@ -332,8 +337,9 @@ class FunctionsDAO {
                 var tags = []
                 var products = []
                 var users = []
+                var date = NSDate().description
                 
-                var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(list.name),"name": "\(list.name)", "products": products, "tags": tags, "users": users]
+                var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(list.name),"name": "\(list.name)", "products": products, "tags": tags, "users": users, "date": date]
                 
                 var listRef = myRootRef.childByAppendingPath("list")
                 
@@ -360,8 +366,54 @@ class FunctionsDAO {
         
     }
     
-    
-    
+    /** Função que retorna todas as listas que estão online e offline do usuário */
+    func sAllListsOnlineAndOffilne(callback: ([List], [List]) -> Void) {
+        
+        var user : User = DAOLocal.sharedInstance.readUser()
+        
+        var listsOFF : [List] = user.returnList()
+        
+        var listsON : [List] = []
+        
+        var allKeysOfLists : [String] = []
+        
+        var refList = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/")
+        
+        refList.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot : FDataSnapshot!) -> Void  in
+
+            if( snapshot.exists() ){
+                var dic = snapshot.value as! NSDictionary
+                
+                var allKeys = dic.allKeys as! [String]
+                
+                for key in allKeys{
+                    
+                    if (key == "lists"){
+                        allKeysOfLists = dic.objectForKey("lists")!.allKeys as! [String]
+                    }
+                    
+                }
+                
+                //Agora "Carregando" cada lista:
+                for keyOfList in allKeysOfLists {
+                    FunctionsDAO.sharedInstance.searchListFromID(keyOfList, callback: { (list : List) -> Void in
+                        
+                        listsON.append(list)
+                        
+                        if( listsON.count == allKeysOfLists.count ){
+                            callback(listsON, listsOFF)
+                        }
+                        
+                    })
+                }
+                
+                
+            }
+            
+        })
+
+        
+    }
     
     
     
