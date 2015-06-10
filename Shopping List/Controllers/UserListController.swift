@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 
-class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, ItemViewCellDelegate, MFMessageComposeViewControllerDelegate {
+class UserListController: GAITrackedViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, ItemViewCellDelegate, MFMessageComposeViewControllerDelegate {
     
     var reusableView: UserListView?
     var collectionView: UICollectionView?
@@ -23,6 +23,7 @@ class UserListController: UIViewController, UICollectionViewDelegateFlowLayout, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.screenName = "User List"
         
         // Reusable View
         reusableView = NSBundle.mainBundle().loadNibNamed("UserListView", owner: self, options: [:])[0] as? UserListView

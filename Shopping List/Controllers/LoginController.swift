@@ -21,6 +21,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         
         activityIndicator.frame = CGRectMake(100, 100, 100, 100)
         self.view.addSubview(activityIndicator)
+        
 //        activityIndicator.stopAnimating()
 
 //        activityIndicator.startAnimating()
