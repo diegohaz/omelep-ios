@@ -21,7 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = MainController.sharedInstance
         self.window?.makeKeyAndVisible()
         
+        GAI.sharedInstance().trackUncaughtExceptions = true
+        GAI.sharedInstance().dispatchInterval = 20
+        GAI.sharedInstance().logger.logLevel = GAILogLevel.Verbose
+        GAI.sharedInstance().trackerWithTrackingId("UA-63932855-1")
+//        UA-63932855-1
         //return true
+        
+        setTrackedUserID("UA-63932855-1")
+
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
     }

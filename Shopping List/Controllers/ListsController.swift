@@ -14,10 +14,13 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     
     var collectionView: UICollectionView?
     var lists = [List]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DAORemoto.sharedInstance.sincroniza()
+//        self.screenName = "ListsScreen"
+
+        
         title = "Lists"
         collectionView = ListsView(frame: self.view.bounds)
         collectionView!.dataSource = self
@@ -33,6 +36,8 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     }
     
     override func viewDidAppear(animated: Bool) {
+        trackScreen("ListsScreen")
+
         DAORemoto.sharedInstance.allListOfUser { lists in
             self.lists = lists
             self.collectionView?.reloadData()
@@ -40,6 +45,8 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     }
     
     func add(sender: UIBarButtonItem) {
+        trackEvent("jabba", action: "joe", label: "jo2", value: 10)
+        
         let controller = UserListController()
         controller.isNew = true
         
@@ -51,42 +58,42 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         controller.list = list
         
         self.navigationController?.pushViewController(controller, animated: true)
-
+        
     }
     
     
     
     func openMenu(sender: UIBarButtonItem) {
         
-//        delegate?.toggleLeftPanel?()
+        //        delegate?.toggleLeftPanel?()
         
         
         //** CUSTOM LOGIN
-//        let login = FBSDKLoginManager()
-//        login.logInWithReadPermissions(["email", "public_profile"]){ result, error in
-//            println("RESULT: '\(result)' ")
-//            
-//            if error != nil {
-//                println("error")
-//            }else if(result.isCancelled){
-//                println("result cancelled")
-//            }else{
-//                println("success Get user information.")
-//                
-//                var fbRequest = FBSDKGraphRequest(graphPath:"me", parameters: nil);
-//                fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
-//                    
-//                    if error == nil {
-//                        
-//                        println("User Info : \(result)")
-//                    } else {
-//                        
-//                        println("Error Getting Info \(error)");
-//                        
-//                    }
-//                }
-//            }
-//        }
+        //        let login = FBSDKLoginManager()
+        //        login.logInWithReadPermissions(["email", "public_profile"]){ result, error in
+        //            println("RESULT: '\(result)' ")
+        //
+        //            if error != nil {
+        //                println("error")
+        //            }else if(result.isCancelled){
+        //                println("result cancelled")
+        //            }else{
+        //                println("success Get user information.")
+        //
+        //                var fbRequest = FBSDKGraphRequest(graphPath:"me", parameters: nil);
+        //                fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+        //
+        //                    if error == nil {
+        //
+        //                        println("User Info : \(result)")
+        //                    } else {
+        //
+        //                        println("Error Getting Info \(error)");
+        //
+        //                    }
+        //                }
+        //            }
+        //        }
         
         //** CUSTOM LOGOUT
         
@@ -95,7 +102,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         FBSDKLoginManager().logOut()
         self.dismissViewControllerAnimated(true, completion: nil)
         self.navigationController?.popViewControllerAnimated(true)
-
+        
         
     }
     
@@ -140,5 +147,5 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         
         return cell
     }
-
+    
 }
