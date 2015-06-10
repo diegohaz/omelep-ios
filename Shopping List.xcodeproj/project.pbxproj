@@ -103,7 +103,7 @@
 		2EFD69B11B2779E700AFEBD5 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
 		2EFD69B21B2779E700AFEBD5 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		2EFD69B31B2779E700AFEBD5 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		2EFD69B71B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalyticsHelper.swift; sourceTree = "<group>"; };
+		2EFD69B71B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleAnalyticsHelper.swift; path = "Shopping List/Controllers/GoogleAnalyticsHelper.swift"; sourceTree = "<group>"; };
 		3709153A1B19160200E99B33 /* SingleListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleListView.swift; sourceTree = "<group>"; };
 		374CBA6E1B17D76900255CF1 /* ListsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
 		374CBA6F1B17D76900255CF1 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -209,6 +209,7 @@
 		2EFD699D1B276FB900AFEBD5 /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
+				2EFD69B71B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift */,
 				2EFD699E1B276FDB00AFEBD5 /* Frameworks */,
 				2EFD699F1B276FEB00AFEBD5 /* Library */,
 			);
@@ -247,7 +248,6 @@
 		374CBA6D1B17D76900255CF1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2EFD69B71B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift */,
 				374CBA6F1B17D76900255CF1 /* MainController.swift */,
 				2E6639F71B18A8E100DA97D9 /* LoginController.swift */,
 				374CBA6E1B17D76900255CF1 /* ListsController.swift */,
