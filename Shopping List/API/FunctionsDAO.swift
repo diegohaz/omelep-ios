@@ -324,7 +324,7 @@ class FunctionsDAO {
         var lists : [List] = user.returnList()
         
         for list in lists {
-            print("\(list.name) - \(list.id)\n")
+
             if( list.id.isEmpty == true ){
                 
                 var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")

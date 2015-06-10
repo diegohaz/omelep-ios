@@ -410,11 +410,17 @@ class DAORemoto {
             
             var listsOff : [List] = user.returnList()
             
-            var refList = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/")
-            
+            var refList = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists")
+            print("\nOI - \(user.id)\n")
             refList.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot : FDataSnapshot!) -> Void  in
-                
-                
+                print("\nOI - 2\n")
+                if( snapshot.exists() ){
+                    var dic = snapshot.value as! NSDictionary
+                    
+                    print(dic.allKeys)
+                    
+                    
+                }
                 
             })
             
