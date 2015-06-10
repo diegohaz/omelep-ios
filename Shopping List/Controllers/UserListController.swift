@@ -63,43 +63,49 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     }
     
     func share(sender: UIBarButtonItem){
-        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .ActionSheet)
-
-    
-        let addMembersAction = UIAlertAction(title: "Add Members to List", style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
-            self.showAddMembers()
-        })
         
-        let smsAction = UIAlertAction(title: "Send List by SMS", style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
-            self.showSMS()
-        })
+        var shareController: ShareController = ShareController(frame: CGRectMake(0, 100, 100, 100))
         
-        let emailAction = UIAlertAction(title: "Send List by E-mail", style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
-            
-            self.mail_sender.productNames = self.products
-            let mailComposeViewController = self.mail_sender.configuredMailComposeViewController()
-            if MFMailComposeViewController.canSendMail() {
-                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
-            } else {
-                self.mail_sender.showSendMailErrorAlert()
-            }
-
-        })
-
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: {
-            (alert: UIAlertAction!) -> Void in
-
-        })
-        
-        optionMenu.addAction(addMembersAction)
-        optionMenu.addAction(emailAction)
-        optionMenu.addAction(smsAction)
-        optionMenu.addAction(cancelAction)
-        
-        self.presentViewController(optionMenu, animated: true, completion: nil)
+        self.view.addSubview(shareController)
+//        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .ActionSheet)
+//
+//    
+//        let addMembersAction = UIAlertAction(title: "Add Members to List", style: .Default, handler: {
+//            (alert: UIAlertAction!) -> Void in
+//            self.showAddMembers()
+//        })
+//        
+//        let smsAction = UIAlertAction(title: "Send List by SMS", style: .Default, handler: {
+//            (alert: UIAlertAction!) -> Void in
+//            self.showSMS()
+//        })
+//        
+//        let emailAction = UIAlertAction(title: "Send List by E-mail", style: .Default, handler: {
+//            (alert: UIAlertAction!) -> Void in
+//            
+//            self.mail_sender.productNames = self.products
+//            let mailComposeViewController = self.mail_sender.configuredMailComposeViewController()
+//            if MFMailComposeViewController.canSendMail() {
+//                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+//            } else {
+//                self.mail_sender.showSendMailErrorAlert()
+//            }
+//
+//        })
+//
+//        let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: {
+//            (alert: UIAlertAction!) -> Void in
+//
+//        })
+//        
+//
+//        optionMenu.addAction(addMembersAction)
+//        optionMenu.addAction(emailAction)
+//        optionMenu.addAction(smsAction)
+//        optionMenu.addAction(cancelAction)
+//
+//        
+//        self.presentViewController(optionMenu, animated: true, completion: nil)
         
     }
     

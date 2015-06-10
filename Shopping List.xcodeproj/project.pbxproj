@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2E1C6ED91B1CA91A0048FFEB /* FriendsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */; };
+		2E21B35E1B288CA300359660 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21B35D1B288CA300359660 /* ShareController.swift */; };
+		2E21B3601B28919E00359660 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E21B35F1B28919E00359660 /* libGoogleAnalyticsServices.a */; };
 		2E48A46B1B1A09800072403C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46A1B1A09800072403C /* SettingsView.swift */; };
 		2E48A46D1B1A098E0072403C /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E48A46C1B1A098E0072403C /* SettingsView.xib */; };
 		2E48A46F1B1A10570072403C /* MailSenderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46E1B1A10570072403C /* MailSenderController.swift */; };
@@ -24,7 +26,6 @@
 		2EFD69A31B27710F00AFEBD5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */; };
 		2EFD69A51B27711D00AFEBD5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A41B27711D00AFEBD5 /* CoreData.framework */; };
 		2EFD69A71B27713000AFEBD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A61B27713000AFEBD5 /* libz.dylib */; };
-		2EFD69A91B27713C00AFEBD5 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A81B27713C00AFEBD5 /* libGoogleAnalyticsServices.a */; };
 		2EFD69B61B27825700AFEBD5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030C11B17B4F30027DE70 /* SystemConfiguration.framework */; };
 		2EFD69B81B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFD69B71B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift */; };
 		3709153B1B19160200E99B33 /* SingleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709153A1B19160200E99B33 /* SingleListView.swift */; };
@@ -74,6 +75,8 @@
 
 /* Begin PBXFileReference section */
 		2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListController.swift; sourceTree = "<group>"; };
+		2E21B35D1B288CA300359660 /* ShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
+		2E21B35F1B28919E00359660 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2E48A46A1B1A09800072403C /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2E48A46C1B1A098E0072403C /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		2E48A46E1B1A10570072403C /* MailSenderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailSenderController.swift; sourceTree = "<group>"; };
@@ -92,7 +95,6 @@
 		2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2EFD69A41B27711D00AFEBD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2EFD69A61B27713000AFEBD5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		2EFD69A81B27713C00AFEBD5 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ../../Downloads/GoogleAnalyticsServicesiOS_3.12/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2EFD69AA1B2779E700AFEBD5 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		2EFD69AB1B2779E700AFEBD5 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		2EFD69AC1B2779E700AFEBD5 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
@@ -151,8 +153,8 @@
 			files = (
 				2EFD69B61B27825700AFEBD5 /* SystemConfiguration.framework in Frameworks */,
 				2EFD69A71B27713000AFEBD5 /* libz.dylib in Frameworks */,
-				2EFD69A91B27713C00AFEBD5 /* libGoogleAnalyticsServices.a in Frameworks */,
 				2EFD69A51B27711D00AFEBD5 /* CoreData.framework in Frameworks */,
+				2E21B3601B28919E00359660 /* libGoogleAnalyticsServices.a in Frameworks */,
 				2EFD69A31B27710F00AFEBD5 /* libsqlite3.dylib in Frameworks */,
 				8E9030DC1B1BEDE90027DE70 /* MessageUI.framework in Frameworks */,
 				8E9030D51B17DA960027DE70 /* Firebase.framework in Frameworks */,
@@ -219,7 +221,7 @@
 		2EFD699E1B276FDB00AFEBD5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2EFD69A81B27713C00AFEBD5 /* libGoogleAnalyticsServices.a */,
+				2E21B35F1B28919E00359660 /* libGoogleAnalyticsServices.a */,
 				2EFD69A61B27713000AFEBD5 /* libz.dylib */,
 				8E9030C11B17B4F30027DE70 /* SystemConfiguration.framework */,
 				2EFD69A41B27711D00AFEBD5 /* CoreData.framework */,
@@ -255,6 +257,7 @@
 				374CBA701B17D76900255CF1 /* SingleListController.swift */,
 				2E48A46E1B1A10570072403C /* MailSenderController.swift */,
 				2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */,
+				2E21B35D1B288CA300359660 /* ShareController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				8E49FC8A1B0F75F70087FA08 /* AppDelegate.swift in Sources */,
 				2E48A46F1B1A10570072403C /* MailSenderController.swift in Sources */,
 				374CBA8E1B17D76A00255CF1 /* MainController.swift in Sources */,
+				2E21B35E1B288CA300359660 /* ShareController.swift in Sources */,
 				2E59AED61B1D0C6100F479D0 /* NetworkConnect.swift in Sources */,
 				374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */,
 				374CBA971B17D76A00255CF1 /* Shopping_List.xcdatamodeld in Sources */,
