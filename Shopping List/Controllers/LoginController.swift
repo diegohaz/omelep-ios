@@ -12,23 +12,33 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     
     static let sharedInstance = LoginController()
     let loginView : FBSDKLoginButton = FBSDKLoginButton()
+    var login: UIButton = UIButton(frame: CGRectMake(39, 443, 240, 44))
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.whiteColor()
         
+        let background: UIImageView = UIImageView(frame: self.view.frame)
+        background.image = UIImage(named: "Login_background.png")
+        self.view.addSubview(background)
         
         activityIndicator.frame = CGRectMake(100, 100, 100, 100)
         self.view.addSubview(activityIndicator)
         
-//        activityIndicator.stopAnimating()
-
-//        activityIndicator.startAnimating()
-//        activityIndicator.hidden = false
-//        activityIndicator.stopAnimating()
+        //        activityIndicator.stopAnimating()
+        //        activityIndicator.startAnimating()
+        //        activityIndicator.hidden = false
+        //        activityIndicator.stopAnimating()
         
         //        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+        
+        login.backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1.0)
+        login.layer.cornerRadius = 22
+        login.setTitle("Entrar com Facebook", forState: UIControlState.Normal)
+        login.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        self.view.addSubview(login)
+        
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -69,7 +79,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     
     func registerUser( callback: (User) -> Void) {
         
-
+        
         
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         let graphRequestForImage : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/picture?redirect=false", parameters: nil)
@@ -87,7 +97,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                 {
                     //verifica se usuario ja existe
                     var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
-
+                    
                     var listRef = myRootRef.childByAppendingPath("user")
                     
                     listRef.queryOrderedByChild("idfb").queryEqualToValue(result.valueForKey("id")).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
@@ -112,7 +122,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                             user.me = true
                             DAOLocal.sharedInstance.save()
                             println("User ja estava Registrado")
-
+                            
                             
                         }
                         else {
@@ -161,11 +171,11 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         println("User Logged In")
         
-//        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-//        activityIndicator.frame = CGRectMake(100, 100, 100, 100)
-//        self.view.addSubview(activityIndicator)
+        //        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        //        activityIndicator.frame = CGRectMake(100, 100, 100, 100)
+        //        self.view.addSubview(activityIndicator)
         
-//        activityIndicator.startAnimating()
+        //        activityIndicator.startAnimating()
         
         registerUser(){ user in
             
@@ -175,12 +185,12 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             println("ja chegou a resposta")
             
             self.activityIndicator.stopAnimating()
-
+            
         }
         
         
         
-
+        
         
         
         

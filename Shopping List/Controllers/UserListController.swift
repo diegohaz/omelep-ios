@@ -76,10 +76,12 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
 //        self.navigationController?.navigationBar.userInteractionEnabled = false
         
 
-        var shareController: ShareController = ShareController(productsFromCurrentList: products, currentList: list!, frame: CGRectMake(15, 86, self.view.frame.width - 2 * 15, self.view.frame.height - 2 * 86))
+        var shareController: ShareController = ShareController()
+        shareController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         
 //        shareController.userInteractionEnabled = true
-        self.view.addSubview(shareController)
+        self.presentViewController(shareController, animated: true, completion: nil)
+
 //        self.view.userInteractionEnabled = true
 
         

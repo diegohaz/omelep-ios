@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class ShareController: UIView, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate{
+class ShareController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate{
     
     
     var onListNames:  [String]     = []
@@ -25,21 +25,25 @@ class ShareController: UIView, UITableViewDataSource, UITableViewDelegate, UICol
     var list:          List!
     var products:     [Product]    = []
     
-    convenience init(productsFromCurrentList: [Product], currentList: List, frame: CGRect){
-        self.init(frame: frame)
-        products = productsFromCurrentList
-        list = currentList
-        
-        println(products.first?.name)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+//    convenience init(productsFromCurrentList: [Product], currentList: List, frame: CGRect){
+//        self.init(frame: frame)
+//        products = productsFromCurrentList
+//        list = currentList
+//        
+//        println(products.first?.name)
+//    }
+//    
+    override func viewDidLoad() {
         
         //        self.userInteractionEnabled = true
-        self.backgroundColor     = UIColor.whiteColor()
-        self.layer.cornerRadius  = 5;
-        self.layer.masksToBounds = true;
+        
+        var teste: UIView = UIView(frame: CGRectMake(15, 86, self.view.frame.width - 2 * 15, teste.frame.height - 2 * 86))
+        
+        teste.frame               = CGRectMake(15, 86, self.view.frame.width - 2 * 15, teste.frame.height - 2 * 86)
+        teste.backgroundColor     = UIColor.whiteColor()
+        teste.layer.cornerRadius  = 5;
+        teste.layer.masksToBounds = true;
+        self.view.addSubview(teste)
         
         onListNames.insert("onName", atIndex: 0)
         onListIDs.insert("onIDs", atIndex: 0)
@@ -50,10 +54,10 @@ class ShareController: UIView, UITableViewDataSource, UITableViewDelegate, UICol
         getFacebookFriendsFromUser()
         
         //label
-        let title: UILabel = UILabel(frame: CGRectMake(self.frame.width/2 - 70, 10, 2 * 70, 20))
+        let title: UILabel = UILabel(frame: CGRectMake(self.view.frame.width/2 - 70, 10, 2 * 70, 20))
 //        title.backgroundColor = UIColor.greenColor()
         title.text = "Membros da Lista"
-        self.addSubview(title)
+        teste.addSubview(title)
         
         
         //collectionview
@@ -61,13 +65,13 @@ class ShareController: UIView, UITableViewDataSource, UITableViewDelegate, UICol
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: 50, height: 50)
         layout.scrollDirection = UICollectionViewScrollDirection.Horizontal
-        Collection = UICollectionView(frame: CGRectMake(0, title.frame.origin.y + title.frame.height, self.frame.width, 70), collectionViewLayout: layout)
+        Collection = UICollectionView(frame: CGRectMake(0, title.frame.origin.y + title.frame.height, teste.frame.width, 70), collectionViewLayout: layout)
         Collection.dataSource = self
         Collection.scrollEnabled = true
         Collection.delegate = self
         Collection.registerClass(SharedUsersCell.self, forCellWithReuseIdentifier: "SharedUsersCell")
         Collection.backgroundColor = UIColor.whiteColor()//.colorWithAlphaComponent(0)
-        self.addSubview(Collection!)
+        teste.addSubview(Collection!)
         
         
         
@@ -80,35 +84,35 @@ class ShareController: UIView, UITableViewDataSource, UITableViewDelegate, UICol
         let topLine3: UIView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 1))
         topLine3.backgroundColor = UIColor.grayColor()
         tableView.addSubview(topLine3)
-        self.addSubview(tableView)
+        teste.addSubview(tableView)
         
         
         //button Email
-        let sendByEmail: UIButton = UIButton(frame: CGRectMake( 0, tableView.frame.height + tableView.frame.origin.y, frame.width, (frame.height - tableView.frame.origin.y - tableView.frame.height) / 2))
+        let sendByEmail: UIButton = UIButton(frame: CGRectMake( 0, tableView.frame.height + tableView.frame.origin.y, view.frame.width, (self.view.frame.height - tableView.frame.origin.y - tableView.frame.height) / 2))
         sendByEmail.setTitle("Enviar por Email", forState: UIControlState.Normal)
         sendByEmail.setTitleColor(UIColor(red: 33/255, green: 141/255, blue: 181/255, alpha: 1.0), forState: UIControlState.Normal)
         sendByEmail.addTarget(self, action: "sendEmail", forControlEvents: UIControlEvents.TouchUpInside)
         let topLine: UIView = UIView(frame: CGRectMake(0, 0, sendByEmail.frame.size.width, 1))
         topLine.backgroundColor = UIColor.grayColor()
         sendByEmail.addSubview(topLine)
-        self.addSubview(sendByEmail)
+        teste.addSubview(sendByEmail)
         
         
         //button SMS
-        let sendBySMS: UIButton = UIButton(frame: CGRectMake( 0, sendByEmail.frame.height + sendByEmail.frame.origin.y, frame.width, (frame.height - tableView.frame.origin.y - tableView.frame.height) / 2))
+        let sendBySMS: UIButton = UIButton(frame: CGRectMake( 0, sendByEmail.frame.height + sendByEmail.frame.origin.y, view.frame.width, (self.view.frame.height - tableView.frame.origin.y - tableView.frame.height) / 2))
         sendBySMS.setTitle("Enviar por SMS", forState: UIControlState.Normal)
         sendBySMS.setTitleColor(UIColor(red: 33/255, green: 141/255, blue: 181/255, alpha: 1.0), forState: UIControlState.Normal)
         sendBySMS.addTarget(self, action: "sendSMS", forControlEvents: UIControlEvents.TouchUpInside)
         let topLine2: UIView = UIView(frame: CGRectMake(0, 0, sendBySMS.frame.size.width, 1))
         topLine2.backgroundColor = UIColor.grayColor()
         sendBySMS.addSubview(topLine2)
-        self.addSubview(sendBySMS)
+        teste.addSubview(sendBySMS)
         
     }
     
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    required init(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     
     
@@ -155,7 +159,6 @@ class ShareController: UIView, UITableViewDataSource, UITableViewDelegate, UICol
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         println(onListPics.count)
         return onListPics.count + 1
     }
@@ -216,9 +219,7 @@ class ShareController: UIView, UITableViewDataSource, UITableViewDelegate, UICol
         //        self.mail_sender.productNames = self.products
         let mailComposeViewController = self.mail_sender.configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
-            //            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
-            self.window?.rootViewController?.presentViewController(mailComposeViewController, animated: true, completion: nil)
-            
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
         } else {
             self.mail_sender.showSendMailErrorAlert()
         }

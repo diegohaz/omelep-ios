@@ -25,6 +25,7 @@
 		2E59AED91B1D385600F479D0 /* Boneco.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E59AED81B1D385600F479D0 /* Boneco.png */; };
 		2E6639F81B18A8E100DA97D9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6639F71B18A8E100DA97D9 /* LoginController.swift */; };
 		2EA53F681B29B4B700086428 /* teste.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA53F671B29B4B700086428 /* teste.png */; };
+		2EA53F6C1B29F08B00086428 /* Login_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA53F6B1B29F08B00086428 /* Login_background.png */; };
 		2EFD69A31B27710F00AFEBD5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */; };
 		2EFD69A51B27711D00AFEBD5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A41B27711D00AFEBD5 /* CoreData.framework */; };
 		2EFD69A71B27713000AFEBD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A61B27713000AFEBD5 /* libz.dylib */; };
@@ -96,6 +97,7 @@
 		2E59AED81B1D385600F479D0 /* Boneco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Boneco.png; sourceTree = "<group>"; };
 		2E6639F71B18A8E100DA97D9 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2EA53F671B29B4B700086428 /* teste.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teste.png; sourceTree = "<group>"; };
+		2EA53F6B1B29F08B00086428 /* Login_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_background.png; sourceTree = "<group>"; };
 		2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2EFD69A41B27711D00AFEBD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2EFD69A61B27713000AFEBD5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -328,6 +330,7 @@
 				8E49FC851B0F75F70087FA08 /* Products */,
 				2E59AED81B1D385600F479D0 /* Boneco.png */,
 				2EA53F671B29B4B700086428 /* teste.png */,
+				2EA53F6B1B29F08B00086428 /* Login_background.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -485,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E59AED91B1D385600F479D0 /* Boneco.png in Resources */,
+				2EA53F6C1B29F08B00086428 /* Login_background.png in Resources */,
 				374CBAB61B17D79600255CF1 /* NewItemViewCell.xib in Resources */,
 				8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */,
 				374CBAB81B17D79600255CF1 /* SuggestionViewCell.xib in Resources */,
