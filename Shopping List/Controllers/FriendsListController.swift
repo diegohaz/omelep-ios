@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class FriendsListController: GAITrackedViewController,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     

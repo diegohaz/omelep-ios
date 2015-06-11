@@ -69,71 +69,77 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     
     func openMenu(sender: UIBarButtonItem) {
         
-        var alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .Alert)
+//        var alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .Alert)
+//        
+//        var loginAction = UIAlertAction(title: "Facebook Login", style: UIAlertActionStyle.Default) {
+//            UIAlertAction in
+//            
+//            let login = FBSDKLoginManager()
+//            login.logInWithReadPermissions(["email", "public_profile"]){ result, error in
+//                println("RESULT: '\(result)' ")
+//                
+//                if error != nil {
+//                    println("error")
+//                }else if(result.isCancelled){
+//                    println("usuario cancelou a autorizacao")
+//                }else{
+//                    println("success Get user information.")
+//                    
+//                    var fbRequest = FBSDKGraphRequest(graphPath:"me", parameters: nil);
+//                    fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+//                        
+//                        if error == nil {
+//                            
+//                            println("User Info : \(result)")
+//                            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
+//                        } else {
+//                            
+//                            println("Error Getting Info \(error)");
+//                            
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        
+//        var logoutAction = UIAlertAction(title: "Logout", style: UIAlertActionStyle.Default) {
+//            UIAlertAction in
+//            FBSDKLoginManager().logOut()
+//            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isLoggedIn")
+//        }
+//        
+//        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+//            UIAlertAction in
+//        }
+//        
+//        if (FBSDKAccessToken.currentAccessToken() != nil)
+//        {
+//            alertController.title = "Sure Logout?"
+//            alertController.message = "no no noo"
+//            
+//            alertController.addAction(logoutAction)
+//            alertController.addAction(cancelAction)
+//        }
+//        else
+//        {
+//            
+//            println("user inicializou DESLOGADO")
+//            
+//            alertController.title = "Welcome"
+//            alertController.message = "Do your list"
+//            
+//            alertController.addAction(loginAction)
+//            alertController.addAction(cancelAction)
+//            
+//        }
+//        
+//        self.presentViewController(alertController, animated: true, completion: nil)
+
+        println("deu logout")
         
-        var loginAction = UIAlertAction(title: "Facebook Login", style: UIAlertActionStyle.Default) {
-            UIAlertAction in
-            
-            let login = FBSDKLoginManager()
-            login.logInWithReadPermissions(["email", "public_profile"]){ result, error in
-                println("RESULT: '\(result)' ")
-                
-                if error != nil {
-                    println("error")
-                }else if(result.isCancelled){
-                    println("usuario cancelou a autorizacao")
-                }else{
-                    println("success Get user information.")
-                    
-                    var fbRequest = FBSDKGraphRequest(graphPath:"me", parameters: nil);
-                    fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
-                        
-                        if error == nil {
-                            
-                            println("User Info : \(result)")
-                            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
-                        } else {
-                            
-                            println("Error Getting Info \(error)");
-                            
-                        }
-                    }
-                }
-            }
-        }
-        
-        var logoutAction = UIAlertAction(title: "Logout", style: UIAlertActionStyle.Default) {
-            UIAlertAction in
-            FBSDKLoginManager().logOut()
-            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isLoggedIn")
-        }
-        
-        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
-            UIAlertAction in
-        }
-        
-        if (FBSDKAccessToken.currentAccessToken() != nil)
-        {
-            alertController.title = "Sure Logout?"
-            alertController.message = "no no noo"
-            
-            alertController.addAction(logoutAction)
-            alertController.addAction(cancelAction)
-        }
-        else
-        {
-            
-            println("user inicializou DESLOGADO")
-            
-            alertController.title = "Welcome"
-            alertController.message = "Do your list"
-            
-            alertController.addAction(loginAction)
-            alertController.addAction(cancelAction)
-            
-        }
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
+        FBSDKLoginManager().logOut()
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
         
     }
     

@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 
-class UserListController: GAITrackedViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, ItemViewCellDelegate, MFMessageComposeViewControllerDelegate {
+class UserListController: GAITrackedViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, ItemViewCellDelegate/*, MFMessageComposeViewControllerDelegate*/ {
     
     var reusableView: UserListView?
     var collectionView: UICollectionView?
@@ -19,8 +19,8 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     var isNew = false
     
     var mail_sender: MailSender! = MailSender()
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.screenName = "User List"
@@ -52,7 +52,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     }
     
     override func viewDidAppear(animated: Bool) {
-
+        
         if list != nil {
             DAORemoto.sharedInstance.allProductsOfList(list!, callback: { (arrayProducts : [Product]) -> Void in
                 self.products = arrayProducts
@@ -63,49 +63,65 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     }
     
     func share(sender: UIBarButtonItem){
+        //        println( "asdasdasd")
+        //
+//        self.view.userInteractionEnabled = false
+
+        let blockView = UIView(frame: self.view.frame)
+        blockView.backgroundColor = UIColor.blackColor()
+        blockView.alpha = 0.5
+        blockView.userInteractionEnabled = false
+        self.view.addSubview(blockView)
+        self.view.bringSubviewToFront(blockView)
+//        self.navigationController?.navigationBar.userInteractionEnabled = false
         
-        var shareController: ShareController = ShareController(frame: CGRectMake(0, 100, 100, 100))
+
+        var shareController: ShareController = ShareController(productsFromCurrentList: products, currentList: list!, frame: CGRectMake(15, 86, self.view.frame.width - 2 * 15, self.view.frame.height - 2 * 86))
         
+//        shareController.userInteractionEnabled = true
         self.view.addSubview(shareController)
-//        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .ActionSheet)
-//
-//    
-//        let addMembersAction = UIAlertAction(title: "Add Members to List", style: .Default, handler: {
-//            (alert: UIAlertAction!) -> Void in
-//            self.showAddMembers()
-//        })
-//        
-//        let smsAction = UIAlertAction(title: "Send List by SMS", style: .Default, handler: {
-//            (alert: UIAlertAction!) -> Void in
-//            self.showSMS()
-//        })
-//        
-//        let emailAction = UIAlertAction(title: "Send List by E-mail", style: .Default, handler: {
-//            (alert: UIAlertAction!) -> Void in
-//            
-//            self.mail_sender.productNames = self.products
-//            let mailComposeViewController = self.mail_sender.configuredMailComposeViewController()
-//            if MFMailComposeViewController.canSendMail() {
-//                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
-//            } else {
-//                self.mail_sender.showSendMailErrorAlert()
-//            }
-//
-//        })
-//
-//        let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: {
-//            (alert: UIAlertAction!) -> Void in
-//
-//        })
-//        
-//
-//        optionMenu.addAction(addMembersAction)
-//        optionMenu.addAction(emailAction)
-//        optionMenu.addAction(smsAction)
-//        optionMenu.addAction(cancelAction)
-//
-//        
-//        self.presentViewController(optionMenu, animated: true, completion: nil)
+//        self.view.userInteractionEnabled = true
+
+        
+        //        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .ActionSheet)
+        //
+        //
+        //        let addMembersAction = UIAlertAction(title: "Add Members to List", style: .Default, handler: {
+        //            (alert: UIAlertAction!) -> Void in
+        //            self.showAddMembers()
+        //        })
+        //
+        //        let smsAction = UIAlertAction(title: "Send List by SMS", style: .Default, handler: {
+        //            (alert: UIAlertAction!) -> Void in
+        //            self.showSMS()
+        //        })
+        //
+        //        let emailAction = UIAlertAction(title: "Send List by E-mail", style: .Default, handler: {
+        //            (alert: UIAlertAction!) -> Void in
+        //
+        //            self.mail_sender.productNames = self.products
+        //            let mailComposeViewController = self.mail_sender.configuredMailComposeViewController()
+        //            if MFMailComposeViewController.canSendMail() {
+        //                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        //            } else {
+        //                self.mail_sender.showSendMailErrorAlert()
+        //            }
+        //
+        //        })
+        //
+        //        let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: {
+        //            (alert: UIAlertAction!) -> Void in
+        //
+        //        })
+        //
+        //
+        //        optionMenu.addAction(addMembersAction)
+        //        optionMenu.addAction(emailAction)
+        //        optionMenu.addAction(smsAction)
+        //        optionMenu.addAction(cancelAction)
+        //
+        //
+        //        self.presentViewController(optionMenu, animated: true, completion: nil)
         
     }
     
@@ -113,7 +129,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         let indexPath = collectionView!.indexPathForCell(cell)
         
         DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
-
+        
         products.removeAtIndex(indexPath!.row)
         collectionView!.reloadData()
     }
@@ -140,7 +156,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
             product.name = textField.text
             textField.text = ""
             
-            DAORemoto.sharedInstance.addProductToList(product.name, list: self.list!) 
+            DAORemoto.sharedInstance.addProductToList(product.name, list: self.list!)
             
             products.insert(product, atIndex: 0)
             collectionView!.reloadData()
@@ -177,70 +193,70 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     
     
     //Funcao para pegar amigos do facebook q estao conectados no app.
-    func showAddMembers() {
-        let friendRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, HTTPMethod: "GET")
-        friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                // Process error
-                println("Error: \(error)")
-            }
-            else
-            {
-                println(result)
-                let friends: AnyObject? = result.valueForKey("data")
-                let friendNames: [String] = friends?.valueForKey("name") as! [String]
-                let friendIDs: [String] = friends?.valueForKey("id") as! [String]
-//                let friendPics: [String] = friends?.valueForKey("url") as! [String]
-//                println("User Name is: \(friendNames))")
-                
-                
-                let friendsList: FriendsListController
-                friendsList = FriendsListController()
-                friendsList.friendNames = friendNames
-                friendsList.friendIDs = friendIDs
-//                friendsList.friendPics = friendPics
-                friendsList.list = self.list
-                
-                
-                
-                self.navigationController?.pushViewController(friendsList, animated: true)
-
-            }
-        })
-    }
+//    func showAddMembers() {
+//        let friendRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, HTTPMethod: "GET")
+//        friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+//            
+//            if ((error) != nil)
+//            {
+//                // Process error
+//                println("Error: \(error)")
+//            }
+//            else
+//            {
+//                println(result)
+//                let friends: AnyObject? = result.valueForKey("data")
+//                let friendNames: [String] = friends?.valueForKey("name") as! [String]
+//                let friendIDs: [String] = friends?.valueForKey("id") as! [String]
+//                //                let friendPics: [String] = friends?.valueForKey("url") as! [String]
+//                //                println("User Name is: \(friendNames))")
+//                
+//                
+//                let friendsList: FriendsListController
+//                friendsList = FriendsListController()
+//                friendsList.friendNames = friendNames
+//                friendsList.friendIDs = friendIDs
+//                //                friendsList.friendPics = friendPics
+//                friendsList.list = self.list
+//                
+//                
+//                
+//                self.navigationController?.pushViewController(friendsList, animated: true)
+//                
+//            }
+//        })
+//    }
     
     //Função para enviar o sms
-    func showSMS() {
-        
-        if( MFMessageComposeViewController.canSendText() ) {
-            
-            var productNameDisplay = ""
-            for var i = 0 ; i < products.count ; i++ {
-                productNameDisplay += "\(i+1) - \(products[i].name) \(products[i].cubage), \(products[i].brand)"
-            }
-            
-            var messageController : MFMessageComposeViewController = MFMessageComposeViewController()
-            messageController.messageComposeDelegate = self
-            messageController.body = productNameDisplay
-            self.presentViewController(messageController, animated: true, completion: nil)
-            
-        } else {
-            
-            print("O celular não tem opção para enviar mensagem de texto! \n")
-            
-        }
-        
-    }
+//    func showSMS() {
+//        
+//        if( MFMessageComposeViewController.canSendText() ) {
+//            
+//            var productNameDisplay = ""
+//            for var i = 0 ; i < products.count ; i++ {
+//                productNameDisplay += "\(i+1) - \(products[i].name) \(products[i].cubage), \(products[i].brand)"
+//            }
+//            
+//            var messageController : MFMessageComposeViewController = MFMessageComposeViewController()
+//            messageController.messageComposeDelegate = self
+//            messageController.body = productNameDisplay
+//            self.presentViewController(messageController, animated: true, completion: nil)
+//            
+//        } else {
+//            
+//            print("O celular não tem opção para enviar mensagem de texto! \n")
+//            
+//        }
+//        
+//    }
+//    
+//    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+//        
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//        
+//        //Aqui pode saber se o sms foi enviado com sucesso ou não, mas acho desnecessário no momento!
+//    }
     
-    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-        //Aqui pode saber se o sms foi enviado com sucesso ou não, mas acho desnecessário no momento!
-    }
     
-
-
+    
 }

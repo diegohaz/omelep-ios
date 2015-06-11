@@ -10,6 +10,7 @@
 		2E1C6ED91B1CA91A0048FFEB /* FriendsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */; };
 		2E21B35E1B288CA300359660 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21B35D1B288CA300359660 /* ShareController.swift */; };
 		2E21B3601B28919E00359660 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E21B35F1B28919E00359660 /* libGoogleAnalyticsServices.a */; };
+		2E21B3621B289B1100359660 /* SharedUsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21B3611B289B1100359660 /* SharedUsersCell.swift */; };
 		2E48A46B1B1A09800072403C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46A1B1A09800072403C /* SettingsView.swift */; };
 		2E48A46D1B1A098E0072403C /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E48A46C1B1A098E0072403C /* SettingsView.xib */; };
 		2E48A46F1B1A10570072403C /* MailSenderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46E1B1A10570072403C /* MailSenderController.swift */; };
@@ -23,6 +24,7 @@
 		2E59AED71B1D0C6100F479D0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E59AED11B1D0C6100F479D0 /* Reachability.m */; };
 		2E59AED91B1D385600F479D0 /* Boneco.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E59AED81B1D385600F479D0 /* Boneco.png */; };
 		2E6639F81B18A8E100DA97D9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6639F71B18A8E100DA97D9 /* LoginController.swift */; };
+		2EA53F681B29B4B700086428 /* teste.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA53F671B29B4B700086428 /* teste.png */; };
 		2EFD69A31B27710F00AFEBD5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */; };
 		2EFD69A51B27711D00AFEBD5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A41B27711D00AFEBD5 /* CoreData.framework */; };
 		2EFD69A71B27713000AFEBD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A61B27713000AFEBD5 /* libz.dylib */; };
@@ -77,6 +79,7 @@
 		2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListController.swift; sourceTree = "<group>"; };
 		2E21B35D1B288CA300359660 /* ShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
 		2E21B35F1B28919E00359660 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		2E21B3611B289B1100359660 /* SharedUsersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedUsersCell.swift; sourceTree = "<group>"; };
 		2E48A46A1B1A09800072403C /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2E48A46C1B1A098E0072403C /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		2E48A46E1B1A10570072403C /* MailSenderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailSenderController.swift; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 		2E59AED21B1D0C6100F479D0 /* Shopping List-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Shopping List-Bridging-Header.h"; path = "API/Shopping List-Bridging-Header.h"; sourceTree = "<group>"; };
 		2E59AED81B1D385600F479D0 /* Boneco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Boneco.png; sourceTree = "<group>"; };
 		2E6639F71B18A8E100DA97D9 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		2EA53F671B29B4B700086428 /* teste.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teste.png; sourceTree = "<group>"; };
 		2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2EFD69A41B27711D00AFEBD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2EFD69A61B27713000AFEBD5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -258,6 +262,7 @@
 				2E48A46E1B1A10570072403C /* MailSenderController.swift */,
 				2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */,
 				2E21B35D1B288CA300359660 /* ShareController.swift */,
+				2E21B3611B289B1100359660 /* SharedUsersCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				8E49FC9F1B0F75F70087FA08 /* Shopping ListTests */,
 				8E49FC851B0F75F70087FA08 /* Products */,
 				2E59AED81B1D385600F479D0 /* Boneco.png */,
+				2EA53F671B29B4B700086428 /* teste.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -487,6 +493,7 @@
 				374CBABA1B17DA5A00255CF1 /* LaunchScreen.xib in Resources */,
 				2E48A46D1B1A098E0072403C /* SettingsView.xib in Resources */,
 				374CBAC21B17E2B500255CF1 /* UserListView.xib in Resources */,
+				2EA53F681B29B4B700086428 /* teste.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +535,7 @@
 				2E48A46B1B1A09800072403C /* SettingsView.swift in Sources */,
 				374CBAB71B17D79600255CF1 /* SuggestionViewCell.swift in Sources */,
 				2E59AED71B1D0C6100F479D0 /* Reachability.m in Sources */,
+				2E21B3621B289B1100359660 /* SharedUsersCell.swift in Sources */,
 				374CBAC91B18FBD600255CF1 /* NewItemTextField.swift in Sources */,
 				374CBACB1B18FBF800255CF1 /* TitleTextField.swift in Sources */,
 				374CBA8F1B17D76A00255CF1 /* SingleListController.swift in Sources */,
