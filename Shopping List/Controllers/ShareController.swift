@@ -37,7 +37,7 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         //        self.userInteractionEnabled = true
         
-        var teste: UIView = UIView(frame: CGRectMake(15, 86, self.view.frame.width - 2 * 15, teste.frame.height - 2 * 86))
+        var teste: UIView = UIView(frame: CGRectMake(15, 86, self.view.frame.width - 2 * 15, self.view.frame.height - 2 * 86))
         
         teste.frame               = CGRectMake(15, 86, self.view.frame.width - 2 * 15, teste.frame.height - 2 * 86)
         teste.backgroundColor     = UIColor.whiteColor()
