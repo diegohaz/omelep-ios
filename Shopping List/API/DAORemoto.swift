@@ -141,13 +141,13 @@ class DAORemoto {
     func addProductToList(name : String, list : List) {
         
         list.updatedDate = NSDate()
-        DAOLocal.sharedInstance.save()
         
         if( NetworkConnect.sharedInstance.connected() ) {
         
             FunctionsDAO.sharedInstance.searchProductFromName(name, callback: { (product : Product) in
                 
                 DAOLocal.sharedInstance.addProduct(product, list: list)
+                DAOLocal.sharedInstance.save()
             
                 var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
             
@@ -173,6 +173,7 @@ class DAORemoto {
             var product : Product = DAOLocal.sharedInstance.searchProduct(name)
         
             DAOLocal.sharedInstance.addProduct(product, list: list)
+            DAOLocal.sharedInstance.save()
             
         }
         
@@ -313,6 +314,8 @@ class DAORemoto {
             myRootRef.removeAllObservers()
 
             myRootRef.observeEventType(FEventType.ChildAdded, withBlock: { (snapshot : FDataSnapshot!) -> Void in
+                
+                products = list.returnProduct()
             
                 var key = snapshot.key
             
@@ -339,6 +342,8 @@ class DAORemoto {
             myRootRef2.observeEventType(FEventType.ChildRemoved, withBlock: { (snapshot : FDataSnapshot!) -> Void in
             
                 var key = snapshot.key
+                
+                products = list.returnProduct()
             
                 FunctionsDAO.sharedInstance.searchProductFromID(key, callback: { (product : Product) -> Void in
                     var i = 0
