@@ -20,6 +20,8 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     
     var mail_sender: MailSender! = MailSender()
     
+    var shareController: ShareController!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,16 +68,11 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     
     func share(sender: UIBarButtonItem){
 
-
-        let blockView = UIControl(frame: self.view.frame)
-        blockView.backgroundColor = UIColor.blackColor()
-        blockView.alpha = 0.5
-        self.view.addSubview(blockView)
-        
-
-        var shareController: ShareController = ShareController()
+        shareController = ShareController()
         shareController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        
+        shareController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        shareController.list = list
+
         self.presentViewController(shareController, animated: true, completion: nil)
 
     }

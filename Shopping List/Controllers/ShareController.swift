@@ -23,18 +23,24 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     var mail_sender:   MailSender! = MailSender()
     
     var list:          List!
-    var products:     [Product]    = []
+    
+    
+
     
     override func viewDidLoad() {
         
+        let blockView = UIControl(frame: self.view.frame)
+        blockView.backgroundColor = UIColor.blackColor()
+        blockView.alpha = 0.5
+        blockView.addTarget(self, action: "dismissShareController", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(blockView)
         
-        var frontView: UIView = UIView(frame: CGRectMake(15, 86, self.view.frame.width - 2 * 15, self.view.frame.height - 2 * 86))
         
+        var frontView: UIView = UIView(frame: CGRectMake(self.view.frame.width/20.645, self.view.frame.height/6.418, self.view.frame.width/1.109, self.view.frame.height/1.452))
         frontView.backgroundColor     = UIColor.whiteColor()
         frontView.layer.cornerRadius  = 5;
         frontView.layer.masksToBounds = true;
         self.view.addSubview(frontView)
-        
         
         
         onListNames.insert("onName", atIndex: 0)
@@ -43,14 +49,16 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         onListNames.insert("onName2", atIndex: 0)
         onListIDs.insert("onIDs2", atIndex: 0)
         onListPics.insert(UIImage(named: "teste.png")!, atIndex: 0)
-
-//        offListNames.insert("offName", atIndex: 0)
-//        offListIDs.insert("offIDs", atIndex: 0)
+        
+        
+        //        offListNames.insert("offName", atIndex: 0)
+        //        offListIDs.insert("offIDs", atIndex: 0)
         offListPics.insert(UIImage(named: "teste.png")!, atIndex: 0)
         getFacebookFriendsFromUser()
         
+        
         //label
-        let title: UILabel = UILabel(frame: CGRectMake(0,0,frontView.frame.width,26))
+        let title: UILabel = UILabel(frame: CGRectMake(0,0,frontView.frame.width,frontView.frame.height/13.016))
         title.text = "Membros da Lista"
         title.textAlignment = NSTextAlignment.Center
         frontView.addSubview(title)
@@ -58,38 +66,39 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         //collectionview
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 13, left: 17, bottom: 13, right: 17)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: frontView.frame.width/16.941, bottom: 0, right: frontView.frame.width/16.941)
         layout.itemSize = CGSize(width: 48, height: 48)
         layout.scrollDirection = UICollectionViewScrollDirection.Horizontal
-
-        Collection = UICollectionView(frame: CGRectMake(0, title.frame.height, frontView.frame.width, 74), collectionViewLayout: layout)
+        
+        
+        Collection = UICollectionView(frame: CGRectMake(0, title.frame.height, frontView.frame.width, frontView.frame.height/5.578), collectionViewLayout: layout)
         Collection.dataSource = self
         Collection.scrollEnabled = true
         Collection.delegate = self
         Collection.registerClass(SharedUsersCell.self, forCellWithReuseIdentifier: "SharedUsersCell")
         Collection.backgroundColor = UIColor.whiteColor()//.colorWithAlphaComponent(0)
         
+        
         var bottomBorder: CALayer = CALayer()
-        bottomBorder.borderColor = UIColor.grayColor().CGColor
-        bottomBorder.borderWidth = 1
+        bottomBorder.borderColor  = UIColor.grayColor().CGColor
+        bottomBorder.borderWidth  = 1
         //gambiarra braba aqui na linha de baixo
         bottomBorder.frame = CGRectMake(-100, Collection.frame.height-1, frontView.frame.width + 1000, 1)
         Collection.layer.addSublayer(bottomBorder)
-        
         frontView.addSubview(Collection!)
         
         
-        
         //tableview
-        tableView.frame           =   CGRectMake(0, Collection.frame.height + Collection.frame.origin.y, frontView.frame.width, 200);
-        tableView.delegate        =   self
-        tableView.dataSource      =   self
+        tableView.frame           = CGRectMake(0, Collection.frame.height + Collection.frame.origin.y, frontView.frame.width, frontView.frame.height/1.957);
+        tableView.delegate        = self
+        tableView.dataSource      = self
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.tableFooterView = UIView(frame: CGRectZero)
         frontView.addSubview(tableView)
         
         
         //button Email
-        let sendByEmail: UIButton = UIButton(frame: CGRectMake( 0, tableView.frame.height + tableView.frame.origin.y, frontView.frame.width, (frontView.frame.height - tableView.frame.origin.y - tableView.frame.height) / 2))
+        let sendByEmail: UIButton = UIButton(frame: CGRectMake( 0, tableView.frame.height + tableView.frame.origin.y, frontView.frame.width, frontView.frame.height / 8.875))
         sendByEmail.setTitle("Enviar por Email", forState: UIControlState.Normal)
         sendByEmail.setTitleColor(UIColor(red: 33/255, green: 141/255, blue: 181/255, alpha: 1.0), forState: UIControlState.Normal)
         sendByEmail.addTarget(self, action: "sendEmail", forControlEvents: UIControlEvents.TouchUpInside)
@@ -100,7 +109,7 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         
         //button SMS
-        let sendBySMS: UIButton = UIButton(frame: CGRectMake( 0, sendByEmail.frame.height + sendByEmail.frame.origin.y, frontView.frame.width, (frontView.frame.height - tableView.frame.origin.y - tableView.frame.height) / 2))
+        let sendBySMS: UIButton = UIButton(frame: CGRectMake( 0, sendByEmail.frame.height + sendByEmail.frame.origin.y, frontView.frame.width, frontView.frame.height / 8.775))
         sendBySMS.setTitle("Enviar por SMS", forState: UIControlState.Normal)
         sendBySMS.setTitleColor(UIColor(red: 33/255, green: 141/255, blue: 181/255, alpha: 1.0), forState: UIControlState.Normal)
         sendBySMS.addTarget(self, action: "sendSMS", forControlEvents: UIControlEvents.TouchUpInside)
@@ -110,8 +119,8 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         frontView.addSubview(sendBySMS)
         
     }
-
-
+    
+    
     
     //tableview
     var tableView: UITableView  =   UITableView()
@@ -125,7 +134,6 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         cell.textLabel?.text = self.offListNames[indexPath.row]
         cell.imageView!.image = self.offListPics[indexPath.row]
-        
         
         
         var frame = cell.imageView!.frame
@@ -160,8 +168,8 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = Collection.dequeueReusableCellWithReuseIdentifier("SharedUsersCell", forIndexPath: indexPath) as! SharedUsersCell
-
-            cell.imageView.image = onListPics[indexPath.row]
+        
+        cell.imageView.image = onListPics[indexPath.row]
         
         return cell
     }
@@ -176,35 +184,40 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     
     //actions
-//    func showSMS() {
-//        
-//        if( MFMessageComposeViewController.canSendText() ) {
-//            
-////            var productNameDisplay = ""
-////            for var i = 0 ; i < products.count ; i++ {
-////                productNameDisplay += "\(i+1) - \(products[i].name) \(products[i].cubage), \(products[i].brand)"
-////            }
-//            
-//            var messageController : MFMessageComposeViewController = MFMessageComposeViewController()
-//            messageController.messageComposeDelegate = self
-//            messageController.body = "Teste"
-////            self.presentViewController(messageController, animated: true, completion: nil)
-//            self.window?.rootViewController?.presentViewController(messageController, animated: true, completion: nil)
-//        } else {
-//            
-//            print("O celular não tem opção para enviar mensagem de texto! \n")
-//            
-//        }
-//        
-//    }
-//    
-//    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
-//        
-//        controller.dismissViewControllerAnimated(true, completion: nil)
-//        
-//        //Aqui pode saber se o sms foi enviado com sucesso ou não, mas acho desnecessário no momento!
-//    }
-    
+    //    func showSMS() {
+    //
+    //        if( MFMessageComposeViewController.canSendText() ) {
+    //
+    ////            var productNameDisplay = ""
+    ////            for var i = 0 ; i < products.count ; i++ {
+    ////                productNameDisplay += "\(i+1) - \(products[i].name) \(products[i].cubage), \(products[i].brand)"
+    ////            }
+    //
+    //            var messageController : MFMessageComposeViewController = MFMessageComposeViewController()
+    //            messageController.messageComposeDelegate = self
+    //            messageController.body = "Teste"
+    ////            self.presentViewController(messageController, animated: true, completion: nil)
+    //            self.window?.rootViewController?.presentViewController(messageController, animated: true, completion: nil)
+    //        } else {
+    //
+    //            print("O celular não tem opção para enviar mensagem de texto! \n")
+    //
+    //        }
+    //
+    //    }
+    //
+    //    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+    //
+    //        controller.dismissViewControllerAnimated(true, completion: nil)
+    //
+    //        //Aqui pode saber se o sms foi enviado com sucesso ou não, mas acho desnecessário no momento!
+    //    }
+    //    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+    //
+    //        self.dismissViewControllerAnimated(true, completion: nil)
+    //
+    //        //Aqui pode saber se o sms foi enviado com sucesso ou não, mas acho desnecessário no momento!
+    //    }
     func sendEmail(){
         println("sendEmail")
         //        self.mail_sender.productNames = self.products
@@ -222,28 +235,29 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
     }
     
-    //    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
-    //
-    //        self.dismissViewControllerAnimated(true, completion: nil)
-    //
-    //        //Aqui pode saber se o sms foi enviado com sucesso ou não, mas acho desnecessário no momento!
-    //    }
+    
     
     func removeUserShareFromList(i: Int){
-        offListPics.insert(onListPics[i], atIndex: 0)
-        onListPics.removeAtIndex(i)
-        
-        offListNames.insert(onListNames[i], atIndex: 0)
-        onListNames.removeAtIndex(i)
-        
-        offListIDs.insert(onListIDs[i], atIndex: 0)
-        onListIDs.removeAtIndex(i)
-        
-        tableView.reloadData()
-        Collection.reloadData()
+        println("Falta criar funcao removeFriendFromList(..)")
+//        //Essa funcao nao existe no DAOremoto
+//        //DAORemoto.sharedInstance.removeFriendFromList(onListIDs[i], list: list)
+//        
+//        offListPics.insert(onListPics[i], atIndex: 0)
+//        onListPics.removeAtIndex(i)
+//        
+//        offListNames.insert(onListNames[i], atIndex: 0)
+//        onListNames.removeAtIndex(i)
+//        
+//        offListIDs.insert(onListIDs[i], atIndex: 0)
+//        onListIDs.removeAtIndex(i)
+//        
+//        tableView.reloadData()
+//        Collection.reloadData()
     }
     
     func addUserShareToList(i: Int){
+        DAORemoto.sharedInstance.addFriendToList(offListIDs[i], list: list)
+        
         onListPics.insert(offListPics[i], atIndex: 0)
         offListPics.removeAtIndex(i)
         
@@ -279,7 +293,7 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
                 
                 //http://graph.facebook.com/[UID]/picture
                 
-
+                
                 
                 self.offListNames = friendNames
                 self.offListIDs = friendIDs
@@ -287,13 +301,15 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
                     self.offListPics.insert(UIImage(named: "teste.png")!, atIndex: 0)
                 }
                 println(self.offListNames)
-//                self.offListPics =
+                //                self.offListPics =
                 self.tableView.reloadData()
                 
             }
         })
     }
     
-
+    func dismissShareController(){
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
 }

@@ -12,8 +12,7 @@ class LoginController: UIViewController {
     
     static let sharedInstance = LoginController()
 //    let loginView : FBSDKLoginButton = FBSDKLoginButton()
-    var login: UIButton = UIButton(frame: CGRectMake(39, 443, 240, 44))
-    
+    var login: UIButton = UIButton()
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
     override func viewWillAppear(animated: Bool) {
@@ -21,22 +20,21 @@ class LoginController: UIViewController {
     }
     
     override func viewDidLoad() {
+
         self.view.backgroundColor = UIColor.whiteColor()
-        
         let background: UIImageView = UIImageView(frame: self.view.frame)
         background.image = UIImage(named: "Login_background.png")
         self.view.addSubview(background)
         
+        
         activityIndicator.frame = CGRectMake(100, 100, 100, 100)
         self.view.addSubview(activityIndicator)
+    
         
-        //        activityIndicator.stopAnimating()
-        //        activityIndicator.startAnimating()
-        //        activityIndicator.hidden = false
-        //        activityIndicator.stopAnimating()
-        
-        //        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
-        
+//        login.frame = CGRectMake(39, 443, 240, 44)
+        login.frame.size.width = 240
+        login.frame.size.height = 44
+        login.frame.origin = CGPointMake((self.view.frame.width/2) - (login.frame.width/2), self.view.frame.height - 125)
         login.backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1.0)
         login.layer.cornerRadius = 22
         login.setTitle("Entrar com Facebook", forState: UIControlState.Normal)
@@ -49,27 +47,10 @@ class LoginController: UIViewController {
         {
             // User is already logged in, do work such as go to next view controller.
             println("user inicializou logado")
-            
-//            self.view.addSubview(loginView)
-//            loginView.center = self.view.center
-//            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-//            loginView.delegate = self
-            
-            
             let listsController: ListsController = ListsController()
             self.navigationController?.pushViewController(listsController, animated: true)
-        }
-        else
-        {
-            
-//            self.view.addSubview(loginView)
-//            loginView.center = self.view.center
-//            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-//            loginView.delegate = self
-//            loginView.addTarget(self, action: "startActivityIndicator", forControlEvents: UIControlEvents.TouchUpInside)
-            
+        }else{
             println("user inicializou DESLOGADO")
-            
         }
     }
     
