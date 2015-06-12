@@ -44,6 +44,7 @@ class DAORemoto {
             //Gerando o ID e colocando na lista:
             var infoAdd = listRef.childByAutoId()
             list.id = infoAdd.key
+            DAOLocal.sharedInstance.save()
         
             //Salvando no FireBase:
             infoAdd.setValue(info, withCompletionBlock: { ((NSError!, Firebase!)) in
@@ -432,7 +433,7 @@ class DAORemoto {
             
             //Agora ajustando os produtos da lista:
             FunctionsDAO.sharedInstance.sAllListsOnlineAndOffilne({ (listsON : [List], listsOFF : [List]) -> Void in
-                
+                print("OI")
                 //Ajustando os produtos
                 for lists1 : List in listsON {
                     for lists2 : List in listsOFF {
@@ -440,9 +441,34 @@ class DAORemoto {
                             
                             if( lists1.updatedDate == lists1.updatedDate.earlierDate(lists2.updatedDate) ){
                                 
-                                //lista 2 ta mais atualizada
+                                //Lista 2 ta mais atualizada
+                                var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(lists2.id)")
                                 
+                                var users = []
+                                var date = NSDate().description
+                                var tags = []
+                                var products : NSDictionary = NSDictionary()
+                                var allProducts = lists2.returnProduct()
                                 
+                                for product in allProducts{
+                                    
+                                    FunctionsDAO.sharedInstance.searchProductFromName(product.name, callback: { (newProduct) -> Void in
+                                        products.setValue(true, forKey: newProduct.id)
+                                        product
+                                        
+                                        if( product == allProducts.last ){
+                                            
+                                            var info = ["searchName": FunctionsDAO.sharedInstance.normaliza(lists2.name),"name": "\(lists2.name)", "products": products, "tags": tags, "users": users, "date": date]
+
+                                            myRootRef.setValue(info)
+
+                                            callback(user.returnList())
+
+                                        }
+                                        
+                                    })
+                                    
+                                }
                                 
                                 
                             } else {
@@ -455,6 +481,8 @@ class DAORemoto {
                                     
                                     DAOLocal.sharedInstance.relationUserList(user, list: newList)
                                     
+                                    callback(user.returnList())
+                                    
                                 })
                                 
                             }
@@ -463,14 +491,13 @@ class DAORemoto {
                     }
                 }
  
-                callback(user.returnList())
  
                 //Deletando listas, que foram deletadas no firebase mas não no CoreData:
                 for lists3 : List in listsOFF {
-
+                    
                     if( lists3.id.isEmpty == false ){
                         var myReef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/\(lists3.id)")
-
+                        
                         myReef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot : FDataSnapshot!) -> Void in
 
                             if( snapshot.exists() == false ){
