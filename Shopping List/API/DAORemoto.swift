@@ -439,7 +439,12 @@ class DAORemoto {
                         if( lists1.id == lists2.id ) {
                             
                             if( lists1.updatedDate == lists1.updatedDate.earlierDate(lists2.updatedDate) ){
-                                print("lista 2 ta mais atualizada")
+                                
+                                //lista 2 ta mais atualizada
+                                
+                                
+                                
+                                
                             } else {
                                 
                                 var id : String = lists1.id
@@ -457,20 +462,25 @@ class DAORemoto {
                         }
                     }
                 }
-                print("\nOIII\n")
+ 
                 callback(user.returnList())
-                print("\nOII\n")
+ 
                 //Deletando listas, que foram deletadas no firebase mas não no CoreData:
-                for lists2 : List in listsOFF {
-                    print("\nOI\n")
-                    if( lists2.id.isEmpty == false ){
-                        var myReef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/\(lists2.id)")
-                        print("\nOI-2\n")
+                for lists3 : List in listsOFF {
+
+                    if( lists3.id.isEmpty == false ){
+                        var myReef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/\(lists3.id)")
+
                         myReef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot : FDataSnapshot!) -> Void in
-                            print("\nOI-3\n")
+
                             if( snapshot.exists() == false ){
-                                user.removeList(lists2)
-                                DAOLocal.sharedInstance.deleteList(lists2)
+                                user.removeList(lists3)
+                                DAOLocal.sharedInstance.save()
+                                
+                            }
+                            
+                            if( lists3 == listsOFF.last ){
+                                callback(user.returnList())
                             }
                             
                         })
@@ -478,11 +488,8 @@ class DAORemoto {
                     
                 }
                 
-                callback(user.returnList())
-                
             })
             
-            callback(user.returnList())
         
         }
         
