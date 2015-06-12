@@ -10,9 +10,16 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0hb-oW-mDj" customClass="NewItemTextField" customModule="Shopping_List" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="64" width="600" height="48"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-ZC-49W" userLabel="Line">
+                    <rect key="frame" x="48" y="0.0" width="1" height="600"/>
+                    <color key="backgroundColor" red="0.12941176469999999" green="0.55294117649999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="Xm4-b9-p1Y"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Novo Item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0hb-oW-mDj" customClass="NewItemTextField" customModule="Shopping_List" customModuleProvider="target">
+                    <rect key="frame" x="48" y="64" width="552" height="48"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="7un-pY-jVi"/>
@@ -20,9 +27,16 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                 </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qez-E6-gnr" userLabel="Line">
+                    <rect key="frame" x="0.0" y="112" width="600" height="1"/>
+                    <color key="backgroundColor" red="0.90980392160000001" green="0.25490196079999999" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="DwL-H8-p9v"/>
+                    </constraints>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rP7-EN-zQh">
                     <rect key="frame" x="0.0" y="113" width="600" height="487"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="LzI-P3-vFE">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -30,13 +44,31 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETT-7D-CR3" userLabel="PlusButton">
+                    <rect key="frame" x="12" y="76" width="24" height="24"/>
+                    <color key="backgroundColor" red="0.12941176469999999" green="0.55294117649999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="Plus">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <real key="value" value="12.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="0hb-oW-mDj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3js-qx-dNr"/>
+                <constraint firstItem="0hb-oW-mDj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="48" id="3js-qx-dNr"/>
+                <constraint firstItem="1dZ-ZC-49W" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="F0U-B1-GKD"/>
+                <constraint firstItem="1dZ-ZC-49W" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="48" id="FEA-ME-JmM"/>
+                <constraint firstItem="Qez-E6-gnr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="M79-1b-XMd"/>
                 <constraint firstItem="rP7-EN-zQh" firstAttribute="top" secondItem="0hb-oW-mDj" secondAttribute="bottom" constant="1" id="VOA-xW-g8O"/>
                 <constraint firstItem="0hb-oW-mDj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="64" id="VkG-xn-tBN"/>
+                <constraint firstItem="Qez-E6-gnr" firstAttribute="top" secondItem="0hb-oW-mDj" secondAttribute="bottom" id="ZnW-7k-tll"/>
                 <constraint firstAttribute="trailing" secondItem="0hb-oW-mDj" secondAttribute="trailing" id="gPv-FF-Z6d"/>
+                <constraint firstAttribute="trailing" secondItem="Qez-E6-gnr" secondAttribute="trailing" id="jtN-CR-d8z"/>
+                <constraint firstAttribute="bottom" secondItem="1dZ-ZC-49W" secondAttribute="bottom" id="mT0-5Y-Tit"/>
                 <constraint firstItem="rP7-EN-zQh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rcf-SS-02t"/>
                 <constraint firstAttribute="bottom" secondItem="rP7-EN-zQh" secondAttribute="bottom" id="t6q-WG-7NQ"/>
                 <constraint firstAttribute="trailing" secondItem="rP7-EN-zQh" secondAttribute="trailing" id="tLb-OH-DzS"/>
@@ -44,7 +76,11 @@
             <connections>
                 <outlet property="collectionView" destination="rP7-EN-zQh" id="CKb-cE-8n2"/>
                 <outlet property="newItemTextField" destination="0hb-oW-mDj" id="618-nO-UvY"/>
+                <outlet property="plusButton" destination="ETT-7D-CR3" id="wOm-kq-dmP"/>
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="Plus" width="24" height="24"/>
+    </resources>
 </document>

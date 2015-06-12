@@ -15,7 +15,11 @@ class MainController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         println("passou no maincontroller")
-        self.navigationBar.tintColor = UIColor(red: 148/255, green: 30/255, blue: 16/255, alpha: 1)
+        self.navigationBar.tintColor = UIColor(red: 33/255, green: 141/255, blue: 181/255, alpha: 1)
+        self.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.backgroundColor = UIColor.clearColor()
+        self.navigationBar.backItem?.title = ""
         self.pushViewController(LoginController.sharedInstance, animated: true)
     }
 

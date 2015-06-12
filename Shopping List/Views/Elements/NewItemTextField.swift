@@ -11,11 +11,11 @@ import UIKit
 class NewItemTextField: UITextField {
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRectInset(bounds, 24, 8)
+        return CGRectInset(bounds, 16, 8)
     }
     
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRectInset(bounds, 24, 8)
+        return CGRectInset(bounds, 16, 8)
     }
 
 }

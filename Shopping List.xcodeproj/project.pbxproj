@@ -46,8 +46,6 @@
 		374CBAB21B17D79600255CF1 /* ItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAAA1B17D79600255CF1 /* ItemViewCell.xib */; };
 		374CBAB31B17D79600255CF1 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAAB1B17D79600255CF1 /* ListViewCell.swift */; };
 		374CBAB41B17D79600255CF1 /* ListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAAC1B17D79600255CF1 /* ListViewCell.xib */; };
-		374CBAB51B17D79600255CF1 /* NewItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAAD1B17D79600255CF1 /* NewItemViewCell.swift */; };
-		374CBAB61B17D79600255CF1 /* NewItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAAE1B17D79600255CF1 /* NewItemViewCell.xib */; };
 		374CBAB71B17D79600255CF1 /* SuggestionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAAF1B17D79600255CF1 /* SuggestionViewCell.swift */; };
 		374CBAB81B17D79600255CF1 /* SuggestionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAB01B17D79600255CF1 /* SuggestionViewCell.xib */; };
 		374CBABA1B17DA5A00255CF1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374CBAB91B17DA5A00255CF1 /* LaunchScreen.xib */; };
@@ -128,8 +126,6 @@
 		374CBAAA1B17D79600255CF1 /* ItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemViewCell.xib; sourceTree = "<group>"; };
 		374CBAAB1B17D79600255CF1 /* ListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		374CBAAC1B17D79600255CF1 /* ListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewCell.xib; sourceTree = "<group>"; };
-		374CBAAD1B17D79600255CF1 /* NewItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemViewCell.swift; sourceTree = "<group>"; };
-		374CBAAE1B17D79600255CF1 /* NewItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewItemViewCell.xib; sourceTree = "<group>"; };
 		374CBAAF1B17D79600255CF1 /* SuggestionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewCell.swift; sourceTree = "<group>"; };
 		374CBAB01B17D79600255CF1 /* SuggestionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionViewCell.xib; sourceTree = "<group>"; };
 		374CBAB91B17DA5A00255CF1 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -307,8 +303,6 @@
 				374CBAAA1B17D79600255CF1 /* ItemViewCell.xib */,
 				374CBAAB1B17D79600255CF1 /* ListViewCell.swift */,
 				374CBAAC1B17D79600255CF1 /* ListViewCell.xib */,
-				374CBAAD1B17D79600255CF1 /* NewItemViewCell.swift */,
-				374CBAAE1B17D79600255CF1 /* NewItemViewCell.xib */,
 				374CBAAF1B17D79600255CF1 /* SuggestionViewCell.swift */,
 				374CBAB01B17D79600255CF1 /* SuggestionViewCell.xib */,
 			);
@@ -492,7 +486,6 @@
 			files = (
 				2E59AED91B1D385600F479D0 /* Boneco.png in Resources */,
 				2EA53F6C1B29F08B00086428 /* Login_background.png in Resources */,
-				374CBAB61B17D79600255CF1 /* NewItemViewCell.xib in Resources */,
 				8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */,
 				374CBAB81B17D79600255CF1 /* SuggestionViewCell.xib in Resources */,
 				374CBAB41B17D79600255CF1 /* ListViewCell.xib in Resources */,
@@ -529,7 +522,6 @@
 				374CBA961B17D76A00255CF1 /* Product.swift in Sources */,
 				374CBAC41B17E41400255CF1 /* UserListView.swift in Sources */,
 				2EFD69B81B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift in Sources */,
-				374CBAB51B17D79600255CF1 /* NewItemViewCell.swift in Sources */,
 				374CBA9A1B17D76A00255CF1 /* User.swift in Sources */,
 				3709153B1B19160200E99B33 /* SingleListView.swift in Sources */,
 				374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */,
