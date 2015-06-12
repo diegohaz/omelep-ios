@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 
-class UserListController: GAITrackedViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, ItemViewCellDelegate/*, MFMessageComposeViewControllerDelegate*/ {
+class UserListController: GAITrackedViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, ItemViewCellDelegate {
     
     var reusableView: UserListView?
     var collectionView: UICollectionView?
@@ -62,69 +62,22 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         }
     }
     
-    func share(sender: UIBarButtonItem){
-        //        println( "asdasdasd")
-        //
-//        self.view.userInteractionEnabled = false
 
-        let blockView = UIView(frame: self.view.frame)
+    
+    func share(sender: UIBarButtonItem){
+
+
+        let blockView = UIControl(frame: self.view.frame)
         blockView.backgroundColor = UIColor.blackColor()
         blockView.alpha = 0.5
-        blockView.userInteractionEnabled = false
         self.view.addSubview(blockView)
-        self.view.bringSubviewToFront(blockView)
-//        self.navigationController?.navigationBar.userInteractionEnabled = false
         
 
         var shareController: ShareController = ShareController()
         shareController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         
-//        shareController.userInteractionEnabled = true
         self.presentViewController(shareController, animated: true, completion: nil)
 
-//        self.view.userInteractionEnabled = true
-
-        
-        //        let optionMenu = UIAlertController(title: nil, message: "", preferredStyle: .ActionSheet)
-        //
-        //
-        //        let addMembersAction = UIAlertAction(title: "Add Members to List", style: .Default, handler: {
-        //            (alert: UIAlertAction!) -> Void in
-        //            self.showAddMembers()
-        //        })
-        //
-        //        let smsAction = UIAlertAction(title: "Send List by SMS", style: .Default, handler: {
-        //            (alert: UIAlertAction!) -> Void in
-        //            self.showSMS()
-        //        })
-        //
-        //        let emailAction = UIAlertAction(title: "Send List by E-mail", style: .Default, handler: {
-        //            (alert: UIAlertAction!) -> Void in
-        //
-        //            self.mail_sender.productNames = self.products
-        //            let mailComposeViewController = self.mail_sender.configuredMailComposeViewController()
-        //            if MFMailComposeViewController.canSendMail() {
-        //                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
-        //            } else {
-        //                self.mail_sender.showSendMailErrorAlert()
-        //            }
-        //
-        //        })
-        //
-        //        let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: {
-        //            (alert: UIAlertAction!) -> Void in
-        //
-        //        })
-        //
-        //
-        //        optionMenu.addAction(addMembersAction)
-        //        optionMenu.addAction(emailAction)
-        //        optionMenu.addAction(smsAction)
-        //        optionMenu.addAction(cancelAction)
-        //
-        //
-        //        self.presentViewController(optionMenu, animated: true, completion: nil)
-        
     }
     
     func doneItem(cell: ItemViewCell) {
@@ -193,71 +146,6 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         return cell
     }
     
-    
-    //Funcao para pegar amigos do facebook q estao conectados no app.
-//    func showAddMembers() {
-//        let friendRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, HTTPMethod: "GET")
-//        friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-//            
-//            if ((error) != nil)
-//            {
-//                // Process error
-//                println("Error: \(error)")
-//            }
-//            else
-//            {
-//                println(result)
-//                let friends: AnyObject? = result.valueForKey("data")
-//                let friendNames: [String] = friends?.valueForKey("name") as! [String]
-//                let friendIDs: [String] = friends?.valueForKey("id") as! [String]
-//                //                let friendPics: [String] = friends?.valueForKey("url") as! [String]
-//                //                println("User Name is: \(friendNames))")
-//                
-//                
-//                let friendsList: FriendsListController
-//                friendsList = FriendsListController()
-//                friendsList.friendNames = friendNames
-//                friendsList.friendIDs = friendIDs
-//                //                friendsList.friendPics = friendPics
-//                friendsList.list = self.list
-//                
-//                
-//                
-//                self.navigationController?.pushViewController(friendsList, animated: true)
-//                
-//            }
-//        })
-//    }
-    
-    //Função para enviar o sms
-//    func showSMS() {
-//        
-//        if( MFMessageComposeViewController.canSendText() ) {
-//            
-//            var productNameDisplay = ""
-//            for var i = 0 ; i < products.count ; i++ {
-//                productNameDisplay += "\(i+1) - \(products[i].name) \(products[i].cubage), \(products[i].brand)"
-//            }
-//            
-//            var messageController : MFMessageComposeViewController = MFMessageComposeViewController()
-//            messageController.messageComposeDelegate = self
-//            messageController.body = productNameDisplay
-//            self.presentViewController(messageController, animated: true, completion: nil)
-//            
-//        } else {
-//            
-//            print("O celular não tem opção para enviar mensagem de texto! \n")
-//            
-//        }
-//        
-//    }
-//    
-//    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
-//        
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//        
-//        //Aqui pode saber se o sms foi enviado com sucesso ou não, mas acho desnecessário no momento!
-//    }
     
     
     

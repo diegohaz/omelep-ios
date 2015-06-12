@@ -26,6 +26,7 @@
 		2E6639F81B18A8E100DA97D9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6639F71B18A8E100DA97D9 /* LoginController.swift */; };
 		2EA53F681B29B4B700086428 /* teste.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA53F671B29B4B700086428 /* teste.png */; };
 		2EA53F6C1B29F08B00086428 /* Login_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA53F6B1B29F08B00086428 /* Login_background.png */; };
+		2EA53F6E1B2A3E7100086428 /* AddProductToListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA53F6D1B2A3E7100086428 /* AddProductToListController.swift */; };
 		2EFD69A31B27710F00AFEBD5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */; };
 		2EFD69A51B27711D00AFEBD5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A41B27711D00AFEBD5 /* CoreData.framework */; };
 		2EFD69A71B27713000AFEBD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A61B27713000AFEBD5 /* libz.dylib */; };
@@ -98,6 +99,7 @@
 		2E6639F71B18A8E100DA97D9 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2EA53F671B29B4B700086428 /* teste.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teste.png; sourceTree = "<group>"; };
 		2EA53F6B1B29F08B00086428 /* Login_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_background.png; sourceTree = "<group>"; };
+		2EA53F6D1B2A3E7100086428 /* AddProductToListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductToListController.swift; sourceTree = "<group>"; };
 		2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2EFD69A41B27711D00AFEBD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2EFD69A61B27713000AFEBD5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -265,6 +267,7 @@
 				2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */,
 				2E21B35D1B288CA300359660 /* ShareController.swift */,
 				2E21B3611B289B1100359660 /* SharedUsersCell.swift */,
+				2EA53F6D1B2A3E7100086428 /* AddProductToListController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				3709153B1B19160200E99B33 /* SingleListView.swift in Sources */,
 				374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */,
 				2E1C6ED91B1CA91A0048FFEB /* FriendsListController.swift in Sources */,
+				2EA53F6E1B2A3E7100086428 /* AddProductToListController.swift in Sources */,
 				2E59AED31B1D0C6100F479D0 /* DAOLocal.swift in Sources */,
 				2E59AED51B1D0C6100F479D0 /* FunctionsDAO.swift in Sources */,
 				374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */,

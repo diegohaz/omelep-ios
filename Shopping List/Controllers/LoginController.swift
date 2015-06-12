@@ -8,13 +8,17 @@
 
 import UIKit
 
-class LoginController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginController: UIViewController {
     
     static let sharedInstance = LoginController()
-    let loginView : FBSDKLoginButton = FBSDKLoginButton()
+//    let loginView : FBSDKLoginButton = FBSDKLoginButton()
     var login: UIButton = UIButton(frame: CGRectMake(39, 443, 240, 44))
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+    }
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.whiteColor()
@@ -37,18 +41,19 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         login.layer.cornerRadius = 22
         login.setTitle("Entrar com Facebook", forState: UIControlState.Normal)
         login.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        login.addTarget(self, action: "doLogin", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(login)
-        
+ 
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
             println("user inicializou logado")
             
-            self.view.addSubview(loginView)
-            loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
+//            self.view.addSubview(loginView)
+//            loginView.center = self.view.center
+//            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+//            loginView.delegate = self
             
             
             let listsController: ListsController = ListsController()
@@ -57,15 +62,54 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         else
         {
             
-            self.view.addSubview(loginView)
-            loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
-            loginView.addTarget(self, action: "startActivityIndicator", forControlEvents: UIControlEvents.TouchUpInside)
+//            self.view.addSubview(loginView)
+//            loginView.center = self.view.center
+//            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+//            loginView.delegate = self
+//            loginView.addTarget(self, action: "startActivityIndicator", forControlEvents: UIControlEvents.TouchUpInside)
             
             println("user inicializou DESLOGADO")
             
         }
+    }
+    
+    func doLogin(){
+        
+        let login = FBSDKLoginManager()
+        login.logInWithReadPermissions(["email", "public_profile"]){ result, error in
+            println("RESULT: '\(result)' ")
+            
+            if error != nil {
+                println("error")
+            }else if(result.isCancelled){
+                println("usuario cancelou a autorizacao")
+            }else{
+                println("success Get user information.")
+                
+                var fbRequest = FBSDKGraphRequest(graphPath:"me", parameters: nil);
+                fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+                    
+                    if error == nil {
+                        
+                        println("User Info : \(result)")
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
+                        
+                        self.registerUser(){ user in
+                            
+                            let listsController: ListsController = ListsController()
+                            self.navigationController?.pushViewController(listsController, animated: true)
+                            println("ja chegou a resposta")
+                            self.activityIndicator.stopAnimating()
+                            
+                        }
+                    } else {
+                        
+                        println("Error Getting Info \(error)");
+                    }
+                }
+            }
+        }
+
     }
     
     func startActivityIndicator(){
@@ -165,53 +209,4 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         })
     }
     
-    
-    
-    
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        println("User Logged In")
-        
-        //        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        //        activityIndicator.frame = CGRectMake(100, 100, 100, 100)
-        //        self.view.addSubview(activityIndicator)
-        
-        //        activityIndicator.startAnimating()
-        
-        registerUser(){ user in
-            
-            let listsController: ListsController = ListsController()
-            self.navigationController?.pushViewController(listsController, animated: true)
-            
-            println("ja chegou a resposta")
-            
-            self.activityIndicator.stopAnimating()
-            
-        }
-        
-        
-        
-        
-        
-        
-        
-        if ((error) != nil)
-        {
-            // Process error
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-        }
-        else {
-            // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-            if result.grantedPermissions.contains("email")
-            {
-                // Do work
-            }
-        }
-    }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        println("User Logged Out")
-    }
 }

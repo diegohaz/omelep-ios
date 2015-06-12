@@ -25,98 +25,93 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     var list:          List!
     var products:     [Product]    = []
     
-//    convenience init(productsFromCurrentList: [Product], currentList: List, frame: CGRect){
-//        self.init(frame: frame)
-//        products = productsFromCurrentList
-//        list = currentList
-//        
-//        println(products.first?.name)
-//    }
-//    
     override func viewDidLoad() {
         
-        //        self.userInteractionEnabled = true
         
-        var teste: UIView = UIView(frame: CGRectMake(15, 86, self.view.frame.width - 2 * 15, self.view.frame.height - 2 * 86))
+        var frontView: UIView = UIView(frame: CGRectMake(15, 86, self.view.frame.width - 2 * 15, self.view.frame.height - 2 * 86))
         
-        teste.frame               = CGRectMake(15, 86, self.view.frame.width - 2 * 15, teste.frame.height - 2 * 86)
-        teste.backgroundColor     = UIColor.whiteColor()
-        teste.layer.cornerRadius  = 5;
-        teste.layer.masksToBounds = true;
-        self.view.addSubview(teste)
+        frontView.backgroundColor     = UIColor.whiteColor()
+        frontView.layer.cornerRadius  = 5;
+        frontView.layer.masksToBounds = true;
+        self.view.addSubview(frontView)
+        
+        
         
         onListNames.insert("onName", atIndex: 0)
         onListIDs.insert("onIDs", atIndex: 0)
         onListPics.insert(UIImage(named: "teste.png")!, atIndex: 0)
+        onListNames.insert("onName2", atIndex: 0)
+        onListIDs.insert("onIDs2", atIndex: 0)
+        onListPics.insert(UIImage(named: "teste.png")!, atIndex: 0)
+
 //        offListNames.insert("offName", atIndex: 0)
 //        offListIDs.insert("offIDs", atIndex: 0)
         offListPics.insert(UIImage(named: "teste.png")!, atIndex: 0)
         getFacebookFriendsFromUser()
         
         //label
-        let title: UILabel = UILabel(frame: CGRectMake(self.view.frame.width/2 - 70, 10, 2 * 70, 20))
-//        title.backgroundColor = UIColor.greenColor()
+        let title: UILabel = UILabel(frame: CGRectMake(0,0,frontView.frame.width,26))
         title.text = "Membros da Lista"
-        teste.addSubview(title)
+        title.textAlignment = NSTextAlignment.Center
+        frontView.addSubview(title)
         
         
         //collectionview
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 50, height: 50)
+        layout.sectionInset = UIEdgeInsets(top: 13, left: 17, bottom: 13, right: 17)
+        layout.itemSize = CGSize(width: 48, height: 48)
         layout.scrollDirection = UICollectionViewScrollDirection.Horizontal
-        Collection = UICollectionView(frame: CGRectMake(0, title.frame.origin.y + title.frame.height, teste.frame.width, 70), collectionViewLayout: layout)
+
+        Collection = UICollectionView(frame: CGRectMake(0, title.frame.height, frontView.frame.width, 74), collectionViewLayout: layout)
         Collection.dataSource = self
         Collection.scrollEnabled = true
         Collection.delegate = self
         Collection.registerClass(SharedUsersCell.self, forCellWithReuseIdentifier: "SharedUsersCell")
         Collection.backgroundColor = UIColor.whiteColor()//.colorWithAlphaComponent(0)
-        teste.addSubview(Collection!)
+        
+        var bottomBorder: CALayer = CALayer()
+        bottomBorder.borderColor = UIColor.grayColor().CGColor
+        bottomBorder.borderWidth = 1
+        //gambiarra braba aqui na linha de baixo
+        bottomBorder.frame = CGRectMake(-100, Collection.frame.height-1, frontView.frame.width + 1000, 1)
+        Collection.layer.addSublayer(bottomBorder)
+        
+        frontView.addSubview(Collection!)
         
         
         
         //tableview
-        tableView.frame         =   CGRectMake(0, 100, 320, 200);
-        tableView.delegate      =   self
-        tableView.dataSource    =   self
+        tableView.frame           =   CGRectMake(0, Collection.frame.height + Collection.frame.origin.y, frontView.frame.width, 200);
+        tableView.delegate        =   self
+        tableView.dataSource      =   self
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.tableFooterView = UIView(frame: CGRectZero)
-        let topLine3: UIView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 1))
-        topLine3.backgroundColor = UIColor.grayColor()
-        tableView.addSubview(topLine3)
-        teste.addSubview(tableView)
+        frontView.addSubview(tableView)
         
         
         //button Email
-        let sendByEmail: UIButton = UIButton(frame: CGRectMake( 0, tableView.frame.height + tableView.frame.origin.y, view.frame.width, (self.view.frame.height - tableView.frame.origin.y - tableView.frame.height) / 2))
+        let sendByEmail: UIButton = UIButton(frame: CGRectMake( 0, tableView.frame.height + tableView.frame.origin.y, frontView.frame.width, (frontView.frame.height - tableView.frame.origin.y - tableView.frame.height) / 2))
         sendByEmail.setTitle("Enviar por Email", forState: UIControlState.Normal)
         sendByEmail.setTitleColor(UIColor(red: 33/255, green: 141/255, blue: 181/255, alpha: 1.0), forState: UIControlState.Normal)
         sendByEmail.addTarget(self, action: "sendEmail", forControlEvents: UIControlEvents.TouchUpInside)
         let topLine: UIView = UIView(frame: CGRectMake(0, 0, sendByEmail.frame.size.width, 1))
         topLine.backgroundColor = UIColor.grayColor()
         sendByEmail.addSubview(topLine)
-        teste.addSubview(sendByEmail)
+        frontView.addSubview(sendByEmail)
         
         
         //button SMS
-        let sendBySMS: UIButton = UIButton(frame: CGRectMake( 0, sendByEmail.frame.height + sendByEmail.frame.origin.y, view.frame.width, (self.view.frame.height - tableView.frame.origin.y - tableView.frame.height) / 2))
+        let sendBySMS: UIButton = UIButton(frame: CGRectMake( 0, sendByEmail.frame.height + sendByEmail.frame.origin.y, frontView.frame.width, (frontView.frame.height - tableView.frame.origin.y - tableView.frame.height) / 2))
         sendBySMS.setTitle("Enviar por SMS", forState: UIControlState.Normal)
         sendBySMS.setTitleColor(UIColor(red: 33/255, green: 141/255, blue: 181/255, alpha: 1.0), forState: UIControlState.Normal)
         sendBySMS.addTarget(self, action: "sendSMS", forControlEvents: UIControlEvents.TouchUpInside)
         let topLine2: UIView = UIView(frame: CGRectMake(0, 0, sendBySMS.frame.size.width, 1))
         topLine2.backgroundColor = UIColor.grayColor()
         sendBySMS.addSubview(topLine2)
-        teste.addSubview(sendBySMS)
+        frontView.addSubview(sendBySMS)
         
     }
-    
-//    required init(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
-    
-    
-    
+
+
     
     //tableview
     var tableView: UITableView  =   UITableView()
@@ -160,18 +155,14 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         println(onListPics.count)
-        return onListPics.count + 1
+        return onListPics.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = Collection.dequeueReusableCellWithReuseIdentifier("SharedUsersCell", forIndexPath: indexPath) as! SharedUsersCell
-//        cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0)
-        
-        if indexPath.row == onListPics.count {
-            cell.imageView.image = UIImage(named: "Boneco.png")
-        } else {
+
             cell.imageView.image = onListPics[indexPath.row]
-        }
+        
         return cell
     }
     
@@ -303,5 +294,6 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         })
     }
     
+
     
 }
