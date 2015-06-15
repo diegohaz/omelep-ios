@@ -52,19 +52,19 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     
     func add(sender: UIBarButtonItem) {
         //        trackEvent("jabba", action: "joe", label: "jo2", value: 10)
-        
+
         let controller = UserListController()
         controller.isNew = true
-        
+
         let list = List()
         list.name = "List"
-        
+
         DAORemoto.sharedInstance.saveNewList(list)
-        
+
         controller.list = list
-        
+
         self.navigationController?.pushViewController(controller, animated: true)
-        
+
     }
     
     

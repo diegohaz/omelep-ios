@@ -28,7 +28,7 @@ class ItemViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     override func awakeFromNib() {
         panGesture = UIPanGestureRecognizer(target: self, action: "pan:")
         panGesture!.delegate = self
-        
+
         self.addGestureRecognizer(panGesture!)
     }
     

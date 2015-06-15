@@ -65,7 +65,7 @@
                         <rect key="frame" x="49" y="0.0" width="271" height="48"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FC6-y5-b0k">
-                                <rect key="frame" x="16" y="13" width="247" height="20.5"/>
+                                <rect key="frame" x="16" y="13" width="247" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -117,15 +117,15 @@
             <size key="customSize" width="50" height="118"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="27U-bT-BOh"/>
+                    <exclude reference="2I0-lf-UOl"/>
+                    <exclude reference="OQj-fz-Ghz"/>
+                    <exclude reference="qPn-fp-GT7"/>
                     <exclude reference="AlA-9C-1QQ"/>
                     <exclude reference="Zjj-oo-OwE"/>
                     <exclude reference="aIG-p0-byH"/>
                     <exclude reference="g8b-yX-Yaf"/>
                     <exclude reference="qNh-NG-9vs"/>
-                    <exclude reference="27U-bT-BOh"/>
-                    <exclude reference="2I0-lf-UOl"/>
-                    <exclude reference="OQj-fz-Ghz"/>
-                    <exclude reference="qPn-fp-GT7"/>
                 </mask>
             </variation>
             <connections>
