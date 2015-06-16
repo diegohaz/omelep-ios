@@ -146,25 +146,30 @@ class LoginController: UIViewController {
                             user.email = dic[key]!.objectForKey("email")! as! String
                             user.me = true
                             DAOLocal.sharedInstance.save()
+                            
+                            //Donwload da foto:
+                            let url = NSURL(string: dic[key]!.objectForKey("photo")! as! String)
+                            let imageData = NSData(contentsOfURL: url!)
+                            var image : UIImage = UIImage(data: imageData!)!
+                            DAOLocal.sharedInstance.saveImageOfUser(image)
+                            
                             println("User ja estava Registrado")
                             
                             
                         }
                         else {
-                            ///imagem
+                            
+                            //Carregando a imagem:
                             let data: AnyObject? = result2.valueForKey("data")
                             let url = NSURL(string: data!.valueForKey("url") as! String)
-                            let imageData = NSData(contentsOfURL: url!)
-                            var image : UIImage = UIImage(data: imageData!)!
-                            ///chamar a funcao aqui insere imagem no usuario
-                            
+
                             println("User não encontrado. Tem q registrar!")
                             println("fetched user: \(result)")
                             let userName : NSString = result.valueForKey("name") as! NSString
                             println("User Name is: \(userName)")
                             let userEmail : NSString = result.valueForKey("email") as! NSString
                             println("User Email is: \(userEmail)")
-                            var info = ["idfb": result.valueForKey("id") as! String,"email": result.valueForKey("email") as! String, "gender": result.valueForKey("gender") as! String, "locale": result.valueForKey("locale") as! String, "name": result.valueForKey("name") as! String,  /* "timezone": result.valueForKey("timezone") as! String, */ "updated_time": result.valueForKey("updated_time") as! String, "verified": result.valueForKey("verified") as! Bool, "access_token": FBSDKAccessToken.currentAccessToken().tokenString ]
+                            var info = ["idfb": result.valueForKey("id") as! String, "photo": data!.valueForKey("url") as! String, "email": result.valueForKey("email") as! String, "gender": result.valueForKey("gender") as! String, "locale": result.valueForKey("locale") as! String, "name": result.valueForKey("name") as! String,  /* "timezone": result.valueForKey("timezone") as! String, */ "updated_time": result.valueForKey("updated_time") as! String, "verified": result.valueForKey("verified") as! Bool, "access_token": FBSDKAccessToken.currentAccessToken().tokenString]
                             
                             //                var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
                             
@@ -179,6 +184,11 @@ class LoginController: UIViewController {
                             user.email = result.valueForKey("email")! as! String
                             user.me = true
                             DAOLocal.sharedInstance.save()
+                            
+                            ///Salvando a imagem
+                            let imageData = NSData(contentsOfURL: url!)
+                            var image : UIImage = UIImage(data: imageData!)!
+                            DAOLocal.sharedInstance.saveImageOfUser(image)
                             
                             
                         }

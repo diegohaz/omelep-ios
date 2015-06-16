@@ -42,18 +42,17 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         frontView.layer.masksToBounds = true;
         self.view.addSubview(frontView)
         
-        
         onListNames.insert("onName", atIndex: 0)
         onListIDs.insert("onIDs", atIndex: 0)
-        onListPics.insert(UIImage(named: "teste.png")!, atIndex: 0)
+        onListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
         onListNames.insert("onName2", atIndex: 0)
         onListIDs.insert("onIDs2", atIndex: 0)
-        onListPics.insert(UIImage(named: "teste.png")!, atIndex: 0)
+        onListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
         
         
         //        offListNames.insert("offName", atIndex: 0)
         //        offListIDs.insert("offIDs", atIndex: 0)
-        offListPics.insert(UIImage(named: "teste.png")!, atIndex: 0)
+        offListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
         getFacebookFriendsFromUser()
         
         
@@ -137,7 +136,7 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         
         var frame = cell.imageView!.frame
-        let imageSize = UIImage(named: "teste.png")!.size.width
+        let imageSize = DAOLocal.sharedInstance.imageOfUser().size.width
         frame.size.height = imageSize
         frame.size.width  = imageSize
         cell.imageView!.frame = frame
@@ -298,7 +297,7 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
                 self.offListNames = friendNames
                 self.offListIDs = friendIDs
                 for var i = 0 ; i < self.offListNames.count ; i++ {
-                    self.offListPics.insert(UIImage(named: "teste.png")!, atIndex: 0)
+                    self.offListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
                 }
                 println(self.offListNames)
                 //                self.offListPics =

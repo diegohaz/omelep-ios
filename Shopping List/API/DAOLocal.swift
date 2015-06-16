@@ -355,6 +355,27 @@ class DAOLocal {
         
     }
     
+    //Imagens:
+    func saveImageOfUser(imagem : UIImage) {
+        
+        var user : User = self.readUser()
+        
+        user.photo = UIImagePNGRepresentation(imagem)
+        
+        self.save()
+        
+    }
+    
+    func imageOfUser() -> UIImage {
+        
+        var user : User = self.readUser()
+        
+        var imagem : UIImage = UIImage(data: user.photo)!
+        
+        return imagem
+        
+    }
+    
     
     
     
