@@ -11,7 +11,6 @@ import MessageUI
 
 class ShareController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate{
     
-    
     var onListNames:  [String]     = []
     var onListIDs:    [String]     = []
     var onListPics:   [UIImage]    = []
@@ -20,12 +19,11 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     var offListIDs:   [String]     = []
     var offListPics:  [UIImage]    = []
     
-    var mail_sender:   MailSender! = MailSender()
+    var mail_sender : MailSender! = MailSender()
     
-    var list:          List!
+    var list : List!
     
-    
-
+    var friends : [User] = []
     
     override func viewDidLoad() {
         
@@ -53,8 +51,11 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         //        offListNames.insert("offName", atIndex: 0)
         //        offListIDs.insert("offIDs", atIndex: 0)
         offListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
-        getFacebookFriendsFromUser()
         
+        //getFacebookFriendsFromUser()
+        
+        //Pegando os usuários que vão ser mostrados:
+        friends = DAORemoto.sharedInstance.allFriends()
         
         //label
         let title: UILabel = UILabel(frame: CGRectMake(0,0,frontView.frame.width,frontView.frame.height/13.016))
@@ -131,8 +132,8 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
-        cell.textLabel?.text = self.offListNames[indexPath.row]
-        cell.imageView!.image = self.offListPics[indexPath.row]
+        cell.textLabel?.text = self.friends[indexPath.row].name
+        //cell.imageView!.image = self.offListPics[indexPath.row]
         
         
         var frame = cell.imageView!.frame
@@ -272,40 +273,40 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     
     //auxs funcs
-    func getFacebookFriendsFromUser(){
-        let friendRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, HTTPMethod: "GET")
-        friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                // Process error
-                println("Error: \(error)")
-            }
-            else
-            {
-                println(result)
-                let friends: AnyObject? = result.valueForKey("data")
-                let friendNames: [String] = friends?.valueForKey("name") as! [String]
-                let friendIDs: [String] = friends?.valueForKey("id") as! [String]
-                //                let friendPics: [String] = friends?.valueForKey("url") as! [String]
-                //                println("User Name is: \(friendNames))")
-                
-                //http://graph.facebook.com/[UID]/picture
-                
-                
-                
-                self.offListNames = friendNames
-                self.offListIDs = friendIDs
-                for var i = 0 ; i < self.offListNames.count ; i++ {
-                    self.offListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
-                }
-                println(self.offListNames)
-                //                self.offListPics =
-                self.tableView.reloadData()
-                
-            }
-        })
-    }
+//    func getFacebookFriendsFromUser(){
+//        let friendRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, HTTPMethod: "GET")
+//        friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+//            
+//            if ((error) != nil)
+//            {
+//                // Process error
+//                println("Error: \(error)")
+//            }
+//            else
+//            {
+//                println(result)
+//                let friends: AnyObject? = result.valueForKey("data")
+//                let friendNames: [String] = friends?.valueForKey("name") as! [String]
+//                let friendIDs: [String] = friends?.valueForKey("id") as! [String]
+//                //                let friendPics: [String] = friends?.valueForKey("url") as! [String]
+//                //                println("User Name is: \(friendNames))")
+//                
+//                //http://graph.facebook.com/[UID]/picture
+//                
+//                
+//                
+//                self.offListNames = friendNames
+//                self.offListIDs = friendIDs
+//                for var i = 0 ; i < self.offListNames.count ; i++ {
+//                    self.offListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
+//                }
+//                println(self.offListNames)
+//                //                self.offListPics =
+//                self.tableView.reloadData()
+//                
+//            }
+//        })
+//    }
     
     func dismissShareController(){
         self.dismissViewControllerAnimated(true, completion: nil)

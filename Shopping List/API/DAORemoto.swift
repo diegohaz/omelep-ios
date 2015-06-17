@@ -580,6 +580,13 @@ class DAORemoto {
         
     }
     
+    func allFriends() -> [User] {
+        
+        var user : User = DAOLocal.sharedInstance.readUser()
+        
+        return user.returnUser()
+        
+    }
     
     
     

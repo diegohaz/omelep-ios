@@ -264,7 +264,7 @@ class FunctionsDAO {
                 var chave = dic.allKeys[0] as! String
                 callback(chave)
             } else {
-                print("Usuário nao registrado, mas logado?? ")
+                print("Usuário nao registrado, mas logado?? \n")
             }
             
         })

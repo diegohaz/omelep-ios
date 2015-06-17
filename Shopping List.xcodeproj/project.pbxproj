@@ -63,6 +63,7 @@
 		8E9030CA1B17B51D0027DE70 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030C91B17B51D0027DE70 /* libicucore.dylib */; };
 		8E9030D51B17DA960027DE70 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030D41B17DA960027DE70 /* Firebase.framework */; };
 		8E9030DC1B1BEDE90027DE70 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030DB1B1BEDE90027DE70 /* MessageUI.framework */; };
+		8ECBF7321B31EFFA00243A21 /* FunctionsFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBF7311B31EFFA00243A21 /* FunctionsFacebook.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		8E9030C91B17B51D0027DE70 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		8E9030D41B17DA960027DE70 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		8E9030DB1B1BEDE90027DE70 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		8ECBF7311B31EFFA00243A21 /* FunctionsFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsFacebook.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,6 +399,7 @@
 				2E59AECC1B1D0C6100F479D0 /* DAOLocal.swift */,
 				2E59AECD1B1D0C6100F479D0 /* DAORemoto.swift */,
 				2E59AECE1B1D0C6100F479D0 /* FunctionsDAO.swift */,
+				8ECBF7311B31EFFA00243A21 /* FunctionsFacebook.swift */,
 				2E59AECF1B1D0C6100F479D0 /* NetworkConnect.swift */,
 				2E59AED01B1D0C6100F479D0 /* Reachability.h */,
 				2E59AED11B1D0C6100F479D0 /* Reachability.m */,
@@ -516,6 +519,7 @@
 				374CBA8E1B17D76A00255CF1 /* MainController.swift in Sources */,
 				2E21B35E1B288CA300359660 /* ShareController.swift in Sources */,
 				2E59AED61B1D0C6100F479D0 /* NetworkConnect.swift in Sources */,
+				8ECBF7321B31EFFA00243A21 /* FunctionsFacebook.swift in Sources */,
 				374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */,
 				374CBA971B17D76A00255CF1 /* Shopping_List.xcdatamodeld in Sources */,
 				374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */,

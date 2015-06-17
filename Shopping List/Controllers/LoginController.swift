@@ -104,8 +104,6 @@ class LoginController: UIViewController {
     
     func registerUser( callback: (User) -> Void) {
         
-        
-        
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         let graphRequestForImage : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/picture?redirect=false", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error)  in
@@ -147,11 +145,14 @@ class LoginController: UIViewController {
                             user.me = true
                             DAOLocal.sharedInstance.save()
                             
-                            //Donwload da foto:
+                            //Donwload da foto do usuário:
                             let url = NSURL(string: dic[key]!.objectForKey("photo")! as! String)
                             let imageData = NSData(contentsOfURL: url!)
                             var image : UIImage = UIImage(data: imageData!)!
                             DAOLocal.sharedInstance.saveImageOfUser(image)
+                            
+                            //Pegando os amigos do Facebook e fazendo download das fotos:
+                            FunctionsFacebook.sharedInstance.getFacebookFriendsFromUser()
                             
                             println("User ja estava Registrado")
                             
@@ -189,6 +190,9 @@ class LoginController: UIViewController {
                             let imageData = NSData(contentsOfURL: url!)
                             var image : UIImage = UIImage(data: imageData!)!
                             DAOLocal.sharedInstance.saveImageOfUser(image)
+                            
+                            //Pegando os amigos do Facebook e fazendo download das fotos:
+                            FunctionsFacebook.sharedInstance.getFacebookFriendsFromUser()
                             
                             
                         }
