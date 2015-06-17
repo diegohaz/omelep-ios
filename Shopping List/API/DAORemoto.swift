@@ -137,7 +137,6 @@ class DAORemoto {
         
     }
     
-    //TODO: Fazer essa função com a parte offline
     /**Funçao que adiciona produto em uma lista:*/
     func addProductToList(name : String, list : List) {
         
@@ -269,7 +268,6 @@ class DAORemoto {
         
     }
     
-    //TODO: Fazer função que exclui listas do fireBase que não tem usuário relacionado!!
     
     //Products:
     
@@ -439,7 +437,7 @@ class DAORemoto {
             
             //Agora ajustando os produtos da lista:
             FunctionsDAO.sharedInstance.sAllListsOnlineAndOffilne({ (listsON : [List], listsOFF : [List]) -> Void in
-                print("OI")
+
                 //Ajustando os produtos
                 for lists1 : List in listsON {
                     for lists2 : List in listsOFF {
@@ -524,6 +522,60 @@ class DAORemoto {
             })
             
         
+        }
+        
+        
+    }
+    
+    
+    //Users:
+    
+    /**Função que adiciona um amigo a um usuário*/
+    func addFriendToUser(user : User) {
+        
+        var thisUser : User = DAOLocal.sharedInstance.readUser()
+        
+        thisUser.addUser(user)
+        
+        if( NetworkConnect.sharedInstance.connected() ) {
+        
+            var myRef = Firebase(url: "https://luminous-heat-6986.firebaseio.com/user/\(thisUser.id)/")
+            
+            myRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot : FDataSnapshot!) -> Void in
+                
+                if( snapshot.exists() == true ) {
+                    
+                    var refUser = myRef.childByAppendingPath("users")
+                    
+                    var usr = ["\(user.id)": true]
+                    
+                    refUser.updateChildValues(usr)
+                    
+                } else {
+                    
+                    print("Usuário não encontrado \n")
+                }
+                
+            })
+            
+        }
+        
+        
+    }
+    
+    /**Função que deleta um amigo de um usuário*/
+    func removeFriendToUser(user : User) {
+        
+        var thisUser : User = DAOLocal.sharedInstance.readUser()
+        
+        thisUser.removeUser(user)
+        
+        if( NetworkConnect.sharedInstance.connected() ) {
+            
+            var myRef = Firebase(url: "https://luminous-heat-6986.firebaseio.com/user/\(thisUser.id)/users/\(user.id)")
+            
+            myRef.removeValue()
+            
         }
         
     }

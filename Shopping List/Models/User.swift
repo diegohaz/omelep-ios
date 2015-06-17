@@ -91,5 +91,9 @@ extension User{
         return array as! [User]
     }
     
+    func removeUser(user : User) {
+        var items = self.mutableSetValueForKey("family")
+        items.removeObject(user)
+    }
     
 }

@@ -26,7 +26,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     override func viewDidLoad() {
         super.viewDidLoad()
         self.screenName = "User List"
-        
+
         // Reusable View
         reusableView = NSBundle.mainBundle().loadNibNamed("UserListView", owner: self, options: [:])[0] as? UserListView
         view = reusableView
