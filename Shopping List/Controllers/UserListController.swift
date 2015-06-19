@@ -63,6 +63,9 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     
     func textFieldDidChange(textField: UITextField) {
         println(self.reusableView?.newItemTextField.text)
+        
+        AutoComplete.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        AutoComplete.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         self.presentViewController(AutoComplete, animated: true, completion: nil)
         
     }

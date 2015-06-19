@@ -25,7 +25,7 @@ class AutoCompleteController: UIViewController,UITableViewDelegate, UITableViewD
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        tableView.backgroundColor = UIColor(white: 100/255, alpha: 1.0)
+        tableView.backgroundColor = UIColor(white: 100/255, alpha: 0.5)
         
         self.view.backgroundColor = UIColor.clearColor()
         self.view.addSubview(tableView)
