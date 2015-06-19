@@ -582,6 +582,7 @@ class DAORemoto {
         
     }
     
+    /**Função que retorna todos os amigos do usuário logado*/
     func allFriends() -> [User] {
         
         var user : User = DAOLocal.sharedInstance.readUser()

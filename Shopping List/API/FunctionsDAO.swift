@@ -271,6 +271,28 @@ class FunctionsDAO {
         
     }
     
+    func donwloadImageFromID(id : String, callback: (UIImage) -> Void) {
+    
+        var myRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(id)/photo")
+        
+        myRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot) -> Void in
+            
+            if( snapshot.exists() ){
+                
+                let strUrl = snapshot.value as! String
+                let url = NSURL(string: strUrl)
+                let imageData = NSData(contentsOfURL: url!)
+                var image = UIImage(data: imageData!)!
+                callback(image)
+                
+            } else {
+                //TODO: Função que
+            }
+            
+        })
+    
+    }
+    
     
     //Relacão User e List
     

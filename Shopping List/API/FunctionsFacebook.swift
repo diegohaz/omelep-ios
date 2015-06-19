@@ -36,7 +36,6 @@ class FunctionsFacebook {
                 let friendNames: [String] = friends?.valueForKey("name") as! [String]
                 let friendIDs: [String] = friends?.valueForKey("id") as! [String]
 
-                
                 var i = 0
                 for name in friendNames{
                     //Pegando o ID do Firebase a partir do ID do facebook
@@ -56,8 +55,11 @@ class FunctionsFacebook {
                             
                             user.name = name
                             user.id = id
-                            print("user: \(user.name)\n")
-                            DAORemoto.sharedInstance.addFriendToUser(user)
+                            
+                            FunctionsDAO.sharedInstance.donwloadImageFromID(id, callback: { (image) -> Void in
+                                DAOLocal.sharedInstance.saveImageOfUser(image, user: user)
+                                DAORemoto.sharedInstance.addFriendToUser(user)
+                            })
                             
                         }
                         

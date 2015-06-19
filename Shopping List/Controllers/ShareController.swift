@@ -11,10 +11,6 @@ import MessageUI
 
 class ShareController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate{
     
-    //var onListNames:  [String]     = []
-    
-    //var offListNames: [String]     = []
-    
     var mail_sender : MailSender! = MailSender()
     
     var list : List!
@@ -36,8 +32,6 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         frontView.layer.cornerRadius  = 5;
         frontView.layer.masksToBounds = true;
         self.view.addSubview(frontView)
-        
-        //offListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
         
         //Pegando os usuários que vão ser mostrados:
         friends = DAOLocal.sharedInstance.allUserOutOfThisList(list)
@@ -120,10 +114,10 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
         cell.textLabel?.text = friends[indexPath.row].name
-        //cell.imageView!.image = self.offListPics[indexPath.row]
+        //cell.imageView!.image = DAOLocal.sharedInstance.imageOfUser(friendInList[indexPath.row])
         
         var frame = cell.imageView!.frame
-        let imageSize = DAOLocal.sharedInstance.imageOfUser(DAOLocal.sharedInstance.readUser()).size.width
+        let imageSize = DAOLocal.sharedInstance.imageOfUser(friends[indexPath.row]).size.width
         frame.size.height = imageSize
         frame.size.width  = imageSize
         cell.imageView!.frame = frame
@@ -154,7 +148,7 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = Collection.dequeueReusableCellWithReuseIdentifier("SharedUsersCell", forIndexPath: indexPath) as! SharedUsersCell
         
-        //cell.imageView.image =
+        cell.imageView.image = DAOLocal.sharedInstance.imageOfUser(friendInList[indexPath.row])
         
         return cell
     }
@@ -258,42 +252,6 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         Collection.reloadData()
     }
     
-    
-    //auxs funcs
-//    func getFacebookFriendsFromUser(){
-//        let friendRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, HTTPMethod: "GET")
-//        friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-//            
-//            if ((error) != nil)
-//            {
-//                // Process error
-//                println("Error: \(error)")
-//            }
-//            else
-//            {
-//                println(result)
-//                let friends: AnyObject? = result.valueForKey("data")
-//                let friendNames: [String] = friends?.valueForKey("name") as! [String]
-//                let friendIDs: [String] = friends?.valueForKey("id") as! [String]
-//                //                let friendPics: [String] = friends?.valueForKey("url") as! [String]
-//                //                println("User Name is: \(friendNames))")
-//                
-//                //http://graph.facebook.com/[UID]/picture
-//                
-//                
-//                
-//                self.offListNames = friendNames
-//                self.offListIDs = friendIDs
-//                for var i = 0 ; i < self.offListNames.count ; i++ {
-//                    self.offListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
-//                }
-//                println(self.offListNames)
-//                //                self.offListPics =
-//                self.tableView.reloadData()
-//                
-//            }
-//        })
-//    }
     
     func dismissShareController(){
         self.dismissViewControllerAnimated(true, completion: nil)
