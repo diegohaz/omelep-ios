@@ -22,8 +22,6 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     
     var shareController: ShareController!
     
-    var AutoComplete: AutoCompleteController! = AutoCompleteController()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,21 +51,6 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         if isNew {
             reusableView?.newItemTextField.becomeFirstResponder()
         }
-        
-        reusableView?.newItemTextField!.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
-        
-        
-        
-    }
-    
-    
-    func textFieldDidChange(textField: UITextField) {
-        println(self.reusableView?.newItemTextField.text)
-        
-        AutoComplete.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        AutoComplete.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-        self.presentViewController(AutoComplete, animated: true, completion: nil)
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -139,13 +122,6 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
             return true
         }
     }
-    
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        println("joe")
-        return true
-    }
-    
-    
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let size = CGSize(width: self.view.bounds.width, height: 48)

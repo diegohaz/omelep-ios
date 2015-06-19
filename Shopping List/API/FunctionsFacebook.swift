@@ -35,6 +35,7 @@ class FunctionsFacebook {
                 let friends : AnyObject? = result.valueForKey("data")
                 let friendNames: [String] = friends?.valueForKey("name") as! [String]
                 let friendIDs: [String] = friends?.valueForKey("id") as! [String]
+
                 
                 var i = 0
                 for name in friendNames{
@@ -55,14 +56,8 @@ class FunctionsFacebook {
                             
                             user.name = name
                             user.id = id
-                            print("Baixando a foto do \(user.name) \n")
-                            FunctionsDAO.sharedInstance.downloadImageFromID(id, callback: { (imagem) -> Void in
-                              
-                                print("Donwload concluído do \(user.name)\n")
-                                DAORemoto.sharedInstance.addFriendToUser(user)
-                                DAOLocal.sharedInstance.saveImageOfUser(imagem, user: user)
-                                
-                            })
+                            print("user: \(user.name)\n")
+                            DAORemoto.sharedInstance.addFriendToUser(user)
                             
                         }
                         

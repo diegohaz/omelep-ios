@@ -37,6 +37,8 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         frontView.layer.masksToBounds = true;
         self.view.addSubview(frontView)
         
+        //offListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
+        
         //Pegando os usuários que vão ser mostrados:
         friends = DAOLocal.sharedInstance.allUserOutOfThisList(list)
         friendInList = list.returnUser()
@@ -118,7 +120,7 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
         cell.textLabel?.text = friends[indexPath.row].name
-        cell.imageView!.image = DAOLocal.sharedInstance.imageOfUser((friends[indexPath.row]))
+        //cell.imageView!.image = self.offListPics[indexPath.row]
         
         var frame = cell.imageView!.frame
         let imageSize = DAOLocal.sharedInstance.imageOfUser(DAOLocal.sharedInstance.readUser()).size.width
@@ -256,6 +258,42 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         Collection.reloadData()
     }
     
+    
+    //auxs funcs
+//    func getFacebookFriendsFromUser(){
+//        let friendRequest: FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, HTTPMethod: "GET")
+//        friendRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+//            
+//            if ((error) != nil)
+//            {
+//                // Process error
+//                println("Error: \(error)")
+//            }
+//            else
+//            {
+//                println(result)
+//                let friends: AnyObject? = result.valueForKey("data")
+//                let friendNames: [String] = friends?.valueForKey("name") as! [String]
+//                let friendIDs: [String] = friends?.valueForKey("id") as! [String]
+//                //                let friendPics: [String] = friends?.valueForKey("url") as! [String]
+//                //                println("User Name is: \(friendNames))")
+//                
+//                //http://graph.facebook.com/[UID]/picture
+//                
+//                
+//                
+//                self.offListNames = friendNames
+//                self.offListIDs = friendIDs
+//                for var i = 0 ; i < self.offListNames.count ; i++ {
+//                    self.offListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
+//                }
+//                println(self.offListNames)
+//                //                self.offListPics =
+//                self.tableView.reloadData()
+//                
+//            }
+//        })
+//    }
     
     func dismissShareController(){
         self.dismissViewControllerAnimated(true, completion: nil)

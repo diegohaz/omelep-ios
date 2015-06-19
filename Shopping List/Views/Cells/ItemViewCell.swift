@@ -98,7 +98,8 @@ class ItemViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }
     
     func reset() {
-        self.horizontal.constant = originalHorizontal!
-        self.largePenis.constant = 0
+        itemView.frame.origin.x = 0
+        self.doneView?.hidden = true
+        self.removeView?.hidden = true
     }
 }

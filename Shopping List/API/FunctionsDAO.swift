@@ -411,36 +411,12 @@ class FunctionsDAO {
             }
             
         })
+
         
     }
     
-    /**Função que baixa a imagem de usuário a partir do ID*/
-    func downloadImageFromID(id : String, callback: (UIImage) -> Void) {
-        
-        var myRef = Firebase(url: "https://luminous-heat-6986.firebaseio.com/user/\(id)/photo")
-        
-        myRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot) -> Void in
-            
-            if( snapshot.exists() ){
-                
-                var imagem : UIImage
-                
-                let urlStr = snapshot.value as! String
-                let url = NSURL(string: urlStr)
-                let imageData = NSData(contentsOfURL: url!)
-                imagem = UIImage(data: imageData!)!
-                callback(imagem)
-                
-            } else {
-                //TODO: Retornar a imagem padrão
-            }
-            
-            
-        })
-        
-        
-        
-    }
+    
+    
     
     
     
