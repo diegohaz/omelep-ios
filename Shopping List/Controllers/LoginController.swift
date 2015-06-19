@@ -29,6 +29,8 @@ class LoginController: UIViewController {
         
         activityIndicator.frame = CGRectMake(100, 100, 100, 100)
         self.view.addSubview(activityIndicator)
+        
+
     
         
 //        login.frame = CGRectMake(39, 443, 240, 44)
@@ -54,16 +56,30 @@ class LoginController: UIViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        var labelteste = UILabel(frame: CGRectMake(10, 10, 200, 200))
+        self.view.addSubview(labelteste)
+        
+        let sharedDefaults = NSUserDefaults(suiteName: "group.omelep")
+        
+        labelteste.text = sharedDefaults?.objectForKey("stringKey") as? String
+        println(labelteste.text)
+    }
+    
     func doLogin(){
         
         let login = FBSDKLoginManager()
         login.logInWithReadPermissions(["email", "public_profile"]){ result, error in
             println("RESULT: '\(result)' ")
-            
+            self.activityIndicator.startAnimating()
             if error != nil {
                 println("error")
+                self.activityIndicator.stopAnimating()
             }else if(result.isCancelled){
                 println("usuario cancelou a autorizacao")
+                self.activityIndicator.stopAnimating()
             }else{
                 println("success Get user information.")
                 
@@ -90,7 +106,6 @@ class LoginController: UIViewController {
                 }
             }
         }
-
     }
     
     func startActivityIndicator(){
@@ -109,7 +124,7 @@ class LoginController: UIViewController {
         graphRequest.startWithCompletionHandler({ (connection, result, error)  in
             print("")
             graphRequestForImage.startWithCompletionHandler({ (connection2 : FBSDKGraphRequestConnection!, result2 : AnyObject!, error2 : NSError!) in
-                
+            
                 if (((error) != nil) /*&& ((error2) != nil)*/)
                 {
                     // Process error
