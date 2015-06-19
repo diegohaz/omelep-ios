@@ -400,13 +400,13 @@
 		8E49FC861B0F75F70087FA08 /* Shopping List */ = {
 			isa = PBXGroup;
 			children = (
-				2EB4337B1B34733E002DBB87 /* Shopping List.entitlements */,
 				374CBA6D1B17D76900255CF1 /* Controllers */,
 				374CBA7F1B17D76A00255CF1 /* Views */,
 				374CBA721B17D76900255CF1 /* Models */,
 				8EBA28D91B1CDC6200B8606F /* API */,
 				8E49FC891B0F75F70087FA08 /* AppDelegate.swift */,
 				2E59AED21B1D0C6100F479D0 /* Shopping List-Bridging-Header.h */,
+				2EB4337B1B34733E002DBB87 /* Shopping List.entitlements */,
 				8E49FC931B0F75F70087FA08 /* Images.xcassets */,
 				8E49FC871B0F75F70087FA08 /* Supporting Files */,
 			);
@@ -531,7 +531,7 @@
 				TargetAttributes = {
 					2EB4336B1B347313002DBB87 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = E23E7FV55Y;
+						DevelopmentTeam = G52S3NF77R;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -540,7 +540,7 @@
 					};
 					8E49FC831B0F75F70087FA08 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = E23E7FV55Y;
+						DevelopmentTeam = G52S3NF77R;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -893,6 +893,7 @@
 				2EB433781B347313002DBB87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E49FC7F1B0F75F70087FA08 /* Build configuration list for PBXProject "Shopping List" */ = {
 			isa = XCConfigurationList;

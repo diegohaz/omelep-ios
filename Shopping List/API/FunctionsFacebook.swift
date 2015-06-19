@@ -60,6 +60,7 @@ class FunctionsFacebook {
                               
                                 print("Donwload concluído do \(user.name)\n")
                                 DAORemoto.sharedInstance.addFriendToUser(user)
+                                DAOLocal.sharedInstance.saveImageOfUser(imagem, user: user)
                                 
                             })
                             
