@@ -283,6 +283,32 @@ class DAOLocal {
         
     }
     
+    /**Funcão que retorna todos os usuários que não estão naquela lista*/
+    func allUserOutOfThisList(list : List) -> [User] {
+        
+        var user : [User] = []
+        
+        var allUsersOfList : [User] = list.returnUser()
+        var allUsers : [User] = DAOLocal.sharedInstance.readUser().returnUser()
+        
+        for usr in allUsers{
+            var entrou = false
+            for usr2 in allUsersOfList {
+                if( usr == usr2 ){
+                    entrou = true
+                }
+            }
+            
+            if( entrou == false ){
+                user.append(usr)
+            }
+            
+        }
+        
+        return user
+        
+    }
+    
     
     //Products:
     
@@ -356,9 +382,7 @@ class DAOLocal {
     }
     
     //Imagens:
-    func saveImageOfUser(imagem : UIImage) {
-        
-        var user : User = self.readUser()
+    func saveImageOfUser(imagem : UIImage, user : User) {
         
         user.photo = UIImagePNGRepresentation(imagem)
         
@@ -366,9 +390,7 @@ class DAOLocal {
         
     }
     
-    func imageOfUser() -> UIImage {
-        
-        var user : User = self.readUser()
+    func imageOfUser(user : User) -> UIImage {
         
         var imagem : UIImage = UIImage(data: user.photo)!
         

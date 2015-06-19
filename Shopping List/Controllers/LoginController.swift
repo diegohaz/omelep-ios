@@ -149,7 +149,7 @@ class LoginController: UIViewController {
                             let url = NSURL(string: dic[key]!.objectForKey("photo")! as! String)
                             let imageData = NSData(contentsOfURL: url!)
                             var image : UIImage = UIImage(data: imageData!)!
-                            DAOLocal.sharedInstance.saveImageOfUser(image)
+                            DAOLocal.sharedInstance.saveImageOfUser(image, user: DAOLocal.sharedInstance.readUser())
                             
                             //Pegando os amigos do Facebook e fazendo download das fotos:
                             FunctionsFacebook.sharedInstance.getFacebookFriendsFromUser()
@@ -189,7 +189,7 @@ class LoginController: UIViewController {
                             ///Salvando a imagem
                             let imageData = NSData(contentsOfURL: url!)
                             var image : UIImage = UIImage(data: imageData!)!
-                            DAOLocal.sharedInstance.saveImageOfUser(image)
+                            DAOLocal.sharedInstance.saveImageOfUser(image, user: DAOLocal.sharedInstance.readUser())
                             
                             //Pegando os amigos do Facebook e fazendo download das fotos:
                             FunctionsFacebook.sharedInstance.getFacebookFriendsFromUser()

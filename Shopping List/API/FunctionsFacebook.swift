@@ -35,19 +35,31 @@ class FunctionsFacebook {
                 let friends : AnyObject? = result.valueForKey("data")
                 let friendNames: [String] = friends?.valueForKey("name") as! [String]
                 let friendIDs: [String] = friends?.valueForKey("id") as! [String]
+
                 
                 var i = 0
                 for name in friendNames{
-
                     //Pegando o ID do Firebase a partir do ID do facebook
                     FunctionsDAO.sharedInstance.searchIDFromIDFB(friendIDs[i], callback: { (id) -> Void in
-
-                        var user : User = User()
                         
-                        user.name = name
-                        user.id = id
+                        var entrou = false
                         
-                        DAORemoto.sharedInstance.addFriendToUser(user)
+                        for udr in DAOLocal.sharedInstance.readUser().returnUser(){
+                            if udr.id == id{
+                                entrou = true
+                            }
+                        }
+                        
+                        if entrou == false {
+                            
+                            var user : User = User()
+                            
+                            user.name = name
+                            user.id = id
+                            print("user: \(user.name)\n")
+                            DAORemoto.sharedInstance.addFriendToUser(user)
+                            
+                        }
                         
                     })
                     

@@ -536,6 +536,7 @@ class DAORemoto {
         var thisUser : User = DAOLocal.sharedInstance.readUser()
         
         thisUser.addUser(user)
+        DAOLocal.sharedInstance.save()
         
         if( NetworkConnect.sharedInstance.connected() ) {
         
@@ -569,6 +570,7 @@ class DAORemoto {
         var thisUser : User = DAOLocal.sharedInstance.readUser()
         
         thisUser.removeUser(user)
+        DAOLocal.sharedInstance.save()
         
         if( NetworkConnect.sharedInstance.connected() ) {
             

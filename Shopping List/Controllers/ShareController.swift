@@ -11,19 +11,16 @@ import MessageUI
 
 class ShareController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate{
     
-    var onListNames:  [String]     = []
-    var onListIDs:    [String]     = []
-    var onListPics:   [UIImage]    = []
+    //var onListNames:  [String]     = []
     
-    var offListNames: [String]     = []
-    var offListIDs:   [String]     = []
-    var offListPics:  [UIImage]    = []
+    //var offListNames: [String]     = []
     
     var mail_sender : MailSender! = MailSender()
     
     var list : List!
     
     var friends : [User] = []
+    var friendInList : [User] = []
     
     override func viewDidLoad() {
         
@@ -40,22 +37,12 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         frontView.layer.masksToBounds = true;
         self.view.addSubview(frontView)
         
-        onListNames.insert("onName", atIndex: 0)
-        onListIDs.insert("onIDs", atIndex: 0)
-        onListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
-        onListNames.insert("onName2", atIndex: 0)
-        onListIDs.insert("onIDs2", atIndex: 0)
-        onListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
-        
-        
-        //        offListNames.insert("offName", atIndex: 0)
-        //        offListIDs.insert("offIDs", atIndex: 0)
-        offListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
-        
-        //getFacebookFriendsFromUser()
+        //offListPics.insert(DAOLocal.sharedInstance.imageOfUser(), atIndex: 0)
         
         //Pegando os usuários que vão ser mostrados:
-        friends = DAORemoto.sharedInstance.allFriends()
+        friends = DAOLocal.sharedInstance.allUserOutOfThisList(list)
+        friendInList = list.returnUser()
+        
         
         //label
         let title: UILabel = UILabel(frame: CGRectMake(0,0,frontView.frame.width,frontView.frame.height/13.016))
@@ -125,19 +112,18 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     //tableview
     var tableView: UITableView  =   UITableView()
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.offListNames.count
+        return friends.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
-        cell.textLabel?.text = self.friends[indexPath.row].name
+        cell.textLabel?.text = friends[indexPath.row].name
         //cell.imageView!.image = self.offListPics[indexPath.row]
         
-        
         var frame = cell.imageView!.frame
-        let imageSize = DAOLocal.sharedInstance.imageOfUser().size.width
+        let imageSize = DAOLocal.sharedInstance.imageOfUser(DAOLocal.sharedInstance.readUser()).size.width
         frame.size.height = imageSize
         frame.size.width  = imageSize
         cell.imageView!.frame = frame
@@ -162,25 +148,22 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        println(onListPics.count)
-        return onListPics.count
+        return friendInList.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = Collection.dequeueReusableCellWithReuseIdentifier("SharedUsersCell", forIndexPath: indexPath) as! SharedUsersCell
         
-        cell.imageView.image = onListPics[indexPath.row]
+        //cell.imageView.image =
         
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row < onListPics.count{
+        if indexPath.row < friendInList.count{
             removeUserShareFromList(indexPath.row)
         }
     }
-    
-    
     
     
     //actions
@@ -218,6 +201,7 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     //
     //        //Aqui pode saber se o sms foi enviado com sucesso ou não, mas acho desnecessário no momento!
     //    }
+    
     func sendEmail(){
         println("sendEmail")
         //        self.mail_sender.productNames = self.products
@@ -256,16 +240,19 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     func addUserShareToList(i: Int){
-        DAORemoto.sharedInstance.addFriendToList(offListIDs[i], list: list)
+        //DAORemoto.sharedInstance.addFriendToList(offListIDs[i], list: list)
         
-        onListPics.insert(offListPics[i], atIndex: 0)
-        offListPics.removeAtIndex(i)
+        //onListPics.insert(offListPics[i], atIndex: 0)
+        //offListPics.removeAtIndex(i)
         
-        onListNames.insert(offListNames[i], atIndex: 0)
-        offListNames.removeAtIndex(i)
+        //onListNames.insert(offListNames[i], atIndex: 0)
+        //offListNames.removeAtIndex(i)
         
-        onListIDs.insert(offListIDs[i], atIndex: 0)
-        offListIDs.removeAtIndex(i)
+        //onListIDs.insert(offListIDs[i], atIndex: 0)
+        //offListIDs.removeAtIndex(i)
+        
+        friendInList.insert(friends[i], atIndex: 0)
+        friends.removeAtIndex(i)
         
         tableView.reloadData()
         Collection.reloadData()
