@@ -22,6 +22,8 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     
     var shareController: ShareController!
     
+    var AutoComplete: AutoCompleteController! = AutoCompleteController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +63,8 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     
     func textFieldDidChange(textField: UITextField) {
         println(self.reusableView?.newItemTextField.text)
+        self.presentViewController(AutoComplete, animated: true, completion: nil)
+        
     }
     
     override func viewDidAppear(animated: Bool) {

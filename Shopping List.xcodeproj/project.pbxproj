@@ -28,6 +28,7 @@
 		2EA53F6E1B2A3E7100086428 /* AddProductToListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA53F6D1B2A3E7100086428 /* AddProductToListController.swift */; };
 		2EB433711B347313002DBB87 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB433701B347313002DBB87 /* ShareViewController.swift */; };
 		2EB433731B347313002DBB87 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EB433721B347313002DBB87 /* MainInterface.storyboard */; };
+		2EF3DE8C1B34B056006555AC /* AutoCompleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF3DE8B1B34B056006555AC /* AutoCompleteController.swift */; };
 		2EFD69A31B27710F00AFEBD5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */; };
 		2EFD69A51B27711D00AFEBD5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A41B27711D00AFEBD5 /* CoreData.framework */; };
 		2EFD69A71B27713000AFEBD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A61B27713000AFEBD5 /* libz.dylib */; };
@@ -105,6 +106,7 @@
 		2EB433721B347313002DBB87 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		2EB4337B1B34733E002DBB87 /* Shopping List.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Shopping List.entitlements"; sourceTree = "<group>"; };
 		2EB4337C1B3473BC002DBB87 /* ShareAction.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ShareAction.entitlements; sourceTree = "<group>"; };
+		2EF3DE8B1B34B056006555AC /* AutoCompleteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteController.swift; sourceTree = "<group>"; };
 		2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2EFD69A41B27711D00AFEBD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2EFD69A61B27713000AFEBD5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -296,6 +298,7 @@
 				2E48A46E1B1A10570072403C /* MailSenderController.swift */,
 				2E21B35D1B288CA300359660 /* ShareController.swift */,
 				2EA53F6D1B2A3E7100086428 /* AddProductToListController.swift */,
+				2EF3DE8B1B34B056006555AC /* AutoCompleteController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				374CBAC41B17E41400255CF1 /* UserListView.swift in Sources */,
 				2EFD69B81B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift in Sources */,
 				374CBA9A1B17D76A00255CF1 /* User.swift in Sources */,
+				2EF3DE8C1B34B056006555AC /* AutoCompleteController.swift in Sources */,
 				3709153B1B19160200E99B33 /* SingleListView.swift in Sources */,
 				374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */,
 				2EA53F6E1B2A3E7100086428 /* AddProductToListController.swift in Sources */,
