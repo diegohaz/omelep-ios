@@ -232,6 +232,7 @@ class DAORemoto {
                     var dic = snapshot.value as! NSDictionary
                 
                     dic.setValue(name, forKey: "name")
+                    dic.setValue(FunctionsDAO.sharedInstance.normaliza(name), forKey: "searchName")
                 
                     myRootRef.setValue(dic)
                     

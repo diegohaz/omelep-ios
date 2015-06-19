@@ -28,7 +28,6 @@
 		2EA53F6E1B2A3E7100086428 /* AddProductToListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA53F6D1B2A3E7100086428 /* AddProductToListController.swift */; };
 		2EB433711B347313002DBB87 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB433701B347313002DBB87 /* ShareViewController.swift */; };
 		2EB433731B347313002DBB87 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EB433721B347313002DBB87 /* MainInterface.storyboard */; };
-		2EB433761B347313002DBB87 /* ShareAction.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2EB4336C1B347313002DBB87 /* ShareAction.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2EFD69A31B27710F00AFEBD5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */; };
 		2EFD69A51B27711D00AFEBD5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A41B27711D00AFEBD5 /* CoreData.framework */; };
 		2EFD69A71B27713000AFEBD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A61B27713000AFEBD5 /* libz.dylib */; };
@@ -69,13 +68,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2EB433741B347313002DBB87 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8E49FC7C1B0F75F70087FA08 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2EB4336B1B347313002DBB87;
-			remoteInfo = ShareAction;
-		};
 		8E49FC9D1B0F75F70087FA08 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8E49FC7C1B0F75F70087FA08 /* Project object */;
@@ -84,20 +76,6 @@
 			remoteInfo = "Shopping List";
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		2EB4337A1B347313002DBB87 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				2EB433761B347313002DBB87 /* ShareAction.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2E21B35D1B288CA300359660 /* ShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
@@ -490,12 +468,10 @@
 				8E49FC801B0F75F70087FA08 /* Sources */,
 				8E49FC811B0F75F70087FA08 /* Frameworks */,
 				8E49FC821B0F75F70087FA08 /* Resources */,
-				2EB4337A1B347313002DBB87 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2EB433751B347313002DBB87 /* PBXTargetDependency */,
 			);
 			name = "Shopping List";
 			productName = "Shopping List";
@@ -666,11 +642,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2EB433751B347313002DBB87 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2EB4336B1B347313002DBB87 /* ShareAction */;
-			targetProxy = 2EB433741B347313002DBB87 /* PBXContainerItemProxy */;
-		};
 		8E49FC9E1B0F75F70087FA08 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8E49FC831B0F75F70087FA08 /* Shopping List */;
