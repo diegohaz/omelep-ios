@@ -17,7 +17,11 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FunctionsFacebook.sharedInstance.getFacebookFriendsFromUser()
+        
+        FunctionsDAO.sharedInstance.downloadImageFromID("-JryAdpU7cKBfO2lKRDM", callback: { (image : UIImage) -> Void in
+            
+        })
+        
 //        DAORemoto.sharedInstance.sincroniza { lists in
 //            self.lists = lists
 //            self.collectionView?.reloadData()
