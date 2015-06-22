@@ -381,6 +381,21 @@ class DAORemoto {
         
     }
     
+    /**Funcão que remove um amigo a uma lista*/
+    func removeFriendToList(idFB : String, list : List) {
+        
+        FunctionsDAO.sharedInstance.searchIDFromIDFB(idFB, callback: { (id : String) in
+            
+            var user : User = User()
+            
+            user.id = id
+            
+            FunctionsDAO.sharedInstance.createRelationUserList(user, list: list)
+            
+        })
+        
+    }
+    
     //Suggestions:
     
     /**Função que retorna todas as listas de um usuário:*/

@@ -131,6 +131,15 @@ class FunctionsDAO {
         
     }
     
+    /**Função que remove uma lista de um usuário*/
+    func removeListFromUser(list : List, user : User) {
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/\(list.id)")
+        
+        myRootRef.removeValue()
+        
+    }
+    
     /** Função que conta o número de usuários de uma lista */
     func allIdOfUsersOfList(list : List, callback: ([String]) -> Void ){
         
@@ -250,6 +259,15 @@ class FunctionsDAO {
         
     }
     
+    /**Função que remove um usuário de uma lista*/
+    func removeUserFromList(user : User, list : List) {
+        
+        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/users/\(user.id)")
+        
+        myRootRef.removeValue()
+        
+    }
+    
     /**Função que procura ID do usuário a partir do IDFB*/
     func searchIDFromIDFB(idfb : String, callback: (String) -> Void) {
         
@@ -271,6 +289,7 @@ class FunctionsDAO {
         
     }
     
+    /**Função que baixa a imagem a partir de um ID de um usuário*/
     func donwloadImageFromID(id : String, callback: (UIImage) -> Void) {
     
         var myRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(id)/photo")
