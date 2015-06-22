@@ -23,7 +23,7 @@ class LoginController: UIViewController {
 
         self.view.backgroundColor = UIColor.whiteColor()
         let background: UIImageView = UIImageView(frame: self.view.frame)
-        background.image = UIImage(named: "Login_background.png")
+        background.image = UIImage(named: "Screen")
         self.view.addSubview(background)
         
         

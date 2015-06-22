@@ -27,6 +27,7 @@
 		2EA53F681B29B4B700086428 /* teste.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA53F671B29B4B700086428 /* teste.png */; };
 		2EA53F6C1B29F08B00086428 /* Login_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA53F6B1B29F08B00086428 /* Login_background.png */; };
 		2EA53F6E1B2A3E7100086428 /* AddProductToListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA53F6D1B2A3E7100086428 /* AddProductToListController.swift */; };
+		2EF3DE901B34C7AA006555AC /* AutoCompleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF3DE8F1B34C7AA006555AC /* AutoCompleteController.swift */; };
 		2EFD69A31B27710F00AFEBD5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */; };
 		2EFD69A51B27711D00AFEBD5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A41B27711D00AFEBD5 /* CoreData.framework */; };
 		2EFD69A71B27713000AFEBD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A61B27713000AFEBD5 /* libz.dylib */; };
@@ -99,6 +100,7 @@
 		2EA53F671B29B4B700086428 /* teste.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teste.png; sourceTree = "<group>"; };
 		2EA53F6B1B29F08B00086428 /* Login_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_background.png; sourceTree = "<group>"; };
 		2EA53F6D1B2A3E7100086428 /* AddProductToListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductToListController.swift; sourceTree = "<group>"; };
+		2EF3DE8F1B34C7AA006555AC /* AutoCompleteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteController.swift; sourceTree = "<group>"; };
 		2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2EFD69A41B27711D00AFEBD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2EFD69A61B27713000AFEBD5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -266,6 +268,7 @@
 				2E21B35D1B288CA300359660 /* ShareController.swift */,
 				2E21B3611B289B1100359660 /* SharedUsersCell.swift */,
 				2EA53F6D1B2A3E7100086428 /* AddProductToListController.swift */,
+				2EF3DE8F1B34C7AA006555AC /* AutoCompleteController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				TargetAttributes = {
 					8E49FC831B0F75F70087FA08 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = E23E7FV55Y;
 					};
 					8E49FC9B1B0F75F70087FA08 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -521,6 +525,7 @@
 				2E59AED61B1D0C6100F479D0 /* NetworkConnect.swift in Sources */,
 				8ECBF7321B31EFFA00243A21 /* FunctionsFacebook.swift in Sources */,
 				374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */,
+				2EF3DE901B34C7AA006555AC /* AutoCompleteController.swift in Sources */,
 				374CBA971B17D76A00255CF1 /* Shopping_List.xcdatamodeld in Sources */,
 				374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */,
 				374CBA961B17D76A00255CF1 /* Product.swift in Sources */,

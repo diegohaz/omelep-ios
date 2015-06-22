@@ -234,16 +234,7 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     func addUserShareToList(i: Int){
-        //DAORemoto.sharedInstance.addFriendToList(offListIDs[i], list: list)
-        
-        //onListPics.insert(offListPics[i], atIndex: 0)
-        //offListPics.removeAtIndex(i)
-        
-        //onListNames.insert(offListNames[i], atIndex: 0)
-        //offListNames.removeAtIndex(i)
-        
-        //onListIDs.insert(offListIDs[i], atIndex: 0)
-        //offListIDs.removeAtIndex(i)
+        FunctionsDAO.sharedInstance.createRelationUserList(friends[i], list: list)
         
         friendInList.insert(friends[i], atIndex: 0)
         friends.removeAtIndex(i)
