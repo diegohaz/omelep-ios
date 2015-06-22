@@ -22,6 +22,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     
     var shareController: ShareController!
     
+    var autoComplete: AutoCompleteController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         // Reusable View
         reusableView = NSBundle.mainBundle().loadNibNamed("UserListView", owner: self, options: [:])[0] as? UserListView
         view = reusableView
+
         
         // Collection View
         collectionView = reusableView?.collectionView
@@ -51,6 +53,22 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         if isNew {
             reusableView?.newItemTextField.becomeFirstResponder()
         }
+        
+        reusableView?.newItemTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+
+    }
+    
+    
+    func textFieldDidChange(textField: UITextField) {
+        println("jaaaabaa")
+        autoComplete = AutoCompleteController(frame: CGRectMake(0,self.navigationController!.navigationBar.frame.size.height + UIApplication.sharedApplication().statusBarFrame.height,self.view.frame.width - (self.navigationController!.navigationBar.frame.size.height + UIApplication.sharedApplication().statusBarFrame.height), self.view.frame.height))
+        self.view.addSubview(autoComplete)
+        
+        
+//        autoComplete.view.frame.origin.y = self.navigationController!.navigationBar.frame.size.height
+//        autoComplete.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+//        autoComplete.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+//        self.presentViewController(autoComplete, animated: true, completion: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
