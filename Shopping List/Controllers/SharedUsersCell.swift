@@ -25,7 +25,7 @@ class SharedUsersCell: UICollectionViewCell {
 //        imageView.backgroundColor = UIColor.greenColor()//.colorWithAlphaComponent(0)
         
         imageView.layer.cornerRadius = imageView.frame.size.width / 2;
-        imageView.layer.borderWidth = 3.0;
+        imageView.layer.borderWidth = 1.0;
 //        imageView.layer.borderColor = UIColor.redColor().CGColor
         imageView.clipsToBounds = true;
         contentView.addSubview(imageView)
