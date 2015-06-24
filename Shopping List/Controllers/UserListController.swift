@@ -55,21 +55,30 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         }
         
         reusableView?.newItemTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"addSearchedProductToList", object: nil)
+
 
     }
     
     
     func textFieldDidChange(textField: UITextField) {
-        println("jaaaabaa")
-        autoComplete = AutoCompleteController(frame: CGRectMake(0,self.navigationController!.navigationBar.frame.size.height + UIApplication.sharedApplication().statusBarFrame.height,self.view.frame.width - (self.navigationController!.navigationBar.frame.size.height + UIApplication.sharedApplication().statusBarFrame.height), self.view.frame.height))
+        
+        if autoComplete == nil{
+        autoComplete = AutoCompleteController(frame: CGRectMake(0,self.navigationController!.navigationBar.frame.size.height + UIApplication.sharedApplication().statusBarFrame.height - 7.5,self.view.frame.width, self.view.frame.height))
+        autoComplete.wordChanged(textField.text)
         self.view.addSubview(autoComplete)
-        
-        
-//        autoComplete.view.frame.origin.y = self.navigationController!.navigationBar.frame.size.height
-//        autoComplete.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-//        autoComplete.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-//        self.presentViewController(autoComplete, animated: true, completion: nil)
+            println("adicionou a tableview")
+        }
+
+        if count(textField.text) == 0 {
+            autoComplete.removeFromSuperview()
+            autoComplete = nil
+        }
+    
     }
+    
+    
     
     override func viewDidAppear(animated: Bool) {
         
@@ -78,7 +87,6 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
                 self.products = arrayProducts
                 self.collectionView?.reloadData()
             })
-            //self.collectionView?.reloadData()
         }
     }
     
@@ -121,6 +129,8 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        autoComplete.removeFromSuperview()
+        autoComplete = nil
         if textField.isEqual(reusableView?.newItemTextField) {
             let product = Product()
             product.name = textField.text
@@ -162,6 +172,16 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     }
     
     
-    
+    func methodOfReceivedNotification(notification: NSNotification){
+        println("notification funfaando")
+        let product = Product()
+        product.name = notification.object as! String
+        
+        DAORemoto.sharedInstance.addProductToList(product.name, list: self.list!)
+        
+        products.insert(product, atIndex: 0)
+        collectionView!.reloadData()
+        collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
+    }
     
 }

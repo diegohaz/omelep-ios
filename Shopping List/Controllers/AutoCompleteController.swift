@@ -13,7 +13,9 @@ class AutoCompleteController: UIView,UITableViewDelegate, UITableViewDataSource 
     
     var tableView: UITableView  =   UITableView()
     
-    var items: [String] = ["Viper", "X", "Games"]
+    var results: [String] = ["teste1","teste2","teste3","teste4"]
+//    var results: [String] = []
+    var word: String = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,17 +31,13 @@ class AutoCompleteController: UIView,UITableViewDelegate, UITableViewDataSource 
         
         self.addSubview(tableView)
         
-        tableView.backgroundColor = UIColor(white: 100/255, alpha: 0.5)
+        tableView.backgroundColor = UIColor.whiteColor()
         self.backgroundColor = UIColor.clearColor()
-
-//        self.frame.origin.y = self.navigationController!.navigationBar.frame.size.height
         
-//        var frontView: UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.width/1.109, self.view.frame.height/1.452))
-//        frontView.backgroundColor     = UIColor.whiteColor()
-//        frontView.layer.cornerRadius  = 5;
-//        frontView.layer.masksToBounds = true;
-//        self.addSubview(frontView)
-        
+    }
+    
+    func wordChanged(word: String){
+//            manda string para funcao de autocomplete
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -47,20 +45,35 @@ class AutoCompleteController: UIView,UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        if self.results.count == 0{
+            return 1
+        }else{
+            return self.results.count
+        }
     }
     
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
-        cell.textLabel?.text = self.items[indexPath.row]
+        if self.results.count == 0{
+            cell.textLabel?.text = "Não encontramos seu produto! :("
+        }else{
+            cell.textLabel?.text = self.results[indexPath.row]
+        }
         
         return cell
         
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("addSearchedProductToList", object: results[indexPath.row])
+
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+//        UserListController().jabba(results[indexPath.row])
         println("You selected cell #\(indexPath.row)!")
     }
 
