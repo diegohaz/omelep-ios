@@ -50,8 +50,8 @@ class DAORemoto {
 
             //Salvando no FireBase:
             infoAdd.setValue(info, withCompletionBlock: { ((NSError?, Firebase?)) in
-                //Fazendo relação lista - usuário no FireBase
-                FunctionsDAO.sharedInstance.createRelationUserList(user, list:list)
+                //Criando a relação lista - usuário no FireBase
+                self.createRelationUserList(user, list:list)
             })
             
             
@@ -366,35 +366,22 @@ class DAORemoto {
     
     //Relacão User e List
     
-    /**Funcão que adiciona um amigo a uma lista*/
-    func addFriendToList(idFB : String, list : List) {
+    /**Funcão que relaciona uma lista a um determinado usuário e vice-versa*/
+    func createRelationUserList(user : User, list : List){
         
-        FunctionsDAO.sharedInstance.searchIDFromIDFB(idFB, callback: { (id : String) in
-            
-            var user : User = User()
-            
-            user.id = id
-            
-            FunctionsDAO.sharedInstance.createRelationUserList(user, list: list)
-            
-        })
+        FunctionsDAO.sharedInstance.addListToUser(list, user: user)
+        FunctionsDAO.sharedInstance.addUserToList(user, list: list)
         
     }
     
-    /**Funcão que remove um amigo a uma lista*/
-    func removeFriendToList(idFB : String, list : List) {
+    /**Funcão que remove a relação de uma lista a um determinado usuário e vice-versa*/
+    func removeRelationUserList(user : User, list : List){
         
-        FunctionsDAO.sharedInstance.searchIDFromIDFB(idFB, callback: { (id : String) in
-            
-            var user : User = User()
-            
-            user.id = id
-            
-            FunctionsDAO.sharedInstance.createRelationUserList(user, list: list)
-            
-        })
+        FunctionsDAO.sharedInstance.removeListFromUser(list, user: user)
+        FunctionsDAO.sharedInstance.removeUserFromList(user, list: list)
         
     }
+    
     
     //Suggestions:
     

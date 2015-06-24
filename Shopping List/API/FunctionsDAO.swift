@@ -134,9 +134,18 @@ class FunctionsDAO {
     /**Função que remove uma lista de um usuário*/
     func removeListFromUser(list : List, user : User) {
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/\(list.id)")
+        //No CoreData
+        list.removeUser(user)
         
-        myRootRef.removeValue()
+        //No FireBase:
+        
+        if( NetworkConnect.sharedInstance.connected() ) {
+        
+            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/user/\(user.id)/lists/\(list.id)")
+        
+            myRootRef.removeValue()
+            
+        }
         
     }
     
@@ -271,9 +280,18 @@ class FunctionsDAO {
     /**Função que remove um usuário de uma lista*/
     func removeUserFromList(user : User, list : List) {
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/users/\(user.id)")
+        //No Core Data
+        user.removeList(list)
         
-        myRootRef.removeValue()
+        //No FireBase:
+        
+        if( NetworkConnect.sharedInstance.connected() ) {
+        
+            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/users/\(user.id)")
+        
+            myRootRef.removeValue()
+            
+        }
         
     }
     
@@ -319,17 +337,6 @@ class FunctionsDAO {
             
         })
     
-    }
-    
-    
-    //Relacão User e List
-    
-    /**Funcão que relaciona uma lista a um determinado usuário e vice-versa*/
-    func createRelationUserList(user : User, list : List){
-        
-        FunctionsDAO.sharedInstance.addListToUser(list, user: user)
-        FunctionsDAO.sharedInstance.addUserToList(user, list: list)
-        
     }
     
     
@@ -400,7 +407,7 @@ class FunctionsDAO {
                 //Salvando no FireBase:
                 infoAdd.setValue(info, withCompletionBlock: { ((NSError!, Firebase!)) in
                     //Fazendo relação lista - usuário no FireBase
-                    FunctionsDAO.sharedInstance.createRelationUserList(user, list:list)
+                    DAORemoto.sharedInstance.createRelationUserList(user, list:list)
                     
                     var arrayP = list.returnProduct()
                     

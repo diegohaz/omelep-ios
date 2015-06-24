@@ -215,34 +215,31 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     
     
-    func removeUserShareFromList(i: Int){
-        println("Falta criar funcao removeFriendFromList(..)")
-//        //Essa funcao nao existe no DAOremoto
-//        //DAORemoto.sharedInstance.removeFriendFromList(onListIDs[i], list: list)
-//        
-//        offListPics.insert(onListPics[i], atIndex: 0)
-//        onListPics.removeAtIndex(i)
-//        
-//        offListNames.insert(onListNames[i], atIndex: 0)
-//        onListNames.removeAtIndex(i)
-//        
-//        offListIDs.insert(onListIDs[i], atIndex: 0)
-//        onListIDs.removeAtIndex(i)
-//        
-//        tableView.reloadData()
-//        Collection.reloadData()
+    func removeUserShareFromList(i: Int) {
+        
+        if( friendInList[i] != DAOLocal.sharedInstance.readUser() ) {
+        
+            DAORemoto.sharedInstance.removeRelationUserList(friendInList[i], list: list)
+        
+            friends.insert(friendInList[i], atIndex: 0)
+            friendInList.removeAtIndex(i)
+        
+            tableView.reloadData()
+            Collection.reloadData()
+        
+        }
+    
     }
     
     func addUserShareToList(i: Int){
-        FunctionsDAO.sharedInstance.createRelationUserList(friends[i], list: list)
+        DAORemoto.sharedInstance.createRelationUserList(friends[i], list: list)
         
-        friendInList.insert(friends[i], atIndex: 0)
+        friendInList.insert(friends[i], atIndex: friendInList.count)
         friends.removeAtIndex(i)
         
         tableView.reloadData()
         Collection.reloadData()
-        
-        print(list.returnUser())
+
     }
     
     
