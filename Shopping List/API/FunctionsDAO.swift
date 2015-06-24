@@ -243,19 +243,28 @@ class FunctionsDAO {
     /**Funçao que adiciona um usuário para uma lista*/
     func addUserToList(user : User, list : List) {
         
-        var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+        //Adicionando no CoreData:
+        list.addUser(user)
+        DAOLocal.sharedInstance.save()
         
-        myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+        //Adicionando no FireBase
+        if( NetworkConnect.sharedInstance.connected() ) {
+        
+            var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)")
+        
+            myRootRef.observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             
-            if( snapshot.exists() == true ){
-                var refList = myRootRef.childByAppendingPath("users")
-                var use = ["\(user.id)": true]
-                refList.updateChildValues(use)
-            } else {
-                print("Lista não existe \n")
-            }
+                if( snapshot.exists() == true ){
+                    var refList = myRootRef.childByAppendingPath("users")
+                    var use = ["\(user.id)": true]
+                    refList.updateChildValues(use)
+                } else {
+                    print("Lista não existe \n")
+                }
             
-        })
+            })
+            
+        }
         
     }
     

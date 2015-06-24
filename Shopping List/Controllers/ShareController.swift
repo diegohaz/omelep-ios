@@ -241,6 +241,8 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         tableView.reloadData()
         Collection.reloadData()
+        
+        print(list.returnUser())
     }
     
     
