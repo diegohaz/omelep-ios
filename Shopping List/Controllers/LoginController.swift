@@ -52,6 +52,12 @@ class LoginController: UIViewController {
         }else{
             println("user inicializou DESLOGADO")
         }
+        
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        trackScreen("Login")
     }
     
     func doLogin(){
@@ -73,7 +79,7 @@ class LoginController: UIViewController {
                     if error == nil {
                         
                         println("User Info : \(result)")
-                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
+//                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
                         
                         self.registerUser(){ user in
                             
@@ -156,6 +162,7 @@ class LoginController: UIViewController {
                             
                             println("User ja estava Registrado")
                             
+                            self.trackEvent("User", action: "Login", label: "Returning User", value: 10)
                             
                         }
                         else {
@@ -194,10 +201,10 @@ class LoginController: UIViewController {
                             //Pegando os amigos do Facebook e fazendo download das fotos:
                             FunctionsFacebook.sharedInstance.getFacebookFriendsFromUser()
                             
+                            self.trackEvent("User", action: "Login", label: "Register New User", value: 10)
                             
                         }
-                        callback(user)
-                        
+                    callback(user)
                     })
                 }
             })

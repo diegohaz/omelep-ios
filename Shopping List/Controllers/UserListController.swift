@@ -57,7 +57,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         reusableView?.newItemTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"addSearchedProductToList", object: nil)
-
+        
 
     }
     
@@ -81,6 +81,8 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     
     
     override func viewDidAppear(animated: Bool) {
+        
+        trackScreen("UserLists")
         
         if list != nil {
             DAORemoto.sharedInstance.allProductsOfList(list!, callback: { (arrayProducts : [Product]) -> Void in
@@ -107,6 +109,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         let indexPath = collectionView!.indexPathForCell(cell)
         
         DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
+        trackEvent("Lists Operations", action: "Remove Product From List", label: products[indexPath!.row].name, value: 10)
         
         products.removeAtIndex(indexPath!.row)
         collectionView!.reloadData()
@@ -125,6 +128,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         if !textField.isEqual(reusableView?.newItemTextField) {
             let title = (self.navigationItem.titleView as! TitleTextField).text
             DAORemoto.sharedInstance.changeNameOfList(title, list: self.list!)
+            trackEvent("Lists Operations", action: "Edit List Name", label: title, value: 10)
         }
     }
     
@@ -137,7 +141,8 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
             textField.text = ""
             
             DAORemoto.sharedInstance.addProductToList(product.name, list: self.list!)
-            
+            trackEvent("Lists Operations", action: "Add New Product to List", label: product.name, value: 10)
+
             products.insert(product, atIndex: 0)
             collectionView!.reloadData()
             collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
@@ -146,7 +151,8 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         } else {
             let title = (self.navigationItem.titleView as! TitleTextField).text
             DAORemoto.sharedInstance.changeNameOfList(title, list: self.list!)
-            
+            trackEvent("Lists Operations", action: "Edit List Name", label: title, value: 10)
+
             return true
         }
     }
@@ -178,6 +184,8 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         product.name = notification.object as! String
         
         DAORemoto.sharedInstance.addProductToList(product.name, list: self.list!)
+        trackEvent("Lists Operations", action: "Add New Product to List", label: product.name, value: 10)
+
         
         products.insert(product, atIndex: 0)
         collectionView!.reloadData()

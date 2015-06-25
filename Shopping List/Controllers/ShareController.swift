@@ -101,7 +101,9 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
     }
     
-    
+    override func viewDidAppear(animated: Bool) {
+        trackScreen("Share")
+    }
     
     //tableview
     var tableView: UITableView  =   UITableView()
@@ -235,6 +237,8 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     func addUserShareToList(i: Int){
         FunctionsDAO.sharedInstance.createRelationUserList(friends[i], list: list)
+        
+        trackEvent("Share", action: "Facebook", label: "Done", value: 10)
         
         friendInList.insert(friends[i], atIndex: 0)
         friends.removeAtIndex(i)

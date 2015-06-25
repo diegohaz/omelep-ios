@@ -218,6 +218,7 @@ class DAORemoto {
     /**Função que muda o nome de uma lista*/
     func changeNameOfList(name : String, list: List) {
         
+        
         list.name = name
         list.updatedDate = NSDate()
         DAOLocal.sharedInstance.save()

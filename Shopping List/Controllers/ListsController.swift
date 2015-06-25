@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, ItemViewCellDelegate {
+class ListsController: GAITrackedViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, ItemViewCellDelegate {
     
     static let sharedInstance = ListsController()
     
@@ -17,13 +17,13 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.screenName = "Lists"
 
 //        DAORemoto.sharedInstance.sincroniza { lists in
 //            self.lists = lists
 //            self.collectionView?.reloadData()
 //        }
         
-        //        self.screenName = "ListsScreen"
         self.navigationController?.navigationBarHidden = false
 
         
@@ -42,7 +42,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     }
     
     override func viewDidAppear(animated: Bool) {
-        //        trackScreen("ListsScreen")
+        trackScreen("Lists")
         
         DAORemoto.sharedInstance.allListOfUser { lists in
             self.lists = lists
@@ -51,7 +51,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     }
     
     func add(sender: UIBarButtonItem) {
-        //        trackEvent("jabba", action: "joe", label: "jo2", value: 10)
+        trackEvent("Lists Operations", action: "Add New List", label: String(lists.count), value: 10)
 
         let controller = UserListController()
         controller.isNew = true

@@ -29,7 +29,7 @@ class FriendsListController: GAITrackedViewController,UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.screenName = "Facebook Share Screen"
+        self.screenName = "Facebook Share"
         
         // Do any additional setup after loading the view, typically from a nib.
         
