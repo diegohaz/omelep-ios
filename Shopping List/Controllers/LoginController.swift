@@ -26,6 +26,7 @@ class LoginController: UIViewController {
         background.image = UIImage(named: "Screen")
         self.view.addSubview(background)
         
+        NSUserDefaults.standardUserDefaults().setObject("Login", forKey: "Last Screen")
         
         activityIndicator.frame = CGRectMake(100, 100, 100, 100)
         self.view.addSubview(activityIndicator)
@@ -79,7 +80,6 @@ class LoginController: UIViewController {
                     if error == nil {
                         
                         println("User Info : \(result)")
-//                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
                         
                         self.registerUser(){ user in
                             

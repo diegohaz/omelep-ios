@@ -18,6 +18,8 @@ class ListsController: GAITrackedViewController, UICollectionViewDelegateFlowLay
     override func viewDidLoad() {
         super.viewDidLoad()
         self.screenName = "Lists"
+        
+        NSUserDefaults.standardUserDefaults().setObject("Lists", forKey: "Last Screen")
 
 //        DAORemoto.sharedInstance.sincroniza { lists in
 //            self.lists = lists
@@ -51,7 +53,6 @@ class ListsController: GAITrackedViewController, UICollectionViewDelegateFlowLay
     }
     
     func add(sender: UIBarButtonItem) {
-        trackEvent("Lists Operations", action: "Add New List", label: String(lists.count), value: 10)
 
         let controller = UserListController()
         controller.isNew = true
@@ -60,6 +61,7 @@ class ListsController: GAITrackedViewController, UICollectionViewDelegateFlowLay
         list.name = "List"
 
         DAORemoto.sharedInstance.saveNewList(list)
+        trackEvent("Lists Operations", action: "Add New List", label: list.name, value: lists.count)
 
         controller.list = list
 
@@ -95,12 +97,14 @@ class ListsController: GAITrackedViewController, UICollectionViewDelegateFlowLay
         let indexPath = collectionView?.indexPathForCell(cell)
         
         DAORemoto.sharedInstance.deleteList(self.lists[indexPath!.row])
+        trackEvent("Lists Operations", action: "Delete List", label: self.lists[indexPath!.row].name, value: 0 /* quero colocar a quantidade de produtos da lista aqui*/)
+
         
         self.lists.removeAtIndex(indexPath!.row)
         self.collectionView?.reloadData()
     }
     
-    func doneItem(cell: ItemViewCell) {
+    func doneItem(cell: ItemViewCell) { /* aqui deve ser o Share */
         
     }
     
@@ -108,6 +112,8 @@ class ListsController: GAITrackedViewController, UICollectionViewDelegateFlowLay
         let controller = UserListController()
         
         controller.list = self.lists[indexPath.row]
+        trackEvent("Lists Operations", action: "Open List", label: self.lists[indexPath.row].name, value: 0 /* quero colocar a quantidade de produtos da lista aqui*/)
+
         
         navigationController?.pushViewController(controller, animated: true)
     }

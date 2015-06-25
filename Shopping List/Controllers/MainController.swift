@@ -20,6 +20,13 @@ class MainController: UINavigationController {
         self.navigationBar.backgroundColor = UIColor.clearColor()
         self.navigationBar.backItem?.title = ""
         self.pushViewController(LoginController.sharedInstance, animated: true)
+
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("Last Screen") != nil{
+            println(NSUserDefaults.standardUserDefaults().objectForKey("Last Screen")!)
+        }
+        
+        
     }
 
 }

@@ -15,18 +15,20 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     var reusableView: UserListView?
     var collectionView: UICollectionView?
     var list: List?
-    var products = [Product]()
+    var products = [Product]() /* qual a diferenca desse products para o products atributo de lists? Preciso saber para medir no Analytics*/
     var isNew = false
     
     var mail_sender: MailSender! = MailSender()
     
     var shareController: ShareController!
     
-    var autoComplete: AutoCompleteController!
+    var autoComplete: AutoComplete!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.screenName = "User List"
+        
+        NSUserDefaults.standardUserDefaults().setObject("UserLists", forKey: "Last Screen")
 
         // Reusable View
         reusableView = NSBundle.mainBundle().loadNibNamed("UserListView", owner: self, options: [:])[0] as? UserListView
@@ -56,7 +58,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         
         reusableView?.newItemTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"addSearchedProductToList", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "addSearchedProduct:", name:"addSearchedProductToList", object: nil)
         
 
     }
@@ -65,7 +67,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     func textFieldDidChange(textField: UITextField) {
         
         if autoComplete == nil{
-        autoComplete = AutoCompleteController(frame: CGRectMake(0,self.navigationController!.navigationBar.frame.size.height + UIApplication.sharedApplication().statusBarFrame.height - 7.5,self.view.frame.width, self.view.frame.height))
+        autoComplete = AutoComplete(frame: CGRectMake(0,self.navigationController!.navigationBar.frame.size.height + UIApplication.sharedApplication().statusBarFrame.height - 7.5,self.view.frame.width, self.view.frame.height))
         autoComplete.wordChanged(textField.text)
         self.view.addSubview(autoComplete)
             println("adicionou a tableview")
@@ -109,9 +111,9 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         let indexPath = collectionView!.indexPathForCell(cell)
         
         DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
-        trackEvent("Lists Operations", action: "Remove Product From List", label: products[indexPath!.row].name, value: 10)
         
         products.removeAtIndex(indexPath!.row)
+        trackEvent("Products Operations", action: "Done Product From List", label: products[indexPath!.row].name, value: self.products.count)
         collectionView!.reloadData()
     }
     
@@ -119,8 +121,9 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         let indexPath = collectionView!.indexPathForCell(cell)
         
         DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
-        
+
         products.removeAtIndex(indexPath!.row)
+        trackEvent("Products Operations", action: "Remove Product From List", label: products[indexPath!.row].name, value: self.products.count)
         collectionView!.reloadData()
     }
     
@@ -128,7 +131,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         if !textField.isEqual(reusableView?.newItemTextField) {
             let title = (self.navigationItem.titleView as! TitleTextField).text
             DAORemoto.sharedInstance.changeNameOfList(title, list: self.list!)
-            trackEvent("Lists Operations", action: "Edit List Name", label: title, value: 10)
+            trackEvent("Product Operations", action: "Edit List Name", label: title, value: self.products.count)
         }
     }
     
@@ -141,9 +144,9 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
             textField.text = ""
             
             DAORemoto.sharedInstance.addProductToList(product.name, list: self.list!)
-            trackEvent("Lists Operations", action: "Add New Product to List", label: product.name, value: 10)
 
             products.insert(product, atIndex: 0)
+            trackEvent("Product Operations", action: "Add New Product to List", label: product.name, value: self.products.count)
             collectionView!.reloadData()
             collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
             
@@ -151,7 +154,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         } else {
             let title = (self.navigationItem.titleView as! TitleTextField).text
             DAORemoto.sharedInstance.changeNameOfList(title, list: self.list!)
-            trackEvent("Lists Operations", action: "Edit List Name", label: title, value: 10)
+            trackEvent("Lists Operations", action: "Edit List Name", label: title, value: self.products.count)
 
             return true
         }
@@ -178,16 +181,14 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     }
     
     
-    func methodOfReceivedNotification(notification: NSNotification){
-        println("notification funfaando")
+    func addSearchedProduct(notification: NSNotification){
         let product = Product()
         product.name = notification.object as! String
         
         DAORemoto.sharedInstance.addProductToList(product.name, list: self.list!)
-        trackEvent("Lists Operations", action: "Add New Product to List", label: product.name, value: 10)
-
         
         products.insert(product, atIndex: 0)
+        trackEvent("Products Operations", action: "Add Found Product to List", label: product.name, value: self.products.count)
         collectionView!.reloadData()
         collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
     }
