@@ -47,6 +47,10 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         // Navigation
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Share"), style: UIBarButtonItemStyle.Plain, target: self, action: "share:")
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backCharacter.png"), style: UIBarButtonItemStyle.Plain, target: self, action: "goback")
+//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "oiii", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
+
+        
         let title = TitleTextField(frame: CGRectMake(0, 0, 180, 32))
         title.text = self.list?.name
         title.delegate = self
@@ -61,6 +65,10 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "addSearchedProduct:", name:"addSearchedProductToList", object: nil)
         
 
+    }
+    
+    func goback(){
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     
