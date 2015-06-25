@@ -14,19 +14,16 @@ class AutoComplete: UIView,UITableViewDelegate, UITableViewDataSource {
     var tableView: UITableView  =   UITableView()
     
 //    var results: [String] = ["teste1","teste2","teste3","teste4"]
-        var results: [String] = []
+    var results: [String] = []
     var word: String = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // Do any additional setup after loading the view, typically from a nib.
         
         tableView.frame         =   self.frame
         tableView.delegate      =   self
         tableView.dataSource    =   self
-        
-        
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.addSubview(tableView)
@@ -37,7 +34,8 @@ class AutoComplete: UIView,UITableViewDelegate, UITableViewDataSource {
     }
     
     func wordChanged(word: String){
-        //            manda string para funcao de autocomplete
+        //            manda word para funcao de autocomplete
+        tableView.reloadData()
     }
     
     required init(coder aDecoder: NSCoder) {
