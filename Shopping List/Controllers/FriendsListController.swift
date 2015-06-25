@@ -115,7 +115,7 @@ class FriendsListController: GAITrackedViewController,UITableViewDelegate, UITab
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             
         }
-        DAORemoto.sharedInstance.addFriendToList(friendIDs[indexPath.row], list: list)
+        //DAORemoto.sharedInstance.addFriendToList(friendIDs[indexPath.row], list: list)
     }
     
     override func didReceiveMemoryWarning() {
