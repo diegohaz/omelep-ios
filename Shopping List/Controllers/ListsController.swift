@@ -29,15 +29,15 @@ class ListsController: GAITrackedViewController, UICollectionViewDelegateFlowLay
         self.navigationController?.navigationBarHidden = false
 
         
-        title = "Lists"
+        title = "Minhas listas"
         collectionView = ListsView(frame: self.view.bounds)
         collectionView!.dataSource = self
         collectionView!.delegate = self
         collectionView!.registerNib(UINib(nibName: "ListViewCell", bundle: nil), forCellWithReuseIdentifier: "ListCell")
         collectionView!.registerNib(UINib(nibName: "SuggestionViewCell", bundle: nil), forCellWithReuseIdentifier: "SuggestionCell")
         
-        navigationItem.hidesBackButton = false
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Menu"), style: .Plain, target: self, action: "openMenu:")
+        navigationItem.hidesBackButton = true
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Menu"), style: .Plain, target: self, action: "openMenu:")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add:")
         
         view.addSubview(self.collectionView!)

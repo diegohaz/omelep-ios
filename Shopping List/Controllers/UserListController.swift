@@ -117,21 +117,21 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     
     func doneItem(cell: ItemViewCell) {
         let indexPath = collectionView!.indexPathForCell(cell)
+        trackEvent("Products Operations", action: "Done Product From List", label: products[indexPath!.row].name, value: self.products.count)
         
         DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
         
         products.removeAtIndex(indexPath!.row)
-        trackEvent("Products Operations", action: "Done Product From List", label: products[indexPath!.row].name, value: self.products.count)
         collectionView!.reloadData()
     }
     
     func removeItem(cell: ItemViewCell) {
         let indexPath = collectionView!.indexPathForCell(cell)
+        trackEvent("Products Operations", action: "Remove Product From List", label: products[indexPath!.row].name, value: self.products.count)
         
         DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
 
         products.removeAtIndex(indexPath!.row)
-        trackEvent("Products Operations", action: "Remove Product From List", label: products[indexPath!.row].name, value: self.products.count)
         collectionView!.reloadData()
     }
     
