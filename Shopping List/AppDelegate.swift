@@ -24,12 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GAI.sharedInstance().trackUncaughtExceptions = true
         GAI.sharedInstance().dispatchInterval = 20
         GAI.sharedInstance().logger.logLevel = GAILogLevel.Verbose
-        GAI.sharedInstance().trackerWithTrackingId("UA-63932855-1")
+        GAI.sharedInstance().trackerWithTrackingId("UA-64502365-2")
+        
+        //analytics da conta do omelep.app@gmail.com UA-64502365-1.
+        //A de teste é UA-64502365-2
         
         //UA-63932855-1
         //return true
         
-        setTrackedUserID("UA-63932855-1")
+        setTrackedUserID("UA-64502365-2")
 
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
