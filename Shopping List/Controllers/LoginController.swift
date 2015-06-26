@@ -108,8 +108,7 @@ class LoginController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-<<<<<<< HEAD
-=======
+
     func registerUser( callback: (User) -> Void) {
         
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
@@ -212,6 +211,5 @@ class LoginController: UIViewController {
             })
         })
     }
->>>>>>> origin/master
     
 }
