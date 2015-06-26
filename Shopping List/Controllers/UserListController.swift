@@ -77,11 +77,8 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     func textFieldDidChange(textField: UITextField) {
         
         autoComplete.wordChanged(textField.text)
-        if autoComplete.results.count != 0{
-            self.view.addSubview(autoComplete)
-        }else{
-            autoComplete.removeFromSuperview()
-        }
+
+        
         
     }
     
