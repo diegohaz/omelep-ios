@@ -8,25 +8,22 @@
 
 import UIKit
 
-class AutoCompleteController: UIView,UITableViewDelegate, UITableViewDataSource {
+class AutoComplete: UIView,UITableViewDelegate, UITableViewDataSource {
     
     
     var tableView: UITableView  =   UITableView()
     
-    var results: [String] = ["teste1","teste2","teste3","teste4"]
-//    var results: [String] = []
+//    var results: [String] = ["teste1","teste2","teste3","teste4"]
+    var results: [String] = []
     var word: String = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        // Do any additional setup after loading the view, typically from a nib.
+        
         
         tableView.frame         =   self.frame
         tableView.delegate      =   self
         tableView.dataSource    =   self
-        
-        
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.addSubview(tableView)
@@ -37,7 +34,8 @@ class AutoCompleteController: UIView,UITableViewDelegate, UITableViewDataSource 
     }
     
     func wordChanged(word: String){
-//            manda string para funcao de autocomplete
+        //            manda word para funcao de autocomplete
+        tableView.reloadData()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -68,15 +66,17 @@ class AutoCompleteController: UIView,UITableViewDelegate, UITableViewDataSource 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        NSNotificationCenter.defaultCenter().postNotificationName("addSearchedProductToList", object: results[indexPath.row])
-
+        if self.results.count == 0{
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }else{
+            NSNotificationCenter.defaultCenter().postNotificationName("addSearchedProductToList", object: results[indexPath.row])
+        }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-//        UserListController().jabba(results[indexPath.row])
         println("You selected cell #\(indexPath.row)!")
     }
-
+    
     
     
 }

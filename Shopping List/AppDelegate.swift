@@ -21,15 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = MainController.sharedInstance
         self.window?.makeKeyAndVisible()
         
-//        GAI.sharedInstance().trackUncaughtExceptions = true
-//        GAI.sharedInstance().dispatchInterval = 20
-//        GAI.sharedInstance().logger.logLevel = GAILogLevel.Verbose
-//        GAI.sharedInstance().trackerWithTrackingId("UA-63932855-1")
-//        
-//        //UA-63932855-1
-//        //return true
-//        
-//        setTrackedUserID("UA-63932855-1")
+        GAI.sharedInstance().trackUncaughtExceptions = true
+        GAI.sharedInstance().dispatchInterval = 20
+        GAI.sharedInstance().logger.logLevel = GAILogLevel.Verbose
+        GAI.sharedInstance().trackerWithTrackingId("UA-64502365-2")
+        
+        //analytics da conta do omelep.app@gmail.com UA-64502365-1.
+        //A de teste é UA-64502365-2
+        
+        //UA-63932855-1
+        //return true
+        
+        setTrackedUserID("UA-64502365-2")
 
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
@@ -56,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackgrosund(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }

@@ -15,7 +15,8 @@ class ListsView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
     
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: self.bounds.width, height: 48)
+        layout.minimumLineSpacing = 0
+        layout.itemSize = CGSize(width: self.bounds.width, height: 56)
         
         self.backgroundColor = UIColor.whiteColor()
     }

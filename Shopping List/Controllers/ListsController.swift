@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, ItemViewCellDelegate {
+class ListsController: GAITrackedViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, ItemViewCellDelegate {
     
     static let sharedInstance = ListsController()
     
@@ -17,32 +17,34 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.screenName = "Lists"
+        
+        NSUserDefaults.standardUserDefaults().setObject("Lists", forKey: "Last Screen")
 
 //        DAORemoto.sharedInstance.sincroniza { lists in
 //            self.lists = lists
 //            self.collectionView?.reloadData()
 //        }
         
-        //        self.screenName = "ListsScreen"
         self.navigationController?.navigationBarHidden = false
 
         
-        title = "Lists"
+        title = "Minhas listas"
         collectionView = ListsView(frame: self.view.bounds)
         collectionView!.dataSource = self
         collectionView!.delegate = self
         collectionView!.registerNib(UINib(nibName: "ListViewCell", bundle: nil), forCellWithReuseIdentifier: "ListCell")
         collectionView!.registerNib(UINib(nibName: "SuggestionViewCell", bundle: nil), forCellWithReuseIdentifier: "SuggestionCell")
         
-        navigationItem.hidesBackButton = false
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Menu"), style: .Plain, target: self, action: "openMenu:")
+        navigationItem.hidesBackButton = true
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Menu"), style: .Plain, target: self, action: "openMenu:")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add:")
         
         view.addSubview(self.collectionView!)
     }
     
     override func viewDidAppear(animated: Bool) {
-        //        trackScreen("ListsScreen")
+        trackScreen("Lists")
         
         DAORemoto.sharedInstance.allListOfUser { lists in
             self.lists = lists
@@ -51,7 +53,6 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
     }
     
     func add(sender: UIBarButtonItem) {
-        //        trackEvent("jabba", action: "joe", label: "jo2", value: 10)
 
         let controller = UserListController()
         controller.isNew = true
@@ -60,6 +61,7 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         list.name = "List"
 
         DAORemoto.sharedInstance.saveNewList(list)
+        trackEvent("Lists Operations", action: "Add New List", label: list.name, value: lists.count)
 
         controller.list = list
 
@@ -95,12 +97,14 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         let indexPath = collectionView?.indexPathForCell(cell)
         
         DAORemoto.sharedInstance.deleteList(self.lists[indexPath!.row])
+        trackEvent("Lists Operations", action: "Delete List", label: self.lists[indexPath!.row].name, value: 0 /* quero colocar a quantidade de produtos da lista aqui*/)
+
         
         self.lists.removeAtIndex(indexPath!.row)
         self.collectionView?.reloadData()
     }
     
-    func doneItem(cell: ItemViewCell) {
+    func doneItem(cell: ItemViewCell) { /* aqui deve ser o Share */
         
     }
     
@@ -108,6 +112,8 @@ class ListsController: UIViewController, UICollectionViewDelegateFlowLayout, UIC
         let controller = UserListController()
         
         controller.list = self.lists[indexPath.row]
+        trackEvent("Lists Operations", action: "Open List", label: self.lists[indexPath.row].name, value: 0 /* quero colocar a quantidade de produtos da lista aqui*/)
+
         
         navigationController?.pushViewController(controller, animated: true)
     }

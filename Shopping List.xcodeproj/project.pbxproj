@@ -11,8 +11,6 @@
 		2E21B35E1B288CA300359660 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21B35D1B288CA300359660 /* ShareController.swift */; };
 		2E21B3601B28919E00359660 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E21B35F1B28919E00359660 /* libGoogleAnalyticsServices.a */; };
 		2E21B3621B289B1100359660 /* SharedUsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21B3611B289B1100359660 /* SharedUsersCell.swift */; };
-		2E48A46B1B1A09800072403C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46A1B1A09800072403C /* SettingsView.swift */; };
-		2E48A46D1B1A098E0072403C /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E48A46C1B1A098E0072403C /* SettingsView.xib */; };
 		2E48A46F1B1A10570072403C /* MailSenderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46E1B1A10570072403C /* MailSenderController.swift */; };
 		2E51DA6C1B18E62C00412F09 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA691B18E62C00412F09 /* Bolts.framework */; };
 		2E51DA6D1B18E62C00412F09 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA6A1B18E62C00412F09 /* FBSDKCoreKit.framework */; };
@@ -27,7 +25,9 @@
 		2EA53F681B29B4B700086428 /* teste.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA53F671B29B4B700086428 /* teste.png */; };
 		2EA53F6C1B29F08B00086428 /* Login_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA53F6B1B29F08B00086428 /* Login_background.png */; };
 		2EA53F6E1B2A3E7100086428 /* AddProductToListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA53F6D1B2A3E7100086428 /* AddProductToListController.swift */; };
-		2EF3DE901B34C7AA006555AC /* AutoCompleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF3DE8F1B34C7AA006555AC /* AutoCompleteController.swift */; };
+		2EBF8A3E1B3C5F3700B4B1BB /* backCharacter.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EBF8A3D1B3C5F3700B4B1BB /* backCharacter.png */; };
+		2EBF8A401B3C5F6200B4B1BB /* backCharacter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EBF8A3F1B3C5F6200B4B1BB /* backCharacter2.png */; };
+		2EF3DE901B34C7AA006555AC /* AutoComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF3DE8F1B34C7AA006555AC /* AutoComplete.swift */; };
 		2EFD69A31B27710F00AFEBD5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */; };
 		2EFD69A51B27711D00AFEBD5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A41B27711D00AFEBD5 /* CoreData.framework */; };
 		2EFD69A71B27713000AFEBD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A61B27713000AFEBD5 /* libz.dylib */; };
@@ -82,8 +82,6 @@
 		2E21B35D1B288CA300359660 /* ShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
 		2E21B35F1B28919E00359660 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2E21B3611B289B1100359660 /* SharedUsersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedUsersCell.swift; path = ../../Controllers/SharedUsersCell.swift; sourceTree = "<group>"; };
-		2E48A46A1B1A09800072403C /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		2E48A46C1B1A098E0072403C /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		2E48A46E1B1A10570072403C /* MailSenderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailSenderController.swift; sourceTree = "<group>"; };
 		2E51DA691B18E62C00412F09 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		2E51DA6A1B18E62C00412F09 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -100,7 +98,9 @@
 		2EA53F671B29B4B700086428 /* teste.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teste.png; sourceTree = "<group>"; };
 		2EA53F6B1B29F08B00086428 /* Login_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login_background.png; sourceTree = "<group>"; };
 		2EA53F6D1B2A3E7100086428 /* AddProductToListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductToListController.swift; sourceTree = "<group>"; };
-		2EF3DE8F1B34C7AA006555AC /* AutoCompleteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCompleteController.swift; path = ../Controllers/AutoCompleteController.swift; sourceTree = "<group>"; };
+		2EBF8A3D1B3C5F3700B4B1BB /* backCharacter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backCharacter.png; sourceTree = "<group>"; };
+		2EBF8A3F1B3C5F6200B4B1BB /* backCharacter2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backCharacter2.png; sourceTree = "<group>"; };
+		2EF3DE8F1B34C7AA006555AC /* AutoComplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoComplete.swift; path = ../Controllers/AutoComplete.swift; sourceTree = "<group>"; };
 		2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2EFD69A41B27711D00AFEBD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2EFD69A61B27713000AFEBD5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -288,14 +288,12 @@
 			children = (
 				374CBAA81B17D79600255CF1 /* Cells */,
 				374CBAC71B18FBD600255CF1 /* Elements */,
-				2EF3DE8F1B34C7AA006555AC /* AutoCompleteController.swift */,
+				2EF3DE8F1B34C7AA006555AC /* AutoComplete.swift */,
 				374CBAB91B17DA5A00255CF1 /* LaunchScreen.xib */,
 				374CBA821B17D76A00255CF1 /* ListsView.swift */,
 				374CBAC31B17E41400255CF1 /* UserListView.swift */,
 				374CBAC11B17E2B500255CF1 /* UserListView.xib */,
 				3709153A1B19160200E99B33 /* SingleListView.swift */,
-				2E48A46C1B1A098E0072403C /* SettingsView.xib */,
-				2E48A46A1B1A09800072403C /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +331,8 @@
 				2E59AED81B1D385600F479D0 /* Boneco.png */,
 				2EA53F671B29B4B700086428 /* teste.png */,
 				2EA53F6B1B29F08B00086428 /* Login_background.png */,
+				2EBF8A3D1B3C5F3700B4B1BB /* backCharacter.png */,
+				2EBF8A3F1B3C5F6200B4B1BB /* backCharacter2.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -492,13 +492,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E59AED91B1D385600F479D0 /* Boneco.png in Resources */,
+				2EBF8A401B3C5F6200B4B1BB /* backCharacter2.png in Resources */,
 				2EA53F6C1B29F08B00086428 /* Login_background.png in Resources */,
 				8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */,
 				374CBAB81B17D79600255CF1 /* SuggestionViewCell.xib in Resources */,
 				374CBAB41B17D79600255CF1 /* ListViewCell.xib in Resources */,
 				374CBAB21B17D79600255CF1 /* ItemViewCell.xib in Resources */,
+				2EBF8A3E1B3C5F3700B4B1BB /* backCharacter.png in Resources */,
 				374CBABA1B17DA5A00255CF1 /* LaunchScreen.xib in Resources */,
-				2E48A46D1B1A098E0072403C /* SettingsView.xib in Resources */,
 				374CBAC21B17E2B500255CF1 /* UserListView.xib in Resources */,
 				2EA53F681B29B4B700086428 /* teste.png in Resources */,
 			);
@@ -525,7 +526,7 @@
 				2E59AED61B1D0C6100F479D0 /* NetworkConnect.swift in Sources */,
 				8ECBF7321B31EFFA00243A21 /* FunctionsFacebook.swift in Sources */,
 				374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */,
-				2EF3DE901B34C7AA006555AC /* AutoCompleteController.swift in Sources */,
+				2EF3DE901B34C7AA006555AC /* AutoComplete.swift in Sources */,
 				374CBA971B17D76A00255CF1 /* Shopping_List.xcdatamodeld in Sources */,
 				374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */,
 				374CBA961B17D76A00255CF1 /* Product.swift in Sources */,
@@ -541,7 +542,6 @@
 				374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */,
 				2E6639F81B18A8E100DA97D9 /* LoginController.swift in Sources */,
 				2E59AED41B1D0C6100F479D0 /* DAORemoto.swift in Sources */,
-				2E48A46B1B1A09800072403C /* SettingsView.swift in Sources */,
 				374CBAB71B17D79600255CF1 /* SuggestionViewCell.swift in Sources */,
 				2E59AED71B1D0C6100F479D0 /* Reachability.m in Sources */,
 				2E21B3621B289B1100359660 /* SharedUsersCell.swift in Sources */,

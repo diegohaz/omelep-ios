@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class ShareController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate{
+class ShareController: GAITrackedViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate{
     
     var mail_sender : MailSender! = MailSender()
     
@@ -19,6 +19,8 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     var friendInList : [User] = []
     
     override func viewDidLoad() {
+        
+        NSUserDefaults.standardUserDefaults().setObject("Share", forKey: "Last Screen")
         
         let blockView = UIControl(frame: self.view.frame)
         blockView.backgroundColor = UIColor.blackColor()
@@ -101,7 +103,9 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
     }
     
-    
+    override func viewDidAppear(animated: Bool) {
+        trackScreen("Share")
+    }
     
     //tableview
     var tableView: UITableView  =   UITableView()
@@ -223,6 +227,8 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
             friends.insert(friendInList[i], atIndex: 0)
             friendInList.removeAtIndex(i)
+            
+            trackEvent("Share Facebook", action: "Remove", label: friends[0].id, value: friendInList.count)
         
             tableView.reloadData()
             Collection.reloadData()
@@ -234,9 +240,15 @@ class ShareController: UIViewController, UITableViewDataSource, UITableViewDeleg
     func addUserShareToList(i: Int){
         DAORemoto.sharedInstance.createRelationUserList(friends[i], list: list)
         
-        friendInList.insert(friends[i], atIndex: friendInList.count)
-        friends.removeAtIndex(i)
+//*** DEU CONFLITO AQUI. ASSIM FAZ MAIS SENTIDO *****
+        friendInList.insert(friends[i], atIndex: 0)
+//        friendInList.insert(friends[i], atIndex: friendInList.count)
+//*** DEU CONFLITO AQUI. ASSIM FAZ MAIS SENTIDO *****
         
+        
+        friends.removeAtIndex(i)
+        trackEvent("Share Facebook", action: "Add", label: friendInList[0].id, value: friendInList.count)
+
         tableView.reloadData()
         Collection.reloadData()
 

@@ -26,6 +26,7 @@ class LoginController: UIViewController {
         background.image = UIImage(named: "Screen")
         self.view.addSubview(background)
         
+        NSUserDefaults.standardUserDefaults().setObject("Login", forKey: "Last Screen")
         
         activityIndicator.frame = CGRectMake(100, 100, 100, 100)
         self.view.addSubview(activityIndicator)
@@ -52,6 +53,12 @@ class LoginController: UIViewController {
         }else{
             println("user inicializou DESLOGADO")
         }
+        
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        trackScreen("Login")
     }
     
     func doLogin(){
@@ -73,7 +80,6 @@ class LoginController: UIViewController {
                     if error == nil {
                         
                         println("User Info : \(result)")
-                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
                         
                         FunctionsFacebook.sharedInstance.registerUser(){ user in
                             
@@ -102,5 +108,110 @@ class LoginController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+<<<<<<< HEAD
+=======
+    func registerUser( callback: (User) -> Void) {
+        
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        let graphRequestForImage : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/picture?redirect=false", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error)  in
+            print("")
+            graphRequestForImage.startWithCompletionHandler({ (connection2 : FBSDKGraphRequestConnection!, result2 : AnyObject!, error2 : NSError!) in
+                
+                if (((error) != nil) /*&& ((error2) != nil)*/)
+                {
+                    // Process error
+                    println("Error (NO LOGIN DO FACEBOOK): \(error)")
+                    println("Usuario não autorizou o Facebook")
+                }
+                else
+                {
+                    //verifica se usuario ja existe
+                    var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
+                    
+                    var listRef = myRootRef.childByAppendingPath("user")
+                    
+                    listRef.queryOrderedByChild("idfb").queryEqualToValue(result.valueForKey("id")).observeSingleEventOfType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+                        
+                        //TODO: as vezes a pessoa desloga e loga com o msm usuário, não vai ser necessário apagar
+                        
+                        //Apagando dados do último usuário logado:
+                        DAOLocal.sharedInstance.deleteAllUsers()
+                        
+                        //Deletando todas as listas salvas no celulat
+                        DAOLocal.sharedInstance.deleteAllLists()
+                        
+                        var user : User = User()
+                        
+                        if( snapshot.exists() == true ) {
+                            var dic = snapshot.value as! NSDictionary
+                            var key = dic.allKeys[0] as! String
+                            //Salvando dados do usuário logado:
+                            user.id = key
+                            user.name = dic[key]!.objectForKey("name")! as! String
+                            user.email = dic[key]!.objectForKey("email")! as! String
+                            user.me = true
+                            DAOLocal.sharedInstance.save()
+                            
+                            //Donwload da foto do usuário:
+                            let url = NSURL(string: dic[key]!.objectForKey("photo")! as! String)
+                            let imageData = NSData(contentsOfURL: url!)
+                            var image : UIImage = UIImage(data: imageData!)!
+                            DAOLocal.sharedInstance.saveImageOfUser(image, user: DAOLocal.sharedInstance.readUser())
+                            
+                            //Pegando os amigos do Facebook e fazendo download das fotos:
+                            FunctionsFacebook.sharedInstance.getFacebookFriendsFromUser()
+                            
+                            println("User ja estava Registrado")
+                            
+                            self.trackEvent("User", action: "Login", label: "Returning User", value: 10)
+                            
+                        }
+                        else {
+                            
+                            //Carregando a imagem:
+                            let data: AnyObject? = result2.valueForKey("data")
+                            let url = NSURL(string: data!.valueForKey("url") as! String)
+
+                            println("User não encontrado. Tem q registrar!")
+                            println("fetched user: \(result)")
+                            let userName : NSString = result.valueForKey("name") as! NSString
+                            println("User Name is: \(userName)")
+                            let userEmail : NSString = result.valueForKey("email") as! NSString
+                            println("User Email is: \(userEmail)")
+                            var info = ["idfb": result.valueForKey("id") as! String, "photo": data!.valueForKey("url") as! String, "email": result.valueForKey("email") as! String, "gender": result.valueForKey("gender") as! String, "locale": result.valueForKey("locale") as! String, "name": result.valueForKey("name") as! String,  /* "timezone": result.valueForKey("timezone") as! String, */ "updated_time": result.valueForKey("updated_time") as! String, "verified": result.valueForKey("verified") as! Bool, "access_token": FBSDKAccessToken.currentAccessToken().tokenString]
+                            
+                            //                var myRootRef = Firebase(url:"https://luminous-heat-6986.firebaseio.com/")
+                            
+                            var userRef = myRootRef.childByAppendingPath("user")
+                            ///Colocando o id do Facebook como id no FireBase
+                            var infoAdd = userRef.childByAutoId()
+                            infoAdd.setValue(info)
+                            
+                            //Salvando dados do usuário logado:
+                            user.id = infoAdd.key
+                            user.name = result.valueForKey("name")! as! String
+                            user.email = result.valueForKey("email")! as! String
+                            user.me = true
+                            DAOLocal.sharedInstance.save()
+                            
+                            ///Salvando a imagem
+                            let imageData = NSData(contentsOfURL: url!)
+                            var image : UIImage = UIImage(data: imageData!)!
+                            DAOLocal.sharedInstance.saveImageOfUser(image, user: DAOLocal.sharedInstance.readUser())
+                            
+                            //Pegando os amigos do Facebook e fazendo download das fotos:
+                            FunctionsFacebook.sharedInstance.getFacebookFriendsFromUser()
+                            
+                            self.trackEvent("User", action: "Login", label: "Register New User", value: 10)
+                            
+                        }
+                    callback(user)
+                    })
+                }
+            })
+        })
+    }
+>>>>>>> origin/master
     
 }
