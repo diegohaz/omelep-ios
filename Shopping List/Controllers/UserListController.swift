@@ -77,7 +77,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     func textFieldDidChange(textField: UITextField) {
         
         autoComplete.wordChanged(textField.text)
-
+        
         
         
     }
