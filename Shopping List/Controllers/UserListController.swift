@@ -126,7 +126,6 @@ func doneItem(cell: ItemViewCell) {
     
     DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
     
-<<<<<<< HEAD
     func textFieldShouldReturn(textField: UITextField) -> Bool {
 
         if textField.isEqual(reusableView?.newItemTextField) {
@@ -151,20 +150,13 @@ func doneItem(cell: ItemViewCell) {
         }
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let size = CGSize(width: self.view.bounds.width, height: 48)
-        
-        return size
-    }
-=======
-    products.removeAtIndex(indexPath!.row)
-    collectionView!.reloadData()
+
 }
 
 func removeItem(cell: ItemViewCell) {
     let indexPath = collectionView!.indexPathForCell(cell)
     trackEvent("Products Operations", action: "Remove Product From List", label: products[indexPath!.row].name, value: self.products.count)
->>>>>>> origin/master
+
     
     DAORemoto.sharedInstance.deleteProductFromList(products[indexPath!.row], list: self.list!)
     
