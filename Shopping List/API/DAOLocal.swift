@@ -399,6 +399,44 @@ class DAOLocal {
     }
     
     
+    //Listas Prontas (Encarte):
+    
+    /**Função que retorna todos os encartes*/
+    func returnReadyLists() -> [List] {
+        
+        var appDelegate : AppDelegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        var context : NSManagedObjectContext
+        context = appDelegate.managedObjectContext!
+        
+        var entity : NSEntityDescription
+        entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)!
+        
+        var request : NSFetchRequest = NSFetchRequest()
+        request.entity = entity
+        
+        var arguments:NSArray = [""]
+        var pred : NSPredicate = NSPredicate(format: "(market != %@)", argumentArray: arguments as [AnyObject])
+        request.predicate = pred
+        
+        var error : NSError?
+        var result : [List] = context.executeFetchRequest(request, error:&error)! as! [List]
+        
+        for var i = 0; i < result.count; i++ {
+            
+            if( !FunctionsDAO.sharedInstance.isTheValidity(result[i]) ) {
+                result.removeAtIndex(i)
+            }
+            
+            
+        }
+        
+        return result
+        
+    }
+    
+    
     
     
 }

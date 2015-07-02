@@ -337,7 +337,7 @@ class DAORemoto {
             
             })
         
-            var myRootRef2 = Firebase(url:"https://luminous-heat-6986.firebaseio.com/|list/\(list.id)/products")
+            var myRootRef2 = Firebase(url:"https://luminous-heat-6986.firebaseio.com/list/\(list.id)/products")
         
             myRootRef2.observeEventType(FEventType.ChildRemoved, withBlock: { (snapshot : FDataSnapshot!) -> Void in
             
@@ -595,6 +595,10 @@ class DAORemoto {
     }
     
     
+    //Listas Prontas (Encarte):
     
+    /**Funcão que adiciona encartes:*/
+    
+
     
 }

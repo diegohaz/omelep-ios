@@ -474,9 +474,22 @@ class FunctionsDAO {
     
     
     
+    //Listas Prontas (Encarte):
     
-    
-    
+    /**Função quer ver se o encarte ta na validade ou não*/
+    func isTheValidity(list : List) -> Bool {
+        
+        //Data de agora:
+        let date = NSDate()
+        
+        if( list.validity == list.validity.earlierDate(date)){
+            return false
+        } else {
+            return true 
+        }
+        
+        
+    }
     
     
 }

@@ -21,6 +21,8 @@ class Product: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var photo: NSData
     @NSManaged var quantity: NSNumber
+    @NSManaged var price: NSNumber
+    @NSManaged var validity: NSDate
     
     convenience init() {
         

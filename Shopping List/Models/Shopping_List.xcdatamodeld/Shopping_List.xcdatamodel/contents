@@ -4,9 +4,12 @@
         <attribute name="delete" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="localID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="localMarket" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="market" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="updatedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="validity" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="User" inverseName="lists" inverseEntity="User" syncable="YES"/>
@@ -18,7 +21,9 @@
         <attribute name="localID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="validity" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -36,8 +41,8 @@
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" syncable="YES"/>
     </entity>
     <elements>
-        <element name="List" positionX="-54" positionY="-9" width="128" height="180"/>
-        <element name="Product" positionX="25" positionY="309" width="128" height="150"/>
+        <element name="List" positionX="-54" positionY="-9" width="128" height="225"/>
+        <element name="Product" positionX="25" positionY="309" width="128" height="180"/>
         <element name="Tag" positionX="324" positionY="549" width="128" height="90"/>
         <element name="User" positionX="709" positionY="213" width="128" height="165"/>
     </elements>

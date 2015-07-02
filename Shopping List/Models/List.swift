@@ -23,6 +23,9 @@ class List: NSManagedObject {
     @NSManaged var products: NSSet
     @NSManaged var tags: NSSet
     @NSManaged var users: NSSet
+    @NSManaged var market: String
+    @NSManaged var validity: NSDate
+    @NSManaged var localMarket: String
     
     convenience init() {
         

@@ -75,7 +75,8 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     
     
     func textFieldDidChange(textField: UITextField) {
-        
+        print(textField.text)
+        print(autoComplete.results.count)
         autoComplete.wordChanged(textField.text)
         if autoComplete.results.count != 0{
             self.view.addSubview(autoComplete)
@@ -141,8 +142,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        autoComplete.removeFromSuperview()
-        autoComplete = nil
+
         if textField.isEqual(reusableView?.newItemTextField) {
             let product = Product()
             product.name = textField.text

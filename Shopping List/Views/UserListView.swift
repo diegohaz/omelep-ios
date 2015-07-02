@@ -17,7 +17,7 @@ class UserListView: UIView {
         super.awakeFromNib()
         
         self.collectionView.alwaysBounceVertical = true
-        self.collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "Row")!)
+        self.collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "row")!)
         self.plusButton.imageEdgeInsets = UIEdgeInsetsMake(4, 4, 4, 4)
     }
 }
