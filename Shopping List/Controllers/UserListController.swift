@@ -49,7 +49,7 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         // Navigation
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Share"), style: UIBarButtonItemStyle.Plain, target: self, action: "share:")
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backCharacter.png"), style: UIBarButtonItemStyle.Plain, target: self, action: "goback")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: UIBarButtonItemStyle.Plain, target: self, action: "goback")
         //        navigationItem.backBarButtonItem = UIBarButtonItem(title: "oiii", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
         
         
