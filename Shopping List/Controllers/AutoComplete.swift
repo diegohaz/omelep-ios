@@ -35,7 +35,7 @@ class AutoComplete: UIView,UITableViewDelegate, UITableViewDataSource {
     
     func wordChanged(word: String){
         //            manda word para funcao de autocomplete
-        tableView.reloadData()
+//        tableView.reloadData()
     }
     
     required init(coder aDecoder: NSCoder) {
