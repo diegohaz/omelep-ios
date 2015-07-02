@@ -66,7 +66,13 @@ class UserListController: GAITrackedViewController, UICollectionViewDelegateFlow
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "addSearchedProduct:", name:"addSearchedProductToList", object: nil)
         
+        reusableView?.plusButton.addTarget(self, action: "beginAdd", forControlEvents: UIControlEvents.TouchUpInside)
         
+        
+    }
+    
+    func beginAdd() {
+        reusableView?.newItemTextField.becomeFirstResponder()
     }
     
     func goback(){
