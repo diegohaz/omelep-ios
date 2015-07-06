@@ -375,7 +375,7 @@ class DAOLocal {
     
     //Criando relação user - list
     func relationUserList(user : User, list : List) {
-        
+
         user.addList(list)
         list.addUser(user)
         
