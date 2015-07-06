@@ -9,12 +9,8 @@
 /* Begin PBXBuildFile section */
 		2E1C6ED91B1CA91A0048FFEB /* FriendsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */; };
 		2E21B35E1B288CA300359660 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21B35D1B288CA300359660 /* ShareController.swift */; };
-		2E21B3601B28919E00359660 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E21B35F1B28919E00359660 /* libGoogleAnalyticsServices.a */; };
 		2E21B3621B289B1100359660 /* SharedUsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21B3611B289B1100359660 /* SharedUsersCell.swift */; };
 		2E48A46F1B1A10570072403C /* MailSenderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48A46E1B1A10570072403C /* MailSenderController.swift */; };
-		2E51DA6C1B18E62C00412F09 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA691B18E62C00412F09 /* Bolts.framework */; };
-		2E51DA6D1B18E62C00412F09 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA6A1B18E62C00412F09 /* FBSDKCoreKit.framework */; };
-		2E51DA6E1B18E62C00412F09 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51DA6B1B18E62C00412F09 /* FBSDKLoginKit.framework */; };
 		2E59AED31B1D0C6100F479D0 /* DAOLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59AECC1B1D0C6100F479D0 /* DAOLocal.swift */; };
 		2E59AED41B1D0C6100F479D0 /* DAORemoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59AECD1B1D0C6100F479D0 /* DAORemoto.swift */; };
 		2E59AED51B1D0C6100F479D0 /* FunctionsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59AECE1B1D0C6100F479D0 /* FunctionsDAO.swift */; };
@@ -32,7 +28,6 @@
 		2EFD69A51B27711D00AFEBD5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A41B27711D00AFEBD5 /* CoreData.framework */; };
 		2EFD69A71B27713000AFEBD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFD69A61B27713000AFEBD5 /* libz.dylib */; };
 		2EFD69B61B27825700AFEBD5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030C11B17B4F30027DE70 /* SystemConfiguration.framework */; };
-		2EFD69B81B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFD69B71B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift */; };
 		3709153B1B19160200E99B33 /* SingleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709153A1B19160200E99B33 /* SingleListView.swift */; };
 		374CBA8D1B17D76A00255CF1 /* ListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA6E1B17D76900255CF1 /* ListsController.swift */; };
 		374CBA8E1B17D76A00255CF1 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBA6F1B17D76900255CF1 /* MainController.swift */; };
@@ -55,6 +50,12 @@
 		374CBAC41B17E41400255CF1 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAC31B17E41400255CF1 /* UserListView.swift */; };
 		374CBAC91B18FBD600255CF1 /* NewItemTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBAC81B18FBD600255CF1 /* NewItemTextField.swift */; };
 		374CBACB1B18FBF800255CF1 /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CBACA1B18FBF800255CF1 /* TitleTextField.swift */; };
+		8E039EBD1B4AE94700F23D44 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E039EBC1B4AE94700F23D44 /* Firebase.framework */; };
+		8E039EC11B4AE97300F23D44 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E039EBE1B4AE97300F23D44 /* Bolts.framework */; };
+		8E039EC21B4AE97300F23D44 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E039EBF1B4AE97300F23D44 /* FBSDKCoreKit.framework */; };
+		8E039EC31B4AE97300F23D44 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E039EC01B4AE97300F23D44 /* FBSDKLoginKit.framework */; };
+		8E039ECF1B4AE9B700F23D44 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E039ECE1B4AE9B700F23D44 /* libGoogleAnalyticsServices.a */; };
+		8E039ED11B4AE9BD00F23D44 /* GoogleAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E039ED01B4AE9BD00F23D44 /* GoogleAnalyticsHelper.swift */; };
 		8E49FC8A1B0F75F70087FA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FC891B0F75F70087FA08 /* AppDelegate.swift */; };
 		8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E49FC931B0F75F70087FA08 /* Images.xcassets */; };
 		8E49FCA31B0F75F70087FA08 /* Shopping_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FCA21B0F75F70087FA08 /* Shopping_ListTests.swift */; };
@@ -62,7 +63,6 @@
 		8E9030C61B17B5020027DE70 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030C51B17B5020027DE70 /* CFNetwork.framework */; };
 		8E9030C81B17B5130027DE70 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030C71B17B5130027DE70 /* libc++.dylib */; };
 		8E9030CA1B17B51D0027DE70 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030C91B17B51D0027DE70 /* libicucore.dylib */; };
-		8E9030D51B17DA960027DE70 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030D41B17DA960027DE70 /* Firebase.framework */; };
 		8E9030DC1B1BEDE90027DE70 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9030DB1B1BEDE90027DE70 /* MessageUI.framework */; };
 		8ECBF7321B31EFFA00243A21 /* FunctionsFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECBF7311B31EFFA00243A21 /* FunctionsFacebook.swift */; };
 /* End PBXBuildFile section */
@@ -80,12 +80,8 @@
 /* Begin PBXFileReference section */
 		2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListController.swift; sourceTree = "<group>"; };
 		2E21B35D1B288CA300359660 /* ShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
-		2E21B35F1B28919E00359660 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2E21B3611B289B1100359660 /* SharedUsersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedUsersCell.swift; path = ../../Controllers/SharedUsersCell.swift; sourceTree = "<group>"; };
 		2E48A46E1B1A10570072403C /* MailSenderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailSenderController.swift; sourceTree = "<group>"; };
-		2E51DA691B18E62C00412F09 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		2E51DA6A1B18E62C00412F09 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		2E51DA6B1B18E62C00412F09 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		2E59AECC1B1D0C6100F479D0 /* DAOLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOLocal.swift; sourceTree = "<group>"; };
 		2E59AECD1B1D0C6100F479D0 /* DAORemoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAORemoto.swift; sourceTree = "<group>"; };
 		2E59AECE1B1D0C6100F479D0 /* FunctionsDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsDAO.swift; sourceTree = "<group>"; };
@@ -104,17 +100,6 @@
 		2EFD69A21B27710F00AFEBD5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2EFD69A41B27711D00AFEBD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2EFD69A61B27713000AFEBD5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		2EFD69AA1B2779E700AFEBD5 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		2EFD69AB1B2779E700AFEBD5 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		2EFD69AC1B2779E700AFEBD5 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
-		2EFD69AD1B2779E700AFEBD5 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
-		2EFD69AE1B2779E700AFEBD5 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
-		2EFD69AF1B2779E700AFEBD5 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
-		2EFD69B01B2779E700AFEBD5 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
-		2EFD69B11B2779E700AFEBD5 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
-		2EFD69B21B2779E700AFEBD5 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		2EFD69B31B2779E700AFEBD5 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		2EFD69B71B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleAnalyticsHelper.swift; path = "Shopping List/Controllers/GoogleAnalyticsHelper.swift"; sourceTree = "<group>"; };
 		3709153A1B19160200E99B33 /* SingleListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleListView.swift; sourceTree = "<group>"; };
 		374CBA6E1B17D76900255CF1 /* ListsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
 		374CBA6F1B17D76900255CF1 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -137,6 +122,22 @@
 		374CBAC31B17E41400255CF1 /* UserListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		374CBAC81B18FBD600255CF1 /* NewItemTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemTextField.swift; sourceTree = "<group>"; };
 		374CBACA1B18FBF800255CF1 /* TitleTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTextField.swift; sourceTree = "<group>"; };
+		8E039EBC1B4AE94700F23D44 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = "Shopping List/Frameworks/Firebase/Firebase.framework"; sourceTree = "<group>"; };
+		8E039EBE1B4AE97300F23D44 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Shopping List/Frameworks/Facebook/Bolts.framework"; sourceTree = "<group>"; };
+		8E039EBF1B4AE97300F23D44 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "Shopping List/Frameworks/Facebook/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		8E039EC01B4AE97300F23D44 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "Shopping List/Frameworks/Facebook/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		8E039EC41B4AE99C00F23D44 /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = "Shopping List/Frameworks/GoogleAnalytics/GAI.h"; sourceTree = "<group>"; };
+		8E039EC51B4AE99C00F23D44 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = "Shopping List/Frameworks/GoogleAnalytics/GAIDictionaryBuilder.h"; sourceTree = "<group>"; };
+		8E039EC61B4AE99C00F23D44 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = "Shopping List/Frameworks/GoogleAnalytics/GAIEcommerceFields.h"; sourceTree = "<group>"; };
+		8E039EC71B4AE99C00F23D44 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = "Shopping List/Frameworks/GoogleAnalytics/GAIEcommerceProduct.h"; sourceTree = "<group>"; };
+		8E039EC81B4AE99C00F23D44 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = "Shopping List/Frameworks/GoogleAnalytics/GAIEcommerceProductAction.h"; sourceTree = "<group>"; };
+		8E039EC91B4AE99C00F23D44 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = "Shopping List/Frameworks/GoogleAnalytics/GAIEcommercePromotion.h"; sourceTree = "<group>"; };
+		8E039ECA1B4AE99C00F23D44 /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = "Shopping List/Frameworks/GoogleAnalytics/GAIFields.h"; sourceTree = "<group>"; };
+		8E039ECB1B4AE99C00F23D44 /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = "Shopping List/Frameworks/GoogleAnalytics/GAILogger.h"; sourceTree = "<group>"; };
+		8E039ECC1B4AE99C00F23D44 /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = "Shopping List/Frameworks/GoogleAnalytics/GAITrackedViewController.h"; sourceTree = "<group>"; };
+		8E039ECD1B4AE99C00F23D44 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = "Shopping List/Frameworks/GoogleAnalytics/GAITracker.h"; sourceTree = "<group>"; };
+		8E039ECE1B4AE9B700F23D44 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = "Shopping List/Frameworks/GoogleAnalytics/libGoogleAnalyticsServices.a"; sourceTree = "<group>"; };
+		8E039ED01B4AE9BD00F23D44 /* GoogleAnalyticsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleAnalyticsHelper.swift; path = "Shopping List/Frameworks/GoogleAnalytics/GoogleAnalyticsHelper.swift"; sourceTree = "<group>"; };
 		8E49FC841B0F75F70087FA08 /* Shopping List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E49FC881B0F75F70087FA08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E49FC891B0F75F70087FA08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,7 +150,6 @@
 		8E9030C51B17B5020027DE70 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8E9030C71B17B5130027DE70 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		8E9030C91B17B51D0027DE70 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		8E9030D41B17DA960027DE70 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		8E9030DB1B1BEDE90027DE70 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8ECBF7311B31EFFA00243A21 /* FunctionsFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionsFacebook.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,20 +159,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E039EC31B4AE97300F23D44 /* FBSDKLoginKit.framework in Frameworks */,
+				8E039EC11B4AE97300F23D44 /* Bolts.framework in Frameworks */,
 				2EFD69B61B27825700AFEBD5 /* SystemConfiguration.framework in Frameworks */,
 				2EFD69A71B27713000AFEBD5 /* libz.dylib in Frameworks */,
 				2EFD69A51B27711D00AFEBD5 /* CoreData.framework in Frameworks */,
-				2E21B3601B28919E00359660 /* libGoogleAnalyticsServices.a in Frameworks */,
 				2EFD69A31B27710F00AFEBD5 /* libsqlite3.dylib in Frameworks */,
 				8E9030DC1B1BEDE90027DE70 /* MessageUI.framework in Frameworks */,
-				8E9030D51B17DA960027DE70 /* Firebase.framework in Frameworks */,
+				8E039ECF1B4AE9B700F23D44 /* libGoogleAnalyticsServices.a in Frameworks */,
 				8E9030CA1B17B51D0027DE70 /* libicucore.dylib in Frameworks */,
-				2E51DA6E1B18E62C00412F09 /* FBSDKLoginKit.framework in Frameworks */,
 				8E9030C81B17B5130027DE70 /* libc++.dylib in Frameworks */,
+				8E039EBD1B4AE94700F23D44 /* Firebase.framework in Frameworks */,
 				8E9030C61B17B5020027DE70 /* CFNetwork.framework in Frameworks */,
 				8E9030C41B17B4FB0027DE70 /* Security.framework in Frameworks */,
-				2E51DA6D1B18E62C00412F09 /* FBSDKCoreKit.framework in Frameworks */,
-				2E51DA6C1B18E62C00412F09 /* Bolts.framework in Frameworks */,
+				8E039EC21B4AE97300F23D44 /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +189,7 @@
 		2E6639F91B18AA6700DA97D9 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				8E9030D41B17DA960027DE70 /* Firebase.framework */,
+				8E039EBC1B4AE94700F23D44 /* Firebase.framework */,
 				8E9030C91B17B51D0027DE70 /* libicucore.dylib */,
 				8E9030C51B17B5020027DE70 /* CFNetwork.framework */,
 				8E9030C31B17B4FB0027DE70 /* Security.framework */,
@@ -201,9 +201,9 @@
 		2E663A001B18AAA100DA97D9 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
-				2E51DA691B18E62C00412F09 /* Bolts.framework */,
-				2E51DA6A1B18E62C00412F09 /* FBSDKCoreKit.framework */,
-				2E51DA6B1B18E62C00412F09 /* FBSDKLoginKit.framework */,
+				8E039EBE1B4AE97300F23D44 /* Bolts.framework */,
+				8E039EBF1B4AE97300F23D44 /* FBSDKCoreKit.framework */,
+				8E039EC01B4AE97300F23D44 /* FBSDKLoginKit.framework */,
 			);
 			name = Facebook;
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 		2EFD699D1B276FB900AFEBD5 /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				2EFD69B71B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift */,
+				8E039ED01B4AE9BD00F23D44 /* GoogleAnalyticsHelper.swift */,
 				2EFD699E1B276FDB00AFEBD5 /* Frameworks */,
 				2EFD699F1B276FEB00AFEBD5 /* Library */,
 			);
@@ -229,7 +229,7 @@
 		2EFD699E1B276FDB00AFEBD5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2E21B35F1B28919E00359660 /* libGoogleAnalyticsServices.a */,
+				8E039ECE1B4AE9B700F23D44 /* libGoogleAnalyticsServices.a */,
 				2EFD69A61B27713000AFEBD5 /* libz.dylib */,
 				8E9030C11B17B4F30027DE70 /* SystemConfiguration.framework */,
 				2EFD69A41B27711D00AFEBD5 /* CoreData.framework */,
@@ -241,16 +241,16 @@
 		2EFD699F1B276FEB00AFEBD5 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				2EFD69AA1B2779E700AFEBD5 /* GAI.h */,
-				2EFD69AB1B2779E700AFEBD5 /* GAIDictionaryBuilder.h */,
-				2EFD69AC1B2779E700AFEBD5 /* GAIEcommerceFields.h */,
-				2EFD69AD1B2779E700AFEBD5 /* GAIEcommerceProduct.h */,
-				2EFD69AE1B2779E700AFEBD5 /* GAIEcommerceProductAction.h */,
-				2EFD69AF1B2779E700AFEBD5 /* GAIEcommercePromotion.h */,
-				2EFD69B01B2779E700AFEBD5 /* GAIFields.h */,
-				2EFD69B11B2779E700AFEBD5 /* GAILogger.h */,
-				2EFD69B21B2779E700AFEBD5 /* GAITrackedViewController.h */,
-				2EFD69B31B2779E700AFEBD5 /* GAITracker.h */,
+				8E039EC41B4AE99C00F23D44 /* GAI.h */,
+				8E039EC51B4AE99C00F23D44 /* GAIDictionaryBuilder.h */,
+				8E039EC61B4AE99C00F23D44 /* GAIEcommerceFields.h */,
+				8E039EC71B4AE99C00F23D44 /* GAIEcommerceProduct.h */,
+				8E039EC81B4AE99C00F23D44 /* GAIEcommerceProductAction.h */,
+				8E039EC91B4AE99C00F23D44 /* GAIEcommercePromotion.h */,
+				8E039ECA1B4AE99C00F23D44 /* GAIFields.h */,
+				8E039ECB1B4AE99C00F23D44 /* GAILogger.h */,
+				8E039ECC1B4AE99C00F23D44 /* GAITrackedViewController.h */,
+				8E039ECD1B4AE99C00F23D44 /* GAITracker.h */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -531,12 +531,12 @@
 				374CBABE1B17DDA000255CF1 /* UserListController.swift in Sources */,
 				374CBA961B17D76A00255CF1 /* Product.swift in Sources */,
 				374CBAC41B17E41400255CF1 /* UserListView.swift in Sources */,
-				2EFD69B81B27B09100AFEBD5 /* GoogleAnalyticsHelper.swift in Sources */,
 				374CBA9A1B17D76A00255CF1 /* User.swift in Sources */,
 				3709153B1B19160200E99B33 /* SingleListView.swift in Sources */,
 				374CBAB11B17D79600255CF1 /* ItemViewCell.swift in Sources */,
 				2E1C6ED91B1CA91A0048FFEB /* FriendsListController.swift in Sources */,
 				2EA53F6E1B2A3E7100086428 /* AddProductToListController.swift in Sources */,
+				8E039ED11B4AE9BD00F23D44 /* GoogleAnalyticsHelper.swift in Sources */,
 				2E59AED31B1D0C6100F479D0 /* DAOLocal.swift in Sources */,
 				2E59AED51B1D0C6100F479D0 /* FunctionsDAO.swift in Sources */,
 				374CBA9D1B17D76A00255CF1 /* ListsView.swift in Sources */,
@@ -666,6 +666,10 @@
 					/Users/matheusfalcao/Documents/Aplicativos/Frameworks,
 					"$(PROJECT_DIR)",
 					/Users/brunobaring/Documents/FacebookSDK,
+					"$(PROJECT_DIR)/Shopping",
+					List/Frameworks/Firebase,
+					"$(PROJECT_DIR)/Shopping",
+					List/Frameworks/Facebook,
 				);
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -673,6 +677,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/brunobaring/Downloads/GoogleAnalyticsServicesiOS_3.12,
+					"$(PROJECT_DIR)/Shopping",
+					List/Frameworks/GoogleAnalytics,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -694,6 +700,10 @@
 					/Users/matheusfalcao/Documents/Aplicativos/Frameworks,
 					"$(PROJECT_DIR)",
 					/Users/brunobaring/Documents/FacebookSDK,
+					"$(PROJECT_DIR)/Shopping",
+					List/Frameworks/Firebase,
+					"$(PROJECT_DIR)/Shopping",
+					List/Frameworks/Facebook,
 				);
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -701,6 +711,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/brunobaring/Downloads/GoogleAnalyticsServicesiOS_3.12,
+					"$(PROJECT_DIR)/Shopping",
+					List/Frameworks/GoogleAnalytics,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
