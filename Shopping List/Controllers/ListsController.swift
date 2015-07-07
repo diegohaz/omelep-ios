@@ -15,6 +15,8 @@ class ListsController: GAITrackedViewController, UICollectionViewDelegateFlowLay
     var collectionView: UICollectionView?
     var lists = [List]()
     
+    var shareController: ShareController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.screenName = "Lists"
@@ -105,6 +107,14 @@ class ListsController: GAITrackedViewController, UICollectionViewDelegateFlowLay
     }
     
     func doneItem(cell: ItemViewCell) { /* aqui deve ser o Share */
+        let indexPath = collectionView?.indexPathForCell(cell)
+
+        shareController = ShareController()
+        shareController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        shareController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        shareController.list = self.lists[indexPath!.row]
+        
+        self.presentViewController(shareController, animated: true, completion: nil)
         
     }
     

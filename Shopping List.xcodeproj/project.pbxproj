@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0D817F1B4B62090044D6C1 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E0D817E1B4B62090044D6C1 /* Firebase.framework */; };
+		2E0D81811B4B71020044D6C1 /* to do in Resources */ = {isa = PBXBuildFile; fileRef = 2E0D81801B4B71020044D6C1 /* to do */; };
 		2E1C6ED91B1CA91A0048FFEB /* FriendsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */; };
 		2E21B35E1B288CA300359660 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21B35D1B288CA300359660 /* ShareController.swift */; };
 		2E21B3621B289B1100359660 /* SharedUsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21B3611B289B1100359660 /* SharedUsersCell.swift */; };
@@ -55,7 +57,6 @@
 		8E49FC8A1B0F75F70087FA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FC891B0F75F70087FA08 /* AppDelegate.swift */; };
 		8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E49FC931B0F75F70087FA08 /* Images.xcassets */; };
 		8E49FCA31B0F75F70087FA08 /* Shopping_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49FCA21B0F75F70087FA08 /* Shopping_ListTests.swift */; };
-		8E84B0891B4AF944005D9CF8 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E84B0881B4AF944005D9CF8 /* Firebase.framework */; };
 		8E84B08C1B4AF991005D9CF8 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E84B08A1B4AF991005D9CF8 /* FBSDKCoreKit.framework */; };
 		8E84B08D1B4AF991005D9CF8 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E84B08B1B4AF991005D9CF8 /* FBSDKLoginKit.framework */; };
 		8E84B08F1B4AFA6F005D9CF8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E84B08E1B4AFA6F005D9CF8 /* libGoogleAnalyticsServices.a */; };
@@ -78,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E0D817E1B4B62090044D6C1 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = "Shopping List/Frameworks/Firebase/Firebase.framework"; sourceTree = "<group>"; };
+		2E0D81801B4B71020044D6C1 /* to do */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "to do"; sourceTree = "<group>"; };
 		2E1C6ED81B1CA91A0048FFEB /* FriendsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListController.swift; sourceTree = "<group>"; };
 		2E21B35D1B288CA300359660 /* ShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
 		2E21B3611B289B1100359660 /* SharedUsersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedUsersCell.swift; path = ../../Controllers/SharedUsersCell.swift; sourceTree = "<group>"; };
@@ -141,7 +144,6 @@
 		8E49FC9C1B0F75F70087FA08 /* Shopping ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shopping ListTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E49FCA11B0F75F70087FA08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E49FCA21B0F75F70087FA08 /* Shopping_ListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping_ListTests.swift; sourceTree = "<group>"; };
-		8E84B0881B4AF944005D9CF8 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = "Shopping List/Frameworks/Firebase/Firebase.framework"; sourceTree = "<group>"; };
 		8E84B08A1B4AF991005D9CF8 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "Shopping List/Frameworks/Facebook/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		8E84B08B1B4AF991005D9CF8 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "Shopping List/Frameworks/Facebook/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		8E84B08E1B4AFA6F005D9CF8 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = "Shopping List/Frameworks/GoogleAnalytics/libGoogleAnalyticsServices.a"; sourceTree = "<group>"; };
@@ -159,9 +161,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E0D817F1B4B62090044D6C1 /* Firebase.framework in Frameworks */,
 				8E84B08C1B4AF991005D9CF8 /* FBSDKCoreKit.framework in Frameworks */,
 				8E84B08D1B4AF991005D9CF8 /* FBSDKLoginKit.framework in Frameworks */,
-				8E84B0891B4AF944005D9CF8 /* Firebase.framework in Frameworks */,
 				8E84B08F1B4AFA6F005D9CF8 /* libGoogleAnalyticsServices.a in Frameworks */,
 				8E039EC11B4AE97300F23D44 /* Bolts.framework in Frameworks */,
 				2EFD69B61B27825700AFEBD5 /* SystemConfiguration.framework in Frameworks */,
@@ -189,7 +191,6 @@
 		2E6639F91B18AA6700DA97D9 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				8E84B0881B4AF944005D9CF8 /* Firebase.framework */,
 				8E9030C91B17B51D0027DE70 /* libicucore.dylib */,
 				8E9030C51B17B5020027DE70 /* CFNetwork.framework */,
 				8E9030C31B17B4FB0027DE70 /* Security.framework */,
@@ -356,6 +357,7 @@
 				2E59AED21B1D0C6100F479D0 /* Shopping List-Bridging-Header.h */,
 				8E49FC931B0F75F70087FA08 /* Images.xcassets */,
 				8E49FC871B0F75F70087FA08 /* Supporting Files */,
+				2E0D81801B4B71020044D6C1 /* to do */,
 			);
 			path = "Shopping List";
 			sourceTree = "<group>";
@@ -388,6 +390,7 @@
 		8E9030CB1B17B56A0027DE70 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E0D817E1B4B62090044D6C1 /* Firebase.framework */,
 				2EFD699D1B276FB900AFEBD5 /* GoogleAnalytics */,
 				2EFD699C1B276E4400AFEBD5 /* Email */,
 				2E663A001B18AAA100DA97D9 /* Facebook */,
@@ -494,6 +497,7 @@
 				2E59AED91B1D385600F479D0 /* Boneco.png in Resources */,
 				2EBF8A401B3C5F6200B4B1BB /* backCharacter2.png in Resources */,
 				2EA53F6C1B29F08B00086428 /* Login_background.png in Resources */,
+				2E0D81811B4B71020044D6C1 /* to do in Resources */,
 				8E49FC941B0F75F70087FA08 /* Images.xcassets in Resources */,
 				374CBAB81B17D79600255CF1 /* SuggestionViewCell.xib in Resources */,
 				374CBAB41B17D79600255CF1 /* ListViewCell.xib in Resources */,
@@ -674,6 +678,8 @@
 					List/Frameworks/Firebase,
 					"$(PROJECT_DIR)/Shopping",
 					List/Frameworks/Facebook,
+					"$(PROJECT_DIR)/Shopping",
+					List/Frameworks/Firebase,
 				);
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -714,6 +720,8 @@
 					List/Frameworks/Firebase,
 					"$(PROJECT_DIR)/Shopping",
 					List/Frameworks/Facebook,
+					"$(PROJECT_DIR)/Shopping",
+					List/Frameworks/Firebase,
 				);
 				INFOPLIST_FILE = "Shopping List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

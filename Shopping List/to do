@@ -1,0 +1,22 @@
+to do Omelep
+
+Back - Propriedade no dao local para identificar se o produto está Done ou não.
+Back - Funções para marcar e desmarcar Done.
+Front - Mostrar produto done.
+Front - Criar função Desmarcar todos os produtos Done.
+
+Back - propriedades no dao local e da remoto para lista pronta
+Back - inserir produtos na “lista pronta” do painel de controle.
+Front - Criar sections para Lista pronta.
+Front - Inserir lista pronta na posição certa, diferenciada da normal.
+Front - Poder adicionar produtos da lista pronta na lista normal.
+Front - Criar design de lista pronta.
+
+Back - Deixar usuário anônimo.
+
+Front - Inserir Share na List.
+
+Base - Acabar base de dados.
+Base - Fazer crawler de outros sites.
+
+Bug - Definir ordem dos produtos(sugestão:colocar essa propriedade nos dados).
